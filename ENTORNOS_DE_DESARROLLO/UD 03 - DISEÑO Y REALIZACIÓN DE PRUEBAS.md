@@ -1,3 +1,4 @@
+
 ## 1. Definición de prueba. Cuándo hacer pruebas. La estrategia de pruebas
 
 Prueba: Proceso que permite verificar y revelar la calidad de un producto software. Permite identificar los fallos de implementación, calidad o usabilidad de un programa. 
@@ -154,7 +155,7 @@ Finalmente;
 
 Comprobar que todas las funciones, sentencias, decisiones y condiciones se ejecutan. 
 
-![[ud03-testprueba1.png]]
+![](resources/ud03-testprueba1.png)
 
 Cubrimiento de la función: Durante la ejecución del programa la función debe ser llamada al menos una vez.
 
@@ -175,7 +176,7 @@ Herramientas comerciales como Clover o Jacoco.
 Los casos de prueba con mayor probabilidad de éxito son los de los valores límite. 
 Es una técnica complementaria a las particiones equivalentes pero se generan no un conjunto de valores sino unos pocos en el límite del rango de valores aceptado por el componente a probar. 
 
-![[ud03-testprueba3.png]]
+![](resources/ud03-testprueba3.png)
 
 Los valores límite son diferentes porque un método admite como parámetro un `double` y el otro un `int`. Como el parámetro de entrada tiene que ser mayor que 5. En uno valores límite 4,99 y 5,01.  En otro valores límite 4 y 6. 
 
@@ -195,7 +196,8 @@ Ejemplos:
 - Si una entrada requiere un valor en un conjunto hay dos clases de equivalencia: En el conjunto o fuera de él.
 - Si una entrada es booleana hay dos clases de equivalencia: Sí y no.
 
-![[ud03-testprueba2.png]]
+![](resources/ud03-testprueba2.png)
+
 Clases de equivalencia:
 1- Por debajo x <= 0
 2- En x > 0 y x < 100
@@ -255,13 +257,176 @@ Estándar _ISO/EIC 12207, 15289_
 
 ## 7. Pruebas unitarias
 
-// TODO
+Las **pruebas unitarias** o **pruebas de unidad** buscan probar el funcionamiento de un módulo de código por separado. 
+En las pruebas de integración se asegurará el funcionamiento del sistema. 
+
+**Unidad**: Parte de la aplicación más pequeña que se puede probar (Función, procedimiento método). 
+
+Las pruebas unitarias deben ser:
+- Automatizables (sin intervención manual)
+- Completas (elevado cubrimiento)
+- Repetibles (ejecutar más de una vez)
+- Independientes entre sí
+- Profesionales (con profesionalidad, documentación, ..)
+
+Las pruebas unitarias  tienen las siguientes ventajas: 
+- **Fomentan el cambio**: Facilitan que el programador cambie el código para mejorar su estructura al poder hacer pruebas sobre los cambios y asegurarse de que no se han introducido errores
+- **Simplifica la integración**: Fase de integración con grado alto de seguridad de que el código funciona correctamente
+- **Documenta el código**: Las propias pruebas actúan de documentación del código
+- **Separación entre interfaz e implementación**: La interacción entre los casos de prueba y las unidades probadas son las interfaces de estas últimas, se puede cambiar cualquiera de los dos sin afectar al otyro
+- **Errores más acotados y son fáciles de localizar** gracias a las pruebas unitarias. 
+
+
+## 7.1. Herramientas para Java 
+
+### Jtiger
+- Pruebas unitarias Java 5
+- Código abierto
+- Exportar informes en HTML, XML, Texto plano
+- Casos de prueba de JUnit mediante plugin.
+- Aserciones para comprobar el cumplimiento del método
+- Metadatos (datos que describen otros datos) de los casos de prueba se especifican con anotaciones
+- Tarea de Ant para automatizar pruebas
+- Documentación completa
+- El framework incluye pruebas sobre sí mismo. 
+
+### TestNG
+- Inspirado en JUnit y NUnit
+- Diseñado para cubrir todo tipo de pruebas (unitarias, funcionales, integración)
+- Anotaciones de Java 5 (WTF... una novedad, claro)
+- Compatible con JUnit
+- Soportado por Eclipse, Netbeans, IntelliJ
+- Las pruebas pueden invocarse desde línea de comandos con tarea de ANT o fichero XML
+- Métodos de prueba se organizan en grupos (método puede pertenecer a uno o varios grupos)
+
+### JUnit
+- Framework (<small>Estructura conceptual y tecnológica de soporte definida, normalmente con módulos de software concretos con base en la cual otro proyecto de software puede ser organizado y desarrollado</small>)  de pruebas unitarias creado por Gamma y Beck
+- Código abierto
+- Implementación de la arquitectura xUnit
+- Muy documentado
+- Es el que se usa de verdad en Java (Estándar)
+- Usa desde JUnit 4 las anotaciones JDK 1.5 (qué novedad....)
+- Se pueden crear informes en HTML
+- Organización de pruebas en Suites de pruebas
+
+## 7.2. Herramientas para otros lenguajes
+(Basados en xUnit)
+### CppUnit
+- Pruebas unitarias para C++
+### Nunit
+- Framework para .NET
+### SimpleTest,  PHP Unit 
+- PHP
+### FoxUnit
+- Microsoft visual FoxPro
+### MOQ
+- Para mockeo
 
 ## 8. Automatización de la prueba
 
-// TODO
+Para IDEs como NetBeans, Eclipse, IntelliJ tenemos JUnit. 
+Permite diseñar clases de prueba para cada clase diseñada en la aplicación. 
+Se establecen los métodos que se quieren probar y para ello se diseñan casos de prueba. 
+JUnit presenta un informe con los resultados de la prueba. En función de ellos se debe (o no) modificar el código.
+
+`assertTrue()`: Evalúa expresión booleana. Pasa la prueba si es cierta.
+`assertFalse()`: Evalúa expresión booleana. Pasa la prueba si es falsa.
+`assertNull()`: Verifica que sea nulo.
+`assertNotNull()`: Verifica que no sea nulo.
+`assertSame()`: Asegura que los objetos de las dos referencias tienen misma dirección de memoria.
+`assertNotSame()`: Asegura que los objetos de las dos referencias NO tienen misma dirección de memoria.
+`assertEquals()`: Asegura que son iguales en contenidos (primitivos, objetos con `equals()`
+`assertThrows()`: Éxito si se lanza una excepción
+`assertAll()`: Agrupar conjunto de asserts
+`fails()`: Provoca que la prueba falle inmediatamente. 
+
+Asunciones
+`assumeTrue(suposicion, mensaje)`: Continua ejecutando la prueba soplo si la condición es verdadera. Si es falsa se considera omitida (no se ejecutan las aserciones siguientes)
+`assumeFalse(suposicion, mensaje)`
+`assumingThat(suposicion, ejecutable)`
+
+Anotaciones...
+`@DisplayName("")`  Da un nombre al test (Clase o método)
+`@Disabled("")` Deshabilita el test y da motivos
+`@BeforeEach`: Lo ejecuta antes de cada
+`@AfterEach`: Lo ejecuta después de cada
+`@BeforeAll`: Lo ejecuta antes de correr el primero de los test
+`@AfterAll`: Lo ejecuta al final de los test
+`@EnabledOnOs("")`: Solo activa el test en un SO (o sistemas operativos) concretos
+`@EnabledOnJre`: Solo en una versión de JRE indicada
+`@EnabledIfSystemProperty(named:"", matches:"")` En función de la propiedad
+`@EnabledIfenvironmentProperty(named:"", matches:"")` En función de la variable de entorno
+
+#### En el viejo Netbeans...
+
+Tengamos una clase `Car` que tiene un constructor `Car(String name, double prize, int stock)`
+
+Queremos testear:
+
+- El método `buyCars(int cars)`  que sumará estos coches al stock (y si son negativos  o 0 arrojará excepción)
+- El método `sellCars(int cars)` que restará estos coches del stock y que si son negativos o 0 arrojará excepción y que si el stock es menor que estos también arrojará excepción.
+
+**VALORES CORRECTOS**
+
+**VALORES NO VÁLIDOS**
+
+**VALORES LÍMITE**.  En nuestro caso el valor límite es 0. 
+
+File -> New File -> Test for Existing Class (seleccionando la clase). 
+
+```java
+@Test
+public void testBuyCarsValid() throws Exception {
+	try {
+		Car car = new ("Patata", 12000, 300);
+		car.buyCars(100);
+		assertTrue(car.getStock()==400);
+		//assertEquals(400, car.getStock);  // Tercer parámetro de offset
+	} catch (Exception e) {
+		fail("Excepción no esperada"+e);
+	}
+}
+
+@Test
+public void testBuyCarsNegativeThrowException() throws Exception {
+	try {
+		Car car = new ("Patata", 12000, 300);
+		Exception exception = assertThrow(Exception.class, () -> {car.buyCars(-100)};
+		assertEquals("Intento de comprar un número negativo de coches", exception.getMessage());
+	} catch (Exception e) {
+		fail("Excepción no esperada"+e);
+	}
+}
+
+// Comprar 0
+// Vender válido
+// Vender 0
+// Vender negativo
+// Vender menor que el stock
+```
+
+
+## TDD
+
+Se llama Test Driven Development (TDD) a la metodología de desarrollo de software que consiste en escribir primero los test unitarios y después el código.
+Pasos:
+- Escribir prueba para el requisito
+- Comprobar si la prueba falla
+- Escribir el código que haga pasar la prueba
+- Correr la prueba y comprobar qué pasa
+- Refactorizar si es necesario
 
 ## 9. Documentación de la prueba
 
-// TODO
+Metodologías actuales como `Métrica v.3` (Metodología de Planificación, Desarrollo y Mantenimiento de Sistemas de Información. Se puede usar libremente solo citando la propiedad intelectual que es el Ministerio de Presidencia) proponen que la documentación de fase de pruebas se base en estándares ANSI / IEEE de verificación y validación de software.
 
+Se busca describir un conjunto de documentos para las pruebas de software (Facilita un marco común).
+
+Documentos a generar (Proceso de Análisis del Sistema):
+- Plan de pruebas: Planificación general
+- Especificación del diseño de pruebas: Ampliación y detalle del plan de pruebas
+- Especificación de un caso de prueba:  A partir de la especificación del diseño de pruebas
+- Especificación de un procedimiento de prueba: Detallar el modo en que serán ejecutados cada uno de los casos de prueba
+- Registro de pruebas:  Registro de sucesos durante las pruebas
+- Informe de incidente de pruebas: Para cada incidente y defecto detectado. solicitud de mejoras, etc. 
+- Informe sumario de pruebas: Resumen de las actividades de prueba vinculadas a una o más especificaciones de diseño de pruebas. 

@@ -4,18 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "3cd950b6a546e114",
+        "id": "25c99f9faa219188",
         "type": "tabs",
         "children": [
           {
-            "id": "ac04e2955eda7f69",
+            "id": "75e2722890d7996f",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "ENTORNOS_DE_DESARROLLO/UD 03 - DISEÑO Y REALIZACIÓN DE PRUEBAS.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "a088f39f45f92b1b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ENTORNOS_DE_DESARROLLO/UD 04 - OPTIMIZACIÓN Y DOCUMENTACIÓN.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -81,6 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "ENTORNOS_DE_DESARROLLO/UD 04 - OPTIMIZACIÓN Y DOCUMENTACIÓN.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "ENTORNOS_DE_DESARROLLO/UD 04 - OPTIMIZACIÓN Y DOCUMENTACIÓN.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +137,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "ENTORNOS_DE_DESARROLLO/UD 04 - OPTIMIZACIÓN Y DOCUMENTACIÓN.md"
+              }
             }
           }
         ]
@@ -138,10 +159,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "ac04e2955eda7f69",
+  "active": "a088f39f45f92b1b",
   "lastOpenFiles": [
-    "README.md",
     "ENTORNOS_DE_DESARROLLO/UD 03 - DISEÑO Y REALIZACIÓN DE PRUEBAS.md",
+    "ENTORNOS_DE_DESARROLLO/UD 04 - OPTIMIZACIÓN Y DOCUMENTACIÓN.md",
+    "README.md",
     "ENTORNOS_DE_DESARROLLO/resources/ud03-testprueba3.png",
     "ENTORNOS_DE_DESARROLLO/resources/ud03-testprueba2.png",
     "ENTORNOS_DE_DESARROLLO/resources/ud03-testprueba1.png",
