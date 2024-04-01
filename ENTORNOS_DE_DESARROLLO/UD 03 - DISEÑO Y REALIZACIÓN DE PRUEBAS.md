@@ -406,7 +406,28 @@ public void testBuyCarsNegativeThrowException() throws Exception {
 ```
 
 
-## TDD
+#### Suite de tests
+
+Es un contenedor que agrupa un conjunto de pruebas unitarias relacionadas para que se ejecuten juntas. Útil para proyectos grandes con muchas pruebas.  La Suite en sí no debería contener ningún test, solo agrupa las clases de prueba. 
+
+```java
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+
+@RunWith(Suite.class)
+@Suite.SuiteClasses({
+    TestClass1.class,
+    TestClass2.class,
+    TestClass3.class
+})
+public class TestSuite {
+    // Esta clase no necesita contener ningún método de prueba, solo sirve para agrupar pruebas
+}
+```
+
+Pueden incluirse y excluirse clases con `@SelectClasses`, `@SelectPackages`, `@IncludePackages`, `@ExcludePackages`, `@IncludeClassNamePatters`, `@ExcludeClassNamePatters`, `@IncludeTags`, `@ExcludeTags`, `@SelectMethod`..
+
+#### TDD
 
 Se llama Test Driven Development (TDD) a la metodología de desarrollo de software que consiste en escribir primero los test unitarios y después el código.
 Pasos:
