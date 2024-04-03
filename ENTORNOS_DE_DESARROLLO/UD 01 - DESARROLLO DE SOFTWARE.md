@@ -1,4 +1,6 @@
 
+## 1a. Tipos de software 
+
 Software: Conjunto de programas informáticos que actúan sobre el hardware para ejecutar lo que el usuario desee.
 
 Se distinguen tres tipos de software:
@@ -6,7 +8,7 @@ Se distinguen tres tipos de software:
 - **Software de programación**: herramientas que permitan desarrollar programas informáticos.
 - **Aplicaciones**: Conjunto de programas con una finalidad más o menos concreta. Los programas son un conjunto de instrucciones escritas en un lenguaje de programación.
 
-## 1. Relación hardware-software
+## 1b. Relación hardware-software
 
 La relación hardware-software puede plantearse desde dos puntos de vista:
 
