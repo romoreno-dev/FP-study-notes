@@ -29,14 +29,14 @@ Lo más conocidos y utilizados son:
 1. **Modelo en Cascada**
 - Modelo clásico de vida del software. Las etapas pasan de una a otra sin retorno posible (se presupone que no habrá errores, ni variaciones del software)
 - Prácticamente imposible de utilizar, requiere conocer todos los requisitos del sistema. Solo **aplicable a pequeños desarrollos**
-![](ud01-2.png)
+![](resources/ud01-2.png)
 
 2. **Modelo en Cascada con Realimentación**
 - Variación del modelo en cascada, con realimentación entre etapas de forma que se pueda volver atrás para corregir, modificar o depurar.
 - Si se prevén muchos cambios durante el desarrollo no es el más adecuado.
 - Modelo perfecto si el **modelo es rígido** (pocos cambios, poca evolución) y los **requisitos están claros** 
 
-![](ud01-3.png)
+![](resources/ud01-3.png)
 
 3. **Modelos Evolutivos**
 	Más modernos, tienen en cuenta la naturaleza cambiante y evolutiva del software
@@ -45,13 +45,13 @@ Lo más conocidos y utilizados son:
 		- Las fases se repiten y refinan. Van propagando su mejora a las fases siguientes.
 		- Proyecto se desarrolla en pequeñas porciones (incremental) en sucesivas iteraciones **(sprints)** al final de las cuales se puede ver lo que se ha desarrollado y, antes de comenzar la siguiente iteración (sprint) se pueden ver los requerimientos que no se conocen o estan mal implementados o incluso introducir nuevos requerimientos (adaptativo).  
 		- Cada sprint debe dar un resultado completo (incremento del valor del producto final) listo para entregar al cliente.  
-![](ud01-4.png)
+![](resources/ud01-4.png)
 	3.2. **Modelo en Espiral**
 		- Combinación del modelo iterativo-incremental con el modelo en cascada. 
 		- El software se construye repetidamente con versiones cada vez mejores porque incrementan la funcionalidad en cada versión. Modelo bastante complejo. 
 
 
-![](ud01-1.png)
+![](resources/ud01-1.png)
 
 
 ## 2.2 Herramientas de apoyo al desarrollo de software
@@ -173,7 +173,7 @@ Las etapas que siempre se deben construir son:
 Debe dividirse el sistema en partes y establecer relaciones entre ellas. Decidir qué hará exactamente cada parte. 
 Debe crearse modelo funcional-estructura de los requerimientos del sistema para poder dividirlo y afrontar partes por separado.
 
-![](ud01-8.png)
+![](resources/ud01-8.png)
 
 Tomar decisiones importantes como:
 - Entidades y relaciones de BBDD
@@ -284,7 +284,7 @@ El proyecto debe documentarse en todas las fases del mismo para pasar de una a o
 
 En el desarrollo de software debería elaborarse:
 
-![](ud01-9.png)
+![](resources/ud01-9.png)
 
 ## 4.8. Explotación
 
@@ -322,11 +322,11 @@ El primer IDE, Maestro, (principios de los 70) fue usado por BASIC (que abandon�
 
 Debe elegirse el entornos de desarrollo dependiendo del lenguaje de programación que se quiera emplear. 
 
-![](ud01-5.png)
+![](resources/ud01-5.png)
 
-![](ud01-6.png)
+![](resources/ud01-6.png)
 
-![](ud01-7.png)
+![](resources/ud01-7.png)
 
 
 Las funciones de los IDE son: 
