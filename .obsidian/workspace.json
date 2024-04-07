@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "cc6500631a8f7948",
+        "id": "c447b5336cbb8c3c",
         "type": "tabs",
         "children": [
           {
-            "id": "62885067d71f3a36",
+            "id": "53cbf62c372b5ffa",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ENTORNOS_DE_DESARROLLO/UD 01 - DESARROLLO DE SOFTWARE.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -69,7 +65,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 419.5
   },
   "right": {
     "id": "7d79b0e9867d8cc9",
@@ -85,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ENTORNOS_DE_DESARROLLO/UD 01 - DESARROLLO DE SOFTWARE.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ENTORNOS_DE_DESARROLLO/UD 01 - DESARROLLO DE SOFTWARE.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -124,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "ENTORNOS_DE_DESARROLLO/UD 01 - DESARROLLO DE SOFTWARE.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -146,23 +138,46 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "62885067d71f3a36",
+  "active": "53cbf62c372b5ffa",
   "lastOpenFiles": [
-    "ENTORNOS_DE_DESARROLLO/UD 03 - DISEÑO Y REALIZACIÓN DE PRUEBAS.md",
-    "ENTORNOS_DE_DESARROLLO/UD 04 - OPTIMIZACIÓN Y DOCUMENTACIÓN.md",
-    "ENTORNOS_DE_DESARROLLO/UD 01 - DESARROLLO DE SOFTWARE.md",
-    "ENTORNOS_DE_DESARROLLO/resources/ud01-9.png",
-    "ENTORNOS_DE_DESARROLLO/resources/ud01-8.png",
-    "ENTORNOS_DE_DESARROLLO/resources/ud01-7.png",
-    "ENTORNOS_DE_DESARROLLO/resources/ud01-6.png",
-    "ENTORNOS_DE_DESARROLLO/resources/ud01-5.png",
-    "ENTORNOS_DE_DESARROLLO/resources/ud01-4.png",
-    "ENTORNOS_DE_DESARROLLO/resources/ud01-2.png",
-    "ENTORNOS_DE_DESARROLLO/resources/ud01-3.png",
-    "ENTORNOS_DE_DESARROLLO/resources/ud01-1.png",
-    "Pasted image 20240403200837.png",
+    "ENTORNOS_DE_DESARROLLO/UD 02 - INSTALACIÓN Y USO DE ENTORNOS DE DESARROLLO.md",
+    "ENTORNOS_DE_DESARROLLO/resources/Pasted image 20240408000440.png",
+    "ENTORNOS_DE_DESARROLLO/UD 05 - DISEÑO ORIENTADO A OBJETOS Y ELABORACIÓN DE DIAGRAMAS.md",
+    "ENTORNOS_DE_DESARROLLO/resources/Pasted image 20240407210434.png",
+    "ENTORNOS_DE_DESARROLLO/resources/Pasted image 20240407210413.png",
+    "ENTORNOS_DE_DESARROLLO/resources/Pasted image 20240407210313.png",
+    "ENTORNOS_DE_DESARROLLO/resources/Pasted image 20240407205854.png",
+    "ENTORNOS_DE_DESARROLLO/resources/Pasted image 20240407205618.png",
+    "ENTORNOS_DE_DESARROLLO/resources/Pasted image 20240407205603.png",
+    "ENTORNOS_DE_DESARROLLO/resources/Pasted image 20240407205522.png",
+    "ENTORNOS_DE_DESARROLLO/resources/Pasted image 20240407205448.png",
+    "ENTORNOS_DE_DESARROLLO/resources/Pasted image 20240407205223.png",
+    "Pasted.md",
+    "~$tema2 (Recuperado automáticamente).docx",
+    "~$ma2hilos.docx",
+    "TEMARIOBASEDATOS.pdf",
+    "tema2hilos.docx",
+    "bdtema2 (Recuperado automáticamente).docx",
     "README.md",
-    "ENTORNOS_DE_DESARROLLO/resources",
-    "ENTORNOS_DE_DESARROLLO"
+    "SISTEMAS_INFORMATICOS/UD 03 - REDES DE ORDENADORES.md",
+    "LENGUAJE_MARCAS/UD 04 - DEFINICIÓN DE ESQUEMAS Y VOCABULARIOS EN XML.md",
+    "PROGRAMACION_SERVICIOS_PROCESOS/UD 03 - PROGRAMACIÓN EN RED.md",
+    "LENGUAJE_MARCAS/CSS.md",
+    "SISTEMAS_INFORMATICOS",
+    "LENGUAJE_MARCAS",
+    "PROGRAMACION_SERVICIOS_PROCESOS",
+    "LENGUAJE DE MARCAS/TEMA 4 - DEFINICIÓN DE ESQUEMAS Y VOCABULARIOS EN XML.md",
+    "LENGUAJE DE MARCAS/CSS.md",
+    "LENGUAJE DE MARCAS",
+    "LL/TEMA 4 - DEFINICIÓN DE ESQUEMAS Y VOCABULARIOS EN XML.md",
+    "LL/CSS.md",
+    "LL",
+    "Sistemas informáticos/TEMA 3 - REDES DE ORDENADORES.md",
+    "Programación de servicios y procesos/Untitled.md",
+    "Lenguaje de marcas/CSS.md",
+    "Lenguaje de marcas/TEMA 4 - DEFINICIÓN DE ESQUEMAS Y VOCABULARIOS EN XML.md",
+    "ENTORNOS_DE_DESARROLLO/UD 01 - DESARROLLO DE SOFTWARE.md",
+    "ENTORNOS_DE_DESARROLLO/UD 03 - DISEÑO Y REALIZACIÓN DE PRUEBAS.md",
+    "ENTORNOS_DE_DESARROLLO/UD 04 - OPTIMIZACIÓN Y DOCUMENTACIÓN.md"
   ]
 }
