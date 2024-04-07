@@ -103,7 +103,7 @@ Los IDEs proporcionan herramientas de control de versiones y facilitan el desarr
 En un instante dado pueden coexistir varias versiones y hay que disponer de métodos para designar las versiones de forma sistemática u organizada. 
 
 Podemos mencionar CSV y Subversión (O al menos eso diría alguien que vive en el año 2000...). Subversion sería el sucesor natural de CVS.
-### 2.1. Estructura de las herramientas de control de versiones CSV (Concurrent Version Sytem)
+### 2.1. Estructura de las herramientas de control de versiones CSV (Concurrent Version System)
 
 Sistema de mantenimiento de código fuente (grupos de archivos en general) para desarrolladores que trabajan y modifican concurrentemente ficheros organizados en proyectos.
 
