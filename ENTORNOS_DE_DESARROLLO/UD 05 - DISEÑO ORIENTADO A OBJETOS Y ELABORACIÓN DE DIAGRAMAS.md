@@ -114,30 +114,42 @@ Como ejemplo, podrían describirse 13 diagramas para modelar diferentes aspectos
 Existen dos grandes grupos:
 
 - **Diagramas estructurales**: Visión estática del sistema (modelo estático abstracto). Especifican clases y objetos y cómo se distribuyen físicamente en el sistema.
-	De prioridad **ALTA**
-		- **Diagrama de clases**: Elementos del modelo estático abstracto. Formado por el conjunto de clases y sus relaciones.
-		- **Diagrama de objetos**: Elementos del modelo estático en un momento concreto. Formado por el conjunto de objetos y de sus relaciones. Habitualmente usado para casos especiales de un diagrama de clases o de comunicaciones.
-
-	De prioridad **MEDIA**
-		- **Diagrama de componentes**: Organización lógica de la implementación de una aplicación, sistema o empresa, indicando componentes, interrelaciones, interacciones, interfaces públicas y dependencia entre ellos. 
-		- **Diagrama de despliegue**: Configuración del sistema en tiempo de ejecución. Con nodos de procesamiento y sus componentes. Ejecución de la arquitectura del sistema: Nodos, ambientes operativos (hardware o software) e interfaces que las conectan. Muestra cómo los componentes de un sistema se distribuyen en los ordenadores que los ejecutan. Se usa en sistemas distribuidos.
+	De prioridad **ALTA**  
+	* ***Diagrama de clases**: Elementos del modelo estático abstracto. Formado por el conjunto de clases y sus relaciones.  
 	
-	De prioridad **BAJA**
-		- **Diagrama de paquetes**: Organización de los elementos del modelo en paquetes y dependencias entre estos paquetes. Útiles para sistemas de mediano o gran tamaño.
-		- **Diagrama de estructuras compuestas / diagrama integrado de estructuras (UML 2.0)**: Estructura interna de una clasificación (clase, componente, caso típico) con los puntos de interacción de esta clasificación con otras partes del sistema. 
+	* **Diagrama de objetos**: Elementos del modelo estático en un momento concreto. Formado por el conjunto de objetos y de sus relaciones. Habitualmente usado para casos especiales de un diagrama de clases o de comunicaciones.   
 
-- **Diagramas de comportamiento**: Conducta en el tiempo de ejecución del sistema, tanto desde el punto de vista del sistema completo como de las instancias u objetos que lo integran. 
-	De prioridad **ALTA**
-		-  **Diagramas de actividad**: Orden en el que se van realizando las tareas dentro de un sistema. Procesos de alto nivel de la organización. Incluye flujo de datos o modelo de la lógica compleja dentro del sistema.
-		-  **Diagramas de interacción- De secuencia**: Ordenación temporal en el paso de mensajes. Modela la secuencia lógica a través del tiempo de los mensajes entre instancias.
-	De prioridad **MEDIA**
-		- **Diagramas de casos de uso**: Acciones a realizar en el sistema DESDE EL PUNTO DE VISTA DE LOS USUARIOS SIN FORMACIÓN EN DESARROLLO. Acciones, usuarios y relaciones entre ellos. Especifica la funcionalidad y el comportamiento mediante su interacción con usuarios y/o sistemas.
-		- **Diagramas de máquinas de estado**: (Diagrama de estado, diagramas de estados y transiciones, diagrama de cambio de estados) Comportamiento de un sistema dirigido por eventos. Estados que puede tener un objeto o interacción y transiciones entre estados.
-	De prioridad **BAJA**
-		- **Diagramas de interacción**
-			- **De comunicación/colaboración (UML 2.0)**: Organización estructural de los objetos que se reciben y envían mensajes. Instancias de clases, interrelaciones, flujo de mensajes entre ellas. 
-			- **De interacción**: Conjunto de objetos y relaciones junto con los mensajes que se envían entre ellos. Es variante del diagrama de actividad que permite mostrar el flujo de control dentro de un sistema o proceso organizativo. Cada nodo de actividad puede representar otro diagrama de interacción.
-			- **De tiempo**:  Cambio de un estado o una condición de una instancia o un rol a través del tiempo. Se usa para exhibir el cambio en el estado de un objeto en el tiempo, en respuesta a eventos externos. 
+	De prioridad **MEDIA**  
+	- **Diagrama de componentes**: Organización lógica de la implementación de una aplicación, sistema o empresa, indicando componentes, interrelaciones, interacciones, interfaces públicas y dependencia entre ellos.    
+	
+	- **Diagrama de despliegue**: Configuración del sistema en tiempo de ejecución. Con nodos de procesamiento y sus componentes. Ejecución de la arquitectura del sistema: Nodos, ambientes operativos (hardware o software) e interfaces que las conectan. Muestra cómo los componentes de un sistema se distribuyen en los ordenadores que los ejecutan. Se usa en sistemas distribuidos.    
+	
+	De prioridad **BAJA**   
+	* **Diagrama de paquetes**: Organización de los elementos del modelo en paquetes y dependencias entre estos paquetes. Útiles para sistemas de mediano o gran tamaño.
+	
+	* **Diagrama de estructuras compuestas / diagrama integrado de estructuras (UML 2.0)**: Estructura interna de una clasificación (clase, componente, caso típico) con los puntos de interacción de esta clasificación con otras partes del sistema.   
+
+- **Diagramas de comportamiento**: Conducta en el tiempo de ejecución del sistema, tanto desde el punto de vista del sistema completo como de las instancias u objetos que lo integran.      
+
+	De prioridad **ALTA**      
+	 * ***Diagramas de actividad**: Orden en el que se van realizando las tareas dentro de un sistema. Procesos de alto nivel de la organización. Incluye flujo de datos o modelo de la lógica compleja dentro del sistema. 
+	 
+	 * **Diagramas de interacción- De secuencia**: Ordenación temporal en el paso de mensajes. Modela la secuencia lógica a través del tiempo de los mensajes entre instancias.   
+	
+	De prioridad **MEDIA**   
+	
+	* ***Diagramas de casos de uso**: Acciones a realizar en el sistema DESDE EL PUNTO DE VISTA DE LOS USUARIOS SIN FORMACIÓN EN DESARROLLO. Acciones, usuarios y relaciones entre ellos. Especifica la funcionalidad y el comportamiento mediante su interacción con usuarios y/o sistemas.  
+	
+	* **Diagramas de máquinas de estado**: (Diagrama de estado, diagramas de estados y transiciones, diagrama de cambio de estados) Comportamiento de un sistema dirigido por eventos. Estados que puede tener un objeto o interacción y transiciones entre estados.    
+
+	De prioridad **BAJA**   
+
+	 **Diagramas de interacción**
+	 * ***De comunicación/colaboración (UML 2.0)**: Organización estructural de los objetos que se reciben y envían mensajes. Instancias de clases, interrelaciones, flujo de mensajes entre ellas.    
+	
+	 * ***De interacción**: Conjunto de objetos y relaciones junto con los mensajes que se envían entre ellos. Es variante del diagrama de actividad que permite mostrar el flujo de control dentro de un sistema o proceso organizativo. Cada nodo de actividad puede representar otro diagrama de interacción.   
+	
+	 * ***De tiempo**:  Cambio de un estado o una condición de una instancia o un rol a través del tiempo. Se usa para exhibir el cambio en el estado de un objeto en el tiempo, en respuesta a eventos externos.    
 	
 ## 3. Diagramas UML estructurales -> Diagramas de clases
 
@@ -176,6 +188,9 @@ Las relaciones se caracterizan por la **cardinalidad** o **multiplicidad de clas
 | <center>\*</center>   | <center>Varios</center>                      |
 | <center>0..*</center> | <center>Cero o varios</center>               |
 | <center>1..*</center> | <center>Uno o varios (al menos uno)</center> |
+
+
+
 ![](resources/ud05-3.png)
 Aquí por ejemplo:
 - un alumno puede MATRICULARSE  de 1 o más módulos (miro a la derecha de la relación)
