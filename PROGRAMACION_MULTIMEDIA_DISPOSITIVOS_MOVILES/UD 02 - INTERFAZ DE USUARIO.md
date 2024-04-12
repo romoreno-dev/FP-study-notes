@@ -1,2 +1,6 @@
 
+- Servicios para descargar ficheros desde Internet o escuchar música sin bloquear una aplicación:[Servicios de Android](http://gpmess.com/blog/2014/08/14/utilizar-servicios-service-e-intentservice-en-android/ "Acceder a una página web sobre “Introducción a los servicios en Android.” (Se abre en una ventana nueva)")
+- Intents implícitos para realizar llamadas, enviar mensajes, lanzar el navegador Web, etc.[Uso de intents implícitos](http://nbortolotti.blogspot.com.es/2011/05/utilizando-intents-implicitos-para.html "Acceder a una página web sobre “Utilizando intents implícitos.” (Se abre en una ventana nueva)"). 
+- Sensores de los dispositivos móviles con los cuales una aplicación puede recibir datos del medio externo como la temperatura, la orientación, etc. [Manejo de sensores](http://www.androidcurso.com/index.php/tutoriales-android/36-unidad-5-entradas-en-android-teclado-pantalla-tactil-y-sensores/154-los-sensores "Acceder a una página web sobre “Detección y manejo de sensores.” (Se abre en una ventana nueva)")
+- Conexiones de red: consulta de conexiones disponibles, comprobación del estado de la conexión, etc. [La clase ConnectivityManager](http://developer.android.com/reference/android/net/ConnectivityManager.html "Acceder a la página web oficial de Android sobre “La clase ConnectivityManager” (Se abre en una ventana nueva)")
 

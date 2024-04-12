@@ -1,4 +1,139 @@
-1
+## 1. Introducción
+
+Se llama **dispositivo móvil** a un aparato pequeño y de poco peso, con pantalla y teclado (generalmente táctil), con pequeñas capacidades de procesamiento, memoria limitada y conexión (permanente o no) a una red. Diseñados para cumplir funciones como llamadas telefónicas, agendas, GPS, acceso al correo, música, navegar... y otras más generales. 
+
+Los móviles se clasifican en:
+- Smartphones (Teléfonos inteligentes)
+- PDA (Personal Digital Assistant)  o PocketPC (PC de bolsillo), en desuso
+- Handhelds (PC de mano)
+- Internet tables (entre las PDA y los PCs)
+- Ultramóviles (pequeñas tablets PC con teclado físico). 
+- Phablets (Dispositivos móviles de tamaño próximo a las tablets)
+- Weareables (Relojes con funciones mobile)
+
+Los móviles tenían limitaciones técnicas (actualmente muchas han desaparecido, sobre todo en teléfonos de gama alta) como:
+- Suministro de energía limitado (dependientes de batería)
+- Procesadores con capacidad de cómputo reducida. Baja frecuencia de reloj para ahorrar energía. Sin capacidad algunos para cálculos en punto flotante.
+- Poca memoria principal (RAM)
+- Almacenamiento de datos persistente reducido (pequeña memoria flasg interna, SD...)
+- Conexión a red de forma intermitente, ancho de banda limitado
+- Pantalla de dimensiones reducidas
+- Teclados demasiado pequeños
+
+Como ventajas:
+- Movilidad
+- Poco peso
+- Pequeño tamaño
+- Facilidad de transporte
+- Conectividad a redes de comunicaciones (3G, $g, $G+, mensajería SMS y MMS, voz, Internet, Bluetooth, infrarrojos, radiofrecuencia...)
+
+## 2. Tecnologías disponibles
+
+**Hardware**: Principales fabricantes de smartphones son Samsung, Huawei, Appler, Xiaomi, Oppo, Vivo, LG...  Principales fabricantes de tablets: Appler, Samsung (Samsung Galaxy xxx y Note), Huawei, Amazon...   
+A la hora del hardware se considera gama media en 2019:
+- Pantalla FullHD
+- Procesador potente (Kirin 710, Snapdragon 710)
+- Doble cámara (incluso tres)
+- Gran batería y carga rápida (mínimo 4000 mAh)
+- Gran diseño abandonando el policarbonato por un plástico pulido que aparente ser cristal
+
+**Sistemas operativos**: Basados en Windows, Linux, MacOS X. Otros desarrollados específicamente para este tipo de dispositivo: Android, iOS, Windows Phone.
+A la hora de los sistemas operativos:
+- Android: Desarrollado por Android Inc., compraod en 2005 por Google, basado en el núcleo de Linux. El primer fabricante que lo incorporó fue HTC. En la mayoría de dispositivos.
+- iOS: Por Apple para iPhone primero y para iPod Touch y iPad después
+- Windows Phone (antes Windows Mobile). Desarrollado por Microsoft para smatphones y otros dispositivos móviles.
+- Blackberry OS: Por Research in Motion (RIM) para Blackberry. En desuso
+- Symbian OS (Nokia), HP webOS (HP), Palm Os (PDA), Maemo OS (Nokia para smartphones, PDA y tablets), Bada (Samsung)
+
+**Plataformas de desarrollo**: Android Studio, Visual Studio, Code Warrior, Eclipse, Netbeans   
+**Lenguajes de programación**: Korlin, Java, C# , C   
+Ranking: 1 Android - 2 iOS - 3 BB. Symbian ha bajado mucho (2018)
+
+Entre las plataformas de desarrollo para móviles más populares suele encontrarse las que los propios autores de los sistemas operativos ofrecen:
+- Android: Proporciona Android SDK para programar aplicaciones en Java en su sistema operativo. IDE más usado Android Studio; Eclipse con plugin ADT (Android Development)
+- iOS: SDK se puede descargar gratis, pero para firmar el software debe usarse en programa de desarrollo no gratuito. Lenguaje de programación Objective-C   Swift. 
+- Windows Phone: Silverlight, XNA, .NET Compact Framework de Microsoft. Usando Visual Studio 2010 Express .Expression Blend para Windows Phone.
+- Java ME: Herramientas (Bibliotecas, compiladores, IDE) que son subconjunto de Java orientados al desarrollo en dispositivos móviles. Necesario máquina virtual para ejecutar como sucedía con Symbian (en modo nativo en con Java ME)
+- Android Studio. Lo dicho.
+
+#### Android
+
+- 2005 - **Android Inc.** se dedicaba a desarrollar aplicaciones para dispositivos móviles, es comprada por Google en 2005 y desarrollan una máquina virtual Java para móviles llamada **Dalvik VM.**
+- 2007 - se crea consorcio (formado por Google, Intel, Motorola, Samsung, Ericson) para difundir la plataforma.  
+- 2008 - Se lanza primera versión de Android SDK y aparece el primer móvil con este sistema operativo. Se libera el código fuente con licencia Apache. Aparece Android Market.   
+- 2009 - Se incorpora nueva versión de Android con teclado en pantalla  
+- 2010 - Android una de las plataformas más usadas    
+- 2011 - Versiones para tabletas     
+- 2012 Google reemplaza el Android Market por Google Play Store (aplicaciones y contenidos)
+
+Las plataformas de Android se identifican por:
+- Nombre comercial: De postres ordenados alfabéticamente
+- Versión: Números separados por operador punto (majorVersion.minorVersion)
+- Nivel de API: Números enteros comenzando por el 1
+
+Un buen consejo es programar para que las aplicaciones funcionen en la mayor cantidad de dispositivos posibles. 
+
+| Nombre (Postre)    | Versión     | SDK     |
+| ------------------ | ----------- | ------- |
+| Android 1.0        | 1.0         | 1       |
+| Android 1.1        | 1.1         | 2       |
+| Cupcake            | 1.5         | 3       |
+| Donut              | 1.6         | 4       |
+| Eclair             | 2.0 - 2.1   | 5 - 7   |
+| Froyo              | 2.2 - 2.2.3 | 8       |
+| Gingerbread        | 2.3 - 2.3.7 | 9 - 10  |
+| Honeycomb          | 3.0 - 3.2.6 | 11 - 13 |
+| Ice Cream Sandwich | 4.0 - 4.0.4 | 14 - 15 |
+| Jelly Bean         | 4.1 - 4.3.1 | 16 - 18 |
+| KitKat             | 4.4 - 4.4.4 | 19 - 20 |
+| Lollipop           | 5.0 - 5.1.1 | 21 - 22 |
+| Marshmallow        | 6.0 - 6.0.1 | 23      |
+| Nougat             | 7.0 - 7.1.2 | 24 - 25 |
+| Oreo               | 8.0 - 8.1   | 26 - 27 |
+| Pie                | 9.0         | 28      |
+| Android 10         | 10.0        | 29      |
+| Android 11         | 11.0        | 30      |
+| Android 12         | 12.0        | 31      |
+| Android 12L        | 12.1        | 32      |
+| Android 13         | 13          | 33      |
+| Android 14         | 14          | 34      |
+| Android 15         | 15 DP2      | V DP2   |
+
+## 3. Arquitectura del sistema Android
+
+- **Núcleo de Android** (capa más interna): Linux. Gestión de memoria y de procesos, servicios, pila de red y controladores de dispositivos. Depende del hardware. 
+- **Librerías nativas**: Bibliotecas C/C++ para implementar aplicaciones como bibliotecas de gráficos (**Surface Manager**), de medios (**Media Framework**), motor de base de datos (**SQL Lite**), navegador Android (**WebKit**)
+- **Runtime de Android**. La máquina virtual. La primera era Dalvik (adaptación de la JVM de menor peso). Cuando Java pasa a Oracle surgen problemas legales por el uso de la JVM por Dalvik. Android 4.4 KitKat lanza ART (Android Runtime) como alternativa a Dalvik y es el sustituto desde Android Lollipop (5). También están las librerías disponibles en Java (Core libraries)
+- **Entorno de aplicación** Herramientas para desarrollo de aplicaciones Android. Mismos API del framework usados por las aplicaciones del dispositivo o las creadas por el propio desarrollador. Ejemplos:
+	- Activity Manager: Ciclo de vida de actividades
+	- Window Manager: Ventanas de aplicaciones (Surface Manager)
+	- Telephone Manager: Funciones del teléfono
+	- Views: Elementos para interfaces de usuario
+	- Content Provider: Datos entre aplicaciones Android y funciones del teléfono
+	- Notification Manager: Eventos sucedidos durante la ejecución
+* **Capa de aplicaciones**. Se encuentran instaladas todas las aplicaciones Android que correrán en (Dalvik / ART usando servicios, API y librerías. 
+
+![[Pasted image 20240412164238.png]]
+
+Por citar algunas funcionalidades Android:
+- Creación de aplicaciones se usuario usando aplicaciones interactivas
+- Gestión de datos
+- Procesamiento y reproducción de objetos multimedia
+- Envío y recepción de mensajes de texto y multimedia, mensajes tipo push, servicios en segundo plano con hilos, sensores de dispositivos móviles, Wi-Fi y bluetooth, HTTP HTTPS
+## 4. Entornos de desarrollo para aplicaciones Android
+
+Google pensó en Java para programar Android porque es fácil, extendido, independiente de la plataforma, con retrocompatibilidad hacia atrás. Solo se necesita una JVM y puede ejecutarse en cualquier sistema operativo que la soporte. 
+
+Android Studio solo incluye algunas funcionalidades de Java 8, lo cual limita las aplicaciones. 
+En 2017, Google anuncia que Kotlin pasa a ser lenguaje oficial en Android y le da soporte. Es 100% compatible con Java, el código de ambos puede convivir en un mismo proyecto y las librerías de Java ser usadas en Kotlin.
+
+Debe tenerse JDK 7 para Android Lollipop o superior. 
+
+La instalación del kit de desarrollo incluye:
+- API para desarrollo de las aplicaciones (clases)
+- Herramienta para depuración
+- Emulador para ejecutar aplicación en dispositivo virtual. 
+
 ## 5. La primera aplicación en Android
 
 - Pinchar en **Start a new Android Studio Project**
