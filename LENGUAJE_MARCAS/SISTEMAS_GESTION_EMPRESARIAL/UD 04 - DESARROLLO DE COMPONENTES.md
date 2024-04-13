@@ -561,6 +561,48 @@ Y la acción asociada a ese elemento de menú
 </record>
 ```
 
+
+En este ejemplo, definimos dos vistas: una vista de formulario para el modelo `product.product` y una vista de árbol para el mismo modelo. En la vista de formulario, definimos un formulario con tres campos: `name`, `description` y `list_price`, agrupados dentro de un grupo. En la vista de árbol, definimos un árbol con tres columnas: `name`, `default_code` y `type`.
+
+Ten en cuenta que estas definiciones de vista XML se proporcionan dentro de archivos `.xml` en los módulos de Odoo. Luego, estos archivos XML son cargados por el sistema de Odoo para construir la interfaz de usuario de la aplicación.
+
+```xml
+<odoo>
+    <data>
+        <!-- Ejemplo de una vista formulario -->
+        <record id="view_form_producto" model="ir.ui.view">
+            <field name="name">Formulario de Producto</field>
+            <field name="model">product.product</field>
+            <field name="arch" type="xml">
+                <form string="Producto">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                            <field name="list_price"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <!-- Ejemplo de una vista árbol -->
+        <record id="view_tree_producto" model="ir.ui.view">
+            <field name="name">Árbol de Producto</field>
+            <field name="model">product.product</field>
+            <field name="arch" type="xml">
+                <tree string="Productos">
+                    <field name="name"/>
+                    <field name="default_code"/>
+                    <field name="type"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>
+
+```
+
 #### Herramientas para creación de formularios e informes
 
 Se usará básicamente la creación de archivos XML con el nombre de `nombre_modulo_view.xml`
