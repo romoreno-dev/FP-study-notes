@@ -1,0 +1,46 @@
+<!-- 
+1. En una familia puede haber un padre y una madre, o bien un solo padre, o una sola madre
+o ninguno de ellos. También hay posibilidad de que sean dos padres o dos madres.
+2. El elemento padre y el elemento madre puede aparecer en cualquier orden
+3. Posteriormente a los padres aparecerán los hijos.
+4. El orden de aparición de hijo o hija es indiferente.
+5. Una familia tiene al menos un hijo/a
+6. Tanto el elemento padre, como madre, hijo o hija contienen los elementos: nombre,
+apellido (siempre dos), dni (opcional) y edad (opcional).
+7. Limitar el tamaño de nombre y apellidos a una longitud de 30
+8. El atributo posición toma valores del 1 al 30
+9. El atributo código de la familia está formado por Letra mayúsculas y dos números, un guión
+y dos números, por ejemplo P01-12
+10. La edad es un número entero positivo.
+!-->
+<!ENTITY FJ "Francisco José">
+<!-- Entidad general-->
+<!ENTITY % info_familia "(nombre, apellido1, apellido2, dni?, edad?)">
+<!-- Las entidades paramétricas solo funcionan en DTD externo. Pueden hacerse al declarar elementos o atributos --> 
+<!ELEMENT familias (familia*)>
+<!ELEMENT familia (((padre, madre?) | (madre?, padre?) | (padre, padre) | (madre, madre)), hijos)>
+<!-- cubramos los casos 
+padre padre
+madre madre
+padre madre
+madre padre
+padre
+madre
+ninguno
+-->
+<!ELEMENT hijos ((hijo | hija)+)>
+
+<!ELEMENT padre (%info_familia;)>
+<!ELEMENT madre (%info_familia;)>
+<!ELEMENT hijo (%info_familia;)>
+<!ELEMENT hija (%info_familia;)>
+
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT apellido1 (#PCDATA)>
+<!ELEMENT apellido2 (#PCDATA)>
+<!ELEMENT dni (#PCDATA)>
+<!ELEMENT edad (#PCDATA)>
+
+<!ATTLIST familia codigo ID #REQUIRED>
+<!ATTLIST hijo posicion NMTOKEN #REQUIRED>
+<!ATTLIST hija posicion NMTOKEN #REQUIRED>

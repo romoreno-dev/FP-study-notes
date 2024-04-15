@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE familias SYSTEM "familias.dtd">
+<familias>
+    <familia codigo="P01-12">
+        <madre>
+            <nombre>Maria</nombre>
+            <apellido1>González</apellido1>
+            <apellido2>López</apellido2>
+            <dni>12345678A</dni>
+            <edad>35</edad>
+        </madre>
+        <padre>
+            <nombre>&FJ;</nombre>
+            <apellido1>Pérez</apellido1>
+            <apellido2>Rodríguez</apellido2>
+            <dni>87654321B</dni>
+            <edad>40</edad>
+        </padre>
+        <hijos>
+            <hijo posicion="1">
+                <nombre>Carlos</nombre>
+                <apellido1>González</apellido1>
+                <apellido2>Pérez</apellido2>
+                <edad>10</edad>
+            </hijo>
+            <hijo posicion="2">
+                <nombre>Sofía</nombre>
+                <apellido1>Pérez</apellido1>
+                <apellido2>González</apellido2>
+                <edad>8</edad>
+            </hijo>
+        </hijos>
+    </familia>
+    <familia codigo="M02-24">
+        <madre>
+            <nombre>Lucía</nombre>
+            <apellido1>Ruiz</apellido1>
+            <apellido2>García</apellido2>
+            <dni>98765432C</dni>
+            <edad>38</edad>
+        </madre>
+        <madre>
+            <nombre>Patricia</nombre>
+            <apellido1>Gómez</apellido1>
+            <apellido2>Fernández</apellido2>
+            <edad>39</edad>
+        </madre>
+        <hijos>
+            <hija posicion="1">
+                <nombre>Marta</nombre>
+                <apellido1>Ruiz</apellido1>
+                <apellido2>Gómez</apellido2>
+                <edad>12</edad>
+            </hija>
+        </hijos>
+    </familia>
+</familias>

@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<library>
+  <books>
+    <book>
+      <title>El Hobbit
+      </title>
+      <author>J.R.R. Tolkien
+      </author>
+      <price>10.99
+      </price>
+    </book>
+    <book>
+      <title>Orgullo y prejuicio
+      </title>
+      <author>Jane Austen
+      </author>
+      <price>8.50
+      </price>
+    </book>
+    <book>
+      <title>1984
+      </title>
+      <author>George Orwell
+      </author>
+      <price>9.99
+      </price>
+    </book>
+  </books>
+  <students>
+    <student>
+      <name>María
+      </name>
+      <age>20
+      </age>
+      <borrowed_books>
+        <book>El Hobbit
+        </book>
+        <book>1984
+        </book>
+      </borrowed_books>
+    </student>
+    <student>
+      <name>Carlos
+      </name>
+      <age>22
+      </age>
+      <borrowed_books>
+        <book>Orgullo y prejuicio
+        </book>
+      </borrowed_books>
+    </student>
+  </students>
+</library>
