@@ -7,13 +7,14 @@
 - La estructura del documento XML puede seguir el mismo esquema pero **no es obligatorio que sea así**. Cada archivo **puede ser configurado de forma independiente**, lo que da **flexibilidad** y **facilita el desarrollo**. 
 
 El almacenamiento de datos se podría dividir en dos categorías:
-- **Centrados en los datos**: Documento XML con estructura bien definida con esquemas altamente estructurados (factura, albarán, ticket, matrícula, acta de notas, órdenes de compra). **Muchos elementos con poco contenido, muy estructurados**. 
+- **Centrados en los datos**: Documento con estructura bien definida con esquemas altamente estructurados (factura, albarán, ticket, matrícula, acta de notas, órdenes de compra). Apropiados para publicidad. Datos pueden actualizarse. **Muchos elementos con poco contenido, muy estructurados**. 
 	Relativamente planos. Tipos de datos relativamente complejos. Poca importancia al orden. 
 - **Centrados en los documentos**: Impredecibles en tamaño. Contenidos con tipos de tamaño limitado y reglas menos flexibles para campos opcionales. Archivos variables dependiendo de quién los realice o escriba (libro de texto, manual, informe). **Pocos elementos con gran cantidad de contenido y desestructurados.** 
 	Estructura irregular. Tipos de datos simples. Importancia al orden. 		
 
-Las bases de datos tradicionales son mejores para tratar requerimientos centrados en los datos. 
-Los sistemas de administración de contenidos y documentos son mejor para datos centrados en el documento. 
+Los sistemas de almacenamiento XML deben acomodarse a ambos tipos de requerimientos de datos. La mayoría de productos se enfocan en servir uno de esos formatos mejor que otro: 
+	Las **bases de datos tradicionales** son mejores para tratar requerimientos centrados en los datos. 
+	Los **sistemas de administración de contenidos y documentos** son mejor para datos centrados en el documento. 
 
 Sistemas de bases de datos deben exponer datos relacionales como XML y almacenar el XML recibido como datos relacionales para transferir, obtener y almacenar datos requeridos por la aplicación.
 
@@ -22,8 +23,7 @@ La tecnología XML:
 - define esquemas sobre información
 - tiene lenguajes de consulta específicos para recuperar la información requerida
 - Dispone de APIs (SAX, DOM)
-- No tiene almacenamiento y seguridad eficientes (índices, seguridad ,transacciones, integridad de datos, acceso concurrente, disparadores...)
-
+- No tiene almacenamiento y seguridad eficientes (índices, seguridad ,transacciones, integridad de datos, acceso concurrente, disparadores...). es imposible pensar que XML se use para tareas transaccionales de una organización.
 
 ## 2. Sistemas de almacenamiento de información
 
@@ -77,21 +77,11 @@ Se caracterizan por:
 		- Posibilidad 2: Traduce el DOM a objetos en BBDDOO
 		- Posibilidad 3: Usa almacen para esta finalidad
 
+Características bases de datos nativas: Consultas, Creación de índices y Creación de identificadores únicos.
+Los triggers son de bases de datos relacionales. 
 ## 3. XQuery
 
-**XQuery**: Lenguaje funcional diseñado para escribir consultas sobre colecciones de datos en XML. Puede usarse en archivos XML y en bases de datos relaciones con funciones de conversión de registros a XML. Extrae información de un conjunto de datos organizados con árbol de etiquetas XML pero no le importa el origen de los datos. 
-
-#### **Aplicaciones:**
-- Recuperar información a partir de datos XML
-- Transformar estructuras de datos XML en otras estructuras
-- Ofrecer alternativa a XSLT para hacer transformaciones de datos en XML, HTML, PDF
-
-#### **Motores de XQuery:**
-- Qexo
-- Saxon (Saxon-B open source  Saxon-SA propietario)
-- Qizx/open: Todas las características salvo importación y validacion de XML-shema)
-- Xquark Bridge: Permite importar y exportar a basess de datos relacionales, respetando restricciones de integridad y relaciones implícitas del XML en relaciones explícitas. XQuery, MySQL, Oracle, SQLServer...
-- BumbleBee: Entorno de prueba automático para validar motores XQuery y consultas XQuery. Se distribuey con pruebas ya preparadas y permite redactar y ejecutar pruebas propias. Es propietario. Soporta Qexo, Qizx/open y Saxon.  Cerisent, Ipedo, IPSI-XQ, X-Hive. 
+**XQuery**: Lenguaje funcional diseñado para escribir consultas sobre colecciones de datos en XML. Puede aplicarse a archivos XML y a bases de datos relaciones con funciones de conversión de registros a XML. Extrae información de un conjunto de datos organizados con árbol de etiquetas XML pero no le importa el origen de los datos. 
 
 #### **Requerimientos técnicos que cumple XQuery:**
 - Lenguaje declarativo
@@ -100,12 +90,27 @@ Se caracterizan por:
 - Consulta y resultados: Ofrecer soporte para namespaces
 - Soportar XML-Schema y DTO
 - Independiente de la estructura del documento
-- Soportar tipos simples y complejos
+- Soportar tipos simples (enteros y cadenas) y complejos (nodo compuesto)
 - Soportar cuantificadores universales (para todo) y existenciales (existe)
 - Soportar operaciones sobre jerarquías de nodos y secuencias
 - Combinar información de múltiples fuentes en una consulta
+- Manipular datos independientemente del origen de estos
 - Lenguaje independiente de la sintaxis (varias sintaxis distintas para expresar la misma consulta)
 
+#### **Aplicaciones:**
+- Recuperar información a partir de datos XML
+- Transformar estructuras de datos XML en otras estructuras
+- Ofrecer alternativa a XSLT para hacer transformaciones de datos en XML, HTML, PDF
+
+#### **Motores de XQuery:**
+De código abierto:
+- Qexo
+- Saxon (Saxon-B open source  Saxon-SA propietario)
+- Qizx/open: Todas las características salvo importación y validacion de XML-shema)
+- Xquark Bridge: Permite importar y exportar a basess de datos relacionales, respetando restricciones de integridad y relaciones implícitas del XML en relaciones explícitas. XQuery, MySQL, Oracle, SQLServer...
+Otras:
+- Xquark Bridge: Importar y exportar datos a bases de datos relacionales usando XML.
+- BumbleBee: Entorno de prueba automático para validar motores XQuery y consultas XQuery. Se distribuey con pruebas ya preparadas y permite redactar y ejecutar pruebas propias. Es propietario. Soporta Qexo, Qizx/open y Saxon.  Cerisent, Ipedo, IPSI-XQ, X-Hive. 
 
 ### Modelo de datos
 
@@ -118,13 +123,14 @@ La entrada y salida de consulta XQuery se definen según un modelo de datos que 
 
 ###  Expresiones
 
-Lee una secuencian de datos XML y devuelve otra secuencia de datos XML.
+Una consulta en XQuery es una expresión que lee una secuencia de datos en XML y devuelve otra secuencia de datos XML.
+
 - El valor de la expresión es secuencia heterogénea de nodos y valores atómicos.
 - Formada por expresiones y palabras simples unidas mediante palabras reservadas.
 - **Xpath es lenguaje declarativo** para localizar nodos y fragmentos. XQuery está sobre la base de Xpath. **Toda expresión XPath también es consulta Xquery válida.**
-- Admite **if-else-then**
 - **Comentarios entre `(:  :)`**
-- **Las barras: “//”**  son parte de la expresión XPath que indica la localización de los valores que tomará la variable.
+- ***Caracteres  `{ }`** delimitan expresiones evaluadas para crear documento nuevo
+- Admite expresiones condicionales del tipo **if-then-else**
 
 En cualquier lugar del documento:
 
@@ -132,38 +138,79 @@ En cualquier lugar del documento:
 	&b in doc("libro.xml")//libro
 ```
 
-Los que son hijos de `<bib>`:
-
-```xquery
-	&b in doc("libro.xml")//bib/libro
-```
-
-
-- ***Caracteres  `{ }`** delimitan expresiones evaluadas para crear documento nuevo
-- Puede tener hasta cinco tipos de claúsulas diferentes porque sigue **norma FLWOR**, que equivalen a For, Where, Group by, Having, Order By y Limit. 
+- Las consultas XQuery pueden estar formadas por hasta cinco tipos de claúsulas diferentes porque sigue **norma FLWOR**, que equivalen a For, Where, Group by, Having, Order By y Limit. 
 - Si se incluyen varias consultas en el archivo `.xquery` para ejecución conjunta irán separadas por coma. 
-- En la sentencia FLWOR debe haber un FOR o un LET (y deben seguir ese orden de palabra)
-	- **For**: Vincula a expresiones escritas en XPath creando flujo de tuplas vinculando cada tupla a una variable
-	- **Let**: Vincula variable al resultado completo de la expresión añadiendo esos ´vinculos a tuplas generadas por claúsula for o, si no existe, creando única tupla con esos vínculos. 
-	- **Where**: Filtra tuplas eliminado los que no cumplen condiciones dadas
-	- **Order by**: Ordena las tuplas según criterio dado
+- En la sentencia FLWOR debe haber un FOR o un LET (el resto, si existen, deben seguir ese orden de palabra FLWOR)
+	- **For**: Vincula a expresiones escritas en XPath creando flujo de tuplas vinculando cada tupla a una variable. Si en la consulta aparece más de una claúsula FOR (o más de una variable en claúsula FOR), el resultado es el producto cartesiano de esas variables. 
+
+	- **Let**: Vincula variable al resultado completo de la expresión añadiendo esos vinculos a tuplas generadas por claúsula for o, si no existe, creando única tupla con esos vínculos.
+
+	- **Where**: Filtra tuplas producidas por FOR y LET eliminado las que no cumplen condiciones dadas
+
+	- **Order by**: Ordena las tuplas generadas por FOR y LET según criterio dado después de haber sido filtradas por WHERE. Por defecto, orden ascendente (puede ponerse descending)
+
 	- **Return**: Resultado de la consulta por la tupla dada tras ser filtrada por Where y ordenada por Order by.
 
+For y let sirven para crear las tuplas con las que trabajará el resto de las clausulas y pueden usarse tantas veces como se quiere
+Order by, where y return solo una vez.
+Ninguna clausula FLWOR es obligatoria en la consulta XQuery. Por eso cualquier expresión XPath es XQuery válida. 
+
 La consulta XQuery tiene:
-- Prólogo: Lugar donde se declaran namespaces, funciones, variables...
-- Expresión: Consulta propiamente dicha
-### Claúsulas
+- **Prólogo**: Lugar donde se declaran namespaces, funciones, variables...
+- **Expresión**: Consulta propiamente dicha
 
+##### Diferencias entre for y let
 
-### Diferencias entre for y let
-
-
+- La cláusula for vincula una variable con cada nodo que encuentre en la colección de datos.
+- La cláusula let vincula una variable con todo el resultado de una expresión. Por eso aparecen... una única vez.
 
 ### Funciones
 
+##### Numéricas
+- `floor()`: inferior más próximo
+- `ceiling()`: superior más próximo
+- `round()`: valor dado al más próximo
+- `min()` `max()`: mínimo y máximo de los nodos dados
+- `avg()`:valor medio
+- `sum()`: suma
+
+##### Cadenas de texto
+- `concat()`: unión de dos cadenas
+- `string-length()`: longitud
+- `startswith()`, `ends-with()`: si comienza o termina
+- `upper-case()`, `lower-case()`: transforma en mayúsculas o minúsculas
+
+##### Uso general
+- `empty()`: true si no contiene elemento
+- `exits()`: true si contiene elemento
+- `distinct-values()`: extrae valores de secuencia de nodos y crea secuencia con valores únicos
+
+##### Existenciales
+- `some`, `every`: devuelven algún o todos los elementos...
+Puede construir sus propias funciones también
+
+```xml
+declare nombre_funcion($param1 as tipo_dato1, $param2 as tipo_dato2,… $paramN as tipo_datoN)  
+as tipo_dato_devuelto  
+{  
+...CÓDIGO DE LA FUNCIÓN...  
+}
+```
 
 ### Operadores
+**De valores**:  eq (igual), ne (no igual), lt (menor que), le (menor o igual que), gt (mayor que), ge (mayor o igual que)
 
+**Comparación generales**: =  != > >= < <=
+
+**Comparación de nodos**: `is` si están ligadas al mismo nodo;  `is not` si no están ligadas al mismo nodo
+
+**De órdenes de los nodos**: << (true si el nodo ligado al primer operando ocurre primero que el nodo ligado al segundo)
+
+**Secuencias de nodos**: Union (suma de los dos), Intersect (en los dos), Except (primer operando y no en el segundo)
+
+**Aritméticos**: + - \* div  y mod
+
+(Pregunta prueba: Pertenecen a SQL y a XQuery  is, union, >=)
 
 #### Ejemplo 1 
 
@@ -249,4 +296,93 @@ Busca nodos `<libro>` hijos de `<lib>` con más de dos autores, los ordena por e
 Retorna:
 ```xml
 <title>Data on the Web</title>
+```
+#### Ejemplos varios
+
+
+```xml
+for 
+  $b in doc("libros.xml")//libro
+where 
+  $b/@año = "2000"
+return 
+  $b/titulo
+```
+
+Gráficamente:
+![](resources/ud06-1.png)
+
+```xml
+(:1. Ejemplo de uso de la cláusula FOR. Obtener todos los títulos de los libros del fichero libros.xml.:)
+    
+    for $d in doc("libros.xml")/biblioteca/libros/libro/titulo
+        return <titulos>{ $d }</titulos>
+    
+(:2. Ejemplo de uso de la cláusula LET. Obtener todos los títulos de los libros del fichero libros.xml.:)
+    
+    let $d := doc("libros.xml")/biblioteca/libros/libro/titulo
+        return <titulos>{ $d }</titulos>
+    
+(:3. Ejemplo de uso de la cláusula FOR y LET juntas. Obtener todos los títulos de los libros del fichero libros.xml junto con los autores de cada libro.:)
+    
+    for $b in doc("libros.xml")//libro
+        let $c := $b/autor
+        return <libro>{ $b/titulo, <autores>{ $c }</autores>}</libro>
+    
+(:Otra solución posible a este ejercicio, en este caso utilizando únicamente la cláusula FOR:)
+    
+    for $b in doc("libros.xml")//libro
+        return <libro>{ $b/titulo, <autores>{$b/autor}</autores>}</libro>
+    
+(:4. Ejemplo de uso de las cláusulas WHERE y ORDER BY en una consulta con dos ficheros. Obtiene los títulos de los libros prestados con sus autores y la fecha de inicio y devolución del préstamo, ordenados por la fecha de inicio del préstamo.:)
+    
+    for $t in doc("libros.xml")//libro,
+    $e in doc("prestamos.xml")//entrada
+        where $t/titulo = $e/titulo
+        order by $e/prestamo/inicio
+        return <prestamo>{ $t/titulo, $t/autor/*, $e/prestamo/inicio, $e/prestamo/devolucion }</prestamo>
+```
+
+
+```xml
+(://escrutinio_sitio[convocatoria='2015']/nombre_sitio:)
+
+(:<ul>{
+for $a in /escrutinio_sitio
+where $a/convocatoria='2019' and $a/votos/contabilizados/porcentaje >= '69'
+order by $a/nombre_sitio
+return <li>{$a/nombre_sitio/data()}</li>
+}</ul>:)
+
+(:let $contenido := (for $a in /escrutinio_sitio
+where $a/convocatoria='2019' and $a/votos/contabilizados/porcentaje >= '70'
+order by $a/nombre_sitio
+return <li>{$a/nombre_sitio/data()}</li>)
+return <ul>{$contenido}</ul>:)
+
+(:let $p2019 := distinct-values(for $p in /escrutinio_sitio
+where $p/convocatoria=2019
+return $p/resultados/partido/nombre)
+
+for $p2015 in distinct-values(for $p in /escrutinio_sitio
+where $p/convocatoria=2015
+return $p/resultados/partido/nombre)
+where not($p2015 = $p2019)
+
+return <partido>{$p2015}</partido>:)
+(:For itera cada uno de ellos.
+Let almacena conjunto de valores. A la hora de comparar, cuidado porque compara con el conjunto. A la hora de verificar no compara con el resto:)
+(:<resultados>
+{for $a in ('VOX','PODEMOS-IU')
+let $total := sum(/escrutinio_sitio[convocatoria=2019]/
+resultados/partido[nombre=$a]/electos)
+return <electos partido="{$a}">{$total}</electos>}
+</resultados>:)
+for $provincia in /escrutinio_sitio[convocatoria=2019]
+let $maximo := max($provincia//partido/votos_numero) 
+let $partido := $provincia//partido[votos_numero=$maximo]/nombre
+order by $provincia/nombre_sitio
+return <resultado><provincia>{$provincia/nombre_sitio/data()}</provincia>
+<partido>{$partido}</partido>
+</resultado>
 ```
