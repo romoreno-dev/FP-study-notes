@@ -4,27 +4,31 @@
 **XML** (_eXtensible Markup Language_, Lenguaje de Marcado eXtensible) es un lenguaje desarrollado por **W3C** (_World Wide Web Consortium_) que está basado en **SGML** (_Standard Generalized Markup Language_, Lenguaje de Marcado Generalizado Estándar).
 
 - lenguaje de etiquetas
-- utilizado para el **almacenamiento e intercambio de datos estructurados**
+- utilizado para el **almacenamiento e intercambio de datos estructurados** entre diferentes equipos y de manera segura, fiable y sencilla
 - **metalenguaje**, es decir, puede ser empleado para definir otros lenguajes, llamados dialectos XML (como XHTML, GML, MathML, SVG, RSS)
 
-- compatible con protocolos como HTTP, legible para los humanos
+- compatible con protocolos como HTTP y URL, legible para los humanos
 - extensible, adaptable, aplicable a gran variedad de situaciones
 - orientado a objetos
+- fácil de crear
+- difusión asegurada porque cualquier procesador XML puede leer documento XML
 
+Los datos carácter son los que forman el verdadero XML. El marcado puede ser tan rico como se quiera (detectar futuras necesidades y conseguir documentos fácilmente actualizables).
+Documentos XML pueden tener comentarios pero no son interpretados por XML. Estos se deben incluir entre `<!-- y --!>` y pueden estar en cualquier lugar salvo antes del prólogo o dentro de una etiqueta. 
 ### Pasos para definir un documento XML
 
 Etapas para definir:
 * **Especificación de requisitos**: Recoger la estructura que tiene la información
 * **Diseño de etiquetas**: Se crean etiquetas para representarla
-* **Marcado de los documentos**: Se utilizan las etiquetas para crear documentos con contenido real
+* **Marcado de los documentos**: Se utilizan las etiquetas para crear documentos con contenido real. (Todo lo situado entre "<" y ">" o "&" y ";")
 
 ## 1. Las partes de un documento XML
 
-Un documento XML básico está formado por :
+Un documento XML básico está formado por PRÓLOGO Y EJEMPLAR :
 - **Prólogo**: Informa al intérprete que va a procesar el documento de los datos que necesita para realizar su trabajo.
   Es opcional pero si se incluye debe ir obligatoriamente al inicio del documento.
 	Tiene dos partes: 
-	- **La definición XML**: Va entre `<?   ?>`   No es obligatoria pero, de incluirse, debe estar en la primera línea del documento y el carácter ' <' debe ser el primero de dicha línea (sin espacios en blanco). 
+	- **La definición XML**: Va entre `<?   ?>`   No es obligatoria (en contraste con "de no ser así se genera error que impide que el documento sea procesado") pero, de incluirse, debe estar en la primera línea del documento y el carácter ' <' debe ser el primero de dicha línea (sin espacios en blanco). 
 		Posee los atributos `version` (obligatorio, indica versión XML utilizada aunque solo hayu 1.0. y 1.1 y la que se usa es la 1.0), `encoding` (opcional debe ir tras version, indica codificación de caracteres empleada, valor por defecto "UTF-8". Podría ser ISO-8859-1 (Caracteres europeos occidentales)) y `standalone` (es opcional, debe ir en último lugar, cuando está a "yes" indica que el documento es independiente de otros (de un DTD externo por ejemplo). Su valor por defecto es "no", o sea, que puede estar asociado a otros.).
 
 		(En los apuntes no viene esto): También se pueden indicar en el prólogo líneas de instrucciones de procesamiento (opcionales) para indicar cierta información al intérprete. Estas van  también entre `<?   ?>` . Por ej. se puede asociar un archivo CSS:	
@@ -51,7 +55,7 @@ Un documento XML básico está formado por :
 
 	- **La declaración del tipo de documento** (La declaración del tipo propiamente dicha es el nombre del ejemplar precedido de `<!DOCTYPE` y separado por un espacio  Ej.: `<!DOCTYPE animales>`). Pero esta declaración permite al autor del XML definir restricciones y características del documento (asociar el documento a una definición de tipo DTD). 
 
-- **Ejemplar**: Datos del documento a procesar. Formado por un elemento, el principal o raíz, que **debe ser único**.  Ya que está compuesto de elementos estructurados en árbol. El ejemplar es el elemento raíz (raíz, única) y las hojas son los elementos terminales (los que no contiene más elementos). Los elementos **pueden contener atributos**. Se puede usar el marcador especial `<![CDATA[texto que se quiera]]>` para introducir en un documento texto que pueda contener caracteres como & o < o >. Se tomará como texto. 
+- **Ejemplar**: Parte más importante del documento. Contiene los datos reales del documento a procesar. El ejemplar es el elemento raíz de un documento XML. Es decir, formado por un elemento, el principal o raíz, que **debe ser único**.  Ya que está compuesto de elementos estructurados en árbol. El ejemplar es el elemento raíz (raíz, única) y las hojas son los elementos terminales (los que no contiene más elementos). Los elementos **pueden contener atributos**. Se puede usar el marcador especial `<![CDATA[texto que se quiera]]>` para introducir en un documento texto que pueda contener caracteres como & o < o >. Se tomará como texto. 
 
 ```xml
 <?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
@@ -62,6 +66,8 @@ Un documento XML básico está formado por :
 
 
 > Si preguntan por "componentes de un documento XML":  Prólogo OK, Ejemplar OK, Definición de codificación OK, Cabecera NO
+
+Es recomendable mantener todo el criterio en el documento. Etiquetas en minúsculas. Para visualización óptima se anidarán los elementos identando o tabulando en el código.
 
 ## 2. Sintaxis de documentos XML: Elementos vs Atributos. Namespaces: espacios de nombres
 
@@ -81,10 +87,21 @@ Si está vacío:
 <etiqueta/>
 ```
 
+Todos los datos del documento XML deben pertenecer a un elemento. Pueden estar formados por otros elementos. Nombres de etiquetas deben ser autodescriptivos.
+Normas:
+- Debe existir un elemento raíz y solo uno
+- Todos los elementos tienen etiqueta de inicio y de cierre
+- No puede cerrarse elemento con otro que aún no se haya cerrado
+- Nombres de etiquetas de inicio y de cierre deben ser iguales
+- No puede contener cadena "]]>" por compatibilidad con SGME. Ni usar directamente `>,<,&",apostrofe`
+- Para usar caracteres especiales deben usarse &#D; &#H;  (numeros decimal y hexadecimal...)
+
 **Atributos**: Características o propiedades que pueden añadirse a los elementos de un documento. Entrecomillados. No tienen que seguir un orden significativo. Son hojas, no tienen hijos. Tampoco pueden repetirse en un elemento. Si se usa, y se deja vacío debe escribirse 'atributo=""'. No puede haber espacios entre el nombre del atributo y el signo igual, ni entre el signo igual y el valor. 
 
 > _Recomendado elemento si_: contiene subestructuras, es de tamaño considerable, su valor cambia con frecuencia, su valor va a ser mostrado.
 > _Recomendado atributo si_: no tiene subestructuras, es de pequeño tamaño, su valor raramente cambia, solo puede tener unos cuantos valores fijos, no va a mostrarse al usuario y solo sirve para guiar el procesamiento XML.
+
+No se debe usar atributo para información susceptible de ser dividida. Solo para proporcionar información adicional sobre el elemento. 
 
 **Espacios de nombres**: Asigna un identificador único a elementos y atributos. Son definidos con xmlns.
 Se declaran indicando la URI (localización del conjunto del vocabulario del espacio de nombres al que hace referencia) `xmlns:"URI_namespace"`. Parecerá una URL pero no se usa como tal, solo se usa para que sea distinto a cualquier otro posible espacio de nombres. 
@@ -131,6 +148,15 @@ con espacios en blanco
 preservados. </text>
 ```
 
+### El documento bien formado
+
+**Documento bien formado**: Es sintácticamente correcto, es decir, cumple con las reglas de creación de documentos XML ya definidas
+
+**Documentos válidos:** Están bien formados y cumplen definición de estructura (DTD, XML Schema...)
+
+Para estar bien formado deben verificarse las reglas sintácticas que define la recomendación del W3C para el estándar XML:
+
+![](resources/ud04-3.png)
 
 ## 3. Declaración del tipo de documento, DOCTYPE
 
