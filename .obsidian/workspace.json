@@ -4,15 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "c447b5336cbb8c3c",
+        "id": "5b974364b2e87df4",
         "type": "tabs",
         "children": [
           {
-            "id": "53cbf62c372b5ffa",
+            "id": "cb74bcd2d6890a0b",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/UD 01 - INTRODUCCIÓN A ANDROID.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -65,7 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 419.5
+    "width": 414.5
   },
   "right": {
     "id": "7d79b0e9867d8cc9",
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/UD 01 - INTRODUCCIÓN A ANDROID.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/UD 01 - INTRODUCCIÓN A ANDROID.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/UD 01 - INTRODUCCIÓN A ANDROID.md"
+              }
             }
           }
         ]
@@ -138,46 +146,127 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "53cbf62c372b5ffa",
+  "floating": {
+    "id": "646c5538ae75280d",
+    "type": "floating",
+    "children": [
+      {
+        "id": "fcb404d11144e381",
+        "type": "window",
+        "children": [
+          {
+            "id": "ae98ef6c15c71deb",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "720c2e6054b4682f",
+                "type": "leaf",
+                "state": {
+                  "type": "image",
+                  "state": {
+                    "file": "BASES_DE_DATOS/resources/ud01-2.png"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "vertical",
+        "x": 448,
+        "y": 116,
+        "width": 1024,
+        "height": 800,
+        "maximize": false,
+        "zoom": 0
+      },
+      {
+        "id": "e9cea4ac127b4c00",
+        "type": "window",
+        "children": [
+          {
+            "id": "5cca3d150703da26",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "e1e64a2b39b4f435",
+                "type": "leaf",
+                "state": {
+                  "type": "image",
+                  "state": {
+                    "file": "BASES_DE_DATOS/resources/ud01-3.png"
+                  }
+                }
+              },
+              {
+                "id": "62672ab8593fd6c8",
+                "type": "leaf",
+                "state": {
+                  "type": "image",
+                  "state": {
+                    "file": "BASES_DE_DATOS/resources/ud01-2.png"
+                  }
+                }
+              }
+            ],
+            "currentTab": 1
+          }
+        ],
+        "direction": "vertical",
+        "x": 448,
+        "y": 116,
+        "width": 1024,
+        "height": 800,
+        "maximize": false,
+        "zoom": 0
+      }
+    ]
+  },
+  "active": "cb74bcd2d6890a0b",
   "lastOpenFiles": [
-    "ENTORNOS_DE_DESARROLLO/UD 02 - INSTALACIÓN Y USO DE ENTORNOS DE DESARROLLO.md",
-    "ENTORNOS_DE_DESARROLLO/resources/Pasted image 20240408000440.png",
-    "ENTORNOS_DE_DESARROLLO/UD 05 - DISEÑO ORIENTADO A OBJETOS Y ELABORACIÓN DE DIAGRAMAS.md",
-    "ENTORNOS_DE_DESARROLLO/resources/Pasted image 20240407210434.png",
-    "ENTORNOS_DE_DESARROLLO/resources/Pasted image 20240407210413.png",
-    "ENTORNOS_DE_DESARROLLO/resources/Pasted image 20240407210313.png",
-    "ENTORNOS_DE_DESARROLLO/resources/Pasted image 20240407205854.png",
-    "ENTORNOS_DE_DESARROLLO/resources/Pasted image 20240407205618.png",
-    "ENTORNOS_DE_DESARROLLO/resources/Pasted image 20240407205603.png",
-    "ENTORNOS_DE_DESARROLLO/resources/Pasted image 20240407205522.png",
-    "ENTORNOS_DE_DESARROLLO/resources/Pasted image 20240407205448.png",
-    "ENTORNOS_DE_DESARROLLO/resources/Pasted image 20240407205223.png",
-    "Pasted.md",
-    "~$tema2 (Recuperado automáticamente).docx",
-    "~$ma2hilos.docx",
-    "TEMARIOBASEDATOS.pdf",
-    "tema2hilos.docx",
-    "bdtema2 (Recuperado automáticamente).docx",
     "README.md",
-    "SISTEMAS_INFORMATICOS/UD 03 - REDES DE ORDENADORES.md",
-    "LENGUAJE_MARCAS/UD 04 - DEFINICIÓN DE ESQUEMAS Y VOCABULARIOS EN XML.md",
-    "PROGRAMACION_SERVICIOS_PROCESOS/UD 03 - PROGRAMACIÓN EN RED.md",
-    "LENGUAJE_MARCAS/CSS.md",
-    "SISTEMAS_INFORMATICOS",
-    "LENGUAJE_MARCAS",
-    "PROGRAMACION_SERVICIOS_PROCESOS",
-    "LENGUAJE DE MARCAS/TEMA 4 - DEFINICIÓN DE ESQUEMAS Y VOCABULARIOS EN XML.md",
-    "LENGUAJE DE MARCAS/CSS.md",
-    "LENGUAJE DE MARCAS",
-    "LL/TEMA 4 - DEFINICIÓN DE ESQUEMAS Y VOCABULARIOS EN XML.md",
-    "LL/CSS.md",
-    "LL",
-    "Sistemas informáticos/TEMA 3 - REDES DE ORDENADORES.md",
-    "Programación de servicios y procesos/Untitled.md",
-    "Lenguaje de marcas/CSS.md",
-    "Lenguaje de marcas/TEMA 4 - DEFINICIÓN DE ESQUEMAS Y VOCABULARIOS EN XML.md",
-    "ENTORNOS_DE_DESARROLLO/UD 01 - DESARROLLO DE SOFTWARE.md",
-    "ENTORNOS_DE_DESARROLLO/UD 03 - DISEÑO Y REALIZACIÓN DE PRUEBAS.md",
-    "ENTORNOS_DE_DESARROLLO/UD 04 - OPTIMIZACIÓN Y DOCUMENTACIÓN.md"
+    "resources/Pasted.md",
+    "SISTEMAS_GESTION_EMPRESARIAL/UD 01 - INTRODUCCIÓN A LOS SISTEMAS ERP-CRM.md",
+    "SISTEMAS_GESTION_EMPRESARIAL/resources/ud01-4.png",
+    "SISTEMAS_GESTION_EMPRESARIAL/resources/ud01-7.png",
+    "SISTEMAS_GESTION_EMPRESARIAL/resources/ud01-6.png",
+    "SISTEMAS_GESTION_EMPRESARIAL/resources/ud01-5.png",
+    "SISTEMAS_GESTION_EMPRESARIAL/UD 02 - USO DEL SISTEMA ERP-CRM.md",
+    "SISTEMAS_GESTION_EMPRESARIAL/UD 03 - IMPLANTACIÓN DE SISTEMAS ERP-CRM.md",
+    "SISTEMAS_GESTION_EMPRESARIAL/UD 04 - DESARROLLO DE COMPONENTES.md",
+    "SISTEMAS_GESTION_EMPRESARIAL/resources/ud01-3.png",
+    "SISTEMAS_GESTION_EMPRESARIAL/resources/ud01-2.png",
+    "SISTEMAS_GESTION_EMPRESARIAL/resources/ud01-1.png",
+    "BASES_DE_DATOS/UD 01 - ALMACENAMIENTO DE LA INFORMACIÓN.md",
+    "BASES_DE_DATOS/resources/ud01-1.png",
+    "BASES_DE_DATOS/resources/ud01-2.png",
+    "BASES_DE_DATOS/resources/ud01-3.png",
+    "BASES_DE_DATOS/UD 07 - USO DE BASES DE DATOS OBJETO-RELACIONALES.md",
+    "BASES_DE_DATOS/UD 03 - IMPLEMENTACIÓN DE BASES DE DATOS RELACIONALES.md",
+    "BASES_DE_DATOS/UD 04 - REALIZACIÓN DE CONSULTAS.md",
+    "BASES_DE_DATOS/UD 05 - TRATAMIENTO DE DATOS.md",
+    "BASES_DE_DATOS/UD 06 - PROGRAMACIÓN DE BASES DE DATOS.md",
+    "~$tema2 (Recuperado automáticamente).docx",
+    "BASES_DE_DATOS/~$Tema 2.docx",
+    "LENGUAJE_MARCAS/UD 02 - UTILIZACIÓN DE LENGUAJES DE MARCAS EN ENTORNOS WEB (Parte 1 - HTML).md",
+    "LENGUAJE_MARCAS/UD 01 - ASPECTOS BÁSICOS DE LOS LENGUAJES DE MARCAS.md",
+    "LENGUAJE_MARCAS/UD 02 - UTILIZACIÓN DE LENGUAJES DE MARCAS EN ENTORNOS WEB (Parte 2 - Hojas de estilo o CSS).md",
+    "LENGUAJE_MARCAS/UD 03 - APLICACIÓN DE LOS LENGUAJES DE MARCAS A LA SINDICACIÓN DE CONTENIDOS.md",
+    "BASES_DE_DATOS/Untitled.md",
+    "LENGUAJE_MARCAS/UD 06 - ALMACENAMIENTO DE INFORMACIÓN.md",
+    "LENGUAJE_MARCAS/(wip) CSS.md",
+    "LENGUAJE_MARCAS/HTML.md",
+    "Untitled 2.md",
+    "Untitled 1.md",
+    "resources",
+    "BASES_DE_DATOS/elementosSQL.pdf",
+    "BASES_DE_DATOS/elementosSQL.pdf.crdownload",
+    "BASES_DE_DATOS/(wip) UD 02 - BASES DE DATOS RELACIONALES.md",
+    "BASES_DE_DATOS/~WRL0001.tmp",
+    "BASES_DE_DATOS/~WRD0000.tmp",
+    "BASES_DE_DATOS/~WRL1295.tmp",
+    "BASES_DE_DATOS/~WRD1267.tmp",
+    "BASES_DE_DATOS/~WRL0634.tmp",
+    "UD 07 - USO DE BASES DE DATOS OBJETO-RELACIONALES.md",
+    "LENGUAJE_MARCAS/UD 04 - DEFINICIÓN DE ESQUEMAS Y VOCABULARIOS EN XML.md"
   ]
 }
