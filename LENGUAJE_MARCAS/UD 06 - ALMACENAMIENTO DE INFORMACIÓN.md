@@ -212,6 +212,26 @@ as tipo_dato_devuelto
 
 (Pregunta prueba: Pertenecen a SQL y a XQuery  is, union, >=)
 
+
+----------
+
+### XQuery Update Facility
+
+Pequeña extensión que provee XQuery para modificar documentos XML.
+insert
+Several modifiers are available to specify the exact insert location: insert into **as first**/**as last**, insert **before**/**after** and insert **into**.
+`insert node (attribute { 'a' } { 5 }, 'text', <e/>) into /n`
+delete
+`delete node //n`
+replace
+`replace node /n with <a/>`
+`replace value of node /n with 'newValue'`
+rename
+```
+for $n in //originalNode
+return rename node $n as 'renamedNode
+```
+![[BASES_DE_DATOS/resources/ud06-1.png]]
 #### Ejemplo 1 
 
 Para el XML alumnos.xml:
@@ -310,7 +330,7 @@ return
 ```
 
 Gráficamente:
-![](resources/ud06-1.png)
+![](LENGUAJE_MARCAS/resources/ud06-1.png)
 
 ```xml
 (:1. Ejemplo de uso de la cláusula FOR. Obtener todos los títulos de los libros del fichero libros.xml.:)

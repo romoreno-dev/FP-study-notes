@@ -48,7 +48,7 @@ Pero también se puede sindicar cualquier tipo de información (redifusión de v
 Siempre se han sindicado contenidos y compartido todo tipo de información en XML. Se pueden ofrecer contenidos propios para que los muestre otra web aumentando el valor de la página que muestra el contenido y el valor del sitio web original ya que enlaza con él.
 Permite desde el punto de vista la actualización profesional "estar al día" en temas relacionados con profesión, recibiendo noticias e informaciones en su blog o en su programa agregador de noticias.
 
-![](resources/ud03-1.png)
+![](LENGUAJE_MARCAS/resources/ud03-1.png)
 
 ## 3. Tecnologías de creación de canales de contenidos
 
@@ -201,7 +201,7 @@ Miro en un periódico y veo en su código fuente:
 
 ![](resources/ud03-3.png)
 
-![](resources/ud03-2.png)
+![](LENGUAJE_MARCAS/resources/ud03-2.png)
 
 ## 5. Validación
 

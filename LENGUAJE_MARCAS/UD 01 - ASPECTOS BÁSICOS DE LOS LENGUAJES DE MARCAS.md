@@ -70,7 +70,7 @@ Es un metalenguaje y permite:
 >- **XML Namespaces**. Proveen un contexto al que se aplican las marcas de un documento de XML y que sirve para diferenciarlas de otras con idéntico nombre válidas en otros contextos.
 >- **XML Schemas**. Permiten definir restricciones que se aplicarán a un documento XML. Actualmente los más usados son las DTD.
 
-![](resources/ud01-1.png)
+![](LENGUAJE_MARCAS/resources/ud01-1.png)
 ![](LENGUAJE_MARCAS/resources/ud01-2.png)
 
 ## 3. Etiquetas elementos y atributos

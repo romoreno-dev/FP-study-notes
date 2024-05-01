@@ -156,7 +156,7 @@ preservados. </text>
 
 Para estar bien formado deben verificarse las reglas sintácticas que define la recomendación del W3C para el estándar XML:
 
-![](resources/ud04-3.png)
+![](LENGUAJE_MARCAS/resources/ud04-3.png)
 
 ## 3. Declaración del tipo de documento, DOCTYPE
 
@@ -260,7 +260,7 @@ Por ejemplo:
 La repetición o la opcionalidad de elementos en la secuencia debe indicarse.
 - Operador opción. **Cero o uno (?)**   - Elemento opcional. De aparecer solo lo hará una vez
 - Operador cero-o-mas. **Cero o más (\*)** - Elemento opcional. Si aparece puede hacerlo sin límite
-- Operador uno-o-mas. **Uno o más (+)**- Elemento obligatorio. Puede aparecer sin límite.
+- Operador un 111 o-o-mas. **Uno o más (+)**- Elemento obligatorio. Puede aparecer sin límite.
 
 No es posible especificar cardinalidad del tipo "hasta dos" en el DTD
 Las opciones son uno, ninguno o más,  uno o más
@@ -574,7 +574,7 @@ XML Schema es más potente que DTD porque:
 - Los DTD tienen un control limitado de la cardinalidad
 - Los DTD no soportan espacios de nombres ni formas simples de reutilizar o importar de otros esquemas
 
-![](esources/ud04-1.png)
+![](LENGUAJE_MARCAS/resources/ud04-1.png)
 
 
 Es un lenguaje basado en XML que se usa para crear otros lenguajes basados en XML y modelos de datos. 
@@ -710,7 +710,7 @@ Las facetas disponibles son:
 - `totalDigits`: Total de dígitos de un número
 - `fractionDigits`: Número de dígitos decimales
 
-![](resources/ud04-2.png)
+![](LENGUAJE_MARCAS/resources/ud04-2.png)
 
 Ejemplo, restricción de longitud mínima y máxima de contraseñas
 
