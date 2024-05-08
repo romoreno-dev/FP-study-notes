@@ -1,4 +1,3 @@
-(Ver Tema 1 Politécnico)
 
 ## 1. Los ficheros de información. Concepto de fichero.
 
@@ -496,5 +495,3 @@ Se descarga y se instala y listo.
 
 Oracle Database Express Edition 11g Release 2 es un sistema de bases de datos libre para desarrollo, implementación y distribución basado en Oracle. 
 Buen sistema para desarrolladores, para administradores de bases de datos, para proveedores independientes, estudiantes que necesiten practicar, adiestramiento, base de datos inicial...
-
-Básicamente se descarga y se instala. Fin.

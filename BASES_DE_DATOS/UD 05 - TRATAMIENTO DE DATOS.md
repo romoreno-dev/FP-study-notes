@@ -1,4 +1,3 @@
-(Ver Tema 9 Politécnico)
 ## 1. Introducción
 
 Para el tratamiento de datos pueden usarse instrucciones SQL (flexibilidad, rapidez, mayor detalle) o herramientas gráficas que permiten hacerlo de forma más visual pero con menos detalle. 

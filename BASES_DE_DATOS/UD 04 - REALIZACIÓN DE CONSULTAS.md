@@ -1,4 +1,3 @@
-(Ver Tema 7, Tema 8 Politécnico)
 ## 1. Introducción
 
 SQL nació a partir de la publicación "A relational model of data for large shared data banks" de Edgar Frank. 

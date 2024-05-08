@@ -1,4 +1,3 @@
-
 ## 1. Características de las bases de datos objeto-relacionales
 
 Las **bases de datos objeto-relacionales** son aquellas que han evolucionado del modelo relacional tradicional a un modelo híbrido que utiliza tecnología oprientadas a objetos.
@@ -600,8 +599,5 @@ La base de datos de Oracle ofrece la **tabla** DUAL para este tipo de operacio
 SELECT DEREF(u_ref) INTO u1 FROM Dual;
 dbms_output.put_line(u1.nombre); 
 ```
-
 Por tanto, para obtener el objeto referenciado por una variable REF, debes **utilizar una consulta sobre cualquier tabla**, independientemente de la tabla en la que se encuentre el objeto referenciado. Sólo existe la condición de que siempre se obtenga una solo fila como resultado. Lo más **cómodo es utilizar esa tabla** DUAL. Aunque se use esa tabla comodín, **el resultado será un objeto** almacenado en la tabla UsuariosObj.
-## 7. PostgreSQL
-
-PostgreSQL también es un sistema de gestión de bases de datos objeto-relacional extendido en la actualidad. No vamos a ampliar más.
+PostgreSQL también es un sistema de gestión de bases de datos objeto-relacional.

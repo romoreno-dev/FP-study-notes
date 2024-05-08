@@ -1,4 +1,3 @@
-(Ver Tema 6 Politécnico)
 ## 1. Modelo de datos
 
 **Modelo de datos**: Lenguaje utilizado para la descripción de una base de datos. Permite describir las **estructuras** (tipos de datos y relaciones entre ellos), las **restricciones de integridad** (condiciones que deben cumplir según necesidades del modelo) y las **operaciones de manipulación de los datos** (insertado, modificación, borrado de datos).

@@ -1,4 +1,3 @@
-
 ## 1. Introducción
 
 **PL/SQL** es un lenguaje procedimental estructurado en bloques que permite utilizar sentencias SQL para manipular datos y sentencias de control de flujo para procesar los datos. Combina la potencia de SQL para manipular datos, con la potencia de los lenguajes procedimentales para procesarlos.
