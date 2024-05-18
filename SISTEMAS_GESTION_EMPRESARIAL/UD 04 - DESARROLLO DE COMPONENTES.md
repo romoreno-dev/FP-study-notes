@@ -17,7 +17,7 @@ En el MVC de Oddo:
 - Vista: Archivos XML que definen la interfaz de usuario del módulo (vistas formulario, vistas tipo árbol...)
 - Controlador: Código que define el comportamiento de la aplicación. Objetos creados en Python
 
-![](ud04-1.png)
+![](resources/ud04-1.png)
 
 
 ### Especificaciones técnicas y funcionales
