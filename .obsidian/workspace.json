@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "875a87946d5b9ce3",
+        "id": "06df0b37dee19a4a",
         "type": "tabs",
         "children": [
           {
-            "id": "ded6ee1146d24cb8",
+            "id": "f24923b333770198",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "BASES_DE_DATOS/UD 01 - ALMACENAMIENTO DE LA INFORMACIÓN.md",
+                "file": "ACCESO_A_DATOS/(wip) UD 01 - INTRODUCCIÓN AL ACCESO A DATOS Y MANEJO DE FICHEROS.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 414.5
+    "width": 253.5
   },
   "right": {
     "id": "7d79b0e9867d8cc9",
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "BASES_DE_DATOS/UD 01 - ALMACENAMIENTO DE LA INFORMACIÓN.md",
+                "file": "ACCESO_A_DATOS/(wip) UD 01 - INTRODUCCIÓN AL ACCESO A DATOS Y MANEJO DE FICHEROS.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "BASES_DE_DATOS/UD 01 - ALMACENAMIENTO DE LA INFORMACIÓN.md",
+                "file": "ACCESO_A_DATOS/(wip) UD 01 - INTRODUCCIÓN AL ACCESO A DATOS Y MANEJO DE FICHEROS.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "BASES_DE_DATOS/UD 01 - ALMACENAMIENTO DE LA INFORMACIÓN.md"
+                "file": "ACCESO_A_DATOS/(wip) UD 01 - INTRODUCCIÓN AL ACCESO A DATOS Y MANEJO DE FICHEROS.md"
               }
             }
           }
@@ -146,52 +146,52 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "ded6ee1146d24cb8",
+  "active": "f24923b333770198",
   "lastOpenFiles": [
+    "SISTEMAS_INFORMATICOS/resources/ud03-1.png",
+    "SISTEMAS_INFORMATICOS/resources/ud03-2.png",
+    "README.md",
+    "Inspirador.md",
+    "Legislación.md",
+    "PROGRAMACION_SERVICIOS_PROCESOS/(wip) UD 03 - PROGRAMACIÓN EN RED.md",
+    "PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/UD 04 - MULTIMEDIA EN APLICACIONES ANDROID.md",
+    "PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/UD 06 - SENSORES Y GEOLOCALIZACIÓN.md",
+    "PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/resources/ud04-1.png",
+    "ACCESO_A_DATOS/(wip) UD 06 - PROGRAMACIÓN DE COMPONENTES DE ACCESO A DATOS.md",
+    "ACCESO_A_DATOS/(wip) UD 01 - INTRODUCCIÓN AL ACCESO A DATOS Y MANEJO DE FICHEROS.md",
+    "ACCESO_A_DATOS/resources/ud01-1.png",
+    "ACCESO_A_DATOS/resources",
+    "SISTEMAS_INFORMATICOS/(wip) UD 01 - HARDWARE DE UN SISTEMA INFORMÁTICO.md",
+    "SISTEMAS_INFORMATICOS/(wip) UD 03 - REDES DE ORDENADORES.md",
+    "SISTEMAS_INFORMATICOS/(wip) UD 04 - WINDOWS.md",
+    "SISTEMAS_INFORMATICOS/resources/ud03-3.png",
+    "SISTEMAS_INFORMATICOS/resources/ud02-12.png",
+    "SISTEMAS_INFORMATICOS/resources/ud02-11.png",
+    "SISTEMAS_INFORMATICOS/resources/ud02-10.png",
+    "SISTEMAS_INFORMATICOS/resources/ud02-9.png",
+    "SISTEMAS_INFORMATICOS/resources/ud02-8.png",
+    "PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/(wip) UD 03 - GESTIÓN DE DATOS.md",
+    "PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/(wip) UD 02 - INTERFAZ DE USUARIO.md",
+    "PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/(wip) UD 05 - CREACIÓN DE VIDEOJUEGOS.md",
+    "PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/UD 01 - INTRODUCCIÓN A ANDROID.md",
+    "ACCESO_A_DATOS",
+    "SISTEMAS_INFORMATICOS/UD 05 - LINUX.md",
+    "SISTEMAS_INFORMATICOS/UD 02 - SOFTWARE DE UN SISTEMA INFORMÁTICO.md",
+    "SISTEMAS_INFORMATICOS/resources",
+    "TODOAPUN.pdf",
+    "prueba/micompri",
+    "prueba/mi.tar",
+    "prueba/Inspirador.md",
+    "prueba/README.md",
+    "prueba/Legislación.md",
+    "prueba",
+    "micompri",
+    "BASES_DE_DATOS/UD 01 - ALMACENAMIENTO DE LA INFORMACIÓN.md",
     "BASES_DE_DATOS/UD 07 - USO DE BASES DE DATOS OBJETO-RELACIONALES.md",
     "UD 07 - USO DE BASES DE DATOS OBJETO-RELACIONALES.pdf",
     "BASES_DE_DATOS/UD 06 - PROGRAMACIÓN DE BASES DE DATOS.md",
     "UD 06 - PROGRAMACIÓN DE BASES DE DATOS.pdf",
     "BASES_DE_DATOS/UD 05 - TRATAMIENTO DE DATOS.md",
-    "UD 05 - TRATAMIENTO DE DATOS.pdf",
-    "BASES_DE_DATOS/UD 04 - REALIZACIÓN DE CONSULTAS.md",
-    "UD 04 - REALIZACIÓN DE CONSULTAS.pdf",
-    "BASES_DE_DATOS/UD 03 - IMPLEMENTACIÓN DE BASES DE DATOS RELACIONALES.md",
-    "UD 03 - IMPLEMENTACIÓN DE BASES DE DATOS RELACIONALES.pdf",
-    "BASES_DE_DATOS/UD 01 - ALMACENAMIENTO DE LA INFORMACIÓN.md",
-    "UD 01 - ALMACENAMIENTO DE LA INFORMACIÓN.pdf",
-    "UD 01 - ALMACENAMIENTO DE LA INFORMACIggÓN.pdf",
-    "UD 01 - ALMACENAMIENTOjj DE LA INFORMACIÓN.pdf",
-    "UD 01 - ALMACENAMIENTO DE LA INFORMACIÓ333N.pdf",
-    "UD 01 - ALMACENAMIENTO DE LA INFORMACIÓN123.pdf",
-    "Legislación.md",
-    "PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/UD 01 - INTRODUCCIÓN A ANDROID.md",
-    "README.md",
-    "resources/Pasted.md",
-    "SISTEMAS_GESTION_EMPRESARIAL/UD 01 - INTRODUCCIÓN A LOS SISTEMAS ERP-CRM.md",
-    "SISTEMAS_GESTION_EMPRESARIAL/resources/ud01-4.png",
-    "SISTEMAS_GESTION_EMPRESARIAL/resources/ud01-7.png",
-    "SISTEMAS_GESTION_EMPRESARIAL/resources/ud01-6.png",
-    "SISTEMAS_GESTION_EMPRESARIAL/resources/ud01-5.png",
-    "SISTEMAS_GESTION_EMPRESARIAL/UD 02 - USO DEL SISTEMA ERP-CRM.md",
-    "SISTEMAS_GESTION_EMPRESARIAL/UD 03 - IMPLANTACIÓN DE SISTEMAS ERP-CRM.md",
-    "SISTEMAS_GESTION_EMPRESARIAL/UD 04 - DESARROLLO DE COMPONENTES.md",
-    "SISTEMAS_GESTION_EMPRESARIAL/resources/ud01-3.png",
-    "SISTEMAS_GESTION_EMPRESARIAL/resources/ud01-2.png",
-    "SISTEMAS_GESTION_EMPRESARIAL/resources/ud01-1.png",
-    "BASES_DE_DATOS/resources/ud01-1.png",
-    "BASES_DE_DATOS/resources/ud01-2.png",
-    "BASES_DE_DATOS/resources/ud01-3.png",
-    "LENGUAJE_MARCAS/UD 02 - UTILIZACIÓN DE LENGUAJES DE MARCAS EN ENTORNOS WEB (Parte 1 - HTML).md",
-    "LENGUAJE_MARCAS/UD 01 - ASPECTOS BÁSICOS DE LOS LENGUAJES DE MARCAS.md",
-    "LENGUAJE_MARCAS/UD 02 - UTILIZACIÓN DE LENGUAJES DE MARCAS EN ENTORNOS WEB (Parte 2 - Hojas de estilo o CSS).md",
-    "LENGUAJE_MARCAS/UD 03 - APLICACIÓN DE LOS LENGUAJES DE MARCAS A LA SINDICACIÓN DE CONTENIDOS.md",
-    "BASES_DE_DATOS/Untitled.md",
-    "LENGUAJE_MARCAS/UD 06 - ALMACENAMIENTO DE INFORMACIÓN.md",
-    "LENGUAJE_MARCAS/(wip) CSS.md",
-    "LENGUAJE_MARCAS/HTML.md",
-    "Untitled 2.md",
-    "Untitled 1.md",
-    "BASES_DE_DATOS/(wip) UD 02 - BASES DE DATOS RELACIONALES.md"
+    "BASES_DE_DATOS/UD 04 - REALIZACIÓN DE CONSULTAS.md"
   ]
 }
