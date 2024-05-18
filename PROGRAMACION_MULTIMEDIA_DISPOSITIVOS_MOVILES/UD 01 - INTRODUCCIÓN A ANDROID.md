@@ -113,7 +113,7 @@ Un buen consejo es programar para que las aplicaciones funcionen en la mayor can
 	- Notification Manager: Eventos sucedidos durante la ejecución
 * **Capa de aplicaciones**. Se encuentran instaladas todas las aplicaciones Android que correrán en (Dalvik / ART usando servicios, API y librerías. 
 
-![](resources/ud02-2.png)
+![](resources/ud01-2.png)
 
 Por citar algunas funcionalidades Android:
 - Creación de aplicaciones se usuario usando aplicaciones interactivas
@@ -301,4 +301,4 @@ Métodos que abarcan todo el ciclo: `onCreate()` y `onDestroy()`
 Actividad visible al usuario desde `onStart()`  hasta `onStop()` (aunque podría no tener foco)
 Actividad visible y con foco desde `onResume()` hasta `onPause()`
 
-![](PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/resources/ud01-1.png)
+![](resources/ud01-1.png)
