@@ -3,7 +3,6 @@
 Aplicación que funcione en red, con múltiples clientes accediendo al servidor -> considerar protocolos de comunicaciones, puertos de comunicaciones, sockets TCP, sockets UDP, modelo cliente/servidor, threads, gestionar bien las transacciones, monitorizar tiempos de respuesta. 
 
 
-
 A través de dirección IP y de un puerto (a que ordenador van y dentro del ordenador a qué programa)
 
 TCP/IP es anterior al modelo OSI
