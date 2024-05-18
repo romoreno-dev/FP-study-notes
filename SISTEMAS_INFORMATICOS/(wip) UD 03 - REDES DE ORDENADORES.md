@@ -1,43 +1,264 @@
 
-
 ## 1. Características de las redes de ordenadores
 
+**Red informática**: Dos o más dispositivos conectados para compartir los componentes de su red y la información que pueda almacenarse en todos ellos. 
+
+Otras definiciones: Conjunto de equipos informáticos conectados entre sí por medio de dispositivos físicos que envían y reciben impulsos eléctricos, ondas electromagnéticas o cualquier otro medio para el transporte de datos con la finalidad de compartir información y recursos. 
+
+Para trabajar con redes es necesario conocer los sistemas de comunicación más usados, la arquitectura que las hace posible, los protocolos asociados, la forma de conectarlas y sus componentes. 
+
+Algunas de las características más importantes de las redes de ordenadores son:
+- **Conectividad**: Conexión entre diferentes dispositivos para compartir recursos propios o ajenos
+- **Seguridad**
+- **Optimización de costes**
+
+Siempre útil la Wikipedia https://es.wikipedia.org/wiki/Red_de_computadoras
+Y Slideshare https://es.slideshare.net/slideshow/sistema-de-comunicacin-redes-de-telecomunicaciones-presentation/651852
 ### 1.1. Sistemas de comunicaciones
 
+**Sistema de comunicación** elementos que, siguiendo unas reglas, intervienen en la transmisión de señales, permitiendo el intercambio de información entre un emisor y un receptor.
+
+Los elementos del sistema de comunicación: Emisor, Receptor, Canal (medio por el que se transmite la información con señales convenientemente codificadas mediante un conjunto de reglas que regulen su comunicación, protocolo de comunicación).
+
+###### Clasificaciones
+1. Según el **medio de transmisión**
+	1. En línea o cableados
+	2. Inalámbricos
+2. Según la **direccionalidad de la transmisión**
+	1. Simplex: Un solo sentido. Emite el emisor, recibe el receptor (Escuchar música por radio)
+	2. Semidúplex: Comunicación en dos sentidos pero no de forma simultánea. Emitor emite, receptor recibe y ambos cambian los roles. (Walkie-talkie)
+	3. Dúplex: Comunicación en ambos sentidos de forma simultánea. Ambos emisores y receptores a la vez. (Redes de ordenadores funcionan así)
+3. Según la **forma de sincronizar las señales**
+	1. Síncronas
+	2. Asíncronas
+4. Según la **naturaleza de la señal**
+	1. Analógica
+	2. Digital
+
+**Equipo Terminal de Datos (ETD)**: Todos los equipos, ya sean emisores o receptores
+**Equipo de Comunicación de Datos (ECD)**: Dispositivo que participa en la comunicación pero no es ni emisor, ni receptor. 
 ### 1.2. Redes de ordenadores. Ventajas
 
+**Red de ordenadores o red informática**: Conjunto de equipos informáticos conectados entre sí por medio de dispositivos físicos que envían y reciben impulsos eléctricos, ondas electromagnéticas o cualquier otro medio para el transporte de datos con finalidad de compartir información y recursos.
+
+Compartir recursos y la información, asegurar confiabilidad y disponibilidad de la información, asegurar velocidad de transmisión de los datos y reducir el coste general de estas acciones.
+
+Las principales ventajas de la redes de ordenadores:
+- Posibilidad de compartir recursos
+- Posibilidad de compartir información
+- Aumentar posibilidades de colaboración
+- Facilitar la gestión centralizada
+- Reducir costes
+
+Los recursos no solo son internet. Pueden ser utilización de periféricos compartidos como impresores, discos duros de red, escáneres... o compartir software o compartir información (bases de datos compartidas, documentos que pueden leerse o elaborarse por usuarios diferentes). Servicios informáticos (computación en nube)
+
+Una gestión centralizada de recursos mejora seguridad, optimiza prestaciones, sale más barato. 
+
+Una buena planificación de la red reduce costes de implantación y mantenimiento.
 ### 1.3. Clasificación de las redes. Tipos de redes.
+
+1. Por alcance o **extensión**:
+	1. **Red de área personal** (PAN, Personal Area Network): Usada para la comunicación entre los dispositivos del ordenador cerca de una persona. Ej.: Conexión entre dos dispositivos por bluetooth o dos teléfonos móviles o unos auriculares inalámbricos con un ordenador.
+	2. **Red de área local** (LAN, Local Area Network): Limitada a un área especial (cuarto, aula, edificio, avión). Esencial para la creación de redes más grandes.
+	3. **Red de área campus** (CAN, Campus Area Network):  Conecta redes de áreas local a través de un área geográfica limitada. Se usa como extensión de la de LAN.
+	4. **Red de área metropolitana** (MAN, Metropolitan Area Network): Red de alta velocidad que da cobertura a un área geográfica extensa. Áreas grandes con recursos adicionales a los que necesitaría una red local.
+	5. **Red de área amplia** (WAN, Wide Area Network): Redes informáticas que se extienden sobre un área geográfica extensa. Podemos encontrar redes de comunicaciones que permiten el uso de Internet y el propio internet es una red WAN.
+2. Según las **funciones** de sus componentes:
+	1. **Redes de igual a igual**: Redes peer-to-peer. Ningún ordenador a cargo del funcionamiento de la red. Cada uno controla su propia información y puede funcionar como cliente o servidor según lo necesite. Cada usuario controla su propia seguridad. (Sistemas informáticos incluyen la posibilidad de trabajar así)
+	2. **Redes cliente-servidor**: Existencia de uno o varios servidores que dan servicio al resto de ordenadores. Facilitan la gestión centralizada. Se necesitan sistemas operativos tipo servidor como Windows 2008 Server o GNU-Linux. Cualquier distribución Linux puede actuar como servidor aunque hay distribuciones recomendadas como Debian, Ubuntu server, Red Hat...
+3. Según el **grado de difusión**: 
+	1. Intranet: Red de computadoras que usa tecnología de red para usos comerciales, educativos o de otra índole de forma privada (no comparte sus recursos o su información con otras redes)
+	2. Internet: Conjunto descentralizado de redes de comunicación interconectadas que usan la familia de protocolos TCP/IP garantizando que las redes físicas heterogéneas que la componen funcionen como una red única de alcance mundial. 
+	
+4. Según la **topología**, es decir, la cadena de comunicación usada por los nodos que forman una red para comunicarse, usualmente desde el punto de vista físico, aunque también se puede referir al lógico.
+
+![](ud03-1.png)
+
+Al **nivel físico**, forma en la que se conectan los ordenadores en una red,  pueden citarse topologías en bus, en anillo, en estrella, en árbol o jerárquica, en malla, doble anillo, mixta, totalmente conexa.
+
+Es útil en la instalación de red hacer un **esquema de red** que muestre la ubicación de cada ordenador, equipo de interconexión y cableado; usando los planos del edificio o planta donde está ubicada la red.
+
+----------------
+
+**BUS**: Se usa un único cable troncal con terminaciones en los extremos. Los ordenadores de la red se conectan directamente a la red troncal. Las primeras redes Ethernet usaban esta topología con cable coaxial. Hay variantes en redes de televisión por cable, conexión troncal de redes de fibra óptica, instalación y operación de máquinas y equipamientos
+
+**ANILLO**: Conecta cada ordenador o nodo con el siguiente y el último con el primero creando un anillo físico de conexión. Cada estación tiene un receptor y un transmisor que hace la función de repetidor pasando la señal a la siguiente estación. En este tipo de red la comunicación se da por el paso de un testigo, evitando eventuales pérdidas de información debidas a colisiones. Las redes locales Token-ring emplean una topología en anillo aunque la conexión física sea en estrella.
+
+Hay topologías de anillo doble donde dos anillos permiten que los datos se envíen en ambas direcciones (redundancia, tolerancia a fallos). Usada en redes FDDI (Fiber Distributed Data Interfaces, usarse como red troncal que distribuye datos por fibra óptica. Algunas configuraciones de servidores también usan esta topoogía.)
+
+**ESTRELLA:** Conecta todos los ordenadores a un nodo central (router, conmutador, switch, concetrado, hub). Las redes de área local modernas basadas en IEEE 802.3 usan esta topología. El equipo de interconexión central canaliza toda la información y por él pasan todos los paquetes (función de distribución, conmutación y control). El nodo central debe estar siempre activo o toda la red quedaría sin servicio. 
+
+Ventajas: Topología tolerante a fallos. Si un ordenador se desconecta **no perjudica a toda la red**, facilita la incorporación de nuevos ordenadores a la red siempre que el nodo central tenga conexiones y permite prevenir conflictos de uso.
+
+La topología en estrella se amplía en la de **estrella extendida o árbol** donde las redes en estrella se conectan entre sí. 
+Si tiene un elemento de dónde se parte es **topología en estrella jerárquica**. Esto posibilita redes más amplias y se mantiene una jerarquía de conexiones, con un nodo que es el inicio de la jerarquía: Router y a partir de él red de área local que permite dar servicios a redes de área locales más pequeñas.
+
+Muy usual en redes de área local: Principio de jerarquía es el router que conecta a internet y el resto switch que dan servicio a aulas, salas de ordenadores, despachos... Así a partir de una única conexión a Internet se puede dar servicio a varias redes o subredes locales, ahorrando costes. Si el equipo de interconexión de mayor jerarquía falla, la red ya no presta los servicios para los que fue diseñada. 
+
+------------
+
+La **topología lógica** o esquema lógico busca mostrar algunas características de la conexión:  uso de red, nombre de ordenadores, direcciones, aplicaciones. Un grupo de ordenadores podría estar formado por un único icono. Sirven para hacerse una idea de cómo estará conectada la red. 
+
+4. Según el **tipo de conexión**
+	1. **Redes cableadas**
+	2. **Redes inalámbricas**. Con modo infraestructura (incluye punto de acceso), modo ad-hoc (no necesita punto de acceso)
+	3. **Redes mixtas
+
+-----------
+
+En redes inalámbricas se sigue el estándar IEEE 802.11 que introduce el concepto de **modo de conexión**.
+
+- **Modo infraestructura**: Equipos inalámbricos se conectan a red cableada ya existente. Usa un equipo de interconexión (**Punto de Acceso**) para que haga esta función o un router con características de punto de acceso. Suele usarse como acceso a la infraestructura del cable que permite la conexión a Internet (router de la compañía de telecomunicaciones). Todo el tráfico se canaliza a través del punto de acceso y todos los equipos inalámbricos deben estar dentro de la zona de cobertura para establecer comunicación entre ellos. 
+
+- **Modo ad-hoc**: Permite conectar dispositivos inalámbricos entre sí sin equipo como punto de acceso. Cada dispositivo de red forma parte de red de igual a igual (peer to peer). Permite que se pueda compartir información entre equipos que se encuentren en un lugar determinado de forma puntual. 
+
+- **Tercera opción**: Ambos modos de conexión combinados.
+
+------------------
 
 ### 1.4. Tecnologías WAN
 
+Las redes WAN (Wide Area Network) se extienden sobre regiones geográficas extensas. Pueden cubrir distancias de unos 100 o 1000 km dando servicio un país o un continente.
 
+Internet da una WAN de alta velocidad, por lo que no es necesaria la existencia de redes privadas WAN, sino redes privadas virtuales (VPN, extensión segura de la red local LAN sobre una red pública o no controlada como internet) con mecanismos cifrados y otras técnicas seguras.
+
+La WAN es una red punto a punto que utiliza conmutación de paquetes. Pueden usar sistemas de comunicación vía satélite o radio. 
+
+Basan su funcionamiento en **técnicas de conmutación**, definibles como la forma en que un usuario y otro establecen la comunicación. Estas técnicas son:
+- **Conmutación de circuitos**: Establecimiento de un enlace físico para la transmisión entre dos nodos, que se libera cuando finalice la comunicación en caso de usar una red conmutada opermanece si es una red dedicada
+- **Conmutación de mensajes**: Tratamiento de bloques de información dotados de dirección de origen y de destino. La red almacena los mensajes hasta verificar que han llegado correctamente a su destino y proceden a su retransmisión o destrucción.
+- **Conmutación de paquetes**: Dividir el mensaje en paquetes. La comunicación entre dos equipos implica la transmisión de los paquetes. Cada paquete es enviado de un nodo de la red al nodo siguiente. Cuando el nodo receptor recibe completamente el paquete, lo almacena y lo vuelve a emitir al nodo que le sigue. Este proceso se repite hasta que el paquete llegue al destino final. Para eso se usan los **datagramas** y los **circuitos virtuales.** Internet es una red de conmutación de paquetes basada en datagramas. 
+
+La redes WAN suelen estar soportadas por redes públicas de telecomunicaciones que se suelen usar para conectarse a internet. Ejemplos:
+- Red telefónica básica o red telefónica conmutada (RTB, RTC). Transmisión de datos a baja velocidad.
+- Bucle de abonado digital asimétrico (ADSL). Línea de datos independiente de la línea de teléfono aprovechando el ancho de banda disponible por encima del requerido por el servicio telefónico 
+- Telefonía móvil mediante UMTS o 3G 
+- Internet por cable
 ## 2. La arquitectura de red
 
-### 2.1. Modelo OSI y protocolos TCP/IP
+**Arquitectura de red**: Conjunto de capas o niveles junto con los protocolos definidos en cada una de estas capas que hacen posible que un ordenador se comunique con otro ordenador independientemente de la red en la que se encuentre. 
+
+La arquitectura de red debe incluir información suficiente para que, al desarrollar un programa o diseñar un dispositivo, cada capa responda de forma adecuada al protocolo apropiado.
+
+Tres factores importantes que debe tener en cuenta la arquitectura de red son:
+- La **topología**, forma en que se conectan los nodos de una red y características físicas de las conexiones
+- **Método de acceso a la red**, formas de compartir información y reglas para evitar su pérdida
+- **Protocolos de comunicación**, reglas para favorecer la comunicación y establecer, mantener y permitir la utilización de la información.
+
+### 2.1. Modelo de arquitectura de red por capas
+
+La arquitectura de red se divide en niveles o capas para reducir la complejidad de su diseño. Cada uno de estos niveles tiene asociados uno o varios protocolos que definen las reglas de comunicación de la capa correspondiente. 
+
+Se llama **pila de protocolos** o **jerarquía de protocolos** a la arquitectura de red que usa unos protocolos determinados.
+
+Si imaginamos una arquitectura de red de cuatro niveles: Dos ordenadores tendrán  implementada la arquitectura. Cada nivel tiene implementados sus protocolos; puede decirse que las comunicaciones entre niveles iguales se hace a través de los protocolos correspondientes. Pero el flujo real de información con los datos que se quieren transmitir va de un ordenador a otro pasando por cada uno de los niveles. Es decir, los datos no se transfieren directamente de una capa a otra sino que cada capa pasa los datos e información de control a la capa adyacente, después pasa al medio de transmisión adecuado y, posteriormente, sucede lo mismo pero en sentido contrario en el otro ordenador.
+
+Cada capa tiene unos servicios asignados y cada una tiene unas funciones, ocupándose solo de los datos e información de control que necesite según el protocolo utilizado.
+
+Las capaz adyacentes tienen lo que se denomina **interfaz**, se definen las operaciones que la capa inferior ofrece a la superior. Es importante definir interfaces claras entre niveles.
+
+Reglas:
+- Cada nivel solo se comunique con el nivel superior o inferior
+- Cada nivel inferior proporcione servicios al nivel superior
+
+Las arquitecturas en capas facilitan compatibilidades de software y de hardware, modificaciones futuras, etc. 
 
 ### 2.2. Protocolo de comunicación
 
-### 2.3. Funcionamiento de arquitectura basada en niveles
+**Protocolo de comunicaciones**: Conjunto de reglas normalizadas para representación, señalización, autenticación y detección de errores necesario para enviar información a través de un canal de comunicación.
 
+**Características principales de los protocolos**:
+- Mensaje
+- Codificación
+- Formato
+- Tamaño del mensaje
+- Temporización
 
+Se necesitan protocolos para:
+- Identificar emisor y receptor
+- Definir medio o canal a usar
+- Definir lenguaje común a usar
+- Definir forma y estructura de los mensajes
+- Establecer velocidad y temporización de mensajes
+- Definir codificación y encapsulación de mensajes
+
+Algunas cuestiones que los protocolos de redes deben resolver son:
+- El **enrutamiento**: Elegir, de las diferentes rutas para llegar a un mismo destino, una de ellas siendo deseable que se elija la mejor o más rápida.
+- El **direccionamiento**: Definir direcciones de red que determinen a qué ordenador se quiere uno conectar o por dónde debe conectarse para llegar a un destino.
+- La **necesidad de compartir un medio de comunicaciones**: Mecanismos de control de acceso al medio y orden en que se accede.
+- La **saturación**: Evitar que el receptor del mensaje o los dispositivos intermedios se saturen. 
+- El **control de errores**: Mecanismos de control. 
+
+### 2.3. Funcionamiento de arquitectura basada en niveles. Modelo OSI.
+
+El **Modelo OSI** (Open System Interconnection, Interconexión de Sistemas Abiertos) es el modelo de red creado por ISO en 1984. Define un marco de referencia para la definición de arquitecturas de interconexión en sistemas de comunicaciones.
+
+Simplifica las actividades de red porque agrupa los procesos de comunicación en siete capas que realizan tareas diferentes. 
+
+En sí no es una arquitectura, sino un referente para desarrollar arquitecturas.
+
+Los siete niveles OSI son:
+
+| Capa | Nombre                           | Funciones                                                                                                                                                                                                                                           |
+| ---- | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | Capa física o nivel físico.      | Conexiones físicas, incluyendo el cableado y los componentes necesarios para transmitir la señal.                                                                                                                                                   |
+| 2    | Capa o nivel de enlace de datos. | Empaqueta los datos para transmitirlos a través de la capa física. El direccionamiento físico se define utilizando direcciones MAC. Se encarga del acceso al medio, el control de enlace lógico o LLC, de la detección de errores de transmisión... |
+| 3    | Capa o nivel de red.             | Separa los datos en paquetes, determina la ruta que tomaran los datos y define el direccionamiento.                                                                                                                                                 |
+| 4    | Capa o nivel de transporte.      | Se encarga de que los paquetes de datos tengan una secuencia adecuada y de controlar los errores.                                                                                                                                                   |
+| 5    | Capa o nivel de sesión.          | Mantiene y controla el enlace entre los dos extremos de la comunicación.                                                                                                                                                                            |
+| 6    | Capa o nivel de presentación.    | Determina el formato de las comunicaciones así como adaptar la información al protocolo que se este usando.                                                                                                                                         |
+| 7    | Capa o nivel de aplicación.      | Define los protocolos que utilizan cada una de la aplicaciones para poder ser utilizadas en red.                                                                                                                                                    |
+
+Relacionadas con el **hardware**: Capas 1, 2 y 3
+Relacionadas con el **software**: Capas 5, 6 y 7
 ### 2.4. TCP/IP
 
+ Protocolos TCP/IP se refiere a la arquitectura de red que contiene varios protocolos, entre ellos, el protocolo TCP (Transmision Control Protocol) y el protocolo IP (Internet Protocol).
+
+Es la arquitectura más usada, base de las comunicaciones de Internet y sistemas operativos modernos.
+
+Está formada por cuatro niveles:
+
+| Capa | Nombre                                                                  | Funciones                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| ---- | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | Capa o nivel de acceso a la red, de enlace o también llamado de subred. | Se encarga del acceso al medio de transmisión, es asimilable a los niveles 1 y 2 del modelo OSI, y sólo especifica que deben usarse protocolos que permitan la conexiones entre ordenadores de la red. Hay que tener en cuenta que está arquitectura está pensada para conectar ordenadores diferentes en redes diferentes, por lo que las cuestiones de nivel físico no se tratan, y se dejan lo suficientemente abiertas para que se pueda utilizan cualquier estándar de conexión. Permite y define el uso de direcciones físicas utilizando las direcciones MAC.                                                 |
+| 2    | Capa o nivel de red también llamada de Internet.                        | Al igual que la capa de red del modelo OSI, esta capa se encarga de estructurar la información en paquetes, determina la ruta que tomaran los paquetes y define el direccionamiento. En esta arquitectura los paquetes pueden viajar hasta el destino de forma independiente, pudiendo atravesar redes diferentes y llegar desordenados, sin que la ordenación de los paquetes sea responsabilidad de está capa, por tanto tampoco se encarga de los errores. El protocolo más significativo de esta capa es el protocolo IP, y entre sus funciones está la de dar una dirección lógica a todos los nodos de la red. |
+| 3    | Capa o nivel de transporte.                                             | Es igual al nivel de transporte del modelo OSI. Se encarga de que los paquetes de datos tengan una secuencia adecuada y de controlar los errores. Los protocolos más importantes de esta capa son: TCP y UDP. El protocolo TCP es un protocolo orientado a conexión y fiable, y el protocolo UDP es un protocolo no orientado a conexión y no fiable.                                                                                                                                                                                                                                                                |
+| 4    | Capa o nivel de Aplicación.                                             | Esta capa englobaría conceptos de las capas de sesión, presentación y aplicación del modelo OSI. Incluye todos los protocolos de alto nivel relacionados con las aplicaciones que se utilizan en Internet.                                                                                                                                                                                                                                                                                                                                                                                                           |
+
+En algunos casos la capa de acceso a red se divide en capa de hardware o física y capa de enlace de datos (en este caso la arquitectura TCP/IP tendría cinco niveles en vez de cuatro)
+
+![](resources/ud03-2.png)
 ### 2.5. Nivel de acceso a red
 
+**Nivel de acceso a red**: Convertir información suministrada por el nivel de red en señales que puedan ser transmitidas por el medio físico y convertir señales que llegan por el medio físico en paquetes de información manejables por el nivel de red.
+
+TCP/IP originalmente no se preocupa demasiado del nivel físico. Solo de estandarizar los protocolos relacionados con el enlace de datos.
+
+Considerar aquí las cuestiones relacionadas con las conexiones físicas en las redes locales, definidas por estándar Ethernet (características del cableado y señalización, formatos de las tramas de datos del nivel de enlace de datos).
+
+También el **direccionamiento físico**: Subcapa del nivel de enlace de datos. El control de acceso al medio (MAC) para definir las direcciones MAC, identificador de 48 bits en forma hexadecimal dividida en 6 bloques de dos números hexadecimales separados por dos puntos.
+Formato: `FF:FF:FF:FF:FF:FF`
+- Los 24 bits más significativos (izquierda) determinan el fabricante, identificador único de organización
+- Los 24 bis menos significativos (derecha) identfiican a una interfaz concreta. 
+Ninguna tarjeta de red tiene la misma dirección física.
+
+El protocolo que lo gestiona es el de resolución de direcciones (protocolo ARP) encuentra la dirección física (MAC) que tiene relación con la dirección lógica (dirección IP) -> Traduce de IP a MAC. El protocolo inverso es RARP  pero no es tan usado.
+
+El formato de la unidad de información en este nivel es la **TRAMA** 
+
+![](resources/ud03-3.png)
+
+En la trama tenemos los datos que recibimos de capas superiores, añadiéndole una cabecera con las direcciones MAC de origen y destino, junto con el tipo de trama Ethernet que se utiliza y una cola donde se agrega información para el control de errores.
 ### 2.6. Nivel de internet o de red
 
+
 ### 2.7 Nivel de transporte
+
 
 ### 2.8 Nivel de aplicación
 
 
-## 3. Topologías de red y modos de conexión
-
-### 3.1. Bus y anillo
-
-### 3.2. Estrella
-
-### 3.3. Modo infraestructura y modo ad-hoc
 
 ## 4. Componentes de una red informática
 
@@ -272,7 +493,3 @@ El servicio está constituido por:
 Acceder de forma remota a un equipo a través de la red
 - Acceso remoto en modo terminal: Telnet (Telecommunication NETwork) y SSH (Secure SHell). Más usado SSH. Telnet inseguro.
 - Acceso remoto en modo gráfico: Servicio VNC (Windows / Linux) o de escritorio remoto (Terminal Server) en Windows. 
-
-## 10. Diseño lógico y físico de una red
-
-### 10.1. Ejemplos de redes simples

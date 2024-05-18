@@ -188,8 +188,8 @@ Diseño de los sistemas a la hora de ser creados. (Puede haber interrelación en
 
 - **Híbrido:** Combinación entre monolítica y microkernel. En el núcleo se incluyen ciertas funciones para que se ejecuten más rápido que si estuviesen en el espacio de usuario. 
 
-![](resources/ud03-2.png)
-![](resources/ud03-3.png)
+![](SISTEMAS_INFORMATICOS/resources/ud02-2.png)
+![](SISTEMAS_INFORMATICOS/resources/ud02-3.png)
 ## B.2.2. Según los servicios que ofrecen
 
 1. **Número de usuarios**
@@ -279,21 +279,21 @@ Según como sean la mayoría de los procesos habrá que decidir unos u otro algo
 
 Algunos algoritmos para decidir el orden de ejecución de procesos son: 
 - Algoritmo de **Round Robin**: Apropiativo. Algoritmo rotativo. Se le da a cada proceso un pequeño periodo de tiempo (quantum) y si no termina, pasa a cola. 
-![](resources/ud03-5.png)
+![](ud02-5.png)
 
 - Algoritmo por **prioridades fijas**: Apropiativo. Los procesos tienen asignada una prioridad (por ejemplo prioridad número más altos, alta prioridad). En el momento en el que llega un proceso de alta prioridad y se está ejecutando uno de baja, queda suspendido y se atiende el siguiente.
-![](resources/ud03-6.png)
+![](ud02-6.png)
 
 - Algoritmo **tiempo restante más corto** (SRTF, Shortest Remaining Time First): Apropiativo. Le da prioridad al que le quede menos. Este algoritmo en la vida real no podría ser implementado a la perfección porque no es posible estimar el tiempo restante de CPU muchas veces... Prioriza los procesos cortos. Pero un proceso largo podría quedarse indefinidamente en espera por culpa de una llegada de muchos de ellos. 
 
-![](resources/ud03-9.png)
+![](ud02-9.png)
 
 - Algoritmo el **trabajo más corto primero** (SJF, Shortest Job First): No apropiativo. No es interrumpido por otros. Penaliza a procesos cortos que llegan después y deben esperar a los largos. 
 
-![](resources/ud03-7.png)
+![](ud02-7.png)
 
 - Algoritmo **primero en llegar, primero en ejecutarse** (FCFS, FIFO, First Come First Served): No apropiativo. Se ejecutan en orden de llegada. Su tiempo de respuesta puede ser alto, especialmente si varían mucho los tiempos de ejecución. La sobrecarga del sistema es mínima. Penaliza los procesos cortos y los procesos con operaciones de Entrada/Salida
-![](resources/ud03-8.png)
+![](ud02-8.png)
 
 Información adicional: Comunicación y sincronización de procesos https://www.cartagena99.com/recursos/alumnos/apuntes/Tema3.L1-Introduccion-y-Conceptos.pdf
 ## D. GESTIÓN DE MEMORIA
@@ -313,12 +313,12 @@ La gestión de memoria tiene que cumplir los requisitos de:
 - **Controlar y evitar fragmentación de memoria**: Se da fragmentación interna (se malgasta el espacio interno porque el proceso es más pequeño que la partición) y fragmentación externa (la memoria externa a las particiones se divide cada vez más y quedan huecos difícilmente reutilizables)
 - **Organización lógica y física**: Cuando la memoria principal no es suficiente, los procesos pueden ser intercambiados a disco y más tarde vueltos a cargar en memoria. Debe gestionarse esta transferencia de información entre memoria principal y secundaria. 
 
-![](resources/ud03-10.png)
+![](ud02-10.png)
 ## D.1. En sistemas operativos monotarea
 
 Inicialmente no se incluía gestor de memoria, el programador tienen control completo. La memoria real almacena el programa que se ejecuta en un momento dado. En cada momento la memoria alberga un solo proceso y reserva otra zona para el sistema operativo. Necesita mecanismo de protección para evitar accesos a partes del sistema operativo de los procesos de los usuarios.
 
-![](resources/ud03-12.png)
+![](ud02-12.png)
 ## D.2. En sistemas operativos multitarea
 
 Para la multitarea, los procesos deben estar simultáneamente en memoria (condición para que un proceso se pueda ejecutar). Debe haber mecanismos de gestión para distribuir la memoria entre todos los proceoss que quieren ejecutarse.
@@ -341,7 +341,7 @@ Puede surgir fragmentación, área ocupadas intercaladas con áreas libres. No h
 Con las particiones fijas no se aprovecha todo el tamaño. Otra idea es crear particiones dinámicamente conforme llegan los procesos y en función de los tamaños de estos. Es una técnica más realista que aprovecha mejor el espacio, aunque tiene una mayor complejidad. 
 El sistema operativo debe llevar control de qué partes están disponibles y cuáles libres. 
 
-![](resources/ud03-11.png)
+![](ud02-11.png)
 
 ### D.2.3. Memoria virtual
 
@@ -359,7 +359,7 @@ Inconvenientes: Puede aparecer fragmentación interna
 **Segmentación pura**
 El proceso se divide en una serie de segmentos de tamaño variable (hasta un límite máximo). El proceso se carga situando todos sus segmentos en particiones dinámicas que no tienen por qué estar contiguas en memoria. Reduce la fragmentación interna de la memoria principal.
 
-![](resources/ud03-4.png)
+![](ud02-4.png)
 
 ----
 
@@ -371,7 +371,7 @@ Las técnicas de paginación o segmentación se conocen como:
 
 **Combinación de segmentación y paginación:**
 
-![](SISTEMAS_INFORMATICOS/resources/ud03-1.png)
+![](SISTEMAS_INFORMATICOS/resources/ud02-1.png)
 
 ## E. GESTIÓN DE ENTRADA/SALIDA
 
