@@ -60,9 +60,9 @@ Las modificaciones del acceso buscaban:
 - Facilitar la actualización de registros
 - Permitir que la estructura refleje la organización real de la información
 
-![](resources/ud01-2.png)
+![](BASES_DE_DATOS/resources/ud01-2.png)
 
-![](resources/ud01-3.png)
+![](BASES_DE_DATOS/resources/ud01-3.png)
 
 ### 1.4. Ficheros secuenciales
 
