@@ -1,10 +1,9 @@
 
-Este repositorio pretende albergar resúmenes de los contenidos que se utilizan en los módulos de la Formación Profesional Semipresencial y de la Formación Profesional a Distancia de la Junta de Andalucía para la enseñanza del Grado Superior de Desarrollo de Aplicaciones Multiplataforma (producidos por el Ministerio de Educación, Cultura y Deporte y posteriormente actualizados por profesores de la Consejería de Educación de la Junta de Andalucía)
+Este repositorio pretende albergar resúmenes de los contenidos que se utilizan en los módulos de la Formación Profesional Semipresencial y de la Formación Profesional a Distancia de la Junta de Andalucía para la enseñanza del Grado Superior de Desarrollo de Aplicaciones Multiplataforma (producidos en los años 2013-2014 por el Ministerio de Educación, Cultura y Deporte y posteriormente actualizados por profesores de la Consejería de Educación de la Junta de Andalucía)
 
-La finalidad de estos resúmenes es ayudar a disponer de material a las personas que quieran presentarse a las POT para la obtención del título de Técnico Superior de Desarrollo de Aplicaciones Multiplataforma. 
+La finalidad de estos resúmenes es ayudar a disponer de material a las personas que quieran presentarse a las Pruebas para la Obtención del Título de Técnico Superior de Desarrollo de Aplicaciones Multiplataforma (POT). 
 
-Debo avisar de que **NO son contenidos actualizados con respecto a lo que hoy día se puede llegar a pedir en el mercado laboral**. Mi intención no es que lo sean, sino que el estudiante pueda disponer de material que, sumado a su capacidad de autoaprendizaje, pueda ayudarle a la adquisición de competencias para la superación de las pruebas.
-
+Debo avisar de que **NO son contenidos completamente actualizados con respecto a lo que hoy día se puede llegar a pedir en el mercado laboral**. Mi intención no es que lo sean, sino que el estudiante pueda disponer de material que, sumado a su capacidad de autoaprendizaje, le lleve a demostrar que posee competencias suficientes para la superación de estos módulos.
 ## Legislación aplicable
 
 ### Portal oficial
