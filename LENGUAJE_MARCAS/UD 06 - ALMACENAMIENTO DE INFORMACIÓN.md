@@ -231,7 +231,7 @@ rename
 for $n in //originalNode
 return rename node $n as 'renamedNode
 ```
-![[BASES_DE_DATOS/resources/ud06-1.png]]
+![[resources/ud06-1.png]]
 #### Ejemplo 1 
 
 Para el XML alumnos.xml:

@@ -33,7 +33,7 @@ Debe conocerse:
 	- **Frecuencia de renovación**: Veces que se accede al fichero para renovarlo en un periodo de tiempo fijo.
 d. **Crecimiento**: Variación de la capacidad del fichero que se mide con el porcentaje de registros en que aumenta el fichero en cada tratamiento (tasa de crecimiento)
 ### 1.1. Tipos de ficheros
-![](BASES_DE_DATOS/resources/ud01-1.png)
+![](resources/ud01-1.png)
 
 1. **Ficheros permanentes**: Amplio periodo de permanencia en el sistema. Información relevante para el funcionamiento de una aplicación.
 	1. **Ficheros maestros**: Parte central de la aplicación, núcleo. Estado actual de los datos que pueden modificarse desde la aplicación. Ej.: Archivo con los datos de los usuarios
@@ -60,9 +60,9 @@ Las modificaciones del acceso buscaban:
 - Facilitar la actualización de registros
 - Permitir que la estructura refleje la organización real de la información
 
-![](BASES_DE_DATOS/resources/ud01-2.png)
+![](resources/ud01-2.png)
 
-![](BASES_DE_DATOS/resources/ud01-3.png)
+![](resources/ud01-3.png)
 
 ### 1.4. Ficheros secuenciales
 
@@ -193,7 +193,7 @@ Los más usados:
 
 ## 3. Modelos de bases de datos
 
-![](BASES_DE_DATOS/resources/ud01-7.png)
+![](resources/ud01-7.png)
 
 ### Principales tipos de Bases de Datos
 
@@ -357,7 +357,7 @@ Las más usadas actualmente son:
 - Facilidad de **intercambio** entre sistemas
 - **Copias de seguridad** y **recuperación** en caso de fallo
 - El **SGBD interacciona con el sistema operativo.** Los datos almacenados serán usados por otras aplicaciones, el SGBD ofrecerá facilidad a estas para el acceso y manipulación de la información basándose en los métodos del sistema operativo.
-![](BASES_DE_DATOS/resources/ud01-6.png)
+![](resources/ud01-6.png)
 ### 5.1. Funciones
 
 Tres funciones fundamentales:
@@ -397,7 +397,7 @@ Esto garantiza:
 **Independencia lógica:** Modificar esquema conceptual sin alterar esquemas externos, ni programas.
 **Independencia física:** Modificar esquema interno sin modificar el conceptual o el externo. (Reorganizar sistema, ficheros...)
 
-![](BASES_DE_DATOS/resources/ud01-5.png)
+![](resources/ud01-5.png)
 
 ### 5.4. Tipos
 
@@ -462,7 +462,7 @@ El SGBDD trabaja a través de un conjunto de sitios o nodos con sistema de proce
 | Tolerancia a fallos. Mediante la replicación, si un nodo deja de funcionar el sistema completo no deja de funcionar.            | Control de concurrencia y los mecanismos de recuperación son mucho más complejos (los datos pueden estar replicados)                                                  |
 | Se adapta más naturalmente a la estructura de las organizaciones. Permiten la incorporación de nodos de forma flexible y fácil. | El intercambio de mensajes y el cómputo adicional necesario para conseguir la coordinación entre los distintos nodos constituyen una forma de sobrecarga.             |
 | Aunque los nodos están interconectados, tienen independencia local.                                                             | Dada la complejidad del procesamiento entre nodos es difícil asegurar la corrección de los algoritmos, el funcionamiento correcto durante un fallo o la recuperación. |
-![](BASES_DE_DATOS/resources/ud01-4.png)
+![](resources/ud01-4.png)
 ### 8.1. Fragmentación
 
 Extraer los datos en SGBDD se hace mediante fragmentación de distintas tablas que están en diferentes lugares. 

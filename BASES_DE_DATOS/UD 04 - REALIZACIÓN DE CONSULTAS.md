@@ -87,7 +87,7 @@ Se puede añadir:
 
 ### 2.6. Tipos de JOIN
 
-![](BASES_DE_DATOS/resources/ud04-1.png)
+![](resources/ud04-1.png)
 
 **INNER JOIN**: Devuelve las filas que tengan columnas cuya condición coincida en ambas tablas.
 
