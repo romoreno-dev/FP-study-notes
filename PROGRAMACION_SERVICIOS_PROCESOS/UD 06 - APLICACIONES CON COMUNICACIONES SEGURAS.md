@@ -116,7 +116,7 @@ Algunos de ellos son:
 - **SSL**: Comunicación segura en cliente/servidor frente a ataques de red (evita por ejemplo el man in the middle de la criptografía asimétrica)
 - **TLS**: Evolución de SSL, amplía los algoritmos critográficos que puede usar. 
 
-![[Pasted image 20240522202742.png]]
+![](resources/UD06-1.png)
 
 SSL y TLS se ejecutan en una capa intermedia (sesión) entre protocolo de aplicación y protocolo de transporte (TCP y UDP), pueden usarse para el cifrado de protocolos de aplicación como Telnet, FTP, SMTP, IMAP o HTTP. 
 
@@ -736,12 +736,133 @@ public class Main {
 
 ## 5. Sockets seguros en Java (JSSE)
 
+Es con **JSSE** (Extensión Java Sockets Seguros): Usa la arquitectura proveedor de JCA. Da comunicación segura mediante SSL a través de `javax.net.ssl`
+**Sockets**: Mecanismo de bajo nivel entre dos  ordenadores (**cliente** que **inicia conexión** y servidor **que** está a **la espera de conexiones**).
+**Socket seguro**: Basado en SSL (autentificación, integridad, confidencialidad)
+
+Se tienen las clases `SSLSocket` y `SSLServerSocket`
+
+### KeyTool
+
+- **KeyTool** permite la gestión de claves y certificados.
+- Los usuarios pueden administrar pares de claves pública/privada y certificados de uso en una autenticación. Almacenar en caché las claves públicas en forma de certificados de las personas con las que se comunican.
+- **Keytool** permite almacenar claves y certificados en el **almacén de certificados** (**keystore**) (Base de datos de los pares llaves y los certificados que se usan para la autentificación del SSL)
+- **Truststore**: Almacena certificados de las Autoridades de certificación para verificar las identidades de otros clientes y servidores. 
+
+- Cuando un cliente o un servidor inicia una sesión del SSL, extrae sus certificados y claves de su almacén de certificados
+- Cuando verifica las identidades de otros clientes o servidores extrae certificados de la Autoridad de Certificación (CA) de su truststore. 
+
+Un comando para crear un certificado de clave pública con algoritmo SSA y almacenarlo en el keystore almacenSSL. Se pide introducir contraseña.
+```shell
+ keytool -genkey -alias claveSsl -keyalg RSA -keystore AlmacenSSL
+```
+
+Se exporta el certificado de nombre claveSsl almacenado en el keystore AlmacenSSL al fichero claveSSL.crt. Se pide la contraseña.
+
+```shell
+keytool -export -alias claveSsl -keystore AlmacenSSL -rfc -file claveSSL.crt
+```
+
+Importar el certificado al Trustore (TrustSSL) (se pide contraseña del almacén de claves)
+```shell
+keytool -import -alias clave_TSsl -file claveSSL.crt -keystore TrustSSL
+```
+
+**Generar `KeyStore`**
+
+```bash
+keytool -genkeypair -alias serverkey -keyalg RSA -keystore serverkeystore.jks -keysize 2048 -validity 365
+```
+
+**Exportar certificado de servidor**
+```bash
+keytool -export -alias serverkey -file servercert.cer -keystore serverkeystore.jks
+```
+
+**Exportar certificado de cliente**
+
+```bash
+keytool -import -alias servercert -file servercert.cer -keystore clienttruststore.jks
+```
+
+Tenemos `servercer.cer` `serverkeystore.jks` `clientruststore.jks`
+
 ### Programar un socket seguro de servidor
 
 
+```java
+package src.socketssl;  
+  
+import javax.net.ssl.*;  
+import java.io.*;  
+  
+public class SecureServerSocketExample {  
+    public static void main(String[] args) {  
+  
+        System.setProperty("javax.net.ssl.keyStore", "serverkeystore.jks");  
+        System.setProperty("javax.net.ssl.keyStorePassword", "robert");  
+  
+        SSLServerSocketFactory sslServerSocketFactory = (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();  
+  
+        try (SSLServerSocket sslServerSocket = (SSLServerSocket) sslServerSocketFactory.createServerSocket(5000);  
+             SSLSocket sslSocket = (SSLSocket) sslServerSocket.accept();  
+             BufferedReader entrada = new BufferedReader(new InputStreamReader(sslSocket.getInputStream()));  
+             PrintWriter salida = new PrintWriter(sslSocket.getOutputStream(), true)) {  
+  
+            System.out.println("Cliente conectado");  
+  
+            String line;  
+            while ((line = entrada.readLine()) != null) {  
+                System.out.println("Mensaje recibido: " + line);  
+                salida.println("Mensaje recibido: " + line); // Enviar respuesta al cliente  
+            }  
+        } catch (Exception e) {  
+            e.printStackTrace();  
+        }  
+    }  
+}
+```
 ### Programar un socket seguro cliente
 
+```java
+package src.socketssl;  
+  
+import javax.net.ssl.*;  
+import java.io.*;  
+  
+public class SecureClientSocketExample {  
+    public static void main(String[] args) {  
+  
+        System.setProperty("javax.net.ssl.trustStore", "clienttruststore.jks");  
+        System.setProperty("javax.net.ssl.trustStorePassword", "robert");  
+  
+        try {  
+            SSLSocketFactory sslSocketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();  
+            try (SSLSocket sslSocket = (SSLSocket) sslSocketFactory.createSocket("localhost", 5000);  
+                 PrintWriter salida = new PrintWriter(sslSocket.getOutputStream(), true);  
+                 BufferedReader entrada = new BufferedReader(new InputStreamReader(sslSocket.getInputStream()))) {  
+  
+                salida.println("Hola desde el cliente SSL");  
+                String response;  
+                while ((response = entrada.readLine()) != null) {  
+                    System.out.println("Respuesta del servidor: " + response);  
+                }  
+            }  
+        } catch (Exception e) {  
+            e.printStackTrace();  
+        }  
+    }  
+}
+```
 
-### Ejemplos de aplicaciones con comunicaciones seguras
+**También podría ponerse en la VM de la configuración (sin necesidad de hacerlo en el código)**
+
+- Del servidor
+`-Djavax.net.ssl.keyStore=serverkeystore.jks -Djavax.net.ssl.keyStorePassword=robert`
+``
+- Del cliente
+
+`-Djavax.net.ssl.trustStore=clienttruststore.jks -Djavax.net.ssl.trustStorePassword=robert`
+
 
 
