@@ -496,6 +496,125 @@ Para borrar un directorio, debe borrarse primero cada uno de directorios y fiche
     }
 ```
 
+Hay otras opciones más chulas (y las pongo aquí para no olvidarme de ellas):
+
+##### Uso del patrón `Visitor` con `walkFileTree` y `FileVisitor`
+
+Patrón `Visitor`:
+
+El patrón Visitor sugiere que coloques el nuevo comportamiento en una clase separada llamada _visitante_, en lugar de intentar integrarlo dentro de clases existentes. El objeto que originalmente tenía que realizar el comportamiento se pasa ahora a uno de los métodos del visitante como argumento, de modo que el método accede a toda la información necesaria contenida dentro del objeto.
+
+Imagina un experimentado agente de seguros que está deseoso de conseguir nuevos clientes. Puede visitar todos los edificios de un barrio, intentando vender seguros a todo aquel que se va encontrando. Dependiendo del tipo de organización que ocupe el edificio, puede ofrecer pólizas de seguro especializadas:
+
+ `public static Path walkFileTree(Path start FileVisitor<? super Path> visitor)  throws IOException`
+
+
+El `FileVisitor` es una interfaz en el paquete `java.nio.file` que define cuatro métodos para manejar eventos al recorrer un árbol de archivos:
+
+1. `preVisitDirectory`: Invocado antes de visitar un directorio.
+2. `postVisitDirectory`: Invocado después de visitar un directorio.
+3. `visitFile`: Invocado cuando un archivo es visitado. (No directorios)
+4. `visitFileFailed`: Invocado si la visita a un archivo falla.
+
+
+```java
+    public static void main(String[] args) {
+
+        String dir = "/home/mkyong/test2/";
+
+        try {
+
+            createDummyFiles();
+
+            deleteDirectoryJava7(dir);
+
+            System.out.println("Done");
+
+        } catch (IOException e) {
+            System.err.printf("Failed to delete the directory %n%s%n", e);
+        }
+
+    }
+
+    public static void deleteDirectoryJava7(String filePath)
+        throws IOException {
+
+        Path path = Paths.get(filePath);
+
+        Files.walkFileTree(path,
+            new SimpleFileVisitor<>() {
+
+                // delete directories or folders
+                @Override
+                public FileVisitResult postVisitDirectory(Path dir,
+                                                          IOException exc)
+                                                          throws IOException {
+                    Files.delete(dir);
+                    System.out.printf("Directory is deleted : %s%n", dir);
+                    return FileVisitResult.CONTINUE;
+                }
+
+                // delete files
+                @Override
+                public FileVisitResult visitFile(Path file,
+                                                 BasicFileAttributes attrs)
+                                                 throws IOException {
+                    Files.delete(file);
+                    System.out.printf("File is deleted : %s%n", file);
+                    return FileVisitResult.CONTINUE;
+                }
+            }
+        );
+
+    }
+```
+
+##### Stream Java 8 
+```java
+ public static void deleteDirectoryJava8(String dir) throws IOException {
+
+      Path path = Paths.get(dir);
+      try (Stream<Path> walk = Files.walk(path)) {
+          walk
+                  .sorted(Comparator.reverseOrder())
+                  .forEach(DirectoryDelete::deleteDirectoryJava8Extract);
+      }
+  }
+
+  // extract method to handle exception in lambda
+  public static void deleteDirectoryJava8Extract(Path path) {
+      try {
+          Files.delete(path);
+      } catch (IOException e) {
+          System.err.printf("Unable to delete this path : %s%n%s", path, e);
+      }
+  }
+```
+
+
+##### FileUtils 
+
+```java
+  public static void deleteDirectoryLegacyIO(File file) {
+
+    File[] list = file.listFiles();
+    if (list != null) {
+        for (File temp : list) {
+            //recursive delete
+            System.out.println("Visit " + temp);
+            deleteDirectoryLegacyIO(temp);
+        }
+    }
+
+    if (file.delete()) {
+        System.out.printf("Delete : %s%n", file);
+    } else {
+        System.err.printf("Unable to delete file or directory : %s%n", file);
+    }
+
+}
+```
+
 ### 8.4. Flujos
 
 Un **flujo** es una abstracción de aquello que produce o consume información. Mediante los flujos se realizan las operaciones de E/S. 
