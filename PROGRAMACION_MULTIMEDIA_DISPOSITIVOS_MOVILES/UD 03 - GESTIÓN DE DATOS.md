@@ -1060,3 +1060,215 @@ Actualizamos un registro con el metodo "update(url, values, where, selectionArgs
   >
 Y para concluir el articulo borramos un registro con el método "delete(url, where, selectionArgs)" pasandole una uri con la id del registro que vamos a borrar.
 
+
+### 6. Retrofit
+
+Es una biblioteca de tipo cliente HTTP para Android y Java, creada por Square, que facilita la conexión a servicios web mediante el manejo de peticiones HTTP y la serialización de datos en JSON u otros formatos.
+
+**Pasos básicos**
+
+1. Agregar Retrofit como dependencia del proyecto al `build.gradle`
+
+```groovy
+// Retrofit
+implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+// Lombok por si quieres
+implementation 'org.projectlombok:lombok:1.18.28'
+```
+
+
+2. Crear modelo de datos (o usar una librería de cliente que la API que vas a consumir te provea, por ejemplo)
+
+```java
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Alumno {
+    private int id;
+    private String nombre;
+    private String apellido;
+    private String email;
+}
+```
+
+
+3. Definir interfaz de la API
+
+```java
+import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.DELETE;
+import retrofit2.http.GET;
+import retrofit2.http.Header;
+import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
+
+public interface AlumnoService {
+
+@GET("alumnos")
+Call<List<Alumno>> getAlumnos(@Header("Authorization") String authToken);
+
+@GET("alumnos/{id}")
+Call<Alumno> getAlumno(@Path("id") int id, @Header("Authorization") String authToken);
+
+ @POST("alumnos")
+Call<Alumno> createAlumno(@Body Alumno alumno, @Header("Authorization") String authToken);
+
+@PUT("alumnos/{id}")
+Call<Alumno> updateAlumno(@Path("id") int id, @Body Alumno alumno, @Header("Authorization") String authToken);
+
+@DELETE("alumnos/{id}")
+Call<Void> deleteAlumno(@Path("id") int id, @Header("Authorization") String authToken);
+}
+```
+
+4. Configurar Retrofit
+
+```java
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+public class RetrofitClient {
+    private static final String BASE_URL = "https://api.tuescuela.com/";
+    private static Retrofit retrofit;
+
+    public static Retrofit getRetrofitInstance() {
+        if (retrofit == null) {
+            retrofit = new Retrofit.Builder()
+                    .baseUrl(BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+        }
+        return retrofit;
+    }
+}
+```
+
+5. Realizar llamadas: 
+
+```java
+
+// Lista de alumnos
+Retrofit retrofit = RetrofitClient.getRetrofitInstance();
+AlumnoService service = retrofit.create(AlumnoService.class);
+Call<List<Alumno>> call = service.getAlumnos("Bearer tu_token_de_autorizacion");
+
+call.enqueue(new Callback<List<Alumno>>() {
+    @Override
+    public void onResponse(Call<List<Alumno>> call, Response<List<Alumno>> response) {
+        if (response.isSuccessful()) {
+            List<Alumno> alumnos = response.body();
+            // Manejar la lista de alumnos
+        }
+    }
+
+    @Override
+    public void onFailure(Call<List<Alumno>> call, Throwable t) {
+        // Manejar fallo en la llamada
+    }
+});
+
+// Alumno por ID
+Call<Alumno> call = service.getAlumno(1, "Bearer tu_token_de_autorizacion");
+call.enqueue(new Callback<Alumno>() {
+    @Override
+    public void onResponse(Call<Alumno> call, Response<Alumno> response) {
+        if (response.isSuccessful()) {
+            Alumno alumno = response.body();
+            // Manejar el alumno
+        }
+    }
+
+    @Override
+    public void onFailure(Call<Alumno> call, Throwable t) {
+        // Manejar fallo en la llamada
+    }
+});
+
+// Nuevo alumno
+Call<Alumno> call = service.getAlumno(1, "Bearer tu_token_de_autorizacion");
+call.enqueue(new Callback<Alumno>() {
+    @Override
+    public void onResponse(Call<Alumno> call, Response<Alumno> response) {
+        if (response.isSuccessful()) {
+            Alumno alumno = response.body();
+            // Manejar el alumno
+        }
+    }
+
+    @Override
+    public void onFailure(Call<Alumno> call, Throwable t) {
+        // Manejar fallo en la llamada
+    }
+});
+
+// Actualizar un alumno
+Alumno alumnoActualizado = new Alumno();
+alumnoActualizado.setNombre("Juan");
+alumnoActualizado.setApellido("Pérez");
+alumnoActualizado.setEmail("juan.perez@example.com");
+
+Call<Alumno> call = service.updateAlumno(1, alumnoActualizado, "Bearer tu_token_de_autorizacion");
+call.enqueue(new Callback<Alumno>() {
+    @Override
+    public void onResponse(Call<Alumno> call, Response<Alumno> response) {
+        if (response.isSuccessful()) {
+            Alumno alumno = response.body();
+            // Manejar el alumno actualizado
+        }
+    }
+
+    @Override
+    public void onFailure(Call<Alumno> call, Throwable t) {
+        // Manejar fallo en la llamada
+    }
+});
+
+// Eliminar un alumno
+Call<Void> call = service.deleteAlumno(1, "Bearer tu_token_de_autorizacion");
+call.enqueue(new Callback<Void>() {
+    @Override
+    public void onResponse(Call<Void> call, Response<Void> response) {
+        if (response.isSuccessful()) {
+            // Manejar eliminación exitosa
+        }
+    }
+
+    @Override
+    public void onFailure(Call<Void> call, Throwable t) {
+        // Manejar fallo en la llamada
+    }
+});
+```
+
+##### Combinándolo con la BBDD del dispositivo
+
+```sql
+Call<List<Alumno>> call = service.getAlumnos("Bearer tu_token_de_autorizacion");
+call.enqueue(new Callback<List<Alumno>>() {
+    @Override
+    public void onResponse(Call<List<Alumno>> call, Response<List<Alumno>> response) {
+        if (response.isSuccessful()) {
+            List<Alumno> alumnos = response.body();
+            // Actualizar la base de datos Room
+            if (alumnos != null) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        alumnoDao.insertAll(alumnos);
+                    }
+                }).start();
+            }
+        }
+    }
+
+    @Override
+    public void onFailure(Call<List<Alumno>> call, Throwable t) {
+        // Manejar fallo en la llamada
+    }
+});
+```
+

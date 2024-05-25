@@ -73,32 +73,31 @@ Las plataformas de Android se identifican por:
 
 Un buen consejo es programar para que las aplicaciones funcionen en la mayor cantidad de dispositivos posibles. 
 
-| Nombre (Postre)    | Versión     | SDK     |
-| ------------------ | ----------- | ------- |
-| Android 1.0        | 1.0         | 1       |
-| Android 1.1        | 1.1         | 2       |
-| Cupcake            | 1.5         | 3       |
-| Donut              | 1.6         | 4       |
-| Eclair             | 2.0 - 2.1   | 5 - 7   |
-| Froyo              | 2.2 - 2.2.3 | 8       |
-| Gingerbread        | 2.3 - 2.3.7 | 9 - 10  |
-| Honeycomb          | 3.0 - 3.2.6 | 11 - 13 |
-| Ice Cream Sandwich | 4.0 - 4.0.4 | 14 - 15 |
-| Jelly Bean         | 4.1 - 4.3.1 | 16 - 18 |
-| KitKat             | 4.4 - 4.4.4 | 19 - 20 |
-| Lollipop           | 5.0 - 5.1.1 | 21 - 22 |
-| Marshmallow        | 6.0 - 6.0.1 | 23      |
-| Nougat             | 7.0 - 7.1.2 | 24 - 25 |
-| Oreo               | 8.0 - 8.1   | 26 - 27 |
-| Pie                | 9.0         | 28      |
-| Android 10         | 10.0        | 29      |
-| Android 11         | 11.0        | 30      |
-| Android 12         | 12.0        | 31      |
-| Android 12L        | 12.1        | 32      |
-| Android 13         | 13          | 33      |
-| Android 14         | 14          | 34      |
-| Android 15         | 15 DP2      | V DP2   |
-
+| Nombre (Postre)    | Versión     | SDK     | Año de lanzamiento | Usaría Java (No es 100% seguro)      |
+| ------------------ | ----------- | ------- | ------------------ | ------------------------------------ |
+| Android 1.0        | 1.0         | 1       | 2008               | 5                                    |
+| Android 1.1        | 1.1         | 2       | 2009               | 5                                    |
+| Cupcake            | 1.5         | 3       | 2009               | 5                                    |
+| Donut              | 1.6         | 4       | 2009               | 5                                    |
+| Eclair             | 2.0 - 2.1   | 5 - 7   | 2009 - 2010        | 5                                    |
+| Froyo              | 2.2 - 2.2.3 | 8       | 2010               | 5                                    |
+| Gingerbread        | 2.3 - 2.3.7 | 9 - 10  | 2010 - 2011        | 6                                    |
+| Honeycomb          | 3.0 - 3.2.6 | 11 - 13 | 2011               | 6                                    |
+| Ice Cream Sandwich | 4.0 - 4.0.4 | 14 - 15 | 2011               | 6                                    |
+| Jelly Bean         | 4.1 - 4.3.1 | 16 - 18 | 2012 - 2013        | 6(Podría usarse Kotlin)              |
+| KitKat             | 4.4 - 4.4.4 | 19 - 20 | 2013               | 6                                    |
+| Lollipop           | 5.0 - 5.1.1 | 21 - 22 | 2014 - 2015        | 7                                    |
+| Marshmallow        | 6.0 - 6.0.1 | 23      | 2015               | 7                                    |
+| Nougat             | 7.0 - 7.1.2 | 24 - 25 | 2016 - 2017        | 7                                    |
+| Oreo               | 8.0 - 8.1   | 26 - 27 | 2017 - 2018        | 8                                    |
+| Pie                | 9.0         | 28      | 2018               | 8 (Comienza soporte oficial  Kotlin) |
+| Android 10         | 10.0        | 29      | 2019               | 8                                    |
+| Android 11         | 11.0        | 30      | 2020               | 8                                    |
+| Android 12         | 12.0        | 31      | 2021               | 8                                    |
+| Android 12L        | 12.1        | 32      | 2021               | 8                                    |
+| Android 13         | 13          | 33      | 2022               | 11                                   |
+| Android 14         | 14          | 34      | 2023               | 17                                   |
+| Android 15         | 15 DP2      | V DP2   | 2024               | ¿17?                                 |
 ## 3. Arquitectura del sistema Android
 
 - **Núcleo de Android** (capa más interna): Linux. Gestión de memoria y de procesos, servicios, pila de red y controladores de dispositivos. Depende del hardware. 
