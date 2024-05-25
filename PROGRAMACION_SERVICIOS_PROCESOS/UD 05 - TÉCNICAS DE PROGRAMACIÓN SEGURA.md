@@ -296,6 +296,120 @@ Con SimpleFormatter
 may. 23, 2024 8:42:45 P. M. src.logs.LogPrueba main  
 SEVERE: Hola esto es un problemon
 ```
+
+#### Uso de SLF4J 
+
+Podría usarse SLF4J que es otro marco de logs:
+
+```xml
+    <!-- SLF4J API -->
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>1.7.30</version>
+    </dependency>
+
+    <!-- SLF4J Simple (una implementación simple de SLF4J) -->
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-simple</artifactId>
+        <version>1.7.30</version>
+    </dependency>
+```
+
+
+#### Uso de Log4J
+
+```xml
+<dependencies>
+    <!-- Log4j Core -->
+    <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-core</artifactId>
+        <version>2.14.1</version>
+    </dependency>
+
+    <!-- Log4j API -->
+    <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-api</artifactId>
+        <version>2.14.1</version>
+    </dependency>
+
+    <!-- Log4j JUL Adapter -->
+    <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-jul</artifactId>
+        <version>2.14.1</version>
+    </dependency>
+</dependencies>
+```
+
+Se puede crear un archivo de configuración para `Log4j` como `log4j2.xml` en `src/main/resources`
+
+Solo a consola:
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
+```
+
+A Consola y a Graylog:
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Gelf name="GelfAppender" server="udp:localhost" port="12201" version="1.1">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Gelf>
+        
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="GelfAppender"/>
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
+```
+
+Y configurar el redireccionamiento de logging a Log4J
+
+```java
+import org.apache.logging.log4j.LogManager;
+
+public class MyApp {
+    public static void main(String[] args) {
+        // Redirigir la salida de JUL a Log4j
+        LogManager.getLogManager().reset();
+        java.util.logging.Logger rootLogger = java.util.logging.LogManager.getLogManager().getLogger("");
+        rootLogger.addHandler(new org.apache.logging.log4j.jul.LogManager());
+        
+        java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MyApp.class.getName());
+        
+        logger.info("This is an info message");
+        logger.fine("This is a debug message");
+        logger.severe("This is an error message");
+
+        String name = "John";
+        logger.log(java.util.logging.Level.INFO, "Hello, {0}!", name);
+    }
+}
+```
+
 ## 3. Políticas de seguridad
 
 ### 3.1. Modelo de seguridad de Java
