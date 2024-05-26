@@ -464,3 +464,318 @@ public class ExportScheduler {
 }
 ```
 
+-------
+
+Jasper
+
+```java
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.util.JRLoader;
+
+import java.io.File;
+import java.util.Map;
+
+public class ReportTask implements Runnable {
+    private final String templatePath;
+    private final Map<String, Object> parameters;
+    private final JRDataSource dataSource;
+    private final String outputPath;
+
+    public ReportTask(String templatePath, Map<String, Object> parameters, JRDataSource dataSource, String outputPath) {
+        this.templatePath = templatePath;
+        this.parameters = parameters;
+        this.dataSource = dataSource;
+        this.outputPath = outputPath;
+    }
+
+    @Override
+    public void run() {
+        try {
+            JasperReport jasperReport = (JasperReport) JRLoader.loadObject(new File(templatePath));
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+            JasperExportManager.exportReportToPdfFile(jasperPrint, outputPath);
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+```
+
+
+```java
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
+public class ParallelReportGenerator {
+    public static void main(String[] args) {
+        // Configuración del ExecutorService
+        int numberOfThreads = 4;  // Ajusta este valor según el hardware disponible
+        ExecutorService executorService = Executors.newFixedThreadPool(numberOfThreads);
+
+        // Supongamos que tienes una lista de registros que necesitas procesar
+        List<Record> records = getRecordsToProcess();
+
+        // Genera informes en paralelo
+        for (Record record : records) {
+            // Configura los parámetros y dataSource para cada registro
+            Map<String, Object> parameters = getParametersForRecord(record);
+            JRDataSource dataSource = getDataSourceForRecord(record);
+            String outputPath = getOutputPathForRecord(record);
+
+            // Crea y envía la tarea al ExecutorService
+            ReportTask task = new ReportTask("path/to/template.jasper", parameters, dataSource, outputPath);
+            executorService.submit(task);
+        }
+
+        // Cierra el ExecutorService
+        executorService.shutdown();
+        try {
+            // Espera a que todas las tareas finalicen
+            if (!executorService.awaitTermination(60, TimeUnit.MINUTES)) {
+                executorService.shutdownNow();
+            }
+        } catch (InterruptedException e) {
+            executorService.shutdownNow();
+        }
+    }
+
+    // Métodos para obtener registros, parámetros, dataSource y ruta de salida (implementación omitida)
+    private static List<Record> getRecordsToProcess() {
+        // ...
+    }
+
+    private static Map<String, Object> getParametersForRecord(Record record) {
+        // ...
+    }
+
+    private static JRDataSource getDataSourceForRecord(Record record) {
+        // ...
+    }
+
+    private static String getOutputPathForRecord(Record record) {
+        // ...
+    }
+}
+
+```
+
+```java
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.util.JRLoader;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+public class CombineReports {
+    public static void main(String[] args) {
+        List<JasperPrint> jasperPrints = new ArrayList<>();
+
+        // Cargar cada archivo JasperPrint generado
+        for (String outputPath : getGeneratedOutputPaths()) {
+            try {
+                JasperPrint jasperPrint = (JasperPrint) JRLoader.loadObject(new File(outputPath));
+                jasperPrints.add(jasperPrint);
+            } catch (JRException e) {
+                e.printStackTrace();
+            }
+        }
+
+        // Combina los JasperPrints en uno solo
+        JasperPrint combinedJasperPrint = new JasperPrint();
+        for (JasperPrint jasperPrint : jasperPrints) {
+            combinedJasperPrint.getPages().addAll(jasperPrint.getPages());
+        }
+
+        // Exporta el documento combinado a PDF
+        try {
+            JasperExportManager.exportReportToPdfFile(combinedJasperPrint, "path/to/combinedReport.pdf");
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Método para obtener las rutas de salida generadas (implementación omitida)
+    private static List<String> getGeneratedOutputPaths() {
+        // ...
+    }
+}
+
+```
+
+
+------
+
+Uso de `ExecutorService` en JasperReport para agilizar producción de informes (Pregunté a ChatGPT)
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class ListUtils {
+
+    public static <T> List<List<T>> partition(List<T> list, int partitions) {
+        List<List<T>> subLists = new ArrayList<>();
+        int totalSize = list.size();
+        int subListSize = (int) Math.ceil((double) totalSize / partitions);
+
+        for (int i = 0; i < totalSize; i += subListSize) {
+            subLists.add(new ArrayList<T>(list.subList(i, Math.min(totalSize, i + subListSize))));
+        }
+
+        return subLists;
+    }
+}
+
+```
+
+```java
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.util.JRLoader;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.pdf.PdfCopy;
+import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.text.pdf.PdfWriter;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.*;
+
+@ManagedBean
+@ViewScoped
+public class ReportBean implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    private ExecutorService executorService;
+    private List<Record> records;
+
+    @PostConstruct
+    public void init() {
+        // Inicializar la lista de registros a procesar
+        records = getRecordsToProcess();
+        // Inicializar el ExecutorService con un número adecuado de hilos
+        int numberOfThreads = 4;  // Ajustar según el hardware disponible
+        executorService = Executors.newFixedThreadPool(numberOfThreads);
+    }
+
+    public void generateAndDownloadReports() {
+        try {
+            // Dividir la lista de registros en 4 sublistas
+            List<List<Record>> subLists = ListUtils.partition(records, 4);
+
+            // Lista para almacenar los futuros de los informes generados
+            List<Future<List<byte[]>>> futures = new ArrayList<>();
+
+            // Enviar una tarea por cada sublista
+            for (final List<Record> subList : subLists) {
+                Future<List<byte[]>> future = executorService.submit(new Callable<List<byte[]>>() {
+                    @Override
+                    public List<byte[]> call() throws Exception {
+                        List<byte[]> reportBytesList = new ArrayList<>();
+                        for (Record record : subList) {
+                            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                            try {
+                                Map<String, Object> parameters = getParametersForRecord(record);
+                                JRDataSource dataSource = getDataSourceForRecord(record);
+
+                                JasperReport jasperReport = (JasperReport) JRLoader.loadObject(new File("path/to/template.jasper"));
+                                JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+                                JasperExportManager.exportReportToPdfStream(jasperPrint, baos);
+                            } catch (JRException e) {
+                                e.printStackTrace();
+                            }
+                            reportBytesList.add(baos.toByteArray());
+                        }
+                        return reportBytesList;
+                    }
+                });
+                futures.add(future);
+            }
+
+            // Esperar a que todos los informes se generen y combinar los resultados
+            List<byte[]> reports = new ArrayList<>();
+            for (Future<List<byte[]>> future : futures) {
+                reports.addAll(future.get());
+            }
+
+            // Combinar todos los informes en un solo archivo PDF
+            ByteArrayOutputStream combinedBaos = new ByteArrayOutputStream();
+            combinePDFs(reports, combinedBaos);
+
+            // Enviar el informe combinado en la respuesta HTTP para su descarga
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            HttpServletResponse response = (HttpServletResponse) facesContext.getExternalContext().getResponse();
+            response.reset();
+            response.setContentType("application/pdf");
+            response.setHeader("Content-Disposition", "attachment; filename=\"combined_report.pdf\"");
+
+            OutputStream output = response.getOutputStream();
+            output.write(combinedBaos.toByteArray());
+            output.flush();
+            output.close();
+
+            facesContext.responseComplete();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            executorService.shutdown();
+        }
+    }
+
+    private void combinePDFs(List<byte[]> pdfs, OutputStream outputStream) throws IOException, DocumentException {
+        Document document = new Document();
+        PdfCopy copy = new PdfCopy(document, outputStream);
+        document.open();
+        for (byte[] pdf : pdfs) {
+            PdfReader reader = new PdfReader(pdf);
+            int n = reader.getNumberOfPages();
+            for (int page = 0; page < n;) {
+                copy.addPage(copy.getImportedPage(reader, ++page));
+            }
+            reader.close();
+        }
+        document.close();
+    }
+
+    // Métodos para obtener registros, parámetros y dataSource (implementación omitida)
+    private List<Record> getRecordsToProcess() {
+        // ...
+    }
+
+    private Map<String, Object> getParametersForRecord(Record record) {
+        // ...
+    }
+
+    private JRDataSource getDataSourceForRecord(Record record) {
+        // ...
+    }
+}
+
+```
+
+```java
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Generación de Informes</title>
+</h:head>
+<h:body>
+    <h:form>
+        <h:commandButton value="Generar y Descargar Informes" action="#{reportBean.generateAndDownloadReports}" />
+    </h:form>
+</h:body>
+</html>
+
+```
+
