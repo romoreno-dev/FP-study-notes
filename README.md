@@ -38,7 +38,7 @@ En el RD 659/2023 se da fundamento legal a la convocatoria de pruebas libres:
 
 En el curso 2024/2025 se implantará un nuevo Primer Curso de Formación Profesional y en el curso 2025/2026 se implantará un nuevo Segundo Curso de Formación Profesional.
 Esto podría tener un impacto, aún no conocido, en las pruebas libres. Esto es debido a que:
-- En el RD 405/2023 los contenidos de algunas de las asignaturas han sido modificados (considero que tan solo ligeramente, aunque aún he realizado comparativa)
+- En el RD 405/2023 los contenidos de algunas de las asignaturas han sido modificados (considero que tan solo ligeramente, aunque aún no he realizado comparativa)
 - En el RD 500/2024, muy a nuestro pesar, han sido añadidas nuevas asignaturas, cuyos contenidos pueden encontrarse en RD 659/2023 Anexos VII, VIII y X.
 - La nueva ley tiene por objeto orientar la enseñanza hacia una Formación Profesional Dual en la que el alumnado esté en estrecho contacto con las empresas de forma continua a lo largo de todo el curso académico. Este es el motivo por el que se suprime el módulo de "Formación en centros de trabajo" al no realizarse ya prácticas al final del Grado Superior, sino durante los dos cursos de formación.
 
