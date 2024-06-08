@@ -18,6 +18,7 @@ Personalmente me presenté a las POT de todos los módulos de este grado (salvo 
 - **[Real Decreto 405/2023, de 29 de mayo, por el que se actualizan los títulos de la formación profesional del sistema educativo de Técnico Superior en Desarrollo de Aplicaciones Multiplataforma y Técnico Superior en Desarrollo de Aplicaciones Web, de la familia profesional Informática y Comunicaciones, y se fijan sus enseñanzas mínimas.](https://www.boe.es/buscar/doc.php?id=BOE-A-2023-13221)**
 - **[Real Decreto 500/2024, de 21 de mayo, por el que se modifican determinados reales decretos por los que se establecen títulos de Formación Profesional de grado superior y se fijan sus enseñanzas mínimas](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2024-10685) **y que MODIFICA el** [Real Decreto 450/2010, de 16 de abril, por el que se establece el título de Técnico Superior en Desarrollo de Aplicaciones Multiplataforma y se fijan sus enseñanzas mínimas](https://www.boe.es/buscar/doc.php?id=BOE-A-2010-8067)**
 
+
 ### Pruebas libres 
 
 En el RD 659/2023 se da fundamento legal a la convocatoria de pruebas libres:
@@ -32,6 +33,7 @@ En el RD 659/2023 se da fundamento legal a la convocatoria de pruebas libres:
 >
 > 4. Una persona no podrá matricularse en las pruebas para la obtención de un título en el mismo año académico en que se encuentre matriculado de manera ordinaria en el o los mismos módulos profesionales, en cualquier modalidad y en cualquier comunidad autónoma. En caso de identificarse esta duplicidad, las administraciones competentes implicadas procederán a la anulación de todas las matrículas.
 
+
 ### ¡¡Cambios a partir del curso 2024-2025!!
 
 En el curso 2024/2025 se implantará un nuevo Primer Curso de Formación Profesional y en el curso 2025/2026 se implantará un nuevo Segundo Curso de Formación Profesional.
@@ -42,7 +44,8 @@ Esto podría tener un impacto, aún no conocido, en las pruebas libres. Esto es 
 
 **Se está en espera de que salga la correspondiente legislación autonómica en Andalucía, que será la que definitivamente nos aclare este asunto**.
 
-#### Comparativa entre módulos
+
+### Comparativa entre módulos
 
 <details>
   <summary>Artículo cuarto del RD 500/2024 (Pinchar para desplegar)</summary>
@@ -84,7 +87,7 @@ Estas serían las diferencias encontradas entre los módulos de 2010 y los de 20
 | 0000. Horas de libre configuración                              | Módulo profesional optativo                                                                              |
 
 <details>
-  <summary>Artículo 126 Punto 5 RD 659/2023 (Pinchar para desplegar=</summary>
+  <summary>Artículo 126 Punto 5 RD 659/2023 (Pinchar para desplegar)</summary>
 
 > 5. Los módulos profesionales de Itinerario personal para la empleabilidad I y II serán objeto de convalidación entre ofertas formativas. 
 > \[...]
