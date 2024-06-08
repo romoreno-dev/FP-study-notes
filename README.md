@@ -7,16 +7,16 @@ La finalidad de estos "resúmenes" (aunque quizás no se podrían denominar de t
 
 Debo avisar de que **NO son contenidos completamente actualizados con respecto a lo que hoy día se puede llegar a pedir en el mercado laboral**. Mi intención no es que lo sean, sino que el estudiante pueda disponer de material que, sumado a su capacidad de autoaprendizaje, le lleve a demostrar que posee competencias suficientes para la superación de estos módulos.
 
-Personalmente, me presenté a las POT de todos los módulos de este grado (salvo Desarrollo de Interfaces) durante mayo de 2022 y mayo de 2024. Cualquier duda al respecto, puedes contactar conmigo en [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/robertomoreno/)
+Personalmente me presenté a las POT de todos los módulos de este grado (salvo Desarrollo de Interfaces) durante mayo de 2022 y mayo de 2024. Cualquier duda al respecto, puedes contactar conmigo en [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/robertomoreno/)
 
 ## Información de referencia
-(Aún no actualizada con la información del curso 2024-2025)
+(Aún no actualizada con la información del curso 2024-2025)   
 [Pruebas para la obtención de títulos de Formación Profesional - Junta de Andalucía](https://www.juntadeandalucia.es/educacion/portals/web/formacion-profesional-andaluza/quiero-formarme/pruebas-y-procedimientos/pruebas-obtencion-titulos)
 
 ## Legislación aplicable (Desde 2024-2025)
 - **[Real Decreto 659/2023, de 18 de julio, por el que se desarrolla la ordenación del Sistema de Formación Profesional](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-16889)**
 - **[Real Decreto 405/2023, de 29 de mayo, por el que se actualizan los títulos de la formación profesional del sistema educativo de Técnico Superior en Desarrollo de Aplicaciones Multiplataforma y Técnico Superior en Desarrollo de Aplicaciones Web, de la familia profesional Informática y Comunicaciones, y se fijan sus enseñanzas mínimas.](https://www.boe.es/buscar/doc.php?id=BOE-A-2023-13221)**
-- **[Real Decreto 500/2024, de 21 de mayo, por el que se modifican determinados reales decretos por los que se establecen títulos de Formación Profesional de grado superior y se fijan sus enseñanzas mínimas](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2024-10685) **MODIFICA** el [Real Decreto 450/2010, de 16 de abril, por el que se establece el título de Técnico Superior en Desarrollo de Aplicaciones Multiplataforma y se fijan sus enseñanzas mínimas](https://www.boe.es/buscar/doc.php?id=BOE-A-2010-8067)**
+- **[Real Decreto 500/2024, de 21 de mayo, por el que se modifican determinados reales decretos por los que se establecen títulos de Formación Profesional de grado superior y se fijan sus enseñanzas mínimas](https://www.boe.es/diario_boe/txt.php?id=BOE-A-2024-10685) **y que MODIFICA el** [Real Decreto 450/2010, de 16 de abril, por el que se establece el título de Técnico Superior en Desarrollo de Aplicaciones Multiplataforma y se fijan sus enseñanzas mínimas](https://www.boe.es/buscar/doc.php?id=BOE-A-2010-8067)**
 
 ### Pruebas libres 
 
@@ -45,7 +45,7 @@ Esto podría tener un impacto, aún no conocido, en las pruebas libres. Esto es 
 #### Comparativa entre módulos
 
 <details>
-  <summary>Artículo cuarto del RD 500/2024 </summary>
+  <summary>Artículo cuarto del RD 500/2024 (Pinchar para desplegar)</summary>
 
 > 1.º Se suprimen los siguientes módulos profesionales: Formación y orientación laboral. Empresa e iniciativa emprendedora y Formación en centros de trabajo, con el número de código que tuvieran en cada caso.
 >
@@ -55,7 +55,7 @@ Esto podría tener un impacto, aún no conocido, en las pruebas libres. Esto es 
 </details>
 
 <details>
-  <summary>Punto Dieciséis del Artículo octavo del RD 500/2024</summary>
+  <summary>Punto Dieciséis del Artículo octavo del RD 500/2024 (Pinchar para desplegar) </summary>
 
 > Dieciséis. En el Real Decreto 450/2010, de 16 de abril, por el que se establece el título de Técnico Superior en Desarrollo de Aplicaciones Multiplataforma y se fijan sus enseñanzas mínimas, se incluye como anexo III el que figura como anexo XVII en el presente real decreto.
 </details>
@@ -82,13 +82,16 @@ Estas serían las diferencias encontradas entre los módulos de 2010 y los de 20
 | 0495. Formación en centros de trabajo.                          | ----                                                                                                     |
 | 0492. Proyecto de desarrollo de aplicaciones multiplataforma.   | 0492. Proyecto intermodular de desarrollo de aplicaciones multiplataforma                                |
 | 0000. Horas de libre configuración                              | Módulo profesional optativo                                                                              |
+
 <details>
-  <summary>Artículo 126 Punto 5 RD 659/2023</summary>
+  <summary>Artículo 126 Punto 5 RD 659/2023 (Pinchar para desplegar=</summary>
 
 > 5. Los módulos profesionales de Itinerario personal para la empleabilidad I y II serán objeto de convalidación entre ofertas formativas. 
 > \[...]
 > La convalidación será total en el caso de haber cursado los módulos profesionales extintos de Formación y Orientación Laboral y Empresa e Iniciativa Emprendedora en ciclos formativos.
 </details>
 
+#### ¿Cuál es la situación actual?
+
 Según mi interpretación, **asignaturas con el mismo código deberían poder ser convalidables entre la FP pre-2024 y post-2024** y, en el caso de **FOL y EIE, su convalidación queda garantizada explicitamente** en el RD 659/2023.
-Sin embargo, la nueva ley obligaría a tener que superar tres módulos más: **Sostenibilidad**, **Digitalización** e **Inglés**.
+Sin embargo, la nueva ley obligaría a tener que superar tres módulos más: **Sostenibilidad...**, **Digitalización...** e **Inglés...**.
