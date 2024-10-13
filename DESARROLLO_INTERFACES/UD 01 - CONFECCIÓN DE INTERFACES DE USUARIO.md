@@ -76,8 +76,9 @@ Tiene un área de trabajo donde:
 
 ### Swing
 
+- Herramienta de interfaces gráficas de usuario (GUI)
 - Segunda generación de librerías
-- Diseñada en Java puro, a partir de AWT
+- Diseñada en Java puro, a partir de AWT (Kit de GUI antiguo que sí depende de la plataforma)
 - Buscaba solucionar los problemas de AWT; tiene controles de bastantes funcionalidades
 - En Java 5 y Java 6 se convierte en framework de desarrollo de interfaces para nuevas aplicaciones. 
 - Tiene carencias como el filtrado y organización de datos en controles como tipo tabla y árbol (necesita hacerse manualmente)
@@ -273,9 +274,22 @@ public class Coche {
 
 ![](resources/ud01-6.png)
 
-## 8. Información sobre Java Swing
+## 8. Java Swing. El árbol del paquete `javax.swing`
 
 ![](resources/ud01-1.png)
+
+- Todos los componentes están incluidos en la clase `JComponents`
+
+Tipos de contenedores: 
+- `JFrame`
+- `JPanel`
+- `JDialog`
+Tipos de elementos:
+- `JButton`
+- ``JTextArea`
+- `JList`
+- `JCheckBox`
+- `JRadioButton`
 
 ![](resources/ud01-2.png)
 
