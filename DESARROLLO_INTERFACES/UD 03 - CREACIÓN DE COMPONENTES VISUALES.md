@@ -185,3 +185,436 @@ El diseño de componentes visuales como botones e iconos puede hacerse con herra
 - **Adobe Photoshop**: Editor de gráficos rasterizados. Usado en retoque de fotografías y gráficos y también para crearlos; en buena calidad. 
 - **Glade y Blend**: Glade permite desarrollar de forma rápìda interfaces de usuario almacenadas en XML. Blend permite crear interfaces de usuario en aplicaciones de escritorio Windows.
 
+
+## 7. Java Swing
+
+**Java Swing** es una biblioteca de interfaces gráficas de usuario (GUI) que forma parte de Java SE. Swing permite crear aplicaciones con interfaces gráficas ricas, basadas en componentes como botones, tablas, menús, etc. Todos los componentes Swing son parte del paquete `javax.swing` y extienden la clase `JComponent`.
+
+### 7.0 Almacenes de componentes
+
+### 7.1. Componentes y contenedores comunes en Java Swing
+
+**Contenedores**: Son almacenes de componentes
+- Superiores: `JApplet` (Deprecated, eliminado), `JFrame`, `JDialog`
+- Intermedios: `JPanel`, `JScrollPane`, `JSplitPane`, `JTabbedPane`, `JToolbar` y otros más especializados.
+-----
+
+- **JFrame**: Ventana principal de aplicación Swing. Contenedor apropiado para todos los demás objetos.
+
+- **JPanel**: Panel de contenedores para agrupar otros componentes (siempre recomendable que el `JFrame` tenga un `JPanel` encima). Componentes que permite desplegar textos o mensajes estáticos. 
+
+- **JLabel**: Muestra texto o imágenes
+
+- **JTextField**: Campo de texto de una sola línea Componente que permite capturar datos y/o desplegar datos o información.
+
+- **JTextArea**: Campo de texto de varias líneas
+
+- **JCheckBox**: Casilla de verificación 
+
+- **JButton**: Botón. Permite controlar o dirigir conductas y codigos de los demás elementos de la aplicación.
+
+- **JRadioButton**  y **JRadioGroup**: Botones de opción 
+
+- **JSlider**: Seleccionar dato numérico de algún rango determinado
+
+- **JTable**: Mostrar datos en formato de tabla
+
+- **JComboBox**: Caja de selección 
+
+- **JDialog**: Puede ser -según su tercer parámetro- modal (bloquea interacción con ventana principal) o no modal.
+
+- **JOptionPane**: Forma más directa de mostrar mensajes simples, pedir entradas o confirmaciones sin necesidad de `JDialog
+
+- *JMenuBar*. Es la barra de menú principal. Una barra horizontal alargada en la que se colocarán las distintas opciones. Si miras en tu navegador, arriba, verás una barra de estas con opciones como "Archivo", "Editar", etc.
+
+- **JMenu**. Es una de las cosas que se pueden añadir a un `JMenuBar` o a otro `JMenu`. Cuando añadimos uno de estos, tendremos un algo que al pinchar despliega un nuevo menú. Si en tu navegador, arriba donde pone "Archivo" pinchas con el ratón, verás que se despliega un menú con más opciones como "Abrir", "Guardar como", etc. Puede haber varios `JMenu` uno dentro de otro
+
+- **JMenuItem**.  Es el que cuando lo pinchas hace algo útil, como "guardar como", "abrir", etc.
+
+- **JSeparator**. Este sólo sirve para poner una rayita y separar varios JMenuItem. Por ejemplo, dentro de "Editar", las opciones "Copiar", "Cortar" y "Pegar" suelen
+estar separadas con rayitas de otras opciones en el mismo menú.
+
+```java
+JFrame frame = new JFrame("Mi Ventana");
+frame.setSize(400, 300); // Tamaño de la ventana en pixeles ancho x alto
+frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Accion que debe realizarse al cerrar la ventana
+
+/* Otras opciones
+- JFrame.HIDE_ON_CLOSE. Se oculta pero se sigue ejecutando en segundo plano
+- JFrame.DO_NOTHING_ON_CLOSE. No hace nada. Se puede controlar manualmente lo que sucede
+
+    // Agregar un listener para detectar el cierre de la ventana
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                // Mostrar un mensaje de confirmación cuando el usuario intente cerrar
+                int response = JOptionPane.showConfirmDialog(null, 
+                        "¿Estás seguro de que deseas salir?", "Confirmar Salida", 
+                        JOptionPane.YES_NO_OPTION);
+                
+                // Si el usuario elige "Sí", cerrar la ventana, si elige "No", no hacer nada
+                if (response == JOptionPane.YES_OPTION) {
+                    System.exit(0);  // Terminar la aplicación
+                }
+            }
+        });
+
+- JFrame.DISPOSE_ON_CLOSE. Ventana se destruye pero el proceso no necessariamente termina
+
+    public static void main(String[] args) {
+        // Crear y mostrar la ventana
+        DisposeOnCloseExample ventana = new DisposeOnCloseExample();
+        ventana.setVisible(true);
+        
+        // Imprimir un mensaje indicando que la aplicación sigue ejecutándose
+        System.out.println("La aplicación sigue en ejecución...");
+    }
+
+*/
+frame.setLocationRelativeTo(null) // Se centra la ventana con respecto al componente que se indique. En este caso no se indica nada, se queda en el centro de la pnatalla.
+frame.setVisible(true); // Hace visible el JFrame
+
+JPanel panel = new JPanel();
+frame.add(panel);
+
+JButton button = new JButton("Haz clic");
+panel.add(button);
+
+JLabel label = new JLabel("Este es un texto");
+panel.add(label);
+
+JTextField textField = new JTextField(20);
+panel.add(textField);
+
+JTextArea textArea = new JTextArea(5, 20);
+panel.add(textArea);
+
+JCheckBox checkBox = new JCheckBox("Aceptar términos");
+panel.add(checkBox);
+
+JRadioButton radioButton1 = new JRadioButton("Opción 1");
+JRadioButton radioButton2 = new JRadioButton("Opción 2");
+ButtonGroup group = new ButtonGroup();
+group.add(radioButton1);
+group.add(radioButton2);
+panel.add(radioButton1);
+panel.add(radioButton2);
+
+String[] columnNames = { "Nombre", "Edad" };
+Object[][] data = { { "Juan", 25 }, { "Ana", 30 } };
+JTable table = new JTable(data, columnNames);
+panel.add(new JScrollPane(table));  // Necesitamos un JScrollPane para que sea desplazable
+
+JComboBox<String> comboBox = new JComboBox<>(new String[] {"Opción 1", "Opción 2", "Opción 3"});
+panel.add(comboBox);
+
+
+JDialog dialog = new JDialog(frame, "Ventana Emergente", true); // El tercer parámetro true hace el dialog modal
+dialog.setSize(200, 150);
+// Establecer la ubicación del diálogo al centro de la ventana principal
+dialog.setLocationRelativeTo(frame);
+dialog.setVisible(true);
+
+// Mensaje simple en cuadro de diálogo
+JOptionPane.showMessageDialog(null, "¡Operación completada exitosamente!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+// Cuadro de confirmacion. Yes/No
+int respuesta = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que deseas eliminar este archivo?", "Confirmación", JOptionPane.YES_NO_OPTION);
+if (respuesta == JOptionPane.YES_OPTION) {
+    System.out.println("El archivo será eliminado.");
+} else {
+    System.out.println("Operación cancelada.");
+}
+
+// Cuadro de texto para ingresar un valor
+String nombre = JOptionPane.showInputDialog(null, "¿Cómo te llamas?", "Entrada de Usuario", JOptionPane.QUESTION_MESSAGE);
+System.out.println("El nombre ingresado es: " + nombre);
+
+// Cuadro mas flexible que permite personalizar botones
+Object[] opciones = {"Sí", "No", "Cancelar"};
+int seleccion = JOptionPane.showOptionDialog(null, "¿Quieres continuar?", "Pregunta", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
+if (seleccion == JOptionPane.YES_OPTION) {
+    System.out.println("El usuario seleccionó 'Sí'.");
+} else if (seleccion == JOptionPane.NO_OPTION) {
+    System.out.println("El usuario seleccionó 'No'.");
+} else {
+    System.out.println("El usuario canceló.");
+}
+
+// Y un JOptionPane con imagen...
+     // Cargar la imagen desde un archivo
+    ImageIcon icon = new ImageIcon("ruta/a/tu/imagen.jpg");
+
+    // Mostrar un cuadro de mensaje con la imagen
+    JOptionPane.showMessageDialog(
+    null,                      // Componente principal (null para centrar en la pantalla)
+            "¡Mensaje con imagen!",    // Mensaje de texto
+            "Título del Diálogo",      // Título del cuadro de diálogo
+            JOptionPane.INFORMATION_MESSAGE,  // Tipo de mensaje (puede ser información, advertencia, etc.)
+            icon                        // El icono (imagen) que se mostrará
+        );
+```
+
+En  `JOptionPane`
+
+`showMessageDialog(Component parentComponent, Object message, String title, int messageType, Icon icon)`
+
+Se tienen las siguientes constantes para describir el tipo de mensaje (`messageType`):
+- `JOptionPane.PLAIN_MESSAGE` --> -1
+- `JOptionPane.ERROR_MESSAGE` --> 0
+- `JOptionPane.INFORMATION_MESSAGE` --> 1
+- `JOptionPane.WARNING_MESSAGE` --> 2
+- `JOptionPane.QUESTION_MESSAGE` --> 3
+
+Y luego también está este otro método para los  cuadros con opción, debiendo elegir el tipo  de opción:
+
+`showOptionDialog(Component parentComponent, Object message, String title, int optionType, int messageType, Icon icon, Object[] options, Object initialValue)`
+
+Todos los contenedores llevan una disposición por defecto aunque existen otras ya incorporadas y que pueden definirse mediante el método `setLayout(...)` como: 
+- **FlowLayout**: Centrados comenzando a la izquierda hasta llenar la línea y pasar a la siguiente
+- **BorderLayout**: Componentes en lateral o en el centro indicando una dirección (eat, west, north, south, center)
+- **GridLayout**: Componentes en rejilla rectangular nxm
+- **BoxLayout**: De acuerdo con dos ejes: Vertical u horizontal
+- **GridBagLayout**: Requiere restricciones para ir modificando las dimensiones de cada componente conforme se va agregando. `GridBagContraints`
+
+Los layouts pueden ser combinados haciendo uso en los elementos que se necesiten (anidándolos)
+
+##### Métodos curiosos
+`setText(String txt)`: Cambiar el texto
+`setSize(int ancho, int alto)`: Cambiar el tamaño del objeto
+`setFont("Helvetica", 1, 20)`: Cambiar el tipo de fuente
+`setBackground(0,255,0)`: Cambiar el color de fondo del objeto
+`setForeground(0, 255,0)`: Cambiar el color del texto
+`setBorderPainted(Boolean b`: Resaltar borde del objeto. Solo para `JButton`, `JRadioButton`, `JCheckBox`
+`setLocation(nuevaX, nuevaY)`: Cambiar localización del objeto
+`setBounds(10,10,400,300)`: Definir tamaño y ubicación
+`setToolTipText(...)`: Que al pasar el ratón por encima aparezca texto
+`enabled(...)`: Si el componente está activado
+`setResizable(boolean)`: Si se puede cambiar de tamaño de un contenedor...
+`setUndecorated(boolean)`: Quitar el marco de un `Frame`
+### 7.2. Eventos y acciones en Java Swing
+
+**Evento** es una acción que ocurre en la interfaz de usuario como hacer click en un botón. **Todos** los eventos vienen de la clase `java.awt.event`
+Para responder a los eventos se usan **listeners**
+
+**Delegación de eventos**
+El modelo de Java se basa en la _delegación de eventos_: el evento se produce en un determinado componente, por ejemplo un botón. Dónde se produce el evento se denomina “fuente del evento”. A continuación el evento se transmite a un ”manejador de eventos” (`event listener`) que este asignado al componente en el que se produjo el evento. El objeto que escucha los eventos es el que se encargará de responder a ellos adecuadamente.
+
+Cuando un usuario interactúa con un interface de usuario, por ejemplo pulsando un botón, se genera un evento que tiene los siguientes elementos:
+1. Fuente del evento o **event source** .Es el componente swing que origina el
+evento.
+2. El escuchador o **event listener**. Es el encargado de atrapar o detectar que se
+ha producido un evento.
+3. El manejador del evento o **event handler** Es un método que recibe un objeto
+del tipo de evento que se ha producido, lo descifra, ejecuta el código asociado y
+devuelve el control al usuario.
+
+#### 7.2.1. Tipos de eventos
+
+![](resources/ud03-2.png)
+
+- **ActionEvent**: Al efectuar acción sobre componente (click, doble click...)
+- **AdjustmentEvent**:  Cuando se ajusta valor del componente
+- **ComponentEvent**: Cuando se redimensiona un componente
+- **ItemEvent**: Cuando se modifica el estado del elemento de un componente
+- **TextEvent**:  Cuando el contenido textual de un componente cambia
+- **FocusEvent**: Cuando cambia el foco de un componente
+- **InputEvent**: Cuando se realizan operaciones especiales con el teclado o ratón (ctrl + alt...)
+- **ContainerEvent**: Cuando se añaden o eliminan componentes en un contenedor
+- **WindowEvent**: Cuando se realiza acción sobre una ventana
+- **KeyEvent**: Cuando el usuario presiana una tecla
+- **MouseEvent**: Cuando el usuario realiza una acción con el ratón
+#### 7.2.2. Tipos de listeners u oyente de eventos
+
+Son interfaces de Java con declaraciones de métodos para capturar las situaciones que producen un evento. 
+
+Los más importantes son
+
+| Listener               | Métodos                                                                                                                   |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| **ActionListener**     | `actionPerformed`                                                                                                         |
+| **AdjustmentListener** | `adjustmentValueChanged`                                                                                                  |
+| **ComponentListener**  | `componentHidden`<br>`componentMoved`<br>`componentResized`<br>`componentShown`                                           |
+| **ContainerListener**  | `componentAdded`<br>`componentRemoved`                                                                                    |
+| **FocusListener**      | `focusGained`<br>`focusLost`                                                                                              |
+| **ItemListener**       | `itemStateChanged`                                                                                                        |
+| **KeyListener**        | `keyPressed`<br>`keyReleased`<br>`keyTyped`                                                                               |
+| **MouseListener**      | `mouseClicked`<br>`mouseEntered`<br>`mouseExited`<br>`mousePressed`<br>`mouseReleased`                                    |
+| **TextListener**       | `textValueChanged`                                                                                                        |
+| **WindowListener**     | `windowActivated`<br>`windowClosing`<br>`windowDeactivated`<br>`windowDeiconified`<br>`windowIconified`<br>`windowOpened` |
+Con `windowOpened` se puede conseguir que un método se ejecute nada más abrir laventana. Por ej. para cargar un `JComboBox` o un `JTable` añadiendo el  evento al `JFrame`
+
+
+- **ActionListener**: Escuchador de eventos de acción (hacer click en botón,...)
+
+```java
+button.addActionListener(new ActionListener() {
+    public void actionPerformed(ActionEvent e) {
+        // Código a ejecutar cuando se hace clic en el botón
+        System.out.println("¡Botón clickeado!");
+    }
+});
+
+
+// Java 8+
+button.addActionListener(e -> { System.out.println("¡Botón presionado!"); });
+
+
+// DISTINGUIR QUE BOTON CAUSA LA ACCION
+// Con event.getSourcE()
+public void actionPerformed (ActionEvent e)
+{
+	Object fuente = e.getSource();
+	if (fuente==boton1)
+		metodoParaBoton1();
+	else if (fuente==boton2)
+		metodoParaBoton2();
+	else if (fuente==boton3)
+		metodoParaBoton3();
+}
+
+
+// O usar un boton de cerrar
+jcerrar.addActionListener(new java.awt.event.ActionListener() {
+	public void actionPerformed(java.awt.event.ActionEvent e) {
+	System.exit(0); }
+});
+
+// O un boton sumar que rescata los valores almacenados en JTextField y los envia a una JLabel
+jButtonsumar.addActionListener(new java.awt.event.ActionListener() {
+public void actionPerformed(java.awt.event.ActionEvent e) {
+	int v1=Integer.parseInt(jTextFieldprimervalor.getText());
+	int v2=Integer.parseInt(jTtextFieldsegundovalor.getText());
+	int suma=v1+v2;
+	jLabel1resultado.setText(String.valueOf(suma));
+}
+});
+```
+
+
+- **MouseListener**: Escuchador de eventos de ratón
+
+```java
+button.addMouseListener(new MouseAdapter() {
+    public void mouseClicked(MouseEvent e) {
+        System.out.println("¡Hiciste clic en el botón!");
+    }
+});
+```
+
+- **KeyListener**: Escuchador de eventos de teclado (presionar, soltar teclas)
+
+```java
+
+panel.addKeyListener(new KeyAdapter() { 
+	// Inmediata
+	@Override
+	public void keyPressed(KeyEvent e) {
+	    int keyCode = e.getKeyCode(); // Obtiene el código de la tecla presionada
+	    System.out.println("Tecla presionada: " + KeyEvent.getKeyText(keyCode));
+	}
+	
+	// Tras soltar
+	@Override
+	public void keyReleased(KeyEvent e) {
+	    int keyCode = e.getKeyCode();
+	    System.out.println("Tecla soltada: " + KeyEvent.getKeyText(keyCode));
+	}
+	
+	// Se basa en el carácter real, no en el código de la tecla
+	@Override
+	public void keyTyped(KeyEvent e) {
+	    char c = e.getKeyChar(); // Obtiene el carácter que fue tipeado
+	    System.out.println("Carácter tipeado: " + c);
+	}
+}
+
+// Un KeyAdapter para controlar que solo se usen números
+myTextField.addKeyListener(new KeyAdapter(){
+@override
+public void keyTyped(keyEvent e){
+	char caracter=e.getKeyChar(); // declaramos un character que recoge la tecla pulsada
+	if(caracter<’0’ || carácter >’9’)
+		e.consume() // llamamos al método consume(), que no va a hacer eco de la tecla pulsada hasta que no sea un numero
+}
+});
+```
+
+#### 7.2.2. Y si fuese una imagen...
+
+```java
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class ImageWithLabelAndListener {
+    public static void main(String[] args) {
+        // Crear el JFrame principal
+        JFrame frame = new JFrame("Imagen con Listener en JLabel");
+        frame.setSize(400, 400);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Crear un JPanel para organizar los componentes
+        JPanel panel = new JPanel();
+
+        // Crear un ImageIcon con la imagen
+        ImageIcon imageIcon = new ImageIcon("ruta/a/tu/imagen.jpg");
+
+        // Crear un JLabel y asignar la imagen al JLabel
+        JLabel imageLabel = new JLabel(imageIcon);
+
+        // Agregar un MouseListener al JLabel
+        imageLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // Detectar el clic sobre la imagen
+                JOptionPane.showMessageDialog(null, "¡Imagen clickeada!");
+            }
+        });
+
+        // Agregar el JLabel al JPanel
+        panel.add(imageLabel);
+
+        // Agregar el JPanel al JFrame
+        frame.add(panel);
+
+        // Hacer visible el JFrame
+        frame.setVisible(true);
+    }
+}
+```
+
+#### 7.3 Uso visual (GUI Designer)
+
+#### En Netbeans 
+
+Haz clic derecho en el paquete donde deseas crear la clase y selecciona **"New"** > **"JFrame Form"**.
+
+#### En IntelliJ
+
+1. Habilitar el Diseñador de IU Archivo → Configuración → Complementos → UI Designer
+2. Habilitar generar Java clase Archivo → Configuración → Editor → Diseñador de GUI → cambiar Generar GUI en "código fuente Java"
+
+3. Vaya a la vista del proyecto y haga clic con el botón derecho en el nombre del paquete donde desea que se almacene la clase Java generada. En el menú contextual, elija Nuevo → Formulario de GUI y establezca la clase enlazada
+	En el diseñador, automáticamente colocará un Jpanel en la ventana. Elija Jpanel y primero configure el Administrador de diseño en GridLayoutManager (IntelliJ).
+	
+	Agregando componentes según sea necesario, asegúrese de dar algún valor al "nombre de campo". Este valor se convertirá en el nombre de este componente en la clase de formulario.
+	
+	Puede obtener una vista previa del formulario haciendo clic derecho y luego elegir la vista previa.
+	
+	Cuando haya terminado, cambie el administrador de diseño para Jpanel a "GridBagLayout".
+
+4. Haga clic en Build → Make Project para generar Java códigos fuente y almacenarlos en el enlace Java clase.
+
+Para poder ejecutar nuestra aplicación, necesitamos hacer el método main y
+como mínimo estas sentencias:
+
+```xml
+JFrame frame = new JFrame();
+// El marco necesita un panel donde estén los componentes.
+// Necesario: Dar nombre a componente JPanel en el UI Designer. Crear getter en formulario que lo devuelva. 
+frame.setContentPane(new nombreClase.getPanel());
+frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.pack();
+frame.setVisible(true);
+```
