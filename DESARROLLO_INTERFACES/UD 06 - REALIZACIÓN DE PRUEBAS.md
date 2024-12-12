@@ -95,17 +95,106 @@ Buscan, como se ha comentado, averiguar cuales son los elementos críticos del s
 	
 ## 7. Pruebas de simulaciones
 
+Permiten **diseñar y ejecutar las pruebas de carga** para comprobar cómo va a responder el sistema ante las condiciones de trabajo. 
 
+Pruebas de humo, tensión de carga, rendimiento de la aplicación y diseño de la capacidad.
+
+Modelos que llevan a cabo la simulación:
+- **Constante**: Misma carga de usuario en determinado espacio de tiempo
+- **Paso**: Al aumentar valores de carga se supervisa la aplicación. Permite conocer los umbrales en los que los tiempos de respuesta de la aplicación se encuentran dentro de los parámetros.
+- **Basado en objetivos**: Parecida a la anterior aunque se puede seleccionar cuándo se va a detener el aumento de la carga. 
 ## 8. Pruebas de aceptación
 
-
+Son realizadas por el usuario, que puede ser ayudado por las personas que forman parte del equipo de desarrollo. 
+Se caracterizan por:
+ - El usuario participa de forma activa
+ - Demuestran si los requisitos de aceptación no se cumplen
+ - Se realizan en la etapa final del desarrollo de software
 ## 9. Pruebas alfa y beta
 
+El desarrollador pierde perspectiva sobre cómo el usuario se desenvuelve en la aplicación. 
+Por eso existen las pruebas _alfa_ y _beta_
 
-## 10 Pruebas manuales y automáticas
+- Pruebas alfa: Desarrollador con grupo de usuarios finales en entrono controlado y anotando los problemas que se presenten
+- Pruebas beta: Usuario sin supervisor del desarrollador en un entrono no controlado. El cliente notifica los errores para transmitirlos al equipo.  
+## 10 Pruebas manuales y automáticas. Los cuatro cuadrantes de pruebas
 
+Es necesario realizar un **plan de pruebas** y decidir si las pruebas serán:
+- **Automáticas**: Usuario no interviene en el proceso. Es repetible y portable. Se pueden sustituir las horas que emplearía el usuario y su coste por el tiempo de ejecución del equipo. En el punto negativo el control de la prueba se deja a una máquina, existiendo tasa de error. (Ej.: Selenium)
+- **Manuales**: Usuario es el protagonista del plan. Permite tener un control exhaustivo del plan de prueba gracias al usuario pero con más gastos. 
 
+Para pruebas automatizadas de software hay diversas herramientas según la utilidad:
+- Seguimiento de defectos: Bugzilla y Bugrat
+- Evaluación de pruebas de carga y rendimiento: Jmeter
+- Gestión y manejo de pruebas: fth, Qatrag
+- Pruebas unitarias: JUnit
+
+Existen diferentes vertientes y opiniones sobre la materia. 
+Según el libro Agile Testing, se recomienda la elección siguiendo el siguiente cuadro:
+
+![](resources/ud06-1.png)
+
+- Q1: Recomendado **pruebas automáticas.** Unitarias y recursos del sistema.
+- Q2: A elección entre **pruebas manuales y automáticas.** Aspectos funcionales, de capacidad y rendimiento.
+- Q3: Pruebas **manuales**: Usabilidad y alfa y beta
+- Q4: Pruebas de verificación mediante **herramientas** destinadas para tal fin. 
+
+----------
+
+Viendo esta basura de libro, se lo pregunté a ChatGPT
+
+Los **Cuatro Cuadrantes de Pruebas Ágiles** son un modelo conceptual que ayuda a las organizaciones a planificar y ejecutar pruebas en un entorno ágil. Este marco fue introducido por Lisa Crispin y Janet Gregory en su libro _Agile Testing_. Los cuadrantes dividen las pruebas en cuatro áreas principales, basándose en el propósito de la prueba, el enfoque y quién la realiza.
+
+### Descripción de los Cuadrantes:
+
+**Cuadrante 1 (Q1):**  
+    **Objetivo:** Soporte al desarrollo.  
+    **Tipo de pruebas:** Pruebas automatizadas de nivel técnico. 
+    **Ejemplos:**
+    - Pruebas unitarias.
+    - Pruebas de integración.
+    - Verificación de API y recursos del sistema.  
+        Estas pruebas son diseñadas para garantizar que cada componente del software funcione correctamente. Suelen ser rápidas y ejecutadas continuamente durante el desarrollo.
+
+**Cuadrante 2 (Q2):**  
+    **Objetivo:** Validación de funcionalidades.  
+    **Tipo de pruebas:** Pruebas funcionales, automatizadas o manuales.  
+    **Ejemplos:**    
+    - Pruebas de aceptación.
+    - Pruebas exploratorias.
+    - Pruebas de rendimiento básico.  
+        Estas pruebas aseguran que las características entregadas cumplen con las expectativas del cliente y con los requisitos definidos.
+    
+1. **Cuadrante 3 (Q3):**  
+    **Objetivo:** Validación enfocada en el cliente.  
+    **Tipo de pruebas:** Pruebas manuales, centradas en la experiencia del usuario.  
+    **Ejemplos:**
+    - Pruebas de usabilidad.
+    - Pruebas alfa y beta.  
+        Este cuadrante aborda aspectos subjetivos, como la facilidad de uso y la satisfacción del cliente con el producto.
+
+1. **Cuadrante 4 (Q4):**  
+    **Objetivo:** Verificación no funcional.  
+    **Tipo de pruebas:** Automatizadas o mediante herramientas especializadas.  
+    **Ejemplos:**
+    - Pruebas de carga.
+    - Pruebas de estrés.
+    - Pruebas de seguridad.  
+        Este cuadrante se enfoca en atributos de calidad del sistema, como rendimiento, escalabilidad y seguridad.
+
+---
+##### Propósito del Modelo:
+
+- **Organización de las pruebas:** Ayuda a los equipos a identificar qué pruebas deben realizarse, por qué y cómo.
+- **Equilibrio entre pruebas:** Se asegura que el producto sea funcional, técnicamente sólido y satisfactorio para los usuarios.
+- **Colaboración:** Promueve la colaboración entre desarrolladores, testers y stakeholders al planificar estrategias de prueba.
+
+Los Cuatro Cuadrantes no son rígidos, y las pruebas pueden adaptarse según las necesidades específicas de cada proyecto.
 ## 11. Herramientas de software para la realización de pruebas
 
-
+**Pruebas en Visual Studio**
+En Visual Studio se siguen los pasos siguientes:
+- Se crea un proyecto partiendo de las plantillas de test disponibles
+- Se crea un archivo de pruebas automatizando las opciones de testing. Los archivos de pruebas pueden tener extensión: `.runsettings`, `.testsettings`, `.testrunconfig`, `.vsmdi`
+- Estructura de un archivo de pruebas: Se selecciona un tipo de lenguaje para su representación como puede ser XML. 
 
