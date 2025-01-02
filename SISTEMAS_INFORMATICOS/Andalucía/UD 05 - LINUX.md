@@ -1383,7 +1383,7 @@ Cada regla tiene información específica sobre direcciones de origen y destino,
 Cada paquete llega a la parte superior de la pila que le corresponda y se le van aplicando reglas de esa pila secuencialmente hasta que exista una coincidencia. Momento en el cual se acepta, descarta, rechaza o reenvía.
 Si no coincide con ninguna de las reglas, pasa a directiva predeterminada que normalmente descarta el paquete. 
 
-![](resources/ud05-1.png)
+![](SISTEMAS_INFORMATICOS/Andalucía/resources/ud05-1.png)
 
 Entre los tipos de cortafuegos o firewall podríamos mencionar:
 - **Filtrado de paquetes stateless**: Se examina encabezados de paquete para permitir o denegar el tráfico. Sin relación con flujos de tráfico precedentes. 

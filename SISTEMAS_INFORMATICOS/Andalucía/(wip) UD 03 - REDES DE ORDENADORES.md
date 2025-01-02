@@ -72,7 +72,7 @@ Una buena planificación de la red reduce costes de implantación y mantenimient
 	
 4. Según la **topología**, es decir, la cadena de comunicación usada por los nodos que forman una red para comunicarse, usualmente desde el punto de vista físico, aunque también se puede referir al lógico.
 
-![](ud03-1.png)
+![](SISTEMAS_INFORMATICOS/Andalucía/resources/ud03-1.png)
 
 Al **nivel físico**, forma en la que se conectan los ordenadores en una red,  pueden citarse topologías en bus, en anillo, en estrella, en árbol o jerárquica, en malla, doble anillo, mixta, totalmente conexa.
 
@@ -228,7 +228,7 @@ Está formada por cuatro niveles:
 
 En algunos casos la capa de acceso a red se divide en capa de hardware o física y capa de enlace de datos (en este caso la arquitectura TCP/IP tendría cinco niveles en vez de cuatro)
 
-![](resources/ud03-2.png)
+![](SISTEMAS_INFORMATICOS/Andalucía/resources/ud03-2.png)
 ### 2.5. Nivel de acceso a red
 
 **Nivel de acceso a red**: Convertir información suministrada por el nivel de red en señales que puedan ser transmitidas por el medio físico y convertir señales que llegan por el medio físico en paquetes de información manejables por el nivel de red.
@@ -247,7 +247,7 @@ El protocolo que lo gestiona es el de resolución de direcciones (protocolo ARP)
 
 El formato de la unidad de información en este nivel es la **TRAMA** 
 
-![](resources/ud03-3.png)
+![](SISTEMAS_INFORMATICOS/Andalucía/resources/ud03-3.png)
 
 En la trama tenemos los datos que recibimos de capas superiores, añadiéndole una cabecera con las direcciones MAC de origen y destino, junto con el tipo de trama Ethernet que se utiliza y una cola donde se agrega información para el control de errores.
 ### 2.6. Nivel de internet o de red
