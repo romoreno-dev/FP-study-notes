@@ -942,3 +942,181 @@ Esto es posible:
 Es ideal respaldarlos cuando veamos que todos funciona correctamente. Así, si es necesario reinstalar el sistema operativo, podrán restaurarse sin tener que buscarlos y descargarlos individualmente. Esto puede realizarse con aplicaciones como Double Driver. 
 
 
+## 19. Aplicaciones informáticas de propósito general (Anexo 5)
+
+Las **aplicaciones informáticas de propósito general** son programas de software diseñados para realizar una amplia variedad de tareas y funciones no limitadas a un uso específico.
+Ej.: Procesadores de texto, hojas de cálculo, navegadores web, programas de presentación, sistemas de gestión de bases de datos, software de correo electrónico.
+
+- Están destinadas a ser usadas por una amplia gama de usuarios
+- Pueden adaptarse a múltiples contextos
+- Son versátiles y ofrecen diversas funcionalidades en ámbitos personales y profesionales
+
+### ### 19.1. Concepto de software y puntos clave de este
+
+- **Software** es el conjunto de instrucciones, datos o programas que se utilizan para operar ordenadores y ejecutar tareas específicas. Es intangible y da la funcionalidad necesaria para que el hardware realice actividades concretas.
+- **Hardware** son los componentes físicos de un sistema informático.
+
+#### 19.1.1. Puntos clave
+- **Instrucciones y datos**: Códigos escritos en diversos lenguajes de programación que indican al ordenador cómo realizar tareas específicas.
+- **Intangibilidad**: Se almacena en dispositivos de almacenamiento y se carga en memoria pero no puede "tocarse"
+- **Funcionalidad**: Permite a los usuarios realizar gran variedad de tareas
+- **Actualización y mantenimiento**: Debe ser actualizado y mejorado con nuevas funcionalidades (evolutivo), mejora del rendimiento y corrigen errores.
+- **Licencias y derechos**: El uso del software está regulado por licencias que determinan cómo y por quién puede ser utilizado.
+- **Interacción con el hardware**: Actúa de intermediario entre el usuario y el hardware, traduciendo las instrucciones del usuario en acciones que el hardware puede ejecutar. 
+
+#### 19.1.2. Tipos de software
+- **Software de sistema**: Sistemas operativos, controladores de dispositivos y utilizados que gestionan recursos del hardware
+- **Software de aplicación**: Programas diseñados para realizar tareas específicas para el usuario (procesadores de textos, hoja de cálculo, navegadores web)
+- **Software de desarrollo**: Herramientas y entornos utilizados para crear, depurar y mantener otras aplicaciones
+
+### 19.2. Aplicaciones ofimáticas y trabajo colaborativo
+
+Las **aplicaciones ofimáticas** son programas diseñados para realizar tareas de oficina (procesamiento de textos, hojas de cálculo, gestión de bases de datos). 
+
+ Las aplicaciones de **trabajo colaborativo** permiten la colaboración en tiempo real entre múltiples usuarios permitiéndoles trabajar juntos en los mismos recursos, proyectos y documentos. 
+
+#### 19.2.1. Componentes de aplicaciones ofimáticas
+
+**Procesador de textos**: Crea, editar y formatear documentos de texto. Permiten edición y formato avanzado, revisión ortográfica, colaboración en tiempo real y comentarios. Ej.: Microsoft Word, Google Docs, LibreOffice Writer.
+
+**Hojas de cálculo**: Gestión y análisis de datos numéricos en formato tabular. Tienen funciones matemáticas y estadísticas, creación de gráficos y tablas dinámicas, colaboración en tiempo real y control de versiones. Ej.: Microsoft Excel, Google sheets, LibreOffice Calc.
+
+**Presentaciones**: Crear presentaciones visuales compuestas de diapositivas. Variedad de plantillas y temas, herramientas de animación y transición, colaboración y comentarios en tiempo real. Ej.: Microsoft PowerPoint, Google Slides, LibreOffice Impress.
+
+**Gestión de bases de datos**: Software para la creación, gestión y manipulación de bases de datos. Creación de tablas y relaciones, consultas y generación de informes, interfaces de usuario personalizables. Ej.: Microsoft Access, LibreOffice Base, FileMaker.
+
+#### 19.2.2. Componentes de aplicaciones de trabajo colaborativo
+
+**Sistemas de gestión de proyectos**: Diseñadas para planificar, organizar y gestionar proyectos. Tienen tareas y subtareas asignables, diagramas de Gantt, integración con otras herramientas. Ej.: Asana, Trello, Microsoft Project.
+
+**Plataformas de comunicación**: Para comunicarse en tiempo real con chat en tiempo real y videoconferencias, canales temáticos, integración con otras herramientas. Ej.: Slack, Microsoft Teams, Zoom
+
+**Sistemas de almacenamiento en la nube**: Permiten almacenar y compartir archivos en línea. Almacenamiento seguro y accesible desde cualquier dispositivo. Control de versiones y recuperación de archivos. Compartición de archivos y carpetas con permisos configurables. Ej.: Google Drive, Dropbox, OneDrive. 
+
+#### 19.2.3. Importancia
+
+- **Mejora de la productividad**: Automatización de tareas repetitivas. Reducción del tiempo dedicado a tareas administrativas, centrándose en tareas estratégicas
+- **Flexibilidad y accesibilidad**: Acceso a documentos desde cualquier lugar con conexión a internet. Facilidad para trabajo remoto y colaboración entre equipos distribuidos geográficamente.
+- **Colaboración en tiempo real**: Capacidad para que múltiples usuarios trabajen en el mismo documento. Mejora la comunicación, reduce errores y duplicación.
+- **Control y seguridad**: Gestionar el acceso y las versiones de los documentos. Protección de la información sensible y control sobre quien puede ver o editar documentos. 
+
+#### 19.2.4. Ejemplos de integración y uso
+
+**1. Proyecto de marketing:**
+- **Aplicaciones utilizadas**: Google Docs para la creación de planes
+de marketing, Trello para la gestión de tareas, Slack para la
+comunicación del equipo.   
+- **Beneficios**: coordinación eficiente, fácil seguimiento del progreso
+y colaboración fluida.
+
+**2. Análisis de datos financieros:**
+- **Aplicaciones utilizadas**: Microsoft Excel para el análisis de datos,
+Microsoft Teams para la comunicación, OneDrive para el
+almacenamiento seguro de archivos.
+- **Beneficios**: análisis preciso y compartición segura de informes
+financieros.
+
+**3. Desarrollo de producto:**
+- **Aplicaciones utilizadas**: Asana para la gestión de proyectos,
+Zoom para reuniones de equipo, Google Drive para el almacenamiento
+y colaboración en documentos técnicos.
+- **Beneficios**: gestión efectiva del proyecto, reuniones regulares
+para alineación del equipo y colaboración en documentos
+técnicos.
+
+### 19.3. Aplicaciones de seguridad en el equipo
+
+Las **aplicaciones de seguridad en el equipo** son esenciales para proteger dispositivos y datos de los usuarios contra amenazas cibernéticas. 
+
+#### 19.3.1. Tipos
+
+**Antivirus***: Diseñado para detectar, bloquear y eliminar virus y otros tipos de malware. Caracterizado por el escaneo en tiempo real y bajo demanda, actualizaciones automáticas de las definiciones de virus y protección contra el malware (troyanos, gusanos, spyware). Ej.: Norton Antivirus, McAfee, Bitdefender
+
+
+**Antimalware**: Especializadas en detectar y eliminar malware que va más allá de virus tradicionales (spyware, adware, ransomware). Escanea y elimina el software malicioso, protege en tiempo real contra amenazadas, remedia infecciones, restaura sistemas. Ej.: Malwarebytes, Spybot Search & Destroy, Emsisoft Anti-Malware. 
+
+**Firewalls**: Software (o hardware) que monitorea y controla el tráfico de red entrante y saliente basado en reglas de seguridad predeterminadas. Filtra paquetes y monitorea tráfico, protege contra intrusiones, permite configurar reglas personalizadas de acceso. Ej.: ZoneAlarm, Windows Defender Firewall, pfSense (hardware)
+
+**Software de cifrado**: Codifica datos para que solo personas autorizadas accedan a ellos. Cifra archivos y discos duros completos, genera y gestiona claves de cifrado y protege datos en tránsito y en reposo. Ej.: VeraCrypt, BitLocker, AxCrypt.
+
+**Administradores de contraseñas**: Ayuda a generar, almacenar y gestionar contraseñas de forma segura. Genera contraseñas fuertes, almacena credenciales de forma cifrada y tiene funcionalidad de autocompletado en sitios webs y aplicaciones. Ej.: LastPass, 1Password, KeePass.
+
+**Software de seguridad en la nube**: Protegen datos almacenados en servicios de nube contra accesos no autorizados y amenazas cibernéticas. Cumple la normativa de seguridad y privacidad. Ej.: Zscaler, McAfee MVISION Cloud, Microsoft Cloud App Security. 
+
+#### 19.3.2. Importancia
+
+- **Protección contra amenazas cibernéticas**: Fundamentales para proteger los equipos contra las amenazas, protegiendo la información personal y corporativa de accesos no autorizados y robos.
+- **Mantenimiento de la privacidad**: Protege la información personal y corporativa garantizando la privacidad de los datos.
+- **Mejora de la confiabilidad del sistema**: Mejora la estabilidad y el rendimiento general del sistema evitando interrupciones por infecciones y mejorando la vida útil del hardware
+- **Facilitación del cumplimiento normativo**: Cumple las normativas requeridas en muchas industrias (GDPR, HIPAA, PCI DSS) y evita sanciones legales
+
+#### 19.3.3. Ejemplos de integración y uso
+
+**1. Pequeñas empresas:**
+- **Configuración**: implementación de un paquete de seguridad
+completo que incluye antivirus, firewall y software de cifrado.
+- **Beneficios**: protección integral contra amenazas cibernéticas,
+mantenimiento de la privacidad de los datos del cliente y cumplimiento
+de normativas.
+
+**2. Usuarios domésticos:**
+- **Configuración**: uso de un antivirus y un administrador de
+contraseñas para proteger el ordenador personal y gestionar
+credenciales de manera segura.
+- **Beneficios**: protección contra malware y phishing, y mayor seguridad
+en la gestión de contraseñas.
+
+**3. Grandes corporaciones:**
+- **Configuración**: implementación de soluciones avanzadas de
+seguridad en la nube, software de cifrado y administración centralizada
+de seguridad.
+93
+- **Beneficios**: protección escalable y robusta para datos y
+aplicaciones en la nube, y cumplimiento con normativas internacionales
+de seguridad.
+
+### 19.4. Aplicaciones de transferencia de ficheros
+
+Las **aplicaciones de transferencia de ficheros** permiten a los usuarios mover datos entre diferentes sistemas de forma eficiente y segura. Así se pueden compartir documentos, realizar copias de seguridad, sincronizar archivos,...
+#### 19.4.1. Tipos
+
+- **Protocolo de transferencia de archivos (FTP)**: 
+- **Protocolo seguro de transferencia de archivos (SFTP)**: 
+- **Transferencia de archivos en la nube**: 
+- **Transferencia de archivos mediante HTTP/HTTPS**: 
+- **Transferencia de archivos entre dispositivos**: 
+
+#### 19.4.2. Características
+
+
+#### 19.4.3. Ejemplos
+
+
+## 19.5. Aplicaciones de recuperación de datos
+
+
+#### 19.5.1. Tipos
+
+
+#### 19.5.2. Importancia
+
+
+#### 19.5.3. Ejemplos
+
+
+
+## 19.6. Aplicaciones de mantenimiento del sistema
+
+
+#### 19.6.1. Tipos
+
+
+#### 19.6.2. Importancia
+
+
+#### 19.6.3. Ejemplos
+
+
+
+
+
