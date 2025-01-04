@@ -1078,45 +1078,122 @@ de seguridad.
 ### 19.4. Aplicaciones de transferencia de ficheros
 
 Las **aplicaciones de transferencia de ficheros** permiten a los usuarios mover datos entre diferentes sistemas de forma eficiente y segura. Así se pueden compartir documentos, realizar copias de seguridad, sincronizar archivos,...
-#### 19.4.1. Tipos
+#### 19.4.1. Tipos de transferencia
 
-- **Protocolo de transferencia de archivos (FTP)**: 
-- **Protocolo seguro de transferencia de archivos (SFTP)**: 
-- **Transferencia de archivos en la nube**: 
-- **Transferencia de archivos mediante HTTP/HTTPS**: 
-- **Transferencia de archivos entre dispositivos**: 
+- **Protocolo de transferencia de archivos (FTP)**: Es el protocolo estándar para transferir archivos entre cliente y servidor en red TCP/IP. Tiene soporte para la autenticación de usuarios y opciones de configuración para diferentes niveles de acceso y permisos. Ej.: FileZilla, WinSCP, Cyberduck.
+- **Protocolo seguro de transferencia de archivos (SFTP)**: Es una extensión del protocolo SSH que da una transferencia de archivos segura. Se caracteriza por encriptación de datos en tránsito, autenticación basada en SSH y soporte para comandos de manipulación de archivos (crear, eliminar, renombrar). Ej.: OpenSSH SFTP, Bitvise SSH Client, SolarWinds SFTP/SCP Server
+- **Transferencia de archivos en la nube**: Son servicios que permiten la transferencia y la sincronización de archivos a través de Internet utilizando almacenamiento en la nube. Se caracteriza por almacenamiento de la sincronización de archivos en múltiples dispositivos, compartición de archivos mediante enlaces seguros y opciones de colaboración en tiempo real. Ej. Google Drive, Dropbox, Microsoft OneDrive.
+- **Transferencia de archivos mediante HTTP/HTTPS**: Transferencia de archivos usando protocolos web estándar, facilitando el acceso a través de navegadores. Se caracterizan por soporte para encriptación mediante HTTP, transferencia de archivos mediante interfaz web, opciones de autenticación y permisos de acceso. Ej.: OwnCloud, Nextcloud, Highttall.
+- **Transferencia de archivos entre dispositivos**: Herramientas que permiten la transferencia de archivos directamente entre dispositivos mediante tecnologías como Bluetooth, Wi-Fi Direct o aplicaciones específicas. Se caracterizan por transferencia rápida de archivos sin usar internet, compatibilidad con múltiples dispositivos, interfaces fáciles de usar para la transferencia directa. Ej.: AirDrop (Apple), SHAREiot, Zapya. 
 
 #### 19.4.2. Características
 
-
+- **Seguridad**: Busca garantizar la seguridad de los datos durante la transferencia mediante: Encriptación de datos en tránsito (SFTP, HTTPS), Autenticación de usuarios para prevenir accesos no autorizados, Integridad de los datos asegurada mediante algoritmos de hash y sumas de verificación.
+- **Velocidad y eficiencia:** Busca minimizar el tiempo de espera en la transferencia de archivos. Ello motiva: La compresión de archivos para reducir el tamaño de los datos transferidos, el soporte para transferir simultáneamente múltiples archivos, la optimización de la transferencia según el año de banda disponible.
+- **Facilidad de uso:** Interfaces intuitivas que faciliten la transferencia de archivos para todo tipo de usuarios. Se caracteriza por: Permitir arrastrar y soltar para transferir archivos, interfaces gráficas de usuario (GUI) amigables, asistentes de configuración y transferencia.
+- **Compatibilidad y flexibilidad:** Soporte para múltiples sistemas operativos y tipos de archivos. Se caracterizan por la compatibilidad con Windows, Linux, macOS y dispositivos móviles, soporte para una amplia variedad de formatos, opciones de configuración para adaptarse a diferentes entornos de red y requisitos de usuario.
+- **Colaboración y compartición:** Funciones que faciliten la colaboración en archivos compartidos. Se caracterizan por: Acceso multiusuario con permisos configurables, historial de versiones y auditoría de cambios, la integración con otras herramientas de colaboración (Google Workspace, Microsoft 365)
 #### 19.4.3. Ejemplos
 
+Debe implementarse la aplicación adecuada según las necesidades específicas del usuario o de la organización para maximizar la eficiencia y la seguridad en la transferencia de archivos.
+
+**FileZilla**
+Cliente FTP gratuito y de código abierto. Soporta FTP, SFTP, FTPS. Transferencia segura, interfaz intuitiva, herramientas de administración de sitios y colas de transferencia. 
+
+**Google Drive**
+Servicio de almacenamiento en la nube que permite almacenar, compartir y colaborar. Tiene sincronización en múltiples dispositivos, colaboración en tiempo real, compartición de archivos con enlaces seguros.
+
+**WinSCP**
+Cliente SFTP y FTP gratuito para Windows. Se caracteriza por: Transferencia de archivos segura mediante SFTP y SCP. Soporte para sincronización de directorios. Interfaz gráfica y de línea de comandos.
+
+**Dropbox**
+Servicio de almacenamiento en la nube que facilita la sincronización y compartición de archivos. Sincronización automática de archivos, opciones de compartición y control de versiones, integración con herramientas de productividad. 
+
+**SHAREIt**
+Permite la transferencia rápida de archivos entre dispositivos mediante Wi-Fi Direct. No necesita conexión a internet, tiene soporte para múltiples plataformas y permite la compartición de archivos de forma eficiente. 
 
 ## 19.5. Aplicaciones de recuperación de datos
 
+Las **aplicaciones de recuperación de datos** son herramientas diseñadas para recuperar archivos y datos que se han perdido, eliminado o dañado debido a diversas causas (fallos del sistema, errores humanos, malware, daños físicos...). Son esenciales para minimizar la pérdida de datos críticos, garantizar la continuidad del negocio y la seguridad de la información personal.
 
-#### 19.5.1. Tipos
+#### 19.5.1. Funciones y tipos de recuperación de datos
 
+- **Recuperación de archivos eliminados**: Recuperación de archivos que han sido eliminados accidentalmente tras haber sido vaciados de la papelera. No se borran inmediatamente sino que el espacio se marca como disponible para sobrescribir. Las herramientas de recuperación pueden buscar estos archivos y restaurarlos siempre que no hayan sido sobrescritos.
+- **Recuperación de particiones perdidas o dañadas**: Pueden escanear el disco para reconstruir tablas de particiones eliminadas, formateadas o dañadas.
+- **Recuperación de discos dañados**: Usan técnicas avanzadas para acceder a los datoa en sectores dañados y reconstruir archivos legibles en discos duros que han sufrido daños físicos o lógicos.
+- **Recuperación de datos de dispositivos externos**: Similar a la recuperación de discos duros internos, también pueden recuperar datos en dispositivos de almacenamiento externo con técnicas adaptadas a este tipo de dispositivos. 
+- **Recuperación de datos en RAID**: Recuperación de datos en configuraciones RAID (_Redundant Array of Independent Disk_) que han fallado. Analizan la configuración RAID y reconstruyen los datos distribuidos a través de múltiples discos. 
 
-#### 19.5.2. Importancia
+#### 19.5.2. Características clave de este tipo de aplicaciones
 
+- **Interfaz intuitiva**: Facilidad de uso para usuarios no técnicos con asistentes paso a paso y visualización previa de los archivos recuperables.
+- **Compatibilidad con múltiples sistemas de archivos**: Compatibilidad con amplia variedad de sistemas como NTFS, FAT32, exFAT, HF5+, EXT3/EXT4 y capacidad para manejar particiones y discos de diferentes tamaños. 
+- **Opciones de escaneo personalizadas**: Modos de escaneo rápido para recuperación inmediata de archivos o profundo para búsqueda exhaustiva de archivos antiguos o fragmentados.
+- **Capacidad de recuperación de datos específicos**: Recuperación selectiva de datos específicos de archivos (fotos, vídeos, documentos, correos electrónicos). Búsqueda por nombre de archivo, fecha de modificación, tipo de archivos.
+- **Soporte para dispositivos de almacenamiento variados**: Capaces de recuperar datos de una variedad de dispositivos. Se caracteriza por soporte para discos duros internos y externos, SSDs, unidades USB, tarjetas SD...
 
-#### 19.5.3. Ejemplos
+#### 19.5.3. Importancia
 
+- **Protección contra pérdida de datos**: Minimizar el impacto de pérdida de datos en operaciones comerciales y personales.
+- **Recuperación rápida y eficiente**: Permitir la recuperación rápida sin necesidad de conocimientos técnicos avanzados, ahorrando tiempo y recursos.
+- **Soporte para diversos escenarios de recuperación**: Adaptables a diversas situaciones desde eliminación accidental hasta fallos complejos.
+- **Seguridad y confidencialidad**: Asegurar que los datos recuperados se manejen de forma segura y confidencial. 
+#### 19.5.4. Ejemplos
 
+**Recuva**
+Herramienta fácil de usar para Windows con escaneo rápido y profundo, recuperación de archivos en diversos dispositivos y visualización previa.
+
+**EaseUS Data Recovery Wizard**
+Software profesional para Windows y macOS. Recuperación de datos de diversos dispositivos, soporte para particiones perdidas y dañadas, búsqueda de más de 1000 tipos de archivos diferentes.
+
+**Disk Drill**
+Aplicación para Windows y macOS. Recupera datos de sistemas HF5+, FAT32, NTFS, EXT3/EXT4. Tiene protección de datos con Recovery Vault y opciones de copia de seguridad. Contempla escaneo rápido y profundo.
+
+**Stellar Data Recovery**
+Aplicación para Windows y macOS. Recupera archivos eliminados, particiones perdidas, discos formateados. Soporte para recuperación de datos de dispositivos RAID. Posibilidad de visualización previa y filtrado de archivos.
+
+**R-Studio**
+Software avanzado para profesionales disponible en Windows, macOS y Linux. Tiene soporte para recuperar datos en configuraciones RAID. Análisis avanzado del sistema de archivos. Opciones de escaneo rápido y detallado.
 
 ## 19.6. Aplicaciones de mantenimiento del sistema
 
-
+Las **aplicaciones de mantenimiento del sistema** son herramientas dedicadas a optimizar el rendimiento de los ordenadores, resolver problemas y prolongar su vida útil. Abarcan una gran variedad de funciones como limpieza de archivos innecesarios, desfragmentación del disco, etc. 
 #### 19.6.1. Tipos
 
+**Limpieza de archivos innecesarios**: Eliminación de archivos temporales, cachés y otros datos redundantes que ocupan espacio en el disco. Se escanea, se identifican y se liberan los archivos. Aumenta el espacio y mejora el rendimiento del sistema.
+**Desfragmentación de disco**: Reorganizar los datos en el disco para mejorar la velocidad de acceso y la eficiencia del almacenamiento. Se mueven fragmentos de archivos dispersos para que queden continuos, reduciendo el tiempo de acceso y mejorando el rendimiento del sistema.
+**Gestión de programas de inicio**: Controlar las aplicaciones que se inician automáticamente; acelerando el tiempo de arranque del sistema.
+**Actualización de controladores**: Verificar y actualizar los controladores hardware para garantizar la compatibilidad y el rendimiento óptimo. Implica escanear el sistema en busca de controladores obsoletos y actualizarlos a sus versiones más recientes.
+**Optimización de la memoria**: Gestión eficiente de la memoria RAM, mejorando el rendimiento general del sistema. (Se libera memoria ocupada por aplicaciones en segundo plano, optimizando el uso de la RAM)
+**Detección y corrección de errores en disco**: Analizar y reparar errores en el sistema de archivos y los sectores del disco duro. Se previenen fallos y pérdida de datos.
+#### 19.6.2. Características clave
 
-#### 19.6.2. Importancia
+**Interfaz intuitiva**: Facilidad de uso para todo tipo de usuarios. 
+**Escaneo y limpieza automáticos**: Programar escaneos y limpiezas con programación de tareas de mantenimiento, notificaciones y alertas sobre problemas y opciones de limpieza personalizadas.
+**Monitoreo en tiempo real**: Supervisión constante del sistema para resolver problemas de inmediato. Con monitoreo del uso de la CPU, memoria y disco; detección de picos de uso anormales; generación de informes detallados sobre el rendimiento.
+**Compatibilidad con múltiples sistemas operativos**: Soporte para plataformas diversas (Windows, Linux, macOS).
+**Optimización integral del sistema**: Herramientas para mejorar el rendimiento general del sistema. Desfragmentación del disco y optimización del SSD, limpieza del registro de Windows, gestión de procesos y servicios en segundo plano.
 
+#### 19.6.3. Importancia
 
-#### 19.6.3. Ejemplos
+- **Mejora del rendimiento del sistema**: Optimizar los recursos del sistema para asegurar funcionamiento fluido y rápido, que resulta en un aumento de la velocidad de arranque, reducción el tiempo de carga y mejora general del rendimiento.
+- **Prolongación de la vida útil del hardware**: Gracias al mantenimiento regular que previene el desgaste prematuro de los componentes, reduciendo el riesgo de fallos y extendiendo la vida útil de discos duros y otros elementos.
+- **Seguridad y protección de datos**: Eliminación de archivos innecesarios y recuperación de errores que podrían comprometer la seguridad del sistema, mejorando la protección de los datos y previniendo la pérdida de información.
+- **Facilidad de uso y ahorro de tiempo**: Herramientas automatizadas que simplifican el mantenimiento del sistema sin requerir intervención manual constante, permitiendo a los usuarios ahorrar tiempo en estas tareas y enfocarse en otras más productivas.
 
+#### 19.6.4. Ejemplos
 
+**CCleaner**
+Herramienta popular en Windows y macOS para limpieza de archivos temporales y cachés, gestión de programas de inicio, limpieza y recuperación del registro de Windows y desinstalación de aplicaciones. 
 
+**Defraggler**
+Aplicación de desfragmentación de discos para Windows hecha por los creadores de CCleaner. Permite desfragmentar discos, escaneo rápido, programación de desfragmentaciones, generación de informes detallados. 
 
+**Advanced SystemCare**
+Suite de optimización para Windows. Permite la limpieza profunda de archivos basura, optimización de la velocidad de internet, protección de la privacidad en línea, reparación y optimización del sistema.
 
+**Glary Utilities**
+Conjunto de herramientas de mantenimiento y optimización para Windows. Permite la limpieza de disco y registro, gestión de programas de inicio, recuperación de archivos eliminados, optimización de la memoria RAM.
+
+**CleanMyMac X**
+Herramientas de limpieza para macOS. Permite eliminar archivos de basura y cachés, desinstalar aplicaciones, optimizar el rendimiento del sistema y protección contra malware y adware. 
