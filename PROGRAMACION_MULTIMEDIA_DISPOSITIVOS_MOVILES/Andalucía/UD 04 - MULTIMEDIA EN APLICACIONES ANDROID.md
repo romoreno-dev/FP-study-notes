@@ -511,7 +511,7 @@ Pasa por diversos estados
 
 Es importante saber en qué estado se encuentra porque muchos métodos solo pueden ser llamados desde ciertos estados. Ej.: No puede ponerse en reproducción (`start()`) si no está en estado preparado. Si se hace llamada a método no admitido para ese estado, se producirá error de ejecución. 
 
-![](resources/ud04-1.png)
+![](PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/Andalucía/resources/ud04-1.png)
 ### 2.2. Reproducir sonidos y vídeos
 
 Es posible incluir audio y vídeo como recurso.

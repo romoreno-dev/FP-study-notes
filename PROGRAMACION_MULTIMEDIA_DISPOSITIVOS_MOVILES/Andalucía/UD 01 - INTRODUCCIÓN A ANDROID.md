@@ -1,6 +1,6 @@
 ## 1. Introducción
 
-Se llama **dispositivo móvil** a un aparato pequeño y de poco peso, con pantalla y teclado (generalmente táctil), con pequeñas capacidades de procesamiento, memoria limitada y conexión (permanente o no) a una red. Diseñados para cumplir funciones como llamadas telefónicas, agendas, GPS, acceso al correo, música, navegar... y otras más generales. 
+Se llama **dispositivo móvil** a un aparato pequeño y de poco **peso**, con pantalla y teclado (generalmente táctil), con pequeñas capacidades de procesamiento, memoria limitada y conexión (permanente o no) a una red. Diseñados para cumplir funciones como llamadas telefónicas, agendas, **GPS**pu, acceso al correo, música, navegar... y otras más generales. 
 
 Los móviles se clasifican en:
 - Smartphones (Teléfonos inteligentes)
@@ -112,7 +112,7 @@ Un buen consejo es programar para que las aplicaciones funcionen en la mayor can
 	- Notification Manager: Eventos sucedidos durante la ejecución
 * **Capa de aplicaciones**. Se encuentran instaladas todas las aplicaciones Android que correrán en (Dalvik / ART usando servicios, API y librerías. 
 
-![](resources/ud01-2.png)
+![](PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/Andalucía/resources/ud01-2.png)
 
 Por citar algunas funcionalidades Android:
 - Creación de aplicaciones se usuario usando aplicaciones interactivas
@@ -300,4 +300,4 @@ Métodos que abarcan todo el ciclo: `onCreate()` y `onDestroy()`
 Actividad visible al usuario desde `onStart()`  hasta `onStop()` (aunque podría no tener foco)
 Actividad visible y con foco desde `onResume()` hasta `onPause()`
 
-![](resources/ud01-1.png)
+![](PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/Andalucía/resources/ud01-1.png)

@@ -21,7 +21,7 @@ Android considera varios factores respecto a la pantalla:
 
 **Pantallas más comunes según tamaño y densidad**
 
-![](PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/resources/ud02-1.png)
+![](PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/Andalucía/resources/ud02-1.png)
 
 Compatibilidad de pantallas: http://developer.android.com/guide/practices/screens_support.html
 
@@ -306,7 +306,7 @@ Con el icono **Design** y **Blueprint** puede escogerse cómo quiere verse el di
 - Puede ponerse Design + Blueprint una al lado de otra.
 
 La barra de herramientas de este Layout permiten: 
-![](resources/ud02-2.png)
+![](PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/Andalucía/resources/ud02-2.png)
 - **View options**: (El ojo) Qué restricciones se quieren ver y en qué vista (Design o Blueprint). Puede verse todas las restricciones con "Show All Constraints" y los márgenes con "Show Margins" u ocultar toda esa información "Fade Unselect Views"
 - **Autoconnect** (El imán): Al estar activa, cuando se desplaza una vista hacia los lados, crea automáticamente restricción con el padre en base a la posición de la vista y a la proximidad a ambos lados del padre. 
 - **Default Margin**: (Cuadrito de texto con ___ dp) Permite crear un margen al valor indicado según se añade las restricciones a la vista. Ej.: Se quiere que todas las vistas de la izquierda tengan margen de 16 dp respecto al padre. Así se inicializa por defecto a 16dp y al conectar vista con el padre se crea automáticamente este padre. 
@@ -325,7 +325,7 @@ Para posicionar una vista en `ConstraintLayout` se debe añadir una restricción
 - Al crear una restricción **se debe realizar entre puntos de anclaje que cumplen el mismo plano**: Un punto de anclaje al comienzo de una vista solo puede unir a un punto de anclaje que esté al comienzo o final de otra vista.
 - Cada **punto de anclaje solo puede usarse para crear una restricción**. Pero **puede ser destino de varias restricciones** siempre y cuando sean **vistas diferentes.** 
 
-![](resources/ud02-3.png)
+![](PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/Andalucía/resources/ud02-3.png)
 
 En la imagen:
 
@@ -359,13 +359,13 @@ Si seleccionamos el componente edtUSer aparece el _widget_ **Attributes** y
 4. **Seleccionar las restricciones** que se han creado en la pestaña **Design** del **Editor.**
 5. **Modificar el tamaño de los componentes.** Estos símbolos representan cómo se calcula el tamaño de la vista. Si haces clic en el símbolo cambiarás entre los diferentes tipos de configuración:
 
-![](resources/ud02-4.png)
+![](PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/Andalucía/resources/ud02-4.png)
 
 1. **Fixed**: se ha especificado un tamaño fijo en el cuadro de texto en dp. 
 2. **Wrap Content:** el tamaño de la vista será el tamaño necesario para poder mostrar el contenido.
 3. **Match Constraints**: la vista se expande tanto como sea posible para cumplir con las restricciones de cada lado después de aplicar los márgenes de la vista. Para que se cumpla esta restricción se debe asignar el valor 0dp a `layout_width` si se quiere que se expanda horizontalmente o a `layout_height` para que se expanda verticalmente
 
-![](resources/ud02-5.png)
+![](PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/Andalucía/resources/ud02-5.png)
 
 #### 2.7.2. Sesgo, guías, barreras y cadenas
 
@@ -526,7 +526,7 @@ Introducir imagen, sin funcionalidad. Se utiliza `android:src` para indicar la i
 
 Aparece con Material Design. Es un botón redonde que se eleva por encima del contenido de la pantalla principal y permite al usuario realizar una acción que se destaca entre las demás. Por ejemplo, en un listado la opción "Añadir". Se suele modificar el atributo `colorAccenty` y el icono que lo identifica con `src`
 
-![](resources/ud02-6.png)
+![](PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/Andalucía/resources/ud02-6.png)
 ### Otros
 `TextClock`, `CalendarView`, `ProgressBar`, `RatingBar`...
 
@@ -652,7 +652,7 @@ El adaptador es un objeto que busca:
 - Poblar de datos necesarios a la vista. (`Arrays`, `List`, `Cursor`). Dispone de varios tipos de adaptadores en función de los datos que gestiona. 
 - Crear la vista `View` con los datos que se representarán en el control de selección `AdapterView` vinculado al adaptador. 
 
-![](resources/ud02-7.png)
+![](PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/Andalucía/resources/ud02-7.png)
 
 En el **control de selección** se pueden mostrar muchos datos pero se consumen pocos recursos porque el adaptador solo crea los objetos `View` que se visulizan en pantalla o que están a punto de moverse, ahorrando memoria. 
 El número de vistas a mostrar es constante y no se eliminan, sino que se reutilizan. El adaptador modifica el objeto `View` con la información del elemento a visualizar. 
@@ -748,7 +748,7 @@ Si no es nulo, se obtiene el objeto `ViewHolder` mediante el método `getTag()` 
 
 Así, se evita tener que llamar continuamente al método `findViewById()` para actualizar los controles de la vista. 
 
-![](resources/ud02-8.png)
+![](PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/Andalucía/resources/ud02-8.png)
 
 Android adoptó este patrón con el `RecyclerView` que obliga a usar la clase `RecyclerView.ViewHolder`. 
 El `RecyclerView` reutilizará eficientemente las vistas y el usuario no tiene que hacer ninguna comprobación. 
@@ -1890,7 +1890,7 @@ Esta secuencia de llamadas que el sistema realiza (métodos callback) deben tene
 
 En diseños para tablets donde interesa que una parte de la interfaz quede fija es muy bueno usar fragmentos. 
 
-![](resources/ud02-9.png)
+![](PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/Andalucía/resources/ud02-9.png)
 ### 11.1 Transacciones de fragmentos
 
 Los fragmentos se añaden y eliminan mediante transacciones que se guardan en la pila interna que gestiona cada actividad que está en la pila de transacciones. Cuando el usuario presiona el botón atrás, el sistema operativo deshace la última transacción de fragmentos de la actividad que se encuentra en la cima de la pila de actividades.
