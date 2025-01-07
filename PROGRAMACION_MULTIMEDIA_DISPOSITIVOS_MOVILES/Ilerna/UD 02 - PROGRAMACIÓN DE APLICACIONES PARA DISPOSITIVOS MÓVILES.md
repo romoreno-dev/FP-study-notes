@@ -342,7 +342,7 @@ private const val REQUEST_CONTACTO = 1
 private const val REQUEST_SEGUNDA_ACTIVIDAD = 2
 ```
 
-**Lectura de un contacto de vuelto en el Intent**
+**Lectura de un contacto devuelto en el Intent**
 
 ```kotlin
 private fun procesarContacto(data: Intent) {
@@ -1879,3 +1879,58 @@ Por ejemplo, probar funciones de la interfaz gráfica o de una parte del hardwar
 
 Documentar el código es importante. Kotlin dispone de herramientas como Dokka, generador de documentación de Kotlin desarrollado por Jetbrains. 
 La **generación de documentación automática** depende de comentarios formateados adecuadamente dentro del código. La herramienta parsea el código en busca de esos comentarios y genera la documentación. 
+
+## 17. Diferencia entre `ContentProvider` y `BroadcastReceiver`
+
+- **Proveedor de Contenido (ContentProvider):**
+    - Su propósito principal es **compartir datos** entre diferentes aplicaciones.
+    - Un proveedor de contenido permite que otras aplicaciones accedan y manipulen datos de manera estandarizada, como contactos, mensajes, imágenes, etc., de una forma segura.
+    - Sirve como un **interfaz de acceso a datos**. Los datos pueden ser almacenados en bases de datos locales, archivos, o incluso ser accesibles a través de la red.
+    - Es un componente **expuesto** de tu aplicación, que otros componentes (incluso aplicaciones externas) pueden consultar o modificar.
+    - Proporciona una interfaz unificada para acceder a datos de una aplicación.
+    - Los otros componentes interactúan con él mediante un **URI** específico (Uniform Resource Identifier), que define el acceso a los datos.
+    - Un proveedor de contenido **permanece activo mientras la aplicación está en ejecución** y no requiere de un evento externo para ser invocado.
+    - Las aplicaciones acceden a los datos a través del proveedor de contenido en cualquier momento cuando lo necesiten.
+    - Se usa principalmente para consultas, actualizaciones o eliminaciones de datos.
+    - Ejemplo: acceder a la lista de contactos de otra aplicación, o consultar imágenes almacenadas en el dispositivo.
+- **BroadcastReceiver:**
+    - Un `BroadcastReceiver` sirve para **escuchar y responder a eventos del sistema** o de otras aplicaciones.
+    - Los `BroadcastReceiver` reciben mensajes (broadcasts) del sistema, como cambios en la configuración, el nivel de batería, notificaciones de eventos de red, o mensajes de otras aplicaciones.
+    - Un `BroadcastReceiver` recibe **intenciones (intents)** enviadas por el sistema operativo o por otras aplicaciones.
+    - Un **broadcast** es un mensaje enviado para notificar a múltiples aplicaciones o componentes que un evento ha ocurrido.
+    - No están diseñados para compartir datos entre aplicaciones, sino para **notificar o reaccionar a cambios** en el sistema o en el entorno de la aplicación.
+    - Un `BroadcastReceiver` está **activo solo durante la recepción de un broadcast**. Una vez que recibe el mensaje, puede actuar en consecuencia (por ejemplo, actualizar una interfaz de usuario, almacenar datos en el dispositivo, etc.).
+    - Se activa **solo cuando se recibe un mensaje (broadcast)** y su ciclo de vida es corto: comienza cuando recibe un `Intent` y termina una vez que ha manejado el evento.
+    - Se usa principalmente para recibir notificaciones de eventos del sistema, cambios de estado, o comunicaciones entre aplicaciones.
+
+
+```kotlin
+// ContentProvider - Lista de contactos del dispositivo
+val cursor = contentResolver.query(
+    ContactsContract.Contacts.CONTENT_URI,
+    arrayOf(ContactsContract.Contacts.DISPLAY_NAME_PRIMARY),
+    null, null, null
+)
+
+cursor?.use {
+    while (it.moveToNext()) {
+        val name = it.getString(it.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME_PRIMARY))
+        println("Contacto: $name")
+    }
+}
+
+// BroadcastReceiver - Notificacion cuando el nivel de bateria cambia
+val batteryReceiver = object : BroadcastReceiver() {
+    override fun onReceive(context: Context, intent: Intent) {
+        val level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1)
+        val scale = intent.getIntExtra(BatteryManager.EXTRA_SCALE, -1)
+        val batteryPercentage = level * 100 / scale
+        println("Nivel de batería: $batteryPercentage%")
+    }
+}
+
+// Registrar el BroadcastReceiver para recibir cambios en la batería
+val filter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
+context.registerReceiver(batteryReceiver, filter)
+
+```
