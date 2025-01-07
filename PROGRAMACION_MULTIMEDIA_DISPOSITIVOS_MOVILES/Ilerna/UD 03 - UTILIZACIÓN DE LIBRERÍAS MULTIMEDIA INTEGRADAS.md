@@ -190,6 +190,7 @@ Deben ser declarados en el manifest:
 - **FLASH_LIGHT**: Uso de flash
 - **ACCESS_FINE_LOCATION**: Uso de GPS. Ubicación más precisa.
 - **ACCESS_COARSE_LOCATION**: Uso de GPS. Ubicación menos precisa. 
+- **READ_CONTACTS**: Leer contactos
 
 Estructura en el `manifest`: 
 ```xml
