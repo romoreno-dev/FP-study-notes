@@ -1,9 +1,9 @@
 
 ## Objetivo del repositorio
 
-Este repositorio pretende albergar resúmenes de los contenidos que se utilizan en los módulos de la Formación Profesional Semipresencial y de la Formación Profesional a Distancia de la Junta de Andalucía para la enseñanza del Grado Superior de Desarrollo de Aplicaciones Multiplataforma (producidos en los años 2013-2014 por el Ministerio de Educación, Cultura y Deporte y posteriormente actualizados por profesores de la Consejería de Educación de la Junta de Andalucía)
+Este repositorio pretende albergar resúmenes de los contenidos que se utilizan en los módulos de la Formación Profesional Semipresencial y de la Formación Profesional a Distancia de la Junta de Andalucía para la enseñanza del Grado Superior de Desarrollo de Aplicaciones Multiplataforma y del Grado Superior de Desarrollo de Aplicaciones Web (producidos en los años 2013-2014 por el Ministerio de Educación, Cultura y Deporte y posteriormente actualizados por profesores de la Consejería de Educación de la Junta de Andalucía)
 
-Actualización en 2024: Debido a cambios legislativos estatales y a su aplicación autonómica que dificultan finalizar este ciclo en un tiempo razonable a las personas que estén obteniéndolo mediante pruebas libres en la legislación anterior, he decidido ampliar e incluir material del Centro Docente Privado ILERNA (que se rige por la legislación del Departament d'Educació i Formació Professional de la Generalitat de Catalunya). Para prevenir confusiones, **se indicará convenientemente cuando el material empleado pertenece a ILERNA**. 
+**Actualización en 2024**: Debido a cambios legislativos estatales y a su aplicación autonómica, las cuales dificultan finalizar este ciclo en un tiempo razonable a las personas que estén obteniéndolo mediante pruebas libres en la legislación anterior, he decidido ampliar e incluir material del Centro Docente Privado ILERNA (que se rige por la legislación del Departament d'Educació i Formació Professional de la Generalitat de Catalunya). Para prevenir confusiones, **se indicará convenientemente cuando el material empleado pertenece a ILERNA**. 
 
 La finalidad de estos "resúmenes" (aunque quizás no se podrían denominar de tal manera por ser bastante extensos) es ayudar a disponer de material a las personas que quieran presentarse a las Pruebas para la Obtención del Título (POT) de Técnico Superior de Desarrollo de Aplicaciones Multiplataforma o del Título de Técnico Superior de Desarrollo de Aplicaciones Web.
 
@@ -13,39 +13,39 @@ Personalmente me presenté a las POT de todos los módulos de DAM (salvo Desarro
 
 ## Módulos DAM disponibles
 
-| Módulo                                                          | Fuente de datos             |     | Contenido Junta de Andalucía                                                                                         |
-| --------------------------------------------------------------- | --------------------------- | --- |----------------------------------------------------------------------------------------------------------------------|
-| 0483. Sistemas informáticos.                                    | Junta de Andalucía e ILERNA | ⚠️  | UD 03 (**Redes**, Andalucía): Incompleta<br>UD 04 (**Windows**, Andalucía): No realizada<br>En ILERNA está completo. |
-| 0484. Bases de Datos.                                           | Junta de Andalucía          | ✅   | COMPLETO                                                                                                             |
-| 0485. Programación.                                             |                             | ❌   | No hay material                                                                                                      |
-| 0373. Lenguajes de marcas y sistemas de gestión de información. | Junta de Andalucía          | ✅   | COMPLETO                                                                                                             |
-| 0487. Entornos de desarrollo.                                   | Junta de Andalucía          | ✅   | COMPLETO                                                                                                             |
-| 0486. Acceso a datos.                                           | Junta de Andalucía          | ✅   | COMPLETO                                                                                                             |
-| 0488. Desarrollo de interfaces.                                 | ILERNA                      | ⚠️  | No hay de Andalucía, solo de ILERNA                                                                                  |
-| 0489. Programación multimedia y dispositivos móviles.           | Junta de Andalucía e ILERNA | ⚠️  | UD 05 (**Videojuegos**, Andalucía): No realizada.<br>En ILERNA está completo.                                        |
-| 0490. Programación de servicios y procesos.                     | Junta de Andalucía          | ✅   | COMPLETO                                                                                                             |
-| 0491. Sistemas de gestión empresarial.                          | Junta de Andalucía          | ✅   | COMPLETO                                                                                                             |
-| 0493. Formación y orientación laboral.                          |                             | ❌   | No hay material                                                                                                      |
-| 0494. Empresa e iniciativa emprendedora.                        |                             | ❌   | No hay material                                                                                                      |
+| Módulo                                                                               | Fuente de datos             |     | Contenido Junta de Andalucía                                                                                         |
+|--------------------------------------------------------------------------------------| --------------------------- | --- |----------------------------------------------------------------------------------------------------------------------|
+| 0483. Sistemas informáticos.                                                         | Junta de Andalucía e ILERNA | ⚠️  | UD 03 (**Redes**, Andalucía): Incompleta<br>UD 04 (**Windows**, Andalucía): No realizada<br>En ILERNA está completo. |
+| 0484. Bases de Datos.                                                                | Junta de Andalucía          | ✅   | COMPLETO                                                                                                             |
+| 0485. Programación.                                                                  |                             | ❌   | No hay material                                                                                                      |
+| 0373. Lenguajes de marcas y sistemas de gestión de información.                      | Junta de Andalucía          | ✅   | COMPLETO                                                                                                             |
+| 0487. Entornos de desarrollo.                                                        | Junta de Andalucía          | ✅   | COMPLETO                                                                                                             |
+| 0486. Acceso a datos.                                                                | Junta de Andalucía          | ✅   | COMPLETO                                                                                                             |
+| 0488. Desarrollo de interfaces.                                                      | ILERNA                      | ⚠️  | No hay de Andalucía, solo de ILERNA                                                                                  |
+| 0489. Programación multimedia y dispositivos móviles.                                | Junta de Andalucía e ILERNA | ⚠️  | UD 05 (**Videojuegos**, Andalucía): No realizada.<br>En ILERNA está completo.                                        |
+| 0490. Programación de servicios y procesos.                                          | Junta de Andalucía          | ✅   | COMPLETO                                                                                                             |
+| 0491. Sistemas de gestión empresarial.                                               | Junta de Andalucía          | ✅   | COMPLETO                                                                                                             |
+| 0493. Formación y orientación laboral / Itinerario personal para la empleabilidad I  |                             | ❌   | No hay material                                                                                                      |
+| 0494. Empresa e iniciativa emprendedora / Itinerario personal para la empleabilidad II |                             | ❌   | No hay material                                                                                                      |
 
 ## Módulos DAW disponibles
 
-| Módulo                                                          | Fuente de datos             |     | Contenido Junta de Andalucía                                                                                         |
-| --------------------------------------------------------------- | --------------------------- | --- | -------------------------------------------------------------------------------------------------------------------- |
-| 0483. Sistemas informáticos.                                    | Junta de Andalucía e ILERNA | ⚠️  | UD 03 (**Redes**, Andalucía): Incompleta<br>UD 04 (**Windows**, Andalucía): No realizada<br>En ILERNA está completo. |
-| 0484. Bases de Datos.                                           | Junta de Andalucía          | ✅   | COMPLETO                                                                                                             |
-| 0485. Programación.                                             |                             | ❌   | No hay material                                                                                                      |
-| 0373. Lenguajes de marcas y sistemas de gestión de información. | Junta de Andalucía          | ✅   | COMPLETO                                                                                                             |
-| 0487. Entornos de desarrollo.                                   | Junta de Andalucía          | ✅   | COMPLETO                                                                                                             |
-| 0612. Desarrollo web en entorno cliente.                        |                             | ❌   | No hay material                                                                                                      |
-| 0613. Desarrollo web en entorno servidor.                       |                             | ❌   | No hay material                                                                                                      |
-| 0614. Despliegue de aplicaciones web.                           |                             | ❌   | No hay material                                                                                                      |
-| 0615. Diseño de interfaces web.                                 |                             | ❌   | No hay material                                                                                                      |
-| 0617. Formación y orientación laboral.                          |                             | ❌   | No hay material                                                                                                      |
-| 0618. Empresa e iniciativa emprendedora.                        |                             | ❌   | No hay material                                                                                                      |
+| Módulo                                                                                 | Fuente de datos             |     | Contenido Junta de Andalucía                                                                                         |
+|----------------------------------------------------------------------------------------| --------------------------- | --- | -------------------------------------------------------------------------------------------------------------------- |
+| 0483. Sistemas informáticos.                                                           | Junta de Andalucía e ILERNA | ⚠️  | UD 03 (**Redes**, Andalucía): Incompleta<br>UD 04 (**Windows**, Andalucía): No realizada<br>En ILERNA está completo. |
+| 0484. Bases de Datos.                                                                  | Junta de Andalucía          | ✅   | COMPLETO                                                                                                             |
+| 0485. Programación.                                                                    |                             | ❌   | No hay material                                                                                                      |
+| 0373. Lenguajes de marcas y sistemas de gestión de información.                        | Junta de Andalucía          | ✅   | COMPLETO                                                                                                             |
+| 0487. Entornos de desarrollo.                                                          | Junta de Andalucía          | ✅   | COMPLETO                                                                                                             |
+| 0612. Desarrollo web en entorno cliente.                                               |                             | ❌   | No hay material                                                                                                      |
+| 0613. Desarrollo web en entorno servidor.                                              |                             | ❌   | No hay material                                                                                                      |
+| 0614. Despliegue de aplicaciones web.                                                  |                             | ❌   | No hay material                                                                                                      |
+| 0615. Diseño de interfaces web.                                                        |                             | ❌   | No hay material                                                                                                      |
+| 0617. Formación y orientación laboral / Itinerario personal para la empleabilidad I    |                             | ❌   | No hay material                                                                                                      |
+| 0618. Empresa e iniciativa emprendedora / Itinerario personal para la empleabilidad II |                             | ❌   | No hay material                                                                                                      |
 
 ## Información de referencia
-(Aún no actualizada con la información del curso 2024-2025)   
+(Aún no actualizada con la información de convocatoria del curso 2024-2025. Previsiblemente saldrá en febrero^de 2025)   
 [Pruebas para la obtención de títulos de Formación Profesional - Junta de Andalucía](https://www.juntadeandalucia.es/educacion/portals/web/formacion-profesional-andaluza/quiero-formarme/pruebas-y-procedimientos/pruebas-obtencion-titulos)
 
 ## Legislación aplicable (Desde 2024-2025)
@@ -76,9 +76,6 @@ Esto podría tener un impacto, aún no conocido, en las pruebas libres de Andalu
 - En el RD 405/2023 los contenidos de algunas de las asignaturas han sido modificados (considero que tan solo ligeramente, aunque aún no he realizado comparativa)
 - En el RD 500/2024, muy a nuestro pesar, han sido añadidas nuevas asignaturas, cuyos contenidos pueden encontrarse en RD 659/2023 Anexos VII, VIII y X.
 - La nueva ley tiene por objeto orientar la enseñanza hacia una Formación Profesional Dual en la que el alumnado esté en estrecho contacto con las empresas de forma continua a lo largo de todo el curso académico. Este es el motivo por el que se suprime el módulo de "Formación en centros de trabajo" al no realizarse ya prácticas al final del Grado Superior, sino durante los dos cursos de formación.
-
-**Se está en espera de que salga la correspondiente legislación autonómica en Andalucía, que será la que definitivamente nos aclare este asunto**.
-
 
 ### Comparativa entre módulos de DAM
 
