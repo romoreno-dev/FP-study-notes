@@ -4,19 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "06df0b37dee19a4a",
+        "id": "2e37cc07bfe5e347",
         "type": "tabs",
         "children": [
           {
-            "id": "f24923b333770198",
+            "id": "a45aeeeb30f0cfdb",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ACCESO_A_DATOS/UD 06 - PROGRAMACIÓN DE COMPONENTES DE ACCESO A DATOS.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "README"
             }
           }
         ]
@@ -39,7 +41,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
@@ -48,13 +52,15 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "path:\"SISTEMAS_INFORMATICOS/\" ",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
@@ -62,14 +68,16 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 253.5
+    "width": 303.5
   },
   "right": {
     "id": "7d79b0e9867d8cc9",
@@ -85,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ACCESO_A_DATOS/UD 06 - PROGRAMACIÓN DE COMPONENTES DE ACCESO A DATOS.md",
+                "file": "SISTEMAS_INFORMATICOS/PAC de Desarrollo.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -93,7 +101,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for PAC de Desarrollo"
             }
           },
           {
@@ -102,10 +112,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ACCESO_A_DATOS/UD 06 - PROGRAMACIÓN DE COMPONENTES DE ACCESO A DATOS.md",
+                "file": "SISTEMAS_INFORMATICOS/PAC de Desarrollo.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from PAC de Desarrollo"
             }
           },
           {
@@ -116,7 +128,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -125,8 +139,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "ACCESO_A_DATOS/UD 06 - PROGRAMACIÓN DE COMPONENTES DE ACCESO A DATOS.md"
-              }
+                "file": "SISTEMAS_INFORMATICOS/PAC de Desarrollo.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of PAC de Desarrollo"
             }
           }
         ]
@@ -146,52 +162,53 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "f24923b333770198",
+  "active": "eb134b443fd443c2",
   "lastOpenFiles": [
-    "ACCESO_A_DATOS/(wip) UD 01 - INTRODUCCIÓN AL ACCESO A DATOS Y MANEJO DE FICHEROS.md",
-    "ACCESO_A_DATOS/UD 06 - PROGRAMACIÓN DE COMPONENTES DE ACCESO A DATOS.md",
-    "SISTEMAS_INFORMATICOS/resources/ud03-1.png",
-    "SISTEMAS_INFORMATICOS/resources/ud03-2.png",
-    "README.md",
-    "Inspirador.md",
-    "Legislación.md",
-    "PROGRAMACION_SERVICIOS_PROCESOS/(wip) UD 03 - PROGRAMACIÓN EN RED.md",
-    "PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/UD 04 - MULTIMEDIA EN APLICACIONES ANDROID.md",
-    "PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/UD 06 - SENSORES Y GEOLOCALIZACIÓN.md",
-    "PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/resources/ud04-1.png",
-    "ACCESO_A_DATOS/resources/ud01-1.png",
-    "ACCESO_A_DATOS/resources",
-    "SISTEMAS_INFORMATICOS/(wip) UD 01 - HARDWARE DE UN SISTEMA INFORMÁTICO.md",
-    "SISTEMAS_INFORMATICOS/(wip) UD 03 - REDES DE ORDENADORES.md",
-    "SISTEMAS_INFORMATICOS/(wip) UD 04 - WINDOWS.md",
-    "SISTEMAS_INFORMATICOS/resources/ud03-3.png",
-    "SISTEMAS_INFORMATICOS/resources/ud02-12.png",
-    "SISTEMAS_INFORMATICOS/resources/ud02-11.png",
-    "SISTEMAS_INFORMATICOS/resources/ud02-10.png",
-    "SISTEMAS_INFORMATICOS/resources/ud02-9.png",
-    "SISTEMAS_INFORMATICOS/resources/ud02-8.png",
-    "PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/(wip) UD 03 - GESTIÓN DE DATOS.md",
-    "PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/(wip) UD 02 - INTERFAZ DE USUARIO.md",
-    "PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/(wip) UD 05 - CREACIÓN DE VIDEOJUEGOS.md",
-    "PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/UD 01 - INTRODUCCIÓN A ANDROID.md",
-    "ACCESO_A_DATOS",
-    "SISTEMAS_INFORMATICOS/UD 05 - LINUX.md",
-    "SISTEMAS_INFORMATICOS/UD 02 - SOFTWARE DE UN SISTEMA INFORMÁTICO.md",
-    "SISTEMAS_INFORMATICOS/resources",
-    "TODOAPUN.pdf",
-    "prueba/micompri",
-    "prueba/mi.tar",
-    "prueba/Inspirador.md",
-    "prueba/README.md",
-    "prueba/Legislación.md",
-    "prueba",
-    "micompri",
-    "BASES_DE_DATOS/UD 01 - ALMACENAMIENTO DE LA INFORMACIÓN.md",
-    "BASES_DE_DATOS/UD 07 - USO DE BASES DE DATOS OBJETO-RELACIONALES.md",
-    "UD 07 - USO DE BASES DE DATOS OBJETO-RELACIONALES.pdf",
-    "BASES_DE_DATOS/UD 06 - PROGRAMACIÓN DE BASES DE DATOS.md",
-    "UD 06 - PROGRAMACIÓN DE BASES DE DATOS.pdf",
-    "BASES_DE_DATOS/UD 05 - TRATAMIENTO DE DATOS.md",
-    "BASES_DE_DATOS/UD 04 - REALIZACIÓN DE CONSULTAS.md"
+    "MODULOS_COMUNES_DAM_DAW/EMPRESA_INICIATIVA_EMPRENDEDORA",
+    "DESARROLLO_WEB_ENTORNO_CLIENTE/UD 05 - MODELO DE OBJETOS DE DOCUMENTO EN JAVASCRIPT.md",
+    "DESARROLLO_WEB_ENTORNO_CLIENTE/UD 06 - PROGRAMACIÓN AJAX EN JAVASCRIPT.md",
+    "DESARROLLO_WEB_ENTORNO_CLIENTE/UD 04 - GESTIÓN DE EVENTOS Y FORMULARIOS EN JAVASCRIPT.md",
+    "DESARROLLO_WEB_ENTORNO_CLIENTE/UD 03 - ESTRUCTURAS DEFINIDAS POR EL USUARIO EN JAVASCRIPT.md",
+    "DESARROLLO_WEB_ENTORNO_CLIENTE/UD 02 - MODELO DE OBJETOS PREDEFINIDOS EN JAVASCRIPT.md",
+    "DESARROLLO_WEB_ENTORNO_CLIENTE/UD 01 - ARQUITECTURAS Y LENGUAJES EN CLIENTES WEB. JAVASCRIPT..md",
+    "DESARROLLO_WEB_ENTORNO_SERVIDOR/UD 07 - APLICACIONES WEB DINÁMICAS E HÍBRIDAS.md",
+    "DESARROLLO_WEB_ENTORNO_SERVIDOR/UD 06 - SERVICIOS WEB.md",
+    "DESARROLLO_WEB_ENTORNO_SERVIDOR/UD 05 - DESARROLLO DE APLICACIONES WEB EN LARAVEL.md",
+    "DESARROLLO_WEB_ENTORNO_SERVIDOR/UD 04 - PROGRAMACIÓN ORIENTADA A OBJETOS EN PHP.md",
+    "DESARROLLO_WEB_ENTORNO_SERVIDOR/UD 03 - SESIONES Y AUTENTICACIÓN EN PHP.md",
+    "DESARROLLO_WEB_ENTORNO_SERVIDOR/UD 02 - TRABAJAR CON BASES DE DATOS EN PHP.md",
+    "DESARROLLO_WEB_ENTORNO_SERVIDOR/UD 01 - PLATAFORMAS DE PROGRAMACIÓN WEB EN ENTORNO SERVIDOR. CARACTERÍSTICAS DE PHP.md",
+    "DESARROLLO_INTERFACES_WEB/UD 05 - CONTENIDOS MULTIMEDIA EN LA WEB. ANIMACIONES.md",
+    "DESARROLLO_INTERFACES_WEB/UD 04 - CONTENIDOS MULTIMEDIA EN LA WEB, IMÁGENES, AUDIO Y VÍDEO.md",
+    "DESARROLLO_INTERFACES_WEB/UD 03 - ACCESIBILIDAD Y USABILIDAD EN LA RED.md",
+    "DESARROLLO_INTERFACES_WEB/UD 02 - HOJAS DE ESTILOS.md",
+    "DESARROLLO_INTERFACES_WEB/UD 01 - PLANIFICACIÓN DE INTERFACES GRÁFICAS.md",
+    "DESPLIEGUE_APLICACIONES_WEB/UD 01 - IMPLANTACIÓN, CONFIGURACIÓN Y ADMINISTRACIÓN DE SERVIDORES WEB.md",
+    "DESARROLLO_WEB_ENTORNO_CLIENTE",
+    "DESARROLLO_WEB_ENTORNO_SERVIDOR",
+    "DESARROLLO_INTERFACES_WEB",
+    "DESPLIEGUE_APLICACIONES_WEB/UD 02 - CONFIGURACIÓN Y ADMINISTRACIÓN DE SERVIDORES DE APLICACIONES.md",
+    "DESPLIEGUE_APLICACIONES_WEB/UD 03 - INSTALACIÓN Y ADMINISTRACIÓN DE SERVIDORES FTP.md",
+    "DESPLIEGUE_APLICACIONES_WEB/UD 05 - DOCUMENTACIÓN Y CONTROL DE VERSIONES.md",
+    "DESPLIEGUE_APLICACIONES_WEB/UD 04 - SERVICIOS DE RED IMPLICADOS EN EL DESPLIEGUE DE UNA APLICACIÓN WEB.md",
+    "SISTEMAS_INFORMATICOS/Ilerna/UD 06 - RESOLUCIÓN DE INCIDENCIAS Y ASISTENCIA TÉCNICA.md",
+    "DESPLIEGUE_APLICACIONES_WEB",
+    "libro/si/UD 05 - ADMINISTRACIÓN DEL ACCESO AL DOMINIO.pdf",
+    "libro/si/UD 04 - ADMINISTRACIÓN DE DOMINIOS.pdf",
+    "libro/si/UD 03 - ADMINISTRACIÓN DE LA INFORMACIÓN.pdf",
+    "libro/si/UD 02 - ADMINISTRACIÓN DE SOFTWARE DE BASE.pdf",
+    "libro/si/UD 01 - INSTALACIÓN SOFTWARE LIBRE Y PROPIETARIO.pdf",
+    "libro/si/UD 06 - RESOLUCIÓN DE INCIDENCIAS Y ASISTENCIA TÉCNICA.pdf",
+    "SISTEMAS_INFORMATICOS/Ilerna/UD 05 - ADMINISTRACIÓN DEL ACCESO AL DOMINIO.md",
+    "PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/Ilerna/resources/UD02_5.png",
+    "PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/Ilerna/resources/UD02_4.png",
+    "PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/Ilerna/resources/UD02_3.png",
+    "PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/Ilerna/resources/UD02_2.png",
+    "PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/Ilerna/resources/UD02_1.png",
+    "PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/Ilerna/resources/UD01_1.png",
+    "Pasted image 20241213161518.png",
+    "PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/Ilerna/resources/UD03_1.png",
+    "PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/Ilerna/resources/UD03_2.png",
+    "PROGRAMACION_MULTIMEDIA_DISPOSITIVOS_MOVILES/Ilerna/resources/UD03_3.png"
   ]
 }
