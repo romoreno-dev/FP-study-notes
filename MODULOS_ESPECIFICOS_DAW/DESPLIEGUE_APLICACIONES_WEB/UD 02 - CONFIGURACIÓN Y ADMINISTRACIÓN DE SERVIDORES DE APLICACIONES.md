@@ -51,6 +51,13 @@
 
 ## 5. Servidor de aplicaciones Wildfly
 
+**Wildfly** es un proyecto gratuito, de código abierto y escrito en Java que implementa un servidor de aplicaciones de Java EE (Jakarta EE)
+
+Un **servidor de aplicaciones** implementa todas las funcionalidades de la especificación de Java EE: Es un contenedor de servlets y además un contenedor de EJB (Enterprise JavaBeans), entre otras funcionalidades.
+
+docker run -d -p 8081:8080 -p 9991:9990 jboss/wildfly:latest /opt/jboss/wildfly/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0
+
+
 ### 5.1. Instalación y configuración básica
 
 ### 5.2. Aplicaciones empresariales
