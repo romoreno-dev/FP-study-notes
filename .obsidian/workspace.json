@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/UD 06 - DOCUMENTACIÓN Y SISTEMAS DE CONTROL DE VERSIONES.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "UD 06 - DOCUMENTACIÓN Y SISTEMAS DE CONTROL DE VERSIONES"
+              "title": "README"
             }
           }
         ]
@@ -163,8 +163,9 @@
       "templates:Insert template": false
     }
   },
-  "active": "eb134b443fd443c2",
+  "active": "77c5a0f012a4df6e",
   "lastOpenFiles": [
+    "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/UD 06 - DOCUMENTACIÓN Y SISTEMAS DE CONTROL DE VERSIONES.md",
     "OTROS_APUNTES/SPRING_BOOT/Spring Boot.md",
     "OTROS_APUNTES/Spring Boot.md",
     "OTROS_APUNTES/DOCKER",
@@ -178,7 +179,6 @@
     "ignored/TFG/TFG Dentalium.md",
     "ignored/TFG",
     "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/UD 05 - SERVICIOS DE RED IMPLICADOS EN EL DESARROLLO DE UNA APLICACIÓN WEB.md",
-    "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/UD 06 - DOCUMENTACIÓN Y SISTEMAS DE CONTROL DE VERSIONES.md",
     "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/UD 04 - ADMINISTRACIÓN DE SERVIDORES DE APLICACIONES.md",
     "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/UD 03 - INSTALACIÓN Y ADMINISTRACIÓN DE SERVIDORES DE TRANSFERENCIA DE ARCHIVOS.md",
     "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/UD 02 - ADMINISTRACIÓN DE SERVIDORES WEB.md",
