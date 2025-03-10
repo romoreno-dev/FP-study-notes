@@ -42,7 +42,7 @@
 
 
 
-
+icepush
 
 Si buscas fiabilidad y un manejo eficiente de mensajes entre microservicios, RabbitMQ puede ser una buena opción. Si estás manejando grandes volúmenes de eventos y necesitas escalabilidad, Kafka es probablemente la mejor opción.
 Usar **RabbitMQ** (o **Kafka**, aunque esto sería más adecuado en sistemas de alta demanda) puede **desacoplar** la generación del documento y su envío del flujo principal de la API.
@@ -222,5 +222,22 @@ docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:4.0-man
 
 
 RabbitMQ
+
+### **Descomprimir el archivo `.tar.gz`:**
+
+bash
+
+CopiarEditar
+
+`tar xvzf apache-tomcat-X.X.XX.tar.gz`
+
+- **`tar`** es un comando para **archivar** y **descomprimir** archivos en sistemas Unix/Linux.
+- **`xvzf`** son opciones que indican:
+    - `x`: Extraer (descomprimir) el archivo.
+    - `v`: Verbose (mostrar detalles mientras descomprime).
+    - `z`: Usar gzip (especifica que el archivo está comprimido con gzip).
+    - `f`: Indica que se está trabajando con un archivo de nombre específico (en este caso, `apache-tomcat-X.X.XX.tar.gz`).
+
+Por lo tanto, el comando descomprime el archivo `apache-tomcat-X.X.XX.tar.gz` (donde `X.X.XX` es la versión de Tomcat) en el directorio actual.
 
 

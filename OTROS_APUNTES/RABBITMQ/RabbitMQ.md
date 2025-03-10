@@ -1,3 +1,22 @@
+---
+
+---
+
+---
+## 0. RabbitMQ vs Kafka
+
+**RabbitMQ** sería ideal si:
+- Tienes una infraestructura con muchos microservicios que necesitan procesar mensajes de manera fiable.
+- La aplicación necesita manejar diferentes tipos de mensajes de diferentes servicios.
+- La prioridad está en asegurar la entrega de mensajes y la fiabilidad.
+- El volumen de datos no es extremadamente alto, pero aún necesitas asegurar una correcta gestión de los mensajes.
+
+**Kafka** sería mejor si:
+- Necesitas manejar grandes volúmenes de eventos o datos en tiempo real (por ejemplo, miles de peticiones por hora).
+- Tienes un sistema distribuido que requiere alta disponibilidad y tolerancia a fallos.
+- El almacenamiento de eventos y la capacidad de procesar flujos de datos a gran escala son más importantes que la complejidad de la infraestructura.
+
+---
 
 ## 1. Definición
 
@@ -315,13 +334,199 @@ public class ProductorSimple {
 ```
 
 
+Listar colas: `rabbitmqctl list_queues`
 ## 14. El primer consumidor
 
+Se abrirá conexión, se establecerá un canal y la cola (de forma indempotente, lo creará la primera vez; el resto no hará nada). Finalmente, se creará una subscripción a la cola. 
+
+```java
+public class ConsumidorSimple {
+
+    public static void main(String[] args) throws IOException, TimeoutException {
+        ConnectionFactory factory = new ConnectionFactory();
+        factory.setHost("localhost");
+        factory.setPort(5672);
+        factory.setUsername("guest");
+        factory.setPassword("guest");
+
+        Connection connection = factory.newConnection();
+        Channel channel = connection.createChannel();
+        try {
+            String queueName = "primera-cola";
+            channel.queueDeclare(queueName, false, false, false, null);
+
+            // El metodor devuelve el identificador de la suscripcion (consumerTag)
+            // Debe implementarse Consumer (de ellos se proporciona también un consumidor por defecto como es DefaultConsumer, handleDelivery)
+            // Probamos a implementar el metodo
+            // basicConsume(String queue,
+            // boolean autoAck (Indica al cliente si debe enviar a RabbitMQ acuse de recibe a cada mensaje. Si se pasa true RabbitMQ eliminara la cola, si se pasa false debe hacerse explicitamente o seguira enviandolo,
+            // DeliverCallback deliverCallback (Interfaz funcional con la funcion que será invocada cuando el consumidor reciba el mensaje. Será donde se procese el mensaje.)
+            // CancelCallback cancelCallback (Interfaz funcional cuando el consumidor es cancelado de forma implicita, por ejemplo si se elimina la cola a la que esta subscrito)
+            channel.basicConsume(queueName,
+                    false,
+                    (consumerTag, delivery) -> {
+                        //Delivery tiene:  Un envelope (tiene deliveryTag, exchange, routingKey) y un body (en array de bytes)
+                        String messageBody = new String(delivery.getBody(), Charset.defaultCharset());
+                        System.out.println("Mensaje: " + messageBody);
+                        System.out.println("Exchange: " + delivery.getEnvelope().getExchange());
+                        System.out.println("RoutingKey: " + delivery.getEnvelope().getRoutingKey());
+                        System.out.println("DeliveryTag: " + delivery.getEnvelope().getDeliveryTag());
+                        try {
+                            Thread.sleep(3000);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                        channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);
+                    },
+                    (consumerTag) -> {
+                        System.out.println(String.format("Consumidor %s cancelado", consumerTag));
+                    });
+
+            Thread.currentThread().join();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
 
 
+}
+
+```
 
 
+
+## Otro ejemplo
+
+```java
+package com.romoreno.rabbitmq.prueba;
+
+import com.google.gson.Gson;
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.ConnectionFactory;
+
+import java.io.IOException;
+import java.util.Scanner;
+import java.util.concurrent.TimeoutException;
+
+public class Productor {
+
+    public static void main(String[] args) throws IOException, TimeoutException {
+
+        String queueName = "almacena_usuarios";
+
+        ConnectionFactory factory = new ConnectionFactory();
+        Connection connection = factory.newConnection();
+        Channel channel = connection.createChannel();
+        // Crea cola:
+        // - No durable (temporal)
+        // - No exclusiva a una conexión (No se eliminara cuando la conexion se cierre)
+        // - No va a haber autodelete cuando deje de haber consumidores conectados
+        channel.queueDeclare(queueName, false, false, false, null);
+
+        Gson gson = new Gson();
+
+        while (true) {
+            UsuarioPojo usuario = new UsuarioPojo();
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Introduzca nuevo usuario");
+            System.out.print("Nombre: ");
+            final var nombre = scanner.nextLine();
+            usuario.setName(nombre);
+            System.out.print("Apellido: ");
+            final var apellido = scanner.nextLine();
+            usuario.setSurname(apellido);
+            System.out.print("¿Es una patata? (Ponga una S si lo es): ");
+            final var patata = scanner.nextLine();
+            usuario.setPatata(patata.toLowerCase().contains("s"));
+
+            final var json = gson.toJson(usuario);
+            channel.basicPublish("",queueName, null, json.getBytes());
+
+            System.out.println("Enviado a cola: " + json);
+
+        }
+    }
+}
+
+```
+
+
+```java
+package com.romoreno.rabbitmq.prueba;  
+  
+import com.google.gson.Gson;  
+import com.rabbitmq.client.Channel;  
+import com.rabbitmq.client.Connection;  
+import com.rabbitmq.client.ConnectionFactory;  
+import com.rabbitmq.client.Delivery;  
+  
+import java.io.IOException;  
+import java.util.concurrent.TimeoutException;  
+  
+public class Consumidor {  
+  
+    private static Gson gson = new Gson();  
+    private static String queueName = "almacena_usuarios";  
+    private static String queueFailureName = "usuarios_no_patata";  
+  
+    public static void main(String[] args) throws IOException, TimeoutException {  
+  
+        System.out.println("Iniciando consumo");  
+        ConnectionFactory factory = new ConnectionFactory();  
+        Connection connection = factory.newConnection();  
+        Channel channel = connection.createChannel();  
+  
+        channel.queueDeclare(queueName, false, false, false, null);  
+        channel.queueDeclare(queueFailureName, false, false, false, null);  
+  
+        channel.basicConsume(queueName, false,  
+                (consumerTag, delivery) -> procesar(channel, consumerTag, delivery),  
+                (consumerTag) -> cancelar(consumerTag));  
+    }  
+  
+    private static void procesar(Channel channel, String consumerTag, Delivery delivery)  {  
+        System.out.println("Llega: " + delivery.getEnvelope().getDeliveryTag());  
+  
+        try {  
+            final var usuarioPojo = gson.fromJson(new String(delivery.getBody()), UsuarioPojo.class);  
+  
+            if (usuarioPojo != null && usuarioPojo.isPatata()) {  
+                System.out.println(String.format("%s %s %s Ha llegado y es patata. FELICIDADES!!!!!",delivery.getEnvelope().getDeliveryTag(),  
+                        usuarioPojo.getName(),  
+                        usuarioPojo.getSurname()));  
+                // Multiple permite rechazar varios mensajes (true) o uno solo (false)  
+                channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);  
+            } else {  
+                if (usuarioPojo != null) {  
+                    System.out.println(String.format("%s %s %s No es patata. Lo envio a la cola de los no patatas", delivery.getEnvelope().getDeliveryTag(), usuarioPojo.getName(),  
+                            usuarioPojo.getSurname()));  
+                } else {  
+                    System.out.println("No se pudo sacar el usuario del Json de entrada: " + new String(delivery.getBody()));  
+                }  
+                channel.basicPublish("", queueFailureName, null, delivery.getBody());  
+                // Multiple permite rechazar varios mensajes (true) o uno solo (false)  
+                // Requeue permite reenviar a la cola para otro intento (true) o no (false)                channel.basicNack(delivery.getEnvelope().getDeliveryTag(), false, false);  
+            }  
+  
+                System.out.println("Toy chikito. Quedan quince segundos hasta procesar:");  
+            Thread.sleep(5000);  
+            System.out.println("Toy chikito. Quedan diez segundos hasta procesar:");  
+            Thread.sleep(5000);  
+            System.out.println("Toy chikito. Quedan cinco segundos hasta procesar:");  
+            Thread.sleep(5000);  
+            System.out.println("Vamos a ver si hay algo en cola:");  
+        } catch (Exception e) {  
+            System.out.println("Excepcion al procesar");  
+        }  
+    }  
+  
+    private static void cancelar(String consumerTag) {  
+        System.out.println("Cancelada la cola: " + consumerTag);  
+    }  
+}
+```
 
 
 
