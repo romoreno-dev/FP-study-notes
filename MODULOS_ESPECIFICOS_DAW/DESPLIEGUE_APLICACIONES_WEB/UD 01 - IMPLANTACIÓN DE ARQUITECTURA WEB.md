@@ -104,15 +104,42 @@ hostname -I
 curl http://ip_del_servidor
 ```
 
+5.- Comprobaremos que se ha creado la carpeta **/var/www/html** y que su propietario es el usuario con el que se inició la sesión (¿root?). Dicha carpeta será el directorio raíz del contenido del servidor establecido por defecto en su configuración en `/etc/apache2/sites-available`
+
+Para desplegar una página de ejemplo solo hay que mover el contenido a `/var/www/http`
 
 #### 2.1.2. Instalación de servidor web Apache en Xampp
 
+**XAMPP** puede ser descargado de https://www.apachefriends.org/es
+Versión actual: XAMPP for Windows (8.2.12 - PHP 8.2.12)
+
+Comprende una solución completa y gratuita para crear un servidor local en el ordenador.
+Permite desarrollar y probar aplicaciones web en un entorno controlado antes de implementarlas en un servidor en línea.
+Está diseñado para ser fácil de instalar y de usar.
+Se combina servidor web Apache, base de datos, lenguajes de programación y otras herramienta esenciales.
+Sus características son:
+- **Paquete de Software Todo-en-Uno**: XAMPP es un conjunto de herramientas de software que incluye Apache (servidor web), MySQL o MariaDB (BBDD), PHP y Perl.
+- **Multiplataforma**. Diseñado principalmente para WIndows, macOS y Linux.
+- **Fácil de instalar y de usar**
+- **Entorno de pruebas local**: Permite probar y depurar aplicaciones web sin necesidad de un servidor en línea, reduciendo tiempos de carga y facilitando la iteración rápida.
+- **Versatilidad para desarrollo**.Soporta PHP y Perl y puede configurarse para soportar otros lenguajes y herramientas. 
 
 
+Si se consulta el fichero `phpinfo.php`, se puede ver toda la información del servidor con los módulos de Apache cargados y mucha más información.
+
+```php
+<?php phpinfo(); ?>
+```
+
+Para desplegar una página de ejemplo solo hay que mover el contenido a `htdocs`
+Y, según el directorio, ese será su contexto:
+http://localhost/backs/index.html
+http://localhost/backs/street/index.html
 
 ### 2.2. Servidor de aplicaciones
 
 Un **servidor de aplicaciones** es una herramienta que proporciona aplicaciones o programas a los clientes de la red mediante una conexión HTTP.
+A nivel de software es un programa informático dentro de un sistema operativo y queda identificado por su número de proceso (PID).
 También permite centralizar en un equipo las aplicaciones necesarias para toda la red para gestionar mejor el acceso a datos.
 
 Integridad de datos + Centralización de aplicaciones --> Más eficiente

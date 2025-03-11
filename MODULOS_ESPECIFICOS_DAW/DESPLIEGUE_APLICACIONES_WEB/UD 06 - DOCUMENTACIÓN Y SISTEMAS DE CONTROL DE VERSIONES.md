@@ -1,4 +1,4 @@
-
+Peso de la información (webp)
 ## 1. Documentación
 
 ## 2. Herramientas externas para la generación de documentación. Instalación, configuración y uso

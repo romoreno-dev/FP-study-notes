@@ -1,19 +1,23 @@
 ---
 
 ---
+https://www.rabbitmq.com/tutorials
+https://www.rabbitmq.com/docs/use-rabbitmq
+https://www.rabbitmq.com/docs/manage-rabbitmq
+https://www.rabbitmq.com/docs/monitoring
 
 ---
 ## 0. RabbitMQ vs Kafka
 
-**RabbitMQ** sería ideal si:
-- Tienes una infraestructura con muchos microservicios que necesitan procesar mensajes de manera fiable.
+**RabbitMQ** es ideal en los casos en los que:
+- Se tiene  una infraestructura con muchos microservicios que necesitan procesar mensajes de manera fiable.
 - La aplicación necesita manejar diferentes tipos de mensajes de diferentes servicios.
 - La prioridad está en asegurar la entrega de mensajes y la fiabilidad.
 - El volumen de datos no es extremadamente alto, pero aún necesitas asegurar una correcta gestión de los mensajes.
 
 **Kafka** sería mejor si:
-- Necesitas manejar grandes volúmenes de eventos o datos en tiempo real (por ejemplo, miles de peticiones por hora).
-- Tienes un sistema distribuido que requiere alta disponibilidad y tolerancia a fallos.
+- Se necesita manejar grandes volúmenes de eventos o datos en tiempo re    al (por ejemplo, miles de peticiones por hora).
+- Se tiene un sistema distribuido que requiere alta disponibilidad y tolerancia a fallos.
 - El almacenamiento de eventos y la capacidad de procesar flujos de datos a gran escala son más importantes que la complejidad de la infraestructura.
 
 ---

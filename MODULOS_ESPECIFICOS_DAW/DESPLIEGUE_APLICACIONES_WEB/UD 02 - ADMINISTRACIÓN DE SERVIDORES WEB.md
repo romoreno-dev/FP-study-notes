@@ -1,86 +1,413 @@
 
 ## 1. Configuración avanzada del servidor web
 
+Bibliografía recomendada: 
+- Bowen, R., Lõpez Ridruejo, D., & Liska, A. (2002). *Apache Administrator's Handbook*. Sams Publishing.
+- Stein, L., & MacEachern, D. (1999). *Writing Apache Modules with Perl and C: The Apache API and mod_perl* (1st ed.). O'Reilly Media.
+
+La configuración de un servidor web varía según:
+- el **peso de la información** (prever capacidad de almacenamiento)
+- el **contenido de las páginas y de los lenguajes y compiladores que se utilizan** (página estática vs página dinámica con llamadas a BBDD y alojamiento de esta)
+- **tipo de transmisión HTTP**
+- **elección de servidor junto con el sistema operativo que lo controlará**
+- **futuras conexiones y aplicaciones que instalar en el futuro**, es decir, **escalabilidad* y **modularidad**.
+
+Al instalar el servidor debe ejecutarse el **plan de prueba** para comprobar el buen funcionamiento.
+
+Se llama **página web estática** a aquella que no cambia mientras se visualiza en el cliente. En él el servidor se caracteriza por:
+- Solo almacenar información
+- Solo necesita soporte HTML/XHTML/CSS
+- En configuración y administración el soporte es básico y, por tanto, el rendimiento es altísimo
+- El procesador tiene poco trabajo --> coste mínimo, rapidez de acceso
+- Tiempo de respuesta muy corto
+
+En las **páginas webs dinámicas** se necesitan:
+- Más recursos y servicios instalados por parte del servidor (PHP, BBDD,...)
+- La configuración y administración es más compleja. 
+- Es más importante la seguridad  en el equipo del servidor y sus métodos de acceso.
+
+El cliente no ve la información contenida en el servidor (PHP, JSP,...) sino solo el contenido servido por este (HTML, CSS, JavaScript,...).
+
+Un servidor debe destacar por su:
+- **estabilidad** (hardware y software)
+- **disponibilidad** de datos para acceder a ellos en cualquier momento
+- **escalabilidad** para insertar un módulo al equipo de forma que no se obstaculice el funcionamiento de los demás componentes
+
+El servidor está **a la escucha** en los puertos que se le indiquen.
+
+En Xampp desde el fichero `/xampp/apache/conf/httpd.conf`
+En Linux desde el fichero `/etc/apache2/ports.conf`
+
+Por ejemplo es posible poner: 
+
+```
+# Solo el puerto
+Listen 80 (Todas las interfaces de red, puerto 80)
+Listen 8080
+
+# O incluso el puerto con la IP
+Listen 0.0.0.0:80  # Direccion comodin (todas las interfaces de red, puerto 80)
+Listen 192.168.200.250:80 (Interfaz de red 192.168.200.250 puerto 80)
+Listen 192.168.200.251:8080 
+```
+
+Por defecto se servirán contenidos de rutas desde **htdocs** en Xampp Windows según aparece en `httpd.conf`
+
+```xml
+#
+# DocumentRoot: The directory out of which you will serve your
+# documents. By default, all requests are taken from this directory, but
+# symbolic links and aliases may be used to point to other locations.
+#
+DocumentRoot "C:/xampp/htdocs"
+<Directory "C:/xampp/htdocs">
+```
+
+O desde **/var/www/http** en Linux (según aparece en `000.default.conf`)
+```
+DocumentRoot /var/www/html
+```
+
+
 ## 2. Módulos: Instalación, configuración y uso
+
+Con los **módulos** se pueden añadir y retirar funcionalidades de forma sencilla haciéndolo fácil de administrar. 
+Los módulos compilados poseen extensión `.so`. 
+
+Ejemplos de módulos son las comunicaciones por SSL, el soporte de PHP o el uso de LDAP como administrador de dominio. 
+
+Mencionemos algunos de ellos:
+- **mod_auth_basic**: Autenticación por Basic Auth
+- **mod_auth_digest**: Autenticación por Digest Auth
+- **mod_ssl**: Certificado SSL/TLS para uso de HTTPS
+- **mod_rewrite**: Reescrituras de URLs
+- **mod_expires**: Fechas de caducidad o cacheo de contenido estático
+- **mod_userdir**: Directorios públicos para cada usuario del sistema
+- **mod_headers**: Modificación de encabezados HTTP de Apache
+- **mod_wsgi**: Permite alojar aplicaciones web basadas en Python
+- **mod_proxy**: Uso de proxy inverso de Apache.
 
 ### 2.1. Módulos en Linux
 
-### 2.2. Módulos en Windows
+A la hora de administrar el servidor Apache en Linux, consideraremos las siguientes cuestiones.
+
+- Primero **iniciemos la sesión del servidor** con el usuario administrador.
+
+Los **modulos estáticos** de Apache son componentes que están integrados directamente en el binario del servidor. No pueden ser activados o desactivados sin recompilar. Además, siempre están disponibles. Puede consultarse dónde están cargados con el comando:
+
+```
+sudo apache2ctl -l
+```
+
+Nos devuelve por ejemplo:
+
+```
+Compiled in modules:
+  core.c   # Funciones básicas del servidor
+  mod_so.c # Permite cargar módulos dinámicos
+  mod_watchdog.c
+  http_core.c  # Manejo de protocolo HTTP
+  mod_log_config.c
+  mod_logio.c
+  mod_version.c
+  mod_unixd.c
+```
+
+Para poder usar módulos no disponibles para su instalación,  habría que bajar el código fuente y compilarlo.
+
+Los **módulos dinámicos** son componentes adicionales que se pueden cargar sin recompilar el servidor. Están cargados en el directorio **/etc/apache2/mods-enabled**. Todos los ficheros que existen aquí son **enlaces simbólicos a la carpeta** `mods-available`. 
+![[Pasted image 20250311203113.png]]
+
+El "fichero" de configuración sería `apache2.conf` pero aquí hay una configuración modular con archivos adicionales. (No como en Windows donde está todo en un solo archivo)
+
+Los ficheros:
+- `.conf`: Contiene las etiquetas `<ifModule nombre>` `/ifModule>` para saber el módulo que se va a cargar.
+
+```
+<IfModule alias_module>
+	# ..... 
+</IfModule>
+```
+
+- `.load`: Contiene la claúsula `LoadModule` seguida del módulo y la ruta donde se carga.
+
+```
+LoadModule alias_module /usr/lib/apache2/modules/mod_alias.so
+```
+
+
+**Instalación de módulos adicionales**
+
+Los paquetes disponibles en el repositorio de Ubuntu para instalar módulos adicionales se ven con:
+```shell
+sudo apt-cache search libapache2-mod
+```
+
+Para **activar un módulo**:
+```
+# Activarlo
+sudo a2enmod [nombre modulo]
+# Reiniciar servidor 
+sudo systemctl restart apache2
+```
+
+### 2.2. Módulos en Xampp Windows
+
+Los módulos se encuentran guardados en `xampp/apache/modules` con extensión `.so`
+Los módulos cargados por defecto se pueden consultar con:
+```
+httpd -l
+```
+
+Los módulos dinámicos son gestionados desde el fichero **/etc/conf/http.conf** y bastará con descomentar la línea correspondiente que, por ejemplo, tendrá este formato:
+
+```
+#LoadModule userdir_module modules/mod_userdir.so
+```
+
+En este caso también el fichero **httpd-userdir.conf** puede ser editado para realizar las configuraciones correspondientes. 
 
 ## 3. Servidores virtuales. Creación, configuración y utilización
 
-## 4. Autenticación y control de acceso
+Los **hosts virtuales** permiten que en el mismo servidor se puedan alojar varias páginas pertenecientes a varios dominios. 
 
-### Autenticación HTTP access
-
-### Autenticación HTTP Digest
-
-
-## 5. Protocolo HTTPS
-
-## 6. Certificadores. Servidores de certificados
-
-## 7. Despliegue de aplicaciones sobre servidores web
-
-
-
-
-Peso de la información (webp)
-
-
-
-```php
-<!DOCTYPE html>
-<head>
-
-<head>
-```
-
-El cliente no ve la informacion del servicodr
-
-
-Módulos Apache
-- Estabilidad
-- Dipsonibilidad
-- Escalabilidad
-
-Módulos Apache
-Archivos `.so` son los módulos compilados.
-Para poder usar un módulo en Ubuntu había que bajarse el código fuente y compilarlo 
-
-
-**Taller módulos apache**
-Apache en XAMPP
-- `mod_ssl`: Añadir soporte para SSL/TLS Apache
-- `mod_expires` : Establecer fecha de caducidad para contenido estático. Gestión del caché.
-Apache en Ubuntu
-- `mod_userdir`: Cada usuario de un sistema tenga su propio directorio público accesible desde Web
-- `mod_headers`: Modificación de los encabezados HTTP que envía apache, útil para configuraciones de seguridad, control de caché. 
-
-**Host Virtual**
-Permiten a un servidor:
-- Alojar múltiples sitios web
-- Servir diferentes contenido para solicitudes HTTP del cliente
-- Que el equipo responda a diferentes direcciones IP usando aplicación como Apache.
+En  otras palabras permitiría:
+- alojar múltiples sitios webs
+- servir diferente contenido para las solicitudes HTTP del cliente
+- que el equipo responda a diferentes direcciones IPs usando Apache
 Configurar un servidor web para manejar múltiples dominios en un único servidor de forma eficiente o para configurar diferentes hosts virtuales para sesiones de hosting dedicadas. 
 
 
+Se distinguirá entre:
+- **Servidores virtuales basados en nombre:** Aloja múltiples sitios web en una misma IP diferenciándolos por el nombre de dominio que el cliente solicita (cabecera `Host` de la petición) y redirigiéndolos a diferentes puertos. 
+- **Servidores virtuales basados en IP**: Aloja múltiples sitios webs diferenciándolos por la IP de la conexión. No aporta ventajas y, si las IPs del servidor se modifican con frecuencia puede ser un proceso difícil. No será necesario normalmente abrir puertos ya que se usa el puerto por defecto. 
+- **Servidores virtuales basados en varios servidores principales**. Se gestionan múltiples servidores independientes, cada uno con sus propios recursos. 
+
+### 3.1. Gestión del servidor virtual
+#### 3.1.1. Servidores virtuales en Linux
+
+Los servidores virtuales están definidos en el directorio **/etc/apache2/sites-available**. Cada configuración de servidor virtual iría en un archivo de texto en el interior de esta misma carpeta (pero puede haber varios `VirtualHost`).
+
+Estas configuraciones se habilitan/deshabilitan con los comandos:
+
+```shell
+# Habilitar
+sudo a2ensite 000-default.conf
+# Deshabilitar
+sudo a2dissite 000-default.conf
+```
+
+#### 3.2.1. Servidores virtuales en Xampp Windows
+
+No hay una carpeta sites-available sino que los servidores virtuales se gestionan en **/xampp/apache/conf/extra/httpd-vhosts.conf**
+
+Estas configuraciones se habilitan/deshabilitan incluyéndo la directiva `Include` en el fichero `/xampp/apache/conf/httpd.conf`:
+
+```shell
+# Virtual hosts
+Include conf/extra/httpd-vhosts.conf
+```
+
+----
+
+Las claúsulas de configuración pueden ser sobrescritas en el fichero de configuración de cada sitio web **.htaccess** según lo que se haya especificado en **/xampp/apache2/etc/httpd.conf**:
+
+    # AllowOverride controls what directives may be placed in .htaccess files.
+    # It can be "All", "None", or any combination of the keywords:
+    #   AllowOverride FileInfo AuthConfig Limit
+    #
+    AllowOverride All     (AllowOverride AuthConfig, por ejemplo)
 
 
+### 3.2. Configuración de servidores virtuales
 
-Apache Administrator's Handbook O'reilly
-Writing Apache Modules with Perl and C
+#### 3.2.1. Servidor virtual basados en nombres
 
----------
+Un ejemplo sería:
 
-Taller pdf con los pasos
-Video pdf
+```xml
+<VirtualHost *:80>
+	ServerAdmin example@example.com
+	ServerName example.com
+	ServerAlias www.example.com
+	DocumentRoot /var/www/example.com.conf
+	ErrorLog /var/log/apache/logs/error.log
+	LogLevel warn
+	CustomLog /var/log/apache/los/acces.log.combined
+</VirtualHost>
+```
 
-Nginx. Servidor web alternativa a apache.
+- Primera línea: Apache escucha en el puerto 80 de todas las interfaces de red disponibles en la máquina.
+- **ServerAdmin**: Información de contacto del administrador del sitio web
+- **ServerName**: Nombre del dominio del sitio web
+- **ServerAlias** Nombre secundario del sitio web
+- **DocumentRoot** Carpeta raíz del sitio web
+- **ErrorLog** Archivo en el que se almacenarán los errores
+- **LogLevel** Nivel de errores enviados a registro
+- **CustomLog** Archivo donde se dirigirá la información de acceso. 
+
+#### 3.2. Servidor virtual basado en direcciones IP
+
+Al inicio de la configuración se indica la dirección IP específica del servidor. Apache solo aceptará solicitudes que lleguen a esa IP específica. Si el cliente intenta conectarse a una IP diferente en el mismo servidor no se manejará por este Virtual Hosts. 
+
+Como es obvio, para ello deberá tenerlas asignadas la máquina del servidor primero.
+También podrá acceder mediante el `ServerName` configurado pero solo si dicho dominio resuelve a esa IP.
+Otro `ServerName` que resuelva a una IP diferente no podrá acceder. 
+
+A continuación se indica, por ejemplo, el directorio donde se almacenan los ficheros de la página web, seguido del nombre de dominio y de su alias. 
+
+```xml
+# Configuración para el sitio 1 (IP 192.168.1.100)
+<VirtualHost 192.168.1.100:80>
+    DocumentRoot "/var/www/sitio1"
+    ServerName sitio1.com
+    ServerAlias www.sitio1.com
+</VirtualHost>
+
+# Configuración para el sitio 2 (IP 192.168.1.101)
+<VirtualHost 192.168.1.101:80>
+    DocumentRoot "/var/www/sitio2"
+    ServerName sitio2.com
+    ServerAlias www.sitio2.com
+</VirtualHost>
+```
+
+#### 3.3. Servidor virtual basado en servidores principales
+
+Este es útil en caso de desear tener varios archivos de configuración de forma independiente, organizando en cada uno sus servidores virtuales que pudieran tener. 
+
+Así en Xampp se incluirá en  `/xampp/apache/conf/httpd.conf` se incluirá la ruta de las configuraciones de los servidores virtuales: 
+
+```
+# Incluir la configuración para producción
+Include /etc/apache2/sites-prod.conf
+
+# Incluir la configuración para desarrollo
+Include /etc/apache2/sites-dev.conf
+
+# Incluir la configuración para pruebas
+Include /etc/apache2/sites-test.conf
+```
+
+Y en Linux se habilitarán los ficheros `/etc/apache2/sites-availables` mediante: 
+```
+sudo a2ensite sites-prod.conf
+sudo a2ensite sites-dev.conf
+sudo a2ensite sites-test.conf
+```
 
 
-----------------
------------
+## 4. Autenticación y control de acceso
+
+El servidor web debe limitar el acceso a determinadas páginas mediante políticas rígidas de acceso.
+Para ello suelen usarse gestores de bases de datos SQL o LDAP. 
+
+**En HTTP existen varios métodos de autenticación** que permiten asegurar que solo usuarios autorizados puedan acceder a ciertos contenidos:
+- **Basic Authentication**: El servidor envía código _401 Unathorized_ al intentar acceder a un recurso protegido, incluye en la respuesta una cabecera `WWW-Authenticate` que indica que se requiere Basic Authentication. Se solicitarán las credenciales al usuario y estas se envían en un header con el formato `Authorization: Basic <base64(nombre de usuario:contraseña)>`. Las credenciales en este caso viajan sin cifrar y podrían ser interceptadas.
+- **Digest Authenticacion**: El cliente recibe un reto (challenge) del servidor que incluye un valor llamado (nonce) que es un número aleatorio generado por el servidor. El cliente combina el nonce, su contraseña y otros valores como método HTTP y URI y envía el resultado en cabecera `Authorization: Digest <valor>`. El servidor realiza el mismo cálculo y, si coincide con el valor enviado, permite el acceso.
+
+Otras formas:
+- **Bearer Token Authentication**: En cada solicitud el cliente obtiene un token de autenticación con tiempo de expiración de un servidor de autorización (como OAuth o la gestión por JWT). Este token se incluye en la cabecera de las solicitudes subsecuentes como `Authorization: Bearer <token>`. El servidor validará este token.
+- **Certificate-based Authentication:** El cliente presenta un certificado digital (validado por una autoridad de certificación, CA) para autenticar su identidad. 
+- **Form Authentication:** El usuario introduce usuario y contraseña en un formulario, que son validadas. Se usa en conjunto con otras tecnologías como sesiones y cookies para mantener la autenticación a lo largo de la navegación. 
+### 4.1. Autenticación HTTP access. **Módulo auth_basic**
+
+Debe estar habilitado el módulo **auth-basic**
+Linux:
+```
+sudo a2enmod auth_basic
+```
+Xampp (httpd.conf):
+```
+LoadModule auth_basic_module modules/mod_auth_basic.so
+```
+
+Se realiza en el archivo **.htaccess** de los directorios de las páginas web (Siempre que `AllowOverride AuthConfig` esté declarado en la configuración del servidor)
+
+1. Crear fichero **htpasswd** en el que se guardan credenciales de usuario permitidos
+2. Instalar paquete **apache2-utils** que contiene **htpasswd** `sudo apt install apache2-utils`
+3. Crear fichero para un usuario en cuestión `sudo htpasswd -c /etc/apache2/passwd usuario`. El sistema pedirá que se ingrese y confirme la contraseña que se almacenará de forma cifrada en el fichero `passwd`
+4. Editar fichero de configuración `000-default.conf` (o el que proceda) para permitir acceso a usuarios. Se usará en el host virtual o en el directorio que proceda, pudiéndose emplear las etiquetas: `<RequireAll>` (requerir todas las condiciones) `<RequiredAny>` (requerir alguna de las condiciones)
+
+```xml
+<VirtualHost *:80>
+    # Otros ajustes de configuración...
+
+    <Directory /var/www/html/sitio_protegido>
+        # Activar la autenticación básica
+        AuthType Basic
+        AuthName "Acceso Restringido"
+        AuthUserFile /etc/apache2/passwd  # Ruta al archivo .htpasswd
+        Require valid-user  # Requiere un usuario válido
+    </Directory>
+    
+	<Directory /var/www/html/otro_sitio_protegido>
+	    AuthType Basic
+	    AuthName "Acceso Restringido"
+	    AuthUserFile /etc/apache2/passwd
+	    <RequireAll>
+	        Require valid-user
+	        Require ip 192.168.1.100  # Solo usuarios desde esta IP pueden acceder
+	    </RequireAll>
+	</Directory>
+
+	<Directory /var/www/html/otro_sitio_protegido>
+	    AuthType Basic
+	    AuthName "Acceso Restringido"
+	    AuthUserFile /etc/apache2/passwd
+	    <RequireAny>
+	        Require valid-user
+	        Require ip 192.168.1.100  # O usuarios desde esta IP
+	    </RequireAny>
+	</Directory>
+	
+</VirtualHost>
+```
+
+
+### 4.2. Autenticación HTTP Digest. **Módulo auth_digest**
+
+Debe estar habilitado el módulo **auth-digest**. El procedimiento debe realizarse sobre una página web en concreto. 
+
+Linux:
+```
+sudo a2enmod auth_digest
+```
+Xampp (httpd.conf):
+```
+#LoadModule auth_digest_module modules/mod_auth_digest.so
+```
+
+Debe tenerse en cuenta que este tipo de autenticación, **debe realizarse sobre una página web en concreto**
+Es necesario crear un fichero con `htdigest`
+```
+# Comando
+sudo htpdigest -c /etc/apache2/digest dominio usuario
+# Ejemplo 
+sudo htdigest -c /etc/apache2/digest "MiZonaProtegida" usuario1
+```
+
+```
+<Directory /ruta/a/tu/carpeta/protegida>
+    AuthType Digest
+    AuthName "MiZonaProtegida"
+    AuthDigestFile /etc/apache2/digest
+    Require valid-user
+</Directory>
+```
+
+
+## 5. Protocolo HTTPS. Certificados. Servidores de certificados. **Módulo mod_ssl**
+
+El **protocolo HTTPS** (protocolo de transferencia de hipertexto de forma segura) implementa técnicas de encriptación de la información antes de ser transferida desde el equipo origen, mejorando el protocolo HTTP.
+
+El cifrado de la información requiere un tiempo de procesamiento y una implementación de métodos que ejecutar por lo que el trabajo de procesador y el tiempo de computación puede verse afectado. En todo caso, debe sopesarse la información a transmitir en forma segura para no provocar un sobreesfuerzo. Con todo, hay negocios en los que será necesario reforzar y encriptar completamente toda la página web como por ejemplo una web de un banco. 
+
+Así el servidor web estará configurado para que en todo dominio esté cifrada su información o simplemente el intento de acceso a esta. 
+
+Los servidores web pueden emitir certificados aunque los navegadores podrían no detectarlo si no está dentro de sus servidores de confianza. Grandes empresas crean certificados propios para sus empleados, permitiendo así que solo acceda personal autorizado por la propia empresa. 
+
+El protocolo HTTPS utiliza como método de cifrado el basado en SSL/TLS (protocolos criptográficos para dar comunicaciones seguras por una red), dando autenticación y privacidad. 
 
 **SSL (Secure Sockets Layer)** es un protocolo de seguridad que se usa para establecer una conexión segura y encriptada entre un cliente (navegador web) y un servidor (servidor web). Ha sido reemplazado hoy día por su sucesor TLS (Transport Layer Security) pero el término sigue empleándose para referirse a esta seguridad.
 
@@ -99,133 +426,39 @@ Nginx. Servidor web alternativa a apache.
 - **Confianza del usuario**: Al usuario se le indica mediante un icono de candado en la barra de direcciones del navegador y el uso del protocolo https que la conexión es segura.
 - **Posicionamiento en motores de búsqueda**: Los motores de búsqueda priorizan sitios web que usan SSL/TLS (HTTPS) y penalizan a los que no lo hacen (HTTP).
 
----
----
+Para que se acceda mediante protocolo HTTPS debe estar configurado el **puerto 443** (y el **puerto 80** si se quiere recibir de HTTP).
 
+**Para verificar un certificado desde un navegador**
+Al  llamar a una URL por protocolo HTTPS, puede consultarse el certificado que emite la información junto con el método de cifrado utilizado. (Opciones Avanzadas > Certificados > Ver certificado). Si el navegador no conoce el certificado que emite la información, se dará alguna indicación en una pantalla de error y la posibilidad de añadir la excepción y confiar en el sitio que se intenta visualizar. 
 
-#### Nginx Ubuntu
+### 5.1. Configuración del módulo mod_ssl
 
-```shell
-sudo apt install nginx
-sudo systemctl start nginx
-sudo systemctl status nginx
-sudo vim /etc/nginx/sites-available/default
+1. Debe estar habilitado el módulo **ssl**
+Linux:
+```
+sudo a2enmod ssl
+```
+Xampp (httpd.conf):
+```
+LoadModule ssl_module modules/mod_ssl.so
+
+# (Windows) Y la linea de la configuracion SSL para añadirla
+Include conf/extra/httpd-ssl.conf
 ```
 
-En
-`listen 80 default_server;` 
-Poner
-`listen 8080 default_server;`
+2. Debe estar corriendo el **server HTTPS en 443**
+(Windows XAMPP) En el fichero de  `xampp/apache/conf/extra/httpd-ssl.conf
+(Linux) En el fichero de `/etc/apache2/ports.conf`
+	- Debe estar `Listen 443`
 
-Y que el bloque `root` apunte a `/var/www/html`
-
-En `/var/www/html`
-Crear archivo HTML.
-
-
-
-
-
----
-
-Despliegue de aplicaicón web
-
-`localhost/phpmyadmin`
-
-- Crear BBDD almaMater con utf8_spanish_ci
-
-
-
-
----
-
-
-
-
----
-
-**XAML**: Solución completa y gratuita para crear un servidor local en el ordenador.
-Permite desarrollar y probar aplicaciones web en un entorno controlado antes de implementarlas en un servidor en línea.
-Está diseñado para ser fácil de instalar y de usar.
-Se combina servidor web Apache, base de datos, lenguajes de programación y otras herramienta esenciales.
-Sus características son:
-- **Paquete de Software Todo-en-Uno**: XAMPP es un conjunto de herramientas de software que incluye Apache (servidor web), MySQL o MariaDB (BBDD), PHP y Perl.
-- **Multiplataforma**. Diseñado principalmente para WIndows, macOS y Linux.
-- **Fácil de instalar y de usar**
-- **Entorno de pruebas local**: Permite probar y depurar aplicaciones web sin necesidad de un servidor en línea, reduciendo tiempos de carga y facilitando la iteración rápida.
-- **Versatilidad para desarrollo**.Soporta PHP y Perl y puede configurarse para soportar otros lenguajes y herramientas. 
-
-https://www.apachefriends.org/es
-XAMPP for Windows (8.2.12 - PHP 8.2.12)
-Apache corre en 80 (HTTP) y 443 (HTTPS)
-
-**Servidor**: Programa informático dentro de un sistema operativo, identificándose con su número de proceso (PID)
-
-Corre en: localhost   127.0.0.1
-Se almacenan las webs dentro de `htdocs`
-
-
-Si se consulta el fichero `phpinfo.php`, se puede ver toda la información del servidor con los módulos de Apache cargados y mucha más información.
-
-```php
-<?php phpinfo(); ?>
-```
-
-Para desplegar una página de ejemplo solo hay que mover el contenido a `htdocs`
-Y, según el directorio, ese será su contexto:
-http://localhost/backs/index.html
-http://localhost/backs/street/index.html
-
-### Módulos
-
-#### Activar módulos
-Los módulos se encuentran en `xampp\apache\modules`. Tienen extensión `.so`. 
-Es necesario ir a xampp\apache\conf y abrir el archivo **httpd.conf**
-Allí se busca el módulo que se quiera activar y se descomenta la línea.
-Siempre reiniciar traslos cambios. 
-#### mod_rewrite
-
-Módulo útil para reescrituras de URLs.
-Descomentar:
-`LoadModule rewrite_module modules/mod_rewrite.so`
-
-**Añadir reglas de reescritura**
-Si se quiere habilitar archivos `.htaccess` para definir las reglas de reescritura debe esta habilitada en la parte del fichero correspondiente a `<Directory "C:/xampp/htdocs">` la regla: `AllowOverride All`
-
-Los pasos a seguir son:
-1.- **Crear archivo `.htaccess` en `xampp/htdocs`**
-2.- Introducir la regla de redirección:
-```
-RewriteEngine On
-RewriteRule ^about$ about.html [L]
-RewriteRule ^.*/about$ about.html [L]
-```
-
-Esto significa que si la URL solicitada es `about` (sin la barra inclinada al final), Apache redirigirá a `about.html`. La `L` asegura que si esta regla se aplica, no se ejecutarán más reglas de reescritura después de esta.
-Como vemos se puede poner la expresión regular que uno quiera. 
-
-#### mod_ssl
-
-Para utilizar protocolo HTTPS (comunicación SSL/TLS).
-Descomentar:
-`LoadModule ssl_module modules/mod_ssl.so`
-Y la línea de la configuración para añadirla:
-`Include conf/extra/httpd-ssl.conf`
-
-**Verificar que el puerto SSL está configurado en**: 
-`conf/extra/httpd-ssl.conf` tiene que estar `Listen 443`.
-
-**Generar certificado**
-Se hace mediante OpenSSL (Apache lo tiene incluido en su carpeta de binarios):
-Ejecutando:
-```powershell
+3.- Debe **generarse clave privada y certificado autofirmado** mediante OpenSSL
+```ssh
 # Generar clave privada
 openssl genrsa -out server.key 2048
 # Generar certificado autofirmado
 openssl req -new -x509 -key server.key -out server.crt -days 365
 ```
 
-Significado:
 - `genrsa`: Genera una clave privada RSA.
 - `-out server.key`: Guarda la clave privada en un archivo llamado `server.key`.
 - `2048`: Especifica la longitud de la clave en bits (2048 bits es un estándar seguro).
@@ -236,17 +469,106 @@ Significado:
 - `-out server.crt`: Guarda el certificado en el archivo `server.crt`.
 - `-days 365`: Especifica la validez del certificado (1 año).
 
+
 Los ficheros `server.key` y `server.crt` se deben ubicar en:
 ```
 C:\xampp\apache\conf\ssl.key\
 C:\xampp\apache\conf\ssl.crt\
 ```
 
-Y confirmar que en `httpd-ssl.conf` se apunta a los certificados que se han generado: 
+(Windows Xampp) Y confirmar que en `httpd-ssl.conf` se apunta a los certificados que se han generado
+(Linux) Y confirmar que en el fichero `/etc/apache2/sites-available/default-ssl.conf`
+
+(Deben estar en....)
 ```
 SSLCertificateFile "C:/xampp/apache/conf/ssl.crt/server.crt"
 SSLCertificateKeyFile "C:/xampp/apache/conf/ssl.key/server.key"
 ```
+
+## 6. Reescrituras de URLs. **Módulo mod_rewrite**
+
+Debe estar habilitado el módulo **rewrite**
+Linux:
+```
+sudo a2enmod rewrite
+```
+Xampp (httpd.conf):
+```
+LoadModule rewrite_module modules/mod_rewrite.so
+```
+
+**Añadir reglas de reescritura**
+Se realiza en el archivo **xamp/htdocs/.htaccess** de los directorios de las páginas web (Siempre que `AllowOverride All` esté declarado en la configuración del servidor)
+
+Ejemplos de reglas de redirección serían: 
+
+```
+RewriteEngine On
+RewriteRule ^about$ about.html [L]
+RewriteRule ^.*/about$ about.html [L]
+```
+
+Esto significa que si la URL solicitada es `about` (sin la barra inclinada al final), Apache redirigirá a `about.html`. La `L` asegura que si esta regla se aplica, no se ejecutarán más reglas de reescritura después de esta.
+Como vemos se puede poner la expresión regular que uno quiera. 
+
+## 7. Fechas de caducidad del caché en contenido estático. **Módulo mod_expires**
+
+
+
+
+## 8. Directorios públicos accesibles para cada usuario del  sistema. **Módulo mod_userdir**
+
+
+
+## 9. Modificación de los encabezados HTTP de Apache. **Módulo mod_headers** 
+
+
+
+## 10. Permitir aplicaciones web basadas en Python. **Módulo mod_wsgi**
+
+
+## 11. Uso de proxy inverso en Apache. **Módulo mod_proxy**
+
+
+## 12. Tomcat
+
+### 12.1. Proxy en Tomcat
+
+## 13. Nginx
+
+Para la instalación y arranque de Nginx en Ubuntu se utilizarán los comandos usuales:
+```shell
+sudo apt install nginx
+sudo systemctl start nginx
+sudo systemctl status nginx
+```
+
+El puerto en el que corre es el 80. 
+Si quisiera cambiarse basta con ir a **/etc/nginx/sites-available/default** y poner por ejemplo:
+```
+listen 8080;
+```
+
+Igualmente la ruta por defecto sobre la que se despliega el contenido es **/var/www/html**
+
+### 13.1. Proxy inverso en Nginx
+
+
+## 14. Diferencias entre Apache y Nginx
+
+
+## 15. Los requerimientos para desplegar aplicaciones dinámicas sobre servidores web
+
+Si hablamos de desplegar aplicaciones dinámicas elaboradas mediante tecnologías **LAMP** o **WAMP** es necesario que los servidores web tengan instalado para su correcto funcionamiento:
+- **Linux** o **Windows**. El sistema operativo de la máquina.
+- **Apache**: El servidor web en sí
+- **MySQL**: Base de datos. XAMPP viene equipado con ella y puede accederse a su gestor mediante `localhost/phpmyadmin`
+- **PHP**: Lenguaje de programación que permite realizar procedimiento dinámico entre cliente y servidor. 
+
+
+
+
+
 
 
 #### mod_expires
@@ -1329,8 +1651,35 @@ Existen dos tipos principales de challenge que Let's Encrypt utiliza para valida
 
 
 
+### **Cómo se usa `0.0.0.0` en otros servidores:**
 
+#### **1. Tomcat (Java Servlet Container)**:
 
+En **Tomcat**, puedes configurar el puerto de escucha en el archivo `server.xml`. Para escuchar en **todas las interfaces**, se usa **`0.0.0.0`** o simplemente se puede omitir la dirección IP y dejar que el servidor escuche en todas las interfaces.
+
+Ejemplo de configuración en `server.xml` de Tomcat:
+
+xml
+
+CopiarEditar
+
+`<Connector port="8080" address="0.0.0.0" />`
+
+En este caso, **`0.0.0.0`** le indica a Tomcat que debe escuchar en **todas las interfaces de red** en el puerto `8080`.
+
+#### **2. WildFly (JBoss EAP)**:
+
+En **WildFly**, el concepto es similar. En la configuración de `standalone.xml`, puedes configurar las direcciones IP para que el servidor escuche en todas las interfaces, usando **`0.0.0.0`** o configurando la interfaz de red como "all".
+
+Ejemplo de configuración en `standalone.xml` de WildFly:
+
+xml
+
+CopiarEditar
+
+`<interface name="public">     <inet-address value="0.0.0.0"/> </interface>`
+
+De nuevo, **`0.0.0.0`** indica que WildFly debe escuchar en todas las interfaces disponibles en la máquina.
 
 
 
