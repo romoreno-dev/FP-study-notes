@@ -1,4 +1,4 @@
-
+(UF1 Servidor Web y Transferencia de Archivos)
 ## 1. Configuración avanzada del servidor web
 
 Bibliografía recomendada: 
@@ -169,7 +169,7 @@ En este caso también el fichero **httpd-userdir.conf** puede ser editado para r
 
 ## 3. Servidores virtuales. Creación, configuración y utilización
 
-Los **hosts virtuales** permiten que en el mismo servidor se puedan alojar varias páginas pertenecientes a varios dominios. 
+Los **hosts virtuales** es una configuración que permite que un único servidor Apache sirva múltiples sitios web desde una misma máquina, usando diferentes nombres de dominio o direcciones IP. 
 
 En  otras palabras permitiría:
 - alojar múltiples sitios webs
@@ -182,6 +182,8 @@ Se distinguirá entre:
 - **Servidores virtuales basados en nombre:** Aloja múltiples sitios web en una misma IP diferenciándolos por el nombre de dominio que el cliente solicita (cabecera `Host` de la petición) y redirigiéndolos a diferentes puertos. 
 - **Servidores virtuales basados en IP**: Aloja múltiples sitios webs diferenciándolos por la IP de la conexión. No aporta ventajas y, si las IPs del servidor se modifican con frecuencia puede ser un proceso difícil. No será necesario normalmente abrir puertos ya que se usa el puerto por defecto. 
 - **Servidores virtuales basados en varios servidores principales**. Se gestionan múltiples servidores independientes, cada uno con sus propios recursos. 
+
+En definitiva, en Apache, un "host virtual" es un bloque de configuración que asocia un nombre de dominio (por ejemplo, `mi-sitio.com`) o una dirección IP con un directorio específico en el sistema de archivos donde se encuentran los archivos del sitio web.
 
 ### 3.1. Gestión del servidor virtual
 #### 3.1.1. Servidores virtuales en Linux
@@ -197,7 +199,7 @@ sudo a2ensite 000-default.conf
 sudo a2dissite 000-default.conf
 ```
 
-#### 3.2.1. Servidores virtuales en Xampp Windows
+#### 3.1.2. Servidores virtuales en Xampp Windows
 
 No hay una carpeta sites-available sino que los servidores virtuales se gestionan en **/xampp/apache/conf/extra/httpd-vhosts.conf**
 
@@ -218,6 +220,17 @@ Las claúsulas de configuración pueden ser sobrescritas en el fichero de config
     #
     AllowOverride All     (AllowOverride AuthConfig, por ejemplo)
 
+
+#### 3.1.3. Permisos y logs
+
+Podrían consultarse los logs con un comando como:
+
+`tail -f /var/log/apache2/error.log`
+
+Por otro lado, el usuario de Apache suele ser `www-data`
+
+**Permisos de directorios**: Apache necesita **permisos de ejecución** en los directorios para poder acceder a ellos. También necesita **permisos de lectura** en los directorios para poder listar los archivos dentro de ellos si se necesita.  **755**
+**Permisos de archivos**: Apache necesita **permisos de lectura** para los archivos para poder servirlos a los usuarios. **644**
 
 ### 3.2. Configuración de servidores virtuales
 
@@ -245,6 +258,8 @@ Un ejemplo sería:
 - **ErrorLog** Archivo en el que se almacenarán los errores
 - **LogLevel** Nivel de errores enviados a registro
 - **CustomLog** Archivo donde se dirigirá la información de acceso. 
+
+Cuando un cliente realiza una solicitud, por ejemplo, a través de un navegador, la solicitud HTTP contiene varias cabeceras, entre ellas la cabecera **Host**, que especifica el nombre de dominio o subdominio solicitado. Apache utiliza esta cabecera para determinar qué **host virtual** debe usar para servir el contenido adecuado.
 
 #### 3.2. Servidor virtual basado en direcciones IP
 
@@ -296,6 +311,17 @@ sudo a2ensite sites-dev.conf
 sudo a2ensite sites-test.conf
 ```
 
+----
+
+```bash
+# Crear directorio
+sudo mkdir -p /var/www/despliegue.com/public.html
+# Revisar propiedad
+sudo chown -R $USER:$USER /war/www/despliegue.com/public_html
+# Garantizar acceso de lectura a directorios webs comunes y archivos y carpetas
+sudo chmod -R 755 /var/www
+# Crear un index.html para el sitio
+```
 
 ## 4. Autenticación y control de acceso
 
@@ -513,66 +539,6 @@ Como vemos se puede poner la expresión regular que uno quiera.
 
 ## 7. Fechas de caducidad del caché en contenido estático. **Módulo mod_expires**
 
-
-
-
-## 8. Directorios públicos accesibles para cada usuario del  sistema. **Módulo mod_userdir**
-
-
-
-## 9. Modificación de los encabezados HTTP de Apache. **Módulo mod_headers** 
-
-
-
-## 10. Permitir aplicaciones web basadas en Python. **Módulo mod_wsgi**
-
-
-## 11. Uso de proxy inverso en Apache. **Módulo mod_proxy**
-
-
-## 12. Tomcat
-
-### 12.1. Proxy en Tomcat
-
-## 13. Nginx
-
-Para la instalación y arranque de Nginx en Ubuntu se utilizarán los comandos usuales:
-```shell
-sudo apt install nginx
-sudo systemctl start nginx
-sudo systemctl status nginx
-```
-
-El puerto en el que corre es el 80. 
-Si quisiera cambiarse basta con ir a **/etc/nginx/sites-available/default** y poner por ejemplo:
-```
-listen 8080;
-```
-
-Igualmente la ruta por defecto sobre la que se despliega el contenido es **/var/www/html**
-
-### 13.1. Proxy inverso en Nginx
-
-
-## 14. Diferencias entre Apache y Nginx
-
-
-## 15. Los requerimientos para desplegar aplicaciones dinámicas sobre servidores web
-
-Si hablamos de desplegar aplicaciones dinámicas elaboradas mediante tecnologías **LAMP** o **WAMP** es necesario que los servidores web tengan instalado para su correcto funcionamiento:
-- **Linux** o **Windows**. El sistema operativo de la máquina.
-- **Apache**: El servidor web en sí
-- **MySQL**: Base de datos. XAMPP viene equipado con ella y puede accederse a su gestor mediante `localhost/phpmyadmin`
-- **PHP**: Lenguaje de programación que permite realizar procedimiento dinámico entre cliente y servidor. 
-
-
-
-
-
-
-
-#### mod_expires
-
 Módulo que permite controlar los encabezados de caducidad (headers de expiración) de las respuestas HTTP. Es útil para gestionar la caché del navegador indicándole cuánto tiempo deben almacenarse los archivos estáticos (imágenes, CSS, JavaScript) antes de solicitarlos de nuevo al servidor. 
 
 Con él:
@@ -589,10 +555,20 @@ igual a 1 semana).
 
 Usados juntos, Cache-Control tiene prioridad en HTTP/1.1 y posteriores. 
 
-Descomentar:
-`LoadModule expires_module modules/mod_expires.so`
+Debe estar habilitado el módulo **rewrite**
+Linux:
+```
+sudo a2enmod expires
+```
+Xampp (httpd.conf):
+```
+LoadModule expires_module modules/mod_expires.so
+```
 
-Ejemplo de configuración que puede agregarse a Apache o al archivo `.htaccess` del sitio web:
+- `ExpiresActive On`: Habilita el uso de `mod_expires`
+- `ExpiresByType`: Define la política de expiración en función del MIMEType.  (1 month, 1 week, 1 day,...)
+
+La configuración que puede agregarse en el archivo `.htaccess` del sitio web (o en la configuración de Apache) podría ser:
 
 ```xml
 <IfModule mod_expires.c>
@@ -607,23 +583,25 @@ Ejemplo de configuración que puede agregarse a Apache o al archivo `.htaccess` 
 </IfModule>
 ```
 
-- `ExpiresActive On`: Habilita el uso de `mod_expires`
-- `ExpiresByType`: Define la política de expiración en función del MIMEType.  (1 month, 1 week, 1 day,...)
-
-### Pruebas 
-https://gtmetrix.com/
-https://www.webpagetest.org/
-Lighthouse
-Analizan el tiempo de carga de un sitio web y verifican si los encabezados de caché están configurados correctamente. También dan información sobre los recursos y dicen si la caducidad de la caché está bien configurada en el servidor Apache. 
-
-
-#### mod_userdir
+## 8. Directorios públicos accesibles para cada usuario del  sistema. **Módulo mod_userdir**
 
 Permite a los usuarios acceder a sus propios directorios personales a través de URLs específicas. Contenido alojado en subdirectorios dentro del home del usuario como por ejemplo: `http://example.com/~pepito`
 
 Así:
 - Cada usuario tiene su especio
 - Se facilita la creación de sitios web por múltiples usuarios
+
+
+Debe estar habilitado el módulo **rewrite**
+Linux:
+```
+sudo a2enmod userdir
+```
+Xampp (httpd.conf):
+```
+LoadModule rewrite_module modules/mod_userdir.so
+```
+
 
 ```bash
 # Activar el modulo userdir
@@ -644,7 +622,7 @@ systemctl restart apache2
 ¡Cuidado con los permisos!
 
 
-#### mod_headers
+## 9. Modificación de los encabezados HTTP de Apache. **Módulo mod_headers** 
 
 Permite modificar encabezados HTTP de las respuestas y solicitudes que maneja el servidor. Así se puede ajustar el caché, controlar la seguridad o personalizar cómo los navegadores manejan las solicitudes.
 
@@ -655,11 +633,17 @@ Permite modificar encabezados HTTP de las respuestas y solicitudes que maneja el
 		- X-Frame-Options
 - Controlar manejo de caché con Cache-Control. 
 
-Habilitarlo:
-`sudo a2enmod headers`
+Debe estar habilitado el módulo **rewrite**
+Linux:
+```
+sudo a2enmod headers
+```
+Xampp (httpd.conf):
+```
+LoadModule rewrite_module modules/mod_headers.so
+```
 
-Edita tu archivo de configuración de Apache (`/etc/apache2/sites-available/000-default.conf` ) y
-añade lo siguiente dentro de un bloque `<VirtualHost>`:
+Editar el archivo de configuración de Apache (por defecto, `/etc/apache2/sites-available/000-default.conf` ) y añadir lo siguiente dentro de un bloque `<VirtualHost>`:
 ```xml
 <IfModule mod_headers.c>
 Header set Cache-Control "max-age=3600, must-revalidate"
@@ -669,141 +653,25 @@ Header set Cache-Control "max-age=3600, must-revalidate"
 durante 1 hora (3600 segundos) y que debe validar la caché cuando expire.!-->
 ```
 
+### 9.1. Realización de pruebas mediante analizadores de performance
 
+Analizan el tiempo de carga de un sitio web y verifican si los encabezados de caché están configurados correctamente. También dan información sobre los recursos y dicen si la caducidad de la caché está bien configurada en el servidor Apache. 
 
+- https://gtmetrix.com/
+- https://www.webpagetest.org/
+- **Lighthouse**
 
+## 10. Permitir aplicaciones web basadas en Python. **Módulo mod_wsgi**
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#### Tomcat
-Corre en el 8080
-Las aplicaciones web para Tomcat van en `\xampp\tomcat\webapps`
-
-- Pongamos un directorio como "myapp". En él crear un archivo JSP llamado `index.jsp`
-- En el directorio pongamos una carpeta `WEB-INF`
-
-
-
-
-En **Apache Tomcat**, puedes desplegar aplicaciones de dos maneras principales:
-
-1. **Aplicación en forma de directorio (exploded deployment)**
-    
-    - Puedes colocar tu aplicación de Java EE como un directorio con todos sus archivos ya extraídos en la carpeta `webapps/`.
-    - Por ejemplo, si tu aplicación se llama `miapp`, deberías tener una estructura como esta dentro de `webapps/`:
+Debe estar habilitado el módulo **rewrite**
+Linux:
 ```
-tomcat/
-├── webapps/
-│   ├── miapp/
-│   │   ├── WEB-INF/
-│   │   ├── META-INF/
-│   │   ├── index.jsp
-│   │   ├── ...
-
+sudo a2enmod rewrite
 ```
-
-    - Tomcat detectará automáticamente la aplicación y la desplegará.
-2. **Desplegar un archivo `.war` (WAR deployment)**
-    
-    - Puedes colocar un archivo `.war` dentro del directorio `webapps/`.
-        `tomcat/ ├── webapps/ │   ├── miapp.war`
-    - Tomcat descomprimirá automáticamente el `.war` y lo desplegará.
-
-### ¿Y qué pasa con los archivos `.jar`?
-
-- Tomcat **NO** ejecuta directamente archivos `.jar` como lo haría **Spring Boot** u otro framework que use `java -jar app.jar`.
-- Si tienes una aplicación como un **JAR ejecutable** (por ejemplo, una aplicación Spring Boot empacada como `miapp.jar`), lo correcto es ejecutarla con: `java -jar miapp.jar`  en lugar de desplegarla en Tomcat.
-
-En **Apache Tomcat**, la administración de despliegues de archivos `.war` se realiza a través del **Tomcat Manager**, que requiere autenticación. La administración de usuarios y contraseñas se maneja en el archivo `tomcat-users.xml`.
-
-### **¿Qué significan estos roles?**
-
-- `manager-gui` → Permite acceder a la interfaz web del Manager.
-- `manager-script` → Permite desplegar WARs vía línea de comandos o scripts.
-- `manager-jmx` → Permite monitorizar Tomcat vía JMX.
-- `manager-status` → Permite ver el estado del servidor.
-
-## Acceder al Tomcat Manager
-
-http://localhost:8080/manager/html
-
-
-## Desplegar un `.war` vía línea de comandos
-
-```bash
-# Desplegar app
-curl -u admin:admin -T miapp.war "http://localhost:8080/manager/text/deploy?path=/miapp&update=true"
-# Eliminar app
-curl -u admin:admin123 "http://localhost:8080/manager/text/undeploy?path=/miapp"
-# Reiniciar app
-curl -u admin:admin123 "http://localhost:8080/manager/text/reload?path=/miapp"
+Xampp (httpd.conf):
 ```
-
-
-📌 Ruta: `$TOMCAT_HOME/conf/server.xml`
-
+LoadModule rewrite_module modules/mod_rewrite.so
 ```
-De (No escucha fuera de localhost)
-<Connector port="8080" protocol="HTTP/1.1"
-           connectionTimeout="20000"
-           redirectPort="8443" />
-A
-<Connector address="0.0.0.0" port="8080" protocol="HTTP/1.1"
-           connectionTimeout="20000"
-           redirectPort="8443" />
-```
-
-
-```
-De
-<Host name="localhost"  appBase="webapps"
-            unpackWARs="true" autoDeploy="true">
-A
- <Host name=""  appBase="webapps"
-            unpackWARs="true" autoDeploy="true">
-```
-
-Por defecto, Tomcat **bloquea el acceso al Manager desde IPs remotas**. Para permitir acceso desde cualquier IP:
-`$TOMCAT_HOME/webapps/manager/META-INF/context.xml`
-Y cambia `allow="..."` a: `allow=".*"`
-
-         allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" />
-
-
-Dejar eso en `webapp/prueba` como index.jsp
-
-```jsp
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
-
-# ¡Hola desde Tomcat!
-
-La hora actual es: <%= new java.util.Date() %>
-```
-
-Y cuando se entra en localhost:8080/prueba
-Sale.
-
-
-
-------
-
-### Apache Ubuntu
 
 ```shell
 # Actualizar paquetes
@@ -851,125 +719,10 @@ Require all granted
 Reiniciar apache:
 `sudo systemctl restart apache2`
 Probar: localhost/pyapp
-### Tomcat Ubuntu
-```shell
-sudo apt install openjdk-11-jdk
-sudo apt install tomcat10 tomcat10-admin
-sudo systemctl status tomcat10
-sudo mkdir /var/lib/tomcat10/webapps/myapp
-sudo vim /var/lib/tomcat10/webapps/myapp/index.jsp
-sudo systemctl restart tomcat10
-```
 
+## 11. Uso de proxy inverso en Apache. **Módulo mod_proxy**
 
-----
-
-`tail -f /var/log/apache2/error.log`
-
-El usuario de Apache suele ser `www-data`
-### Permisos necesarios para `www-data`:
-
-1. **Permisos de directorios**:
-    
-    - Apache necesita **permisos de ejecución** en los directorios para poder acceder a ellos. Sin los permisos de ejecución, Apache no podrá acceder a los contenidos dentro de los directorios.
-    - También necesita **permisos de lectura** en los directorios para poder listar los archivos dentro de ellos si se necesita.
-755
-2. **Permisos de archivos**:
-    
-    - Apache necesita **permisos de lectura** para los archivos para poder servirlos a los usuarios.
-644
-
-
----
-
-#### Hosts Virtuales
-
-
-1.- Crear estructura de directorios con los datos del sitio y revisar permisos.
-El directorio `/var/www` albergará el document root (directorio superior donde Apache busca el contenido a mostrar).
-
-```bash
-# Crear directorio
-sudo mkdir -p /var/www/despliegue.com/public.html
-# Revisar propiedad
-sudo chown -R $USER:$USER /war/www/despliegue.com/public_html
-# Garantizar acceso de lectura a directorios webs comunes y archivos y carpetas
-sudo chmod -R 755 /var/www
-# Crear un index.html para el istio
-
-```
-
-2.- Configurar host virtual
-Se copia el archivo predeterminado que indica cómo responde Apache a las solicitudes (`000-default.conf`) a un nombre especifico `despliegue.com.conf`
-
-```xml
-<VirtualHost *:80>
-ServerAdmin webmaster@localhost
-DocumentRoot /var/www/html
-ErrorLog ${APACHE_LOG_DIR}/error.log
-CustomLog ${APACHE_LOG_DIR}/access.log combined
-</VirtualHost>
-```
-
-- Se modifica  `ServerAdmin` para que el administrador del sitio pueda recibir correos
-- Se modifica `ServerName` para establecer el dominio base que debe coincidir con la definición del hostvirtual
-- Se modifica `ServerAlias` que define los nombres adicionales. 
-
-Quedando así: 
-
-```xml
-<VirtualHost *:80>
-ServerAdmin admin@despliegue.com
-ServerName despliegue.com
-ServerAlias www.despliegue.com
-DocumentRoot /var/www/despliegue.com/public_html
-ErrorLog ${APACHE_LOG_DIR}/error.log
-CustomLog ${APACHE_LOG_DIR}/access.log combined
-</VirtualHost>
-```
-
-Habilitar el archivo host virtual y deshabilitar el sitio perdeterminado
-```
-sudo a2ensite despliegue.com.conf
-sudo a2dissite 000-default.conf
-```
-
-Se modificará `etc/hosts` para probar el host virtual, añadiendo la IP del servidor y el nombre de dominio. 
-`ip addr show`
-
-```
-127.0.0.1 localhost
-127.0.1.1 guest-desktop
-192.168.226.139 despliegue.com
-```
-
-### 1. **Hosts Virtuales en Apache**:
-
-Un **host virtual** en Apache es una configuración que permite que un único servidor Apache sirva múltiples sitios web (o aplicaciones) desde la misma máquina, utilizando diferentes nombres de dominio o direcciones IP.
-
-- **Definición**: En Apache, un "host virtual" es un bloque de configuración que asocia un nombre de dominio (por ejemplo, `mi-sitio.com`) o una dirección IP con un directorio específico en el sistema de archivos donde se encuentran los archivos del sitio web.
-    
-- **Configuración**: En Apache, los hosts virtuales se definen en archivos de configuración (generalmente en `/etc/apache2/sites-available/` en sistemas basados en Debian o `/etc/httpd/conf.d/` en sistemas basados en Red Hat). Un ejemplo de configuración de un host virtual podría ser:
-    
-    apache
-    
-    CopiarEditar
-    
-    `<VirtualHost *:80>     ServerAdmin webmaster@mi-sitio.com     DocumentRoot /var/www/mi-sitio     ServerName mi-sitio.com     ErrorLog ${APACHE_LOG_DIR}/error.log     CustomLog ${APACHE_LOG_DIR}/access.log combined </VirtualHost>`
-    
-    En este caso, Apache servirá el contenido de `/var/www/mi-sitio` cuando alguien acceda a `mi-sitio.com`.
-    
-- **Función principal**: Los hosts virtuales permiten que Apache sirva múltiples sitios web desde un solo servidor, basándose en el nombre de dominio que se usa para hacer la solicitud HTTP.
-
-Cuando un cliente realiza una solicitud, por ejemplo, a través de un navegador, la solicitud HTTP contiene varias cabeceras, entre ellas la cabecera **Host**, que especifica el nombre de dominio o subdominio solicitado. Apache utiliza esta cabecera para determinar qué **host virtual** debe usar para servir el contenido adecuado.
-
-
-### Proxy inverso
-
-
-Un **proxy inverso** es un servidor que actúa como intermediario entre los clientes (por ejemplo, los navegadores de los usuarios) y uno o más servidores de backend. El proxy inverso recibe las solicitudes del cliente y las redirige a los servidores internos que realmente manejarán esas solicitudes (por ejemplo, un servidor de aplicaciones o un servidor web).
-
-La principal diferencia entre un proxy directo y un proxy inverso es que, en un **proxy inverso**, el cliente nunca interactúa directamente con el servidor backend; en cambio, siempre se comunica con el proxy, que redirige las solicitudes según sea necesario.
+Un **proxy inverso** es un servidor que actúa como intermediario entre los clientes (por ejemplo, los navegadores de los usuarios) y uno o más servidores de backend. El proxy inverso recibe las solicitudes del cliente y las redirige a los servidores internos que realmente manejarán esas solicitudes (por ejemplo, un servidor de aplicaciones o un servidor web). En un **proxy inverso**, el cliente nunca interactúa directamente con el servidor backend; en cambio, siempre se comunica con el proxy, que redirige las solicitudes según sea necesario.
 
 **¿Por qué usar un Proxy Inverso?**
 
@@ -978,23 +731,25 @@ La principal diferencia entre un proxy directo y un proxy inverso es que, en un 
 - **Caché**: Mejorar el rendimiento almacenando en caché el contenido que se sirve de manera frecuente.
 - **SSL Offloading**: Descartar la carga del cifrado SSL de los servidores backend y dejarlo a cargo del proxy
 
-### ¿Se puede hacer un Proxy Inverso en Apache?
 
-Sí, Apache también puede configurarse como un **proxy inverso**. Utiliza los módulos `mod_proxy` y `mod_proxy_http` para redirigir solicitudes a otros servidores o aplicaciones backend.
+Debe estar habilitado el módulo **mod_proxy**
 
-### Pasos para configurar un Proxy Inverso en Apache
-
-**Habilitar los módulos necesarios**:
-
-Para habilitar el proxy inverso en Apache, necesitas asegurarte de que los módulos `mod_proxy`, `mod_proxy_http` (para HTTP) y, si es necesario, `mod_ssl` (para HTTPS) estén habilitados. Si usas Apache en un sistema basado en Debian (como Ubuntu), puedes habilitarlos con los siguientes comandos:
-
-```bash
-sudo a2enmod proxy sudo a2enmod proxy_http sudo a2enmod ssl
+Linux:
+```
+sudo a2enmod proxy
+```
+Xampp (httpd.conf):
+```
+LoadModule rewrite_module modules/mod_proxy.so
 ```
 
-**Configurar el Proxy Inverso**:
+Además deben estar los módulos `mod_proxy_http` (HTTP) o `mod_ssl` (HTTPS).
+
+### 11.1. Configurar el proxy inverso
 
 Supongamos que se tiene una aplicación backend corriendo en: `http://localhost:8080` y se quiere que Apache redirija las solicitudes de `http://mi-sitio.com` a esa aplicación.
+
+Supongamos que se tiene una aplicación backend corriendo en: `http://localhost:8080` y se quiere que Apache redirija las solicitudes de `http://mi-sitio.com` hasta esa aplicación.
 
 ```xml
 <VirtualHost *:80>
@@ -1008,11 +763,12 @@ Supongamos que se tiene una aplicación backend corriendo en: `http://localhost:
 </VirtualHost>
 ```
 
+
 **ProxyPass**: Esta directiva le indica a Apache que redirija todas las solicitudes que lleguen a `/` en `http://mi-sitio.com` hacia `http://localhost:8080/`.
 
  **ProxyPassReverse**: Esta directiva se asegura de que cualquier respuesta que el servidor de backend envíe de vuelta se reescriba correctamente para que parezca que está llegando de Apache, no del servidor backend.
 
-```
+```xml
 <VirtualHost *:80>
     ServerName app1.com
 
@@ -1030,138 +786,197 @@ Supongamos que se tiene una aplicación backend corriendo en: `http://localhost:
 </VirtualHost>
 ```
 
+## 12. Tomcat
 
----
+- Al instalar Tomcat, este corre por defecto en el puerto **8080**
+- Su directorio de aplicaciones webs es `/xamp/tomcatt/webapps`
 
-El comando: `sudo certbot --apache -d app1.com -d app2.com`
+Tomcat es capaz de detectar:
+- **Aplicaciones en forma de directorio (exploded deployment)**: La aplicación JavaEE puede colocarse como directorio con todos sus archivos dentro de la carpeta `webapps`.
 
-sirve para **generar y configurar certificados SSL gratuitos** usando **Let's Encrypt** en un servidor Apache.
-1. **Solicita certificados SSL** para `app1.com` y `app2.com`.
-2. **Configura automáticamente Apache** para usar HTTPS.
-3. **Redirige el tráfico HTTP a HTTPS** (si lo confirmas en la instalación).
----
+```
+tomcat/
+├── webapps/
+│   ├── miapp/
+│   │   ├── WEB-INF/
+│   │   ├── META-INF/
+│   │   ├── index.jsp
+│   │   ├── ...
+```
 
+- **Desplegar un archivo .war (WAR deployment)**: Puede colocarse el archivo `.war` en `webapps` y Tomcat descomprimirá el fichero y lo desplegará. 
 
+(Los ficheros `.jar` en cambio no son ejecutados directamente por Tomcat como sí hace Spring Boot. Para ello debe ejecutarse `java -jar miapp.jar` en lugar de desplegarla con Tomcat. 
 
-
-
-
-
-
-
-
-
-
-
-
-
-TOMATCAT 8080
-
-
-### **Archivo de configuración: `server.xml`**
-
-Ubicación típica:
-
-bash
-
-CopiarEditar
+La configuración de Tomcat se realiza en el ficheor `server.xml`. Ahí puede cambiarse en donde escucha el servidor.
 
 `<TOMCAT_HOME>/conf/server.xml`
+- Linux Ubuntu: `/var/lib/tomcat9/conf/server.xml`
+- Xampp Windows: `/xampp/tomcat/conf/server.xml`
 
-Dentro de este archivo, encontrarás una sección como esta:
+```xml
+`<Connector port="8080" protocol="HTTP/1.1"            
+connectionTimeout="20000"            
+redirectPort="8443" />`
+```
 
-xml
+### 12.1. Tomcat manager
 
-CopiarEditar
+La administración de despliegue de archivos se archivos se realiza  a través del **Tomcat Manager** (http://localhost:8080/manager/html), que requiere autenticación. Los usuarios de dicha autenticación son administrador mediante el archivo **tomcat-users.xml**.
 
-`<Connector port="8080" protocol="HTTP/1.1"            connectionTimeout="20000"            redirectPort="8443" />`
-
-- Aquí, `port="8080"` indica que Tomcat es
-
-
-/var/lib/tomcat9
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### **¿Qué significan estos roles?**
-
+**Roles**
 - `manager-gui` → Permite acceder a la interfaz web del Manager.
 - `manager-script` → Permite desplegar WARs vía línea de comandos o scripts.
 - `manager-jmx` → Permite monitorizar Tomcat vía JMX.
 - `manager-status` → Permite ver el estado del servidor.
 
+Si no lo está, se puede habilitar para que entrar a Tomcat fuera de "localhost" modificando el fichero `$TOMCAT_HOME/conf/server.xml`
+
+**De (No escucha fuera de localhost)**
+```xml
+<Connector port="8080" protocol="HTTP/1.1"
+           connectionTimeout="20000"
+           redirectPort="8443" />
+```
+**A**
+```xml
+<Connector address="0.0.0.0" port="8080" protocol="HTTP/1.1"
+           connectionTimeout="20000"
+           redirectPort="8443" />
+```
+
+**De**
+```xml
+<Host name="localhost"  appBase="webapps"
+            unpackWARs="true" autoDeploy="true">
+```
+**A**
+```xml
+ <Host name=""  appBase="webapps"
+            unpackWARs="true" autoDeploy="true">
+```
 
 
 
+Por defecto, Tomcat **bloquea el acceso al Manager desde IPs remotas**. Para permitir acceso desde cualquier IP:
+`$TOMCAT_HOME/webapps/manager/META-INF/context.xml`
+Y cambia `allow="..."` a: `allow=".*"`
+
+         allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" />
 
 
+### 12.2. Despliegue en Tomcat vía línea de comandos
+
+```bash
+# Desplegar app
+curl -u admin:admin -T miapp.war "http://localhost:8080/manager/text/deploy?path=/miapp&update=true"
+# Eliminar app
+curl -u admin:admin123 "http://localhost:8080/manager/text/undeploy?path=/miapp"
+# Reiniciar app
+curl -u admin:admin123 "http://localhost:8080/manager/text/reload?path=/miapp"
+```
+
+### 12.3. Despliegue de prueba
+
+Dejar eso en `webapp/prueba` como index.jsp
+
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+
+# ¡Hola desde Tomcat!
+
+La hora actual es: <%= new java.util.Date() %>
+```
+
+Y cuando se entra en localhost:8080/prueba podrá visualizarse.
+
+### 12.1. Proxy en Tomcat
+
+**Varias aplicaciones en Tomcat con distintos dominios**
+
+```xml
+<VirtualHost *:80>
+    ServerName app1.com
+
+    ProxyPreserveHost On
+    ProxyPass / http://localhost:8080/app1/
+    ProxyPassReverse / http://localhost:8080/app1/
+</VirtualHost>
+
+<VirtualHost *:80>
+    ServerName app2.com
+
+    ProxyPreserveHost On
+    ProxyPass / http://localhost:8080/app2/
+    ProxyPassReverse / http://localhost:8080/app2/
+</VirtualHost>
+
+```
+
+**Tomcat + Otros servidores en diferentes puertos** 
+
+```xml
+<VirtualHost *:80>
+    ServerName tomcat-app.com
+    ProxyPass / http://localhost:8080/
+    ProxyPassReverse / http://localhost:8080/
+</VirtualHost>
+
+<VirtualHost *:80>
+    ServerName django-app.com
+    ProxyPass / http://localhost:8000/
+    ProxyPassReverse / http://localhost:8000/
+</VirtualHost>
+
+<VirtualHost *:80>
+    ServerName node-app.com
+    ProxyPass / http://localhost:3000/
+    ProxyPassReverse / http://localhost:3000/
+</VirtualHost>
+
+```
+
+**Mismo dominio con subrutas** 
+
+Si se quiere que las apps sean accesibles como:
+
+- `https://mi-sitio.com/app1`
+- `https://mi-sitio.com/app2`
 
 
+```xml
+<VirtualHost *:80>
+    ServerName mi-sitio.com
 
+    ProxyPreserveHost On
+    ProxyPass /app1/ http://localhost:8080/app1/
+    ProxyPassReverse /app1/ http://localhost:8080/app1/
 
+    ProxyPass /app2/ http://localhost:8080/app2/
+    ProxyPassReverse /app2/ http://localhost:8080/app2/
+</VirtualHost>
+```
 
+## 13. Nginx
 
+Para la instalación y arranque de Nginx en Ubuntu se utilizarán los comandos usuales:
+```shell
+sudo apt install nginx
+sudo systemctl start nginx
+sudo systemctl status nginx
+```
 
+El puerto en el que corre es el 80. 
+Si quisiera cambiarse basta con ir a **/etc/nginx/sites-available/default** y poner por ejemplo:
+```
+listen 8080;
+```
 
+Igualmente la ruta por defecto sobre la que se despliega el contenido es **/var/www/html**
 
+### 13.1. Proxy en Nginx
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## 1. Arquitecturas web. Modelos
-
-**Origen HTTP/HTML** 
-- Finales de los 80. Científicos del CERN. Trabajan con PC no compatibles, no podían compartir su trabajo. 
-- Tim Berners-Lee. Propuesta para desarrollar sistema de hipertexto sobre Internet. 
-- Se desarrolla sobre protocolos TCP/IP (desde los 50, pruebas Arpanet). 
-	- Formato de texto para representar documentos de hipertexto (HyperText Markup Language HTML)
-	- Protocolo para intercambio de documentos (HyperText Transfer Protocol HTTP)
-
-**Funcionamiento del navegador web**
-- Se escribe dirección web
-
-
-## 2. Servidores web y de aplicaciones. Instalación y configuración básica
-
-
-
-
-
-
-## 3. Estructura y recursos web. Descriptor de despliegue
-
-
-
-
-#### Proxy inverso Nginx
-
-En `/etc/nginx/sites-available/default`
+Si vamos a la configuración en `/etc/nginx/sites-available/default`:
 
 ```json
 server {
@@ -1179,6 +994,8 @@ server {
         access_log /var/log/nginx/mi-sitio-access.log;
 }
 ```
+
+Veamos otro ejemplo más amplio:
 
 ```json
 # Configuración para HTTP (puerto 80)
@@ -1227,6 +1044,8 @@ server {
 
 ```
 
+Asegurarse de que el certificado y la clave SSL estén correctamente ubicados en `/etc/nginx/ssl/`
+
 **Explicación**
 1. **Redirección de HTTP a HTTPS (en el puerto 80):**
     
@@ -1247,187 +1066,81 @@ server {
     
     - Los archivos de log (`error_log` y `access_log`) están configurados para registrar los accesos y errores de tu servidor Nginx.
 
-### **Pasos adicionales:**
+### 13.2. Nginx Proxy Manager
 
-1. Asegúrate de que el certificado y la clave SSL estén correctamente ubicados en `/etc/nginx/ssl/`.
-    - Si no has creado la carpeta, puedes hacerlo con `sudo mkdir -p /etc/nginx/ssl/` y mover los archivos `server.crt` y `server.key` allí.
-2. **Reiniciar Nginx** para aplicar los cambios:
+**Nginx Proxy Manager** es una herramienta basada en una interfaz gráfica que facilita la gestión de servidores Nginx, especialmente cuando se trata de configurar proxies inversos y certificados SSL de manera rápida y sencilla. Te permite configurar múltiples dominios, subdominios y certificados SSL, sin necesidad de escribir manualmente la configuración de Nginx.
+
+- **Generación de Configuraciones Nginx:** Cuando configuras un dominio o subdominio en Nginx Proxy Manager, él crea automáticamente las configuraciones adecuadas en Nginx, incluyendo las reglas de proxy inverso, y se asegura de que el tráfico se redirija correctamente a tus aplicaciones.
     
-    bash
+- **SSL Automático:** Puedes configurar Nginx Proxy Manager para que automáticamente obtenga un **certificado SSL gratuito** utilizando **Let's Encrypt**. En ese caso, se encarga de renovar el certificado de manera automática, sin necesidad de intervención manual.
+
+#### 13.2.1. Pasos
+
+- Instalar Nginx Proxy Manager:
+```yaml
+version: '3' 
+services:   
+	app:     
+		image: jc21/nginx-proxy-manager:latest     
+		container_name: nginx-proxy-manager     
+		restart: always     
+ports:       
+	- "80:80"      
+	- "443:443"      
+	- "81:81"  
+# Esta es la interfaz web     
+volumes:       
+	- ./data:/data      
+	- ./letsencrypt:/etc/letsencrypt    
+environment:       
+	- DB_SQLITE_FILE=/data/database.sqlite
+```
+
+- **Acceder a la Interfaz de Usuario:**
+Una vez que Nginx Proxy Manager está instalado y corriendo, puedes acceder a su interfaz web a través de `http://<tu-ip>:81` y configurarlo mediante la interfaz gráfica.
+
+**Agregar un Proxy Inverso:** En la interfaz de Nginx Proxy Manager:
     
-    CopiarEditar
+ Haz clic en "Proxy Hosts".
+ Añade un nuevo **Proxy Host**. Para esto, necesitas proporcionar el nombre de dominio, la IP o el puerto de la aplicación a la que deseas redirigir el tráfico (por ejemplo, una aplicación en `localhost:9090`), y la configuración adicional para SSL.
+ 
+- **Configurar SSL:**
     
-    `sudo systemctl restart nginx`
+Al configurar el dominio, Nginx Proxy Manager tiene una opción para habilitar **SSL automático** usando Let's Encrypt. Solo debes poner tu dominio y marcar la casilla que dice algo como **"Request a new SSL certificate"**.Esto generará y configurará el certificado SSL para tu dominio automáticamente.
 
+**Configuración de Redirección HTTP a HTTPS:** Nginx Proxy Manager puede hacer esto por ti automáticamente, redirigiendo todo el tráfico HTTP hacia HTTPS para asegurar tu sitio.
 
+**Guardar y Aplicar Configuraciones:** Después de agregar los detalles, haz clic en "Save" y Nginx Proxy Manager se encargará de crear las reglas de proxy inverso en el archivo de configuración de Nginx, además de gestionar las configuraciones de SSL.
 
+#### 13.2.2. Challengue de Let's Encrypt
 
-```
-# Configuración para app1.com (con HTTPS)
-server {
-    listen 80;
-    server_name app1.com;
+Cuando solicitas un certificado SSL a través de **Let's Encrypt**, la autoridad certificadora (CA) necesita asegurarse de que tienes control sobre el dominio para el cual estás solicitando el certificado. **Eso es lo que se conoce como un "challenge"**.
 
-    # Redirigir tráfico HTTP a HTTPS
-    return 301 https://$host$request_uri;
-}
+Existen dos tipos principales de challenge que Let's Encrypt utiliza para validar que tienes control sobre el dominio:
 
-server {
-    listen 443 ssl;
-    server_name app1.com;
+1. **HTTP-01 Challenge (Desafío HTTP):**
+    
+    - Este desafío verifica que el servidor web al que se está solicitando el certificado puede servir un archivo específico en una URL determinada. Let's Encrypt revisa si puedes responder a una solicitud HTTP que apunte a un archivo temporal en tu servidor web.
+    - Por ejemplo, Let's Encrypt te pide que pongas un archivo de verificación en tu servidor en una ruta como `http://tu-dominio.com/.well-known/acme-challenge/<token>`.
+    - Si el servidor responde correctamente, significa que tienes control sobre el dominio y Let's Encrypt te emite el certificado.
+2. **DNS-01 Challenge (Desafío DNS):**
+    
+    - Este desafío se utiliza generalmente cuando no se puede usar el HTTP-01 challenge (por ejemplo, en entornos donde no se puede hacer acceso HTTP). En este caso, debes agregar un registro TXT específico a la zona DNS de tu dominio.
+    - Let's Encrypt valida la existencia de ese registro TXT y si lo encuentra, emite el certificado.
 
-    # Ubicación del certificado SSL y la clave
-    ssl_certificate /etc/nginx/ssl/app1.crt;
-    ssl_certificate_key /etc/nginx/ssl/app1.key;
+---
+El comando: `sudo certbot --apache -d app1.com -d app2.com`
 
-    # Configuración de SSL
-    ssl_protocols TLSv1.2 TLSv1.3;
-    ssl_ciphers 'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES128-GCM-SHA256';
-    ssl_prefer_server_ciphers on;
+sirve para **generar y configurar certificados SSL gratuitos** usando **Let's Encrypt** en un servidor Apache.
+1. **Solicita certificados SSL** para `app1.com` y `app2.com`.
+2. **Configura automáticamente Apache** para usar HTTPS.
+3. **Redirige el tráfico HTTP a HTTPS** (si lo confirmas en la instalación).
 
-    # Seguridad adicional
-    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
-
-    # Proxy inverso: Redirige tráfico a la aplicación en el puerto 8080
-    location / {
-        proxy_pass http://localhost:8080/;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-
-    # Logs de acceso y error
-    error_log /var/log/nginx/app1-error.log;
-    access_log /var/log/nginx/app1-access.log;
-}
-
-# Configuración para app2.com (con HTTPS)
-server {
-    listen 80;
-    server_name app2.com;
-
-    # Redirigir tráfico HTTP a HTTPS
-    return 301 https://$host$request_uri;
-}
-
-server {
-    listen 443 ssl;
-    server_name app2.com;
-
-    # Ubicación del certificado SSL y la clave
-    ssl_certificate /etc/nginx/ssl/app2.crt;
-    ssl_certificate_key /etc/nginx/ssl/app2.key;
-
-    # Configuración de SSL
-    ssl_protocols TLSv1.2 TLSv1.3;
-    ssl_ciphers 'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES128-GCM-SHA256';
-    ssl_prefer_server_ciphers on;
-
-    # Seguridad adicional
-    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
-
-    # Proxy inverso: Redirige tráfico a la aplicación en el puerto 9090
-    location / {
-        proxy_pass http://localhost:9090/;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-
-    # Logs de acceso y error
-    error_log /var/log/nginx/app2-error.log;
-    access_log /var/log/nginx/app2-access.log;
-}
-
-```
-
-
-
-#### Quien usa mi puerto???
-`sudo lsof -i :80`
-
-
-
-
-### TOMCAT
-
-## **🔹 Caso 1: Varias aplicaciones en Tomcat con distintos dominios**
-
-```xml
-<VirtualHost *:80>
-    ServerName app1.com
-
-    ProxyPreserveHost On
-    ProxyPass / http://localhost:8080/app1/
-    ProxyPassReverse / http://localhost:8080/app1/
-</VirtualHost>
-
-<VirtualHost *:80>
-    ServerName app2.com
-
-    ProxyPreserveHost On
-    ProxyPass / http://localhost:8080/app2/
-    ProxyPassReverse / http://localhost:8080/app2/
-</VirtualHost>
-
-```
-
-
-## 🔹 Caso 2: Tomcat + Otros servidores en diferentes puertos**
-
-```xml
-<VirtualHost *:80>
-    ServerName tomcat-app.com
-    ProxyPass / http://localhost:8080/
-    ProxyPassReverse / http://localhost:8080/
-</VirtualHost>
-
-<VirtualHost *:80>
-    ServerName django-app.com
-    ProxyPass / http://localhost:8000/
-    ProxyPassReverse / http://localhost:8000/
-</VirtualHost>
-
-<VirtualHost *:80>
-    ServerName node-app.com
-    ProxyPass / http://localhost:3000/
-    ProxyPassReverse / http://localhost:3000/
-</VirtualHost>
-
-```
-
-## **🔹 Caso 3: Mismo dominio con subrutas**
-
-Si prefieres que las apps sean accesibles como:
-
-- `https://mi-sitio.com/app1`
-- `https://mi-sitio.com/app2`
-
-
-```xml
-<VirtualHost *:80>
-    ServerName mi-sitio.com
-
-    ProxyPreserveHost On
-    ProxyPass /app1/ http://localhost:8080/app1/
-    ProxyPassReverse /app1/ http://localhost:8080/app1/
-
-    ProxyPass /app2/ http://localhost:8080/app2/
-    ProxyPassReverse /app2/ http://localhost:8080/app2/
-</VirtualHost>
-
-```
-
-
-### Apache vs Nginx
+## 14. Diferencias entre Apache y Nginx
 
 La diferencia entre **Apache** y **Nginx** en términos de servidores web y su uso en proxy inverso, especialmente cuando trabajas con aplicaciones modernas como **React** o **Angular**, se refiere principalmente a su **arquitectura**, **rendimiento**, y cómo manejan las solicitudes. Vamos a desglosar esto en detalle para ayudarte a entender las principales diferencias y cómo se usan en el contexto actual.
 
-### 1. **Diferencia entre Apache y Nginx:**
-
-#### **Apache HTTP Server:**
+#### Apache HTTP Server:
 
 - **Arquitectura basada en hilos (Thread-based)**: Apache es tradicionalmente un servidor **basado en procesos o hilos**, lo que significa que maneja cada solicitud con un nuevo hilo o proceso. Esto puede llevar a un alto consumo de memoria y un rendimiento menos eficiente bajo carga alta.
     
@@ -1436,9 +1149,10 @@ La diferencia entre **Apache** y **Nginx** en términos de servidores web y su u
 - **Manejo de PHP y aplicaciones dinámicas**: Apache se ha usado históricamente en muchas aplicaciones con **PHP**. A menudo se usa con **mod_php**, lo que le permite manejar solicitudes PHP de manera eficiente.
     
 - **Manejo de tráfico**: Apache puede ser menos eficiente cuando se trata de manejar un gran número de solicitudes simultáneas, ya que cada nueva solicitud puede requerir un hilo o un proceso adicional.
-    
 
-#### **Nginx:**
+- Proxy inverso: Apache también puede ser configurado para trabajar como un proxy inverso usando el módulo **mod_proxy**. Aunque Apache puede hacer esto, a menudo no es tan eficiente como Nginx en términos de rendimiento, especialmente bajo cargas pesadas.
+
+##### Nginx:
 
 - **Arquitectura basada en eventos (Event-based)**: Nginx se diseñó para ser **asíncrono** y basado en **eventos**. Usa un solo hilo para manejar múltiples conexiones, lo que le permite manejar un alto volumen de tráfico sin consumir mucha memoria. Esto lo hace mucho más eficiente que Apache en situaciones con alta carga o múltiples solicitudes simultáneas.
     
@@ -1447,45 +1161,11 @@ La diferencia entre **Apache** y **Nginx** en términos de servidores web y su u
 - **Proxy inverso y balanceador de carga**: Nginx es conocido por su capacidad de manejar **proxy inverso** y **balanceo de carga** de manera eficiente. Es común que Nginx maneje solicitudes y las redirija a servidores backend (como aplicaciones en Node.js, Ruby, o incluso Tomcat) de manera eficiente.
     
 - **Manejo de aplicaciones modernas**: Nginx se utiliza ampliamente como proxy inverso para aplicaciones modernas que están construidas con tecnologías como **React**, **Angular**, **Vue.js**, **Node.js**, etc. Cuando tienes una aplicación **SPA (Single Page Application)** como React o Angular, el contenido estático se sirve a través de Nginx, y las solicitudes de API se redirigen a un servidor backend a través de un proxy inverso.
-    
 
----
-
-### 2. **Uso en Proxy Inverso:**
-
-El **proxy inverso** se refiere a la práctica de un servidor (como **Nginx**) que maneja las solicitudes de los clientes y las redirige a otros servidores backend. Es muy útil cuando tienes **múltiples aplicaciones** corriendo en diferentes puertos o en diferentes servidores y quieres hacerlas accesibles a través de una URL única.
-
-#### **Apache como Proxy Inverso:**
-
-- Apache también puede ser configurado para trabajar como un proxy inverso usando el módulo **mod_proxy**.
-- Aunque Apache puede hacer esto, a menudo no es tan eficiente como Nginx en términos de rendimiento, especialmente bajo cargas pesadas.
-
-#### **Nginx como Proxy Inverso:**
-
-- Nginx es muy eficiente como proxy inverso, ya que maneja las solicitudes entrantes y las pasa a un servidor backend (como una aplicación Node.js, un servidor de aplicaciones en Java, o un servidor de bases de datos).
-- Nginx es comúnmente utilizado en configuraciones modernas donde el tráfico es direccionado a varios servicios backend, y es especialmente adecuado para aplicaciones que tienen una **arquitectura de microservicios**.
-
-En el contexto de aplicaciones como **React** o **Angular**, Nginx puede servir la **parte estática** (los archivos **JavaScript**, **HTML**, **CSS**) y actuar como proxy para todas las **solicitudes de API** (que generalmente se manejan en un backend).
-
-### 3. **¿Cómo corre Nginx y de qué está hecho?**
+- Proxy inverso: Nginx es muy eficiente como proxy inverso, ya que maneja las solicitudes entrantes y las pasa a un servidor backend (como una aplicación Node.js, un servidor de aplicaciones en Java, o un servidor de bases de datos). Nginx es comúnmente utilizado en configuraciones modernas donde el tráfico es direccionado a varios servicios backend, y es especialmente adecuado para aplicaciones que tienen una **arquitectura de microservicios**. En el contexto de aplicaciones como **React** o **Angular**, Nginx puede servir la **parte estática** (los archivos **JavaScript**, **HTML**, **CSS**) y actuar como proxy para todas las **solicitudes de API** (que generalmente se manejan en un backend).
 
 - **Nginx está escrito en C**, lo que le da una gran eficiencia en términos de rendimiento. Esto lo hace mucho más rápido que Apache en la mayoría de los casos.
 - **Modo asíncrono y basado en eventos**: Nginx usa un modelo **basado en eventos** y **asincrónico**. Esto significa que puede manejar miles de conexiones concurrentes con un solo hilo de proceso, lo que lo hace ideal para manejar un alto volumen de tráfico.
-
-Nginx funciona en una arquitectura de **trabajo no bloqueante**, lo que permite que maneje múltiples solicitudes de forma simultánea sin bloquear el hilo principal. Cuando Nginx recibe una solicitud, no espera a que esta se complete antes de procesar la siguiente. Esto es fundamental cuando se trabaja con muchas solicitudes simultáneas o cuando se usan tecnologías modernas basadas en **AJAX** o **WebSockets**.
-
-### 4. **¿Qué hace Nginx?**
-
-En resumen, **Nginx** se usa principalmente para:
-
-- **Servir contenido estático** de manera eficiente (como imágenes, archivos CSS, JS, etc.).
-- **Balanceo de carga**: Distribuir el tráfico entre varios servidores backend.
-- **Proxy inverso**: Redirigir solicitudes de clientes hacia un servidor backend (como una aplicación Node.js, Java, PHP, etc.).
-- **Enrutamiento de tráfico**: Redirigir el tráfico según el dominio o la URL.
-- **Manejo de tráfico HTTPS**: Gestionar conexiones seguras a través de SSL/TLS.
-- **Optimización de rendimiento**: Acelerar el tiempo de carga de las páginas mediante la manipulación de contenido en caché.
-
-### 5. **Uso con Aplicaciones Modernas (React, Angular, etc.)**
 
 En aplicaciones modernas que se desarrollan con **React**, **Angular**, o **Vue.js**, la arquitectura generalmente se basa en una **SPA (Single Page Application)**. Esto significa que el frontend (la aplicación de cliente) se sirve como **contenido estático** y se comunica con **APIs backend** a través de solicitudes HTTP.
 
@@ -1493,15 +1173,23 @@ En aplicaciones modernas que se desarrollan con **React**, **Angular**, o **Vue.
 - **Backend** (API en Node.js, Django, Flask, etc.) proporciona los servicios de datos para la aplicación frontend.
 
 En este escenario:
-
 1. **Nginx** maneja las solicitudes entrantes de los usuarios, sirve los archivos estáticos (HTML, CSS, JS) del frontend.
 2. Para las **solicitudes de API**, Nginx actúa como un proxy inverso y redirige las solicitudes a un servidor backend (Node.js, por ejemplo).
 3. La configuración de Nginx es eficiente para manejar ambos casos: servir contenido estático y redirigir el tráfico a un servidor backend.
 
+
 ![[Pasted image 20250309183821.png]]
 
+## 15. Los requerimientos para desplegar aplicaciones dinámicas sobre servidores web
 
-### Docker compose ejemplificado
+Si hablamos de desplegar aplicaciones dinámicas elaboradas mediante tecnologías **LAMP** o **WAMP** es necesario que los servidores web tengan instalado para su correcto funcionamiento:
+- **Linux** o **Windows**. El sistema operativo de la máquina.
+- **Apache**: El servidor web en sí
+- **MySQL**: Base de datos. XAMPP viene equipado con ella y puede accederse a su gestor mediante `localhost/phpmyadmin`
+- **PHP**: Lenguaje de programación que permite realizar procedimiento dinámico entre cliente y servidor. 
+
+### 15.1. El despliegue de una arquitectura en Docker. Ejemplo
+
 
 ```yaml
 version: '3.8'
@@ -1581,106 +1269,3 @@ networks:
   app-network:
     driver: bridge
 ```
-
-
-
-¡Ah, ahora entiendo! Estás hablando de **Nginx Proxy Manager**, una herramienta que hace todo el proceso de configuración de Nginx mucho más fácil mediante una interfaz gráfica, y efectivamente, genera automáticamente configuraciones de Nginx para ti.
-
-### ¿Qué es Nginx Proxy Manager?
-
-**Nginx Proxy Manager** es una herramienta basada en una interfaz gráfica que facilita la gestión de servidores Nginx, especialmente cuando se trata de configurar proxies inversos y certificados SSL de manera rápida y sencilla. Te permite configurar múltiples dominios, subdominios y certificados SSL, sin necesidad de escribir manualmente la configuración de Nginx.
-
-### ¿Cómo lo hace automáticamente?
-
-- **Generación de Configuraciones Nginx:** Cuando configuras un dominio o subdominio en Nginx Proxy Manager, él crea automáticamente las configuraciones adecuadas en Nginx, incluyendo las reglas de proxy inverso, y se asegura de que el tráfico se redirija correctamente a tus aplicaciones.
-    
-- **SSL Automático:** Puedes configurar Nginx Proxy Manager para que automáticamente obtenga un **certificado SSL gratuito** utilizando **Let's Encrypt**. En ese caso, se encarga de renovar el certificado de manera automática, sin necesidad de intervención manual.
-    
-
-### Pasos para configurar un proxy inverso en Nginx Proxy Manager:
-
-1. **Instalar Nginx Proxy Manager:** Si aún no lo has hecho, puedes instalarlo fácilmente utilizando Docker. Aquí tienes un ejemplo de cómo hacerlo:
-    
-    bash
-    
-    CopiarEditar
-    
-    `docker-compose.yml version: '3' services:   app:     image: jc21/nginx-proxy-manager:latest     container_name: nginx-proxy-manager     restart: always     ports:       - "80:80"       - "443:443"       - "81:81"  # Esta es la interfaz web     volumes:       - ./data:/data       - ./letsencrypt:/etc/letsencrypt     environment:       - DB_SQLITE_FILE=/data/database.sqlite`
-    
-2. **Acceder a la Interfaz de Usuario:** Una vez que Nginx Proxy Manager está instalado y corriendo, puedes acceder a su interfaz web a través de `http://<tu-ip>:81` y configurarlo mediante la interfaz gráfica.
-    
-3. **Agregar un Proxy Inverso:** En la interfaz de Nginx Proxy Manager:
-    
-    - Haz clic en "Proxy Hosts".
-    - Añade un nuevo **Proxy Host**. Para esto, necesitas proporcionar el nombre de dominio, la IP o el puerto de la aplicación a la que deseas redirigir el tráfico (por ejemplo, una aplicación en `localhost:9090`), y la configuración adicional para SSL.
-4. **Configurar SSL:**
-    
-    - Al configurar el dominio, Nginx Proxy Manager tiene una opción para habilitar **SSL automático** usando Let's Encrypt. Solo debes poner tu dominio y marcar la casilla que dice algo como **"Request a new SSL certificate"**.
-    - Esto generará y configurará el certificado SSL para tu dominio automáticamente.
-5. **Configuración de Redirección HTTP a HTTPS:** Nginx Proxy Manager puede hacer esto por ti automáticamente, redirigiendo todo el tráfico HTTP hacia HTTPS para asegurar tu sitio.
-    
-6. **Guardar y Aplicar Configuraciones:** Después de agregar los detalles, haz clic en "Save" y Nginx Proxy Manager se encargará de crear las reglas de proxy inverso en el archivo de configuración de Nginx, además de gestionar las configuraciones de SSL.
-    
-
-### ¿Por qué usar Nginx Proxy Manager?
-
-- **Fácil de usar:** Si no quieres estar editando archivos de configuración manualmente, la interfaz gráfica de Nginx Proxy Manager lo hace mucho más fácil.
-- **SSL automático:** Solicita y renueva certificados SSL gratuitos con Let's Encrypt, sin necesidad de usar Certbot manualmente.
-- **Multidominio y subdominios:** Puedes gestionar múltiples dominios y subdominios sin complicaciones.
-- **Soporte para redirecciones, autenticación básica y otras opciones avanzadas:** Todo a través de una interfaz gráfica.
-
-
-¡Claro! Te aclaro cómo funciona el **challenge** de Let's Encrypt y cómo se aplica en **Nginx Proxy Manager**.
-
-### ¿Qué es un Challenge de Let's Encrypt?
-
-Cuando solicitas un certificado SSL a través de **Let's Encrypt**, la autoridad certificadora (CA) necesita asegurarse de que tienes control sobre el dominio para el cual estás solicitando el certificado. **Eso es lo que se conoce como un "challenge"**.
-
-Existen dos tipos principales de challenge que Let's Encrypt utiliza para validar que tienes control sobre el dominio:
-
-1. **HTTP-01 Challenge (Desafío HTTP):**
-    
-    - Este desafío verifica que el servidor web al que se está solicitando el certificado puede servir un archivo específico en una URL determinada. Let's Encrypt revisa si puedes responder a una solicitud HTTP que apunte a un archivo temporal en tu servidor web.
-    - Por ejemplo, Let's Encrypt te pide que pongas un archivo de verificación en tu servidor en una ruta como `http://tu-dominio.com/.well-known/acme-challenge/<token>`.
-    - Si el servidor responde correctamente, significa que tienes control sobre el dominio y Let's Encrypt te emite el certificado.
-2. **DNS-01 Challenge (Desafío DNS):**
-    
-    - Este desafío se utiliza generalmente cuando no se puede usar el HTTP-01 challenge (por ejemplo, en entornos donde no se puede hacer acceso HTTP). En este caso, debes agregar un registro TXT específico a la zona DNS de tu dominio.
-    - Let's Encrypt valida la existencia de ese registro TXT y si lo encuentra, emite el certificado.
-
-
-
-
-### **Cómo se usa `0.0.0.0` en otros servidores:**
-
-#### **1. Tomcat (Java Servlet Container)**:
-
-En **Tomcat**, puedes configurar el puerto de escucha en el archivo `server.xml`. Para escuchar en **todas las interfaces**, se usa **`0.0.0.0`** o simplemente se puede omitir la dirección IP y dejar que el servidor escuche en todas las interfaces.
-
-Ejemplo de configuración en `server.xml` de Tomcat:
-
-xml
-
-CopiarEditar
-
-`<Connector port="8080" address="0.0.0.0" />`
-
-En este caso, **`0.0.0.0`** le indica a Tomcat que debe escuchar en **todas las interfaces de red** en el puerto `8080`.
-
-#### **2. WildFly (JBoss EAP)**:
-
-En **WildFly**, el concepto es similar. En la configuración de `standalone.xml`, puedes configurar las direcciones IP para que el servidor escuche en todas las interfaces, usando **`0.0.0.0`** o configurando la interfaz de red como "all".
-
-Ejemplo de configuración en `standalone.xml` de WildFly:
-
-xml
-
-CopiarEditar
-
-`<interface name="public">     <inet-address value="0.0.0.0"/> </interface>`
-
-De nuevo, **`0.0.0.0`** indica que WildFly debe escuchar en todas las interfaces disponibles en la máquina.
-
-
-
-

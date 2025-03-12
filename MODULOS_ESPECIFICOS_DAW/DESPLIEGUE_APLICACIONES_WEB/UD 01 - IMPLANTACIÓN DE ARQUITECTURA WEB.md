@@ -1,9 +1,17 @@
+(UF1 Servidor Web y Transferencia de Archivos)
 ## 1. Arquitecturas web. Modelos.
 
 - La **arquitectura web** (World Wide Web, www) de Internet da un modelo de conexión poderoso y flexible por el que cualquier equipo puede adaptarse a sus requerimientos. 
 - Los **contenidos se localizan** gracias a los **web browsers** o buscadores que encuentran la información requerida con las peticiones enviadas a diversos servidores para que se les respondan las páginas que más se adaptan a los parámetros de búsqueda.
 - El **contenido en la web se visualiza** siguiendo unos **estándares** que permiten a que los navegadores los interpreten correctamente (HTML, JavaScript, CSS,...)
 - **Las operaciones de transferencia** también están estandarizadas. Cada servicio sigue una serie de **protocolos** que permiten abstraerse de la tecnología y del sistema operativo. De los más conocidos es el protocolo HTTP (HyperText Transfer Protocol, protocolo de transferencia de hipertexto) por el que un cliente puede visualizar páginas web.
+
+**Origen HTTP/HTML** 
+- Finales de los 80. Científicos del CERN. Trabajan con PC no compatibles, no podían compartir su trabajo. 
+- Tim Berners-Lee. Propuesta para desarrollar sistema de hipertexto sobre Internet. 
+- Se desarrolla sobre protocolos TCP/IP (desde los 50, pruebas Arpanet). 
+	- Formato de texto para representar documentos de hipertexto (HyperText Markup Language HTML)
+	- Protocolo para intercambio de documentos (HyperText Transfer Protocol HTTP)
 
 **Características de la arquitectura web**
 - **Escalabilidad**: Fácilmente es posible conectarse a distintos equipos de la red (servidores, enrutadores, switches) sin que la red se vea influida ni obligada a cambiar de forma constante. 
@@ -148,6 +156,24 @@ Se producen actualizaciones más cómodas al centrarse todas las aplicaciones en
 
 #### 2.2.1. Instalación de servidor web Tomcat en Linux Ubuntu
 
+**Forma más sencilla:**
+
+```shell
+# Instalar Java
+sudo apt install openjdk-11-jdk
+# Instalar Tomcat
+sudo apt install tomcat10 tomcat10-admin
+# Comprobar estado
+sudo systemctl status tomcat10
+# Subir aplicación
+sudo mkdir /var/lib/tomcat10/webapps/myapp
+sudo vim /var/lib/tomcat10/webapps/myapp/index.jsp
+# Reiniciar Tomcat
+sudo systemctl restart tomcat10
+```
+
+---
+**Forma del libro:**
 **Tomcat** es un servidor que incluye tanto el servicio web (Servidor Apache) como el servidor de aplicaciones.
 Más formalmente se le denomina "_contenedor de servlets_". Gestiona las peticiones HTTP y peticiones JSP o servlets. 
 

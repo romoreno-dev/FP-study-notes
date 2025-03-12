@@ -4,51 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "97a888b143485d09",
+        "id": "5576e67e97438fed",
         "type": "tabs",
         "children": [
           {
-            "id": "aab2825c13be1a50",
+            "id": "da16d83d273a7b33",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/UD 02 - ADMINISTRACIÓN DE SERVIDORES WEB.md",
+                "file": "MODULOS_ESPECIFICOS_DAW/DISEÑO_INTERFACES_WEB/UD 06 - DESARROLLO DE WEBS AMIGABLES. USABILIDAD..md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "UD 02 - ADMINISTRACIÓN DE SERVIDORES WEB"
-            }
-          },
-          {
-            "id": "a8ba22b68d4e8651",
-            "type": "leaf",
-            "state": {
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "New tab"
-            }
-          }
-        ]
-      },
-      {
-        "id": "ad33af4960efef9b",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "a44e331365bc5b9c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/UD 02 - ADMINISTRACIÓN DE SERVIDORES WEB.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "UD 02 - ADMINISTRACIÓN DE SERVIDORES WEB"
+              "title": "UD 06 - DESARROLLO DE WEBS AMIGABLES. USABILIDAD."
             }
           }
         ]
@@ -83,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "rabbit",
+                "query": "openjdk-11",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -108,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 298.5
   },
   "right": {
     "id": "7d79b0e9867d8cc9",
@@ -193,15 +163,69 @@
       "templates:Insert template": false
     }
   },
-  "active": "aab2825c13be1a50",
+  "floating": {
+    "id": "ede0cbb9a142fbfa",
+    "type": "floating",
+    "children": [
+      {
+        "id": "2cbe57ccafaa68f2",
+        "type": "window",
+        "children": [
+          {
+            "id": "0b2caeef2a467e72",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "52bebd17211fddb6",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/UD 03 - INSTALACIÓN Y ADMINISTRACIÓN DE SERVIDORES DE TRANSFERENCIA DE ARCHIVOS.md",
+                    "mode": "source",
+                    "source": false
+                  },
+                  "icon": "lucide-file",
+                  "title": "UD 03 - INSTALACIÓN Y ADMINISTRACIÓN DE SERVIDORES DE TRANSFERENCIA DE ARCHIVOS"
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "vertical",
+        "x": 1030,
+        "y": 4,
+        "width": 906,
+        "height": 983,
+        "maximize": false,
+        "zoom": 0
+      }
+    ]
+  },
+  "active": "da16d83d273a7b33",
   "lastOpenFiles": [
-    "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/UD 01 - IMPLANTACIÓN DE ARQUITECTURA WEB.md",
-    "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/UD 02 - ADMINISTRACIÓN DE SERVIDORES WEB.md",
-    "OTROS_APUNTES/RABBITMQ/RabbitMQ.md",
+    "MODULOS_ESPECIFICOS_DAW/DISEÑO_INTERFACES_WEB/UD 05 - DESARROLLO DE WEBS ACCESIBLES.md",
+    "MODULOS_ESPECIFICOS_DAW/DISEÑO_INTERFACES_WEB/UD 04 - INTEGRACIÓN DE CONTENIDO INTERACTIVO.md",
+    "MODULOS_ESPECIFICOS_DAW/DISEÑO_INTERFACES_WEB/UD 03 - PREPARACIÓN E IMPLANTACIÓN DE CONTENIDO MULTIMEDIA.md",
+    "MODULOS_ESPECIFICOS_DAW/DISEÑO_INTERFACES_WEB/UD 02 - USO DE ESTILOS.md",
+    "MODULOS_ESPECIFICOS_DAW/DISEÑO_INTERFACES_WEB/UD 01 - PLANIFICACIÓN DE INTERFACES GRÁFICAS.md",
+    "MODULOS_ESPECIFICOS_DAW/DESARROLLO_WEB_ENTORNO_CLIENTE/UD 07 - RECONOCIMIENTO Y APLICACIÓN DE MECANISMOS DE COMUNICACIÓN ASÍNCRONA.md",
+    "MODULOS_ESPECIFICOS_DAW/DESARROLLO_WEB_ENTORNO_CLIENTE/UD 06 - ANÁLISIS Y APLICACIÓN DEL MODELO DE OBJETOS DE DOCUMENTO (DOM).md",
+    "MODULOS_ESPECIFICOS_DAW/DESARROLLO_WEB_ENTORNO_CLIENTE/UD 05 - INTEGRACIÓN AL CÓDIGO DE LA GESTIÓN DE EVENTOS Y FORMULARIOS.md",
+    "MODULOS_ESPECIFICOS_DAW/DESARROLLO_WEB_ENTORNO_CLIENTE/UD 02 - APLICACIÓN Y VERIFICACIÓN DE LA SINTAXIS DEL LENGUAJE.md",
+    "MODULOS_ESPECIFICOS_DAW/DESARROLLO_WEB_ENTORNO_CLIENTE/UD 01 - SELECCIÓN DE ARQUITECTURAS Y HERRAMIENTAS DE PROGRAMACIÓN.md",
+    "MODULOS_ESPECIFICOS_DAW/DESARROLLO_WEB_ENTORNO_CLIENTE/UD 04 - PROGRAMACIÓN CON ARRAYS, FUNCIONES Y OBJETOS DEFINIDOS POR EL USUARIO.md",
+    "MODULOS_ESPECIFICOS_DAW/DESARROLLO_WEB_ENTORNO_CLIENTE/UD 03 - INTENSIFICACIÓN Y APLICACIÓN DE LOS OBJETOS PREDEFINIDOS DEL LENGUAJE.md",
     "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/UD 06 - DOCUMENTACIÓN Y SISTEMAS DE CONTROL DE VERSIONES.md",
     "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/UD 05 - SERVICIOS DE RED IMPLICADOS EN EL DESARROLLO DE UNA APLICACIÓN WEB.md",
     "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/UD 04 - ADMINISTRACIÓN DE SERVIDORES DE APLICACIONES.md",
     "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/UD 03 - INSTALACIÓN Y ADMINISTRACIÓN DE SERVIDORES DE TRANSFERENCIA DE ARCHIVOS.md",
+    "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/UD 02 - ADMINISTRACIÓN DE SERVIDORES WEB.md",
+    "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/UD 01 - IMPLANTACIÓN DE ARQUITECTURA WEB.md",
+    "Pasted image 20250313001842.png",
+    "Pasted image 20250312223244.png",
+    "Pasted image 20250312213839.png",
+    "OTROS_APUNTES/RABBITMQ/RabbitMQ.md",
     "Pasted image 20250311203113.png",
     "Pasted image 20250311202445.png",
     "MODULOS_ESPECIFICOS_DAW/DISEÑO_INTERFACES_WEB/UD 06 - DESARROLLO DE WEBS AMIGABLES. USABILIDAD..md",
@@ -209,30 +233,16 @@
     "OTROS_APUNTES/GESTION TERMINALES.md",
     "Pasted image 20250310001624.png",
     "Pasted image 20250310000614.png",
-    "MODULOS_ESPECIFICOS_DAW/DISEÑO_INTERFACES_WEB/UD 05 - DESARROLLO DE WEBS ACCESIBLES.md",
     "Pasted image 20250309222157.png",
     "Pasted image 20250309221745.png",
     "Pasted image 20250309221358.png",
     "OTROS_APUNTES/RABBITMQ",
-    "MODULOS_ESPECIFICOS_DAW/DISEÑO_INTERFACES_WEB/UD 01 - PLANIFICACIÓN DE INTERFACES GRÁFICAS.md",
     "MODULOS_ESPECIFICOS_DAM/DESARROLLO_INTERFACES/UD 02 -  GENERACIÓN DE INTERFACES A PARTIR DE DOCUMENTOS XML.md",
     "MODULOS_ESPECIFICOS_DAM/DESARROLLO_INTERFACES/UD 01 - CONFECCIÓN DE INTERFACES DE USUARIO.md",
-    "MODULOS_ESPECIFICOS_DAM/DESARROLLO_INTERFACES/resources/ud01-2.png",
     "OTROS_APUNTES/GIT/Firmar commits con clave GPG.md",
-    "Pasted image 20250309191732.png",
     "OTROS_APUNTES/JASPER/Alternativas Jasper.md",
     "OTROS_APUNTES/GIT",
     "OTROS_APUNTES/JASPER",
-    "Pasted image 20250309183821.png",
-    "MODULOS_ESPECIFICOS_DAW/DESARROLLO_WEB_ENTORNO_SERVIDOR/UD 02 - INSERCIÓN DE PÁGINAS WEB.md",
-    "MODULOS_ESPECIFICOS_DAW/DESARROLLO_WEB_ENTORNO_CLIENTE/UD 02 - APLICACIÓN Y VERIFICACIÓN DE LA SINTAXIS DEL LENGUAJE.md",
-    "MODULOS_ESPECIFICOS_DAW/DESARROLLO_WEB_ENTORNO_CLIENTE/UD 01 - SELECCIÓN DE ARQUITECTURAS Y HERRAMIENTAS DE PROGRAMACIÓN.md",
-    "MODULOS_ESPECIFICOS_DAW/DESARROLLO_WEB_ENTORNO_CLIENTE/UD 03 - INTENSIFICACIÓN Y APLICACIÓN DE LOS OBJETOS PREDEFINIDOS DEL LENGUAJE.md",
-    "MODULOS_ESPECIFICOS_DAW/DESARROLLO_WEB_ENTORNO_CLIENTE/UD 07 - RECONOCIMIENTO Y APLICACIÓN DE MECANISMOS DE COMUNICACIÓN ASÍNCRONA.md",
-    "MODULOS_ESPECIFICOS_DAW/DESARROLLO_WEB_ENTORNO_CLIENTE/UD 06 - ANÁLISIS Y APLICACIÓN DEL MODELO DE OBJETOS DE DOCUMENTO (DOM).md",
-    "MODULOS_ESPECIFICOS_DAW/DESARROLLO_WEB_ENTORNO_CLIENTE/UD 05 - INTEGRACIÓN AL CÓDIGO DE LA GESTIÓN DE EVENTOS Y FORMULARIOS.md",
-    "MODULOS_ESPECIFICOS_DAW/DESARROLLO_WEB_ENTORNO_CLIENTE/UD 04 - PROGRAMACIÓN CON ARRAYS, FUNCIONES Y OBJETOS DEFINIDOS POR EL USUARIO.md",
-    "README.md",
     "OTROS_APUNTES/DOCKER",
     "OTROS_APUNTES/Nueva carpeta",
     "OTROS_APUNTES/SPRING_BOOT",

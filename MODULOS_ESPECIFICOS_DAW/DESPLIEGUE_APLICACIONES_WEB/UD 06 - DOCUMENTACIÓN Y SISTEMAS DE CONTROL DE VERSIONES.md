@@ -1,3 +1,4 @@
+(UF4 Control de Versiones y Documentación)
 Peso de la información (webp)
 ## 1. Documentación
 
@@ -37,9 +38,12 @@ Peso de la información (webp)
 ### 5.4. Seguridad y documentación en Git
 
 
+#### Quien usa mi puerto???
+`sudo lsof -i :80`
 
 
 
+ip addr show
 
 
 icepush
