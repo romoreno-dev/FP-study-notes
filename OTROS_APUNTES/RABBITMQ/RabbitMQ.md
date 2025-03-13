@@ -98,7 +98,7 @@ Asegura que cada mensaje sea recibido por un único consumidor. Suelen implement
 - Cuando el mensaje está listo para ser distribuido y el "Generador de facturas" está libre, el broker le envía copia al mensaje y mantiene este fuera de la cola hasta que el Generador de facturas confirma que ha procesado el mensaje. Entonces lo elimina.
 - Si el Generador de facturas no confirma, el broker puede intentar reenviarlo o almacenarlo en cola de mensajes no procesados según la garantía de entrega que se quiera ofrecer.
 
-![[Pasted image 20250309221358.png]]
+![](1.png)
 
 #### Patrón Publicación/Subscripción
 
@@ -115,7 +115,7 @@ Suscritas: Aplicaciones
 
 Cuando el sensor publica un mensaje, el broker envía el mensaje a todos los subscriptores del topic.
 
-![[Pasted image 20250309221745.png]]
+![](2.png)
 
 
 ## 4. AMQP y RabbitMQ
@@ -134,7 +134,7 @@ Se definen tres componentes necesarios:
 - **Virtual Host**: Agrupación lógica de componentes (productores, consumidores, exchanges, queues, permisos de usuario, bindings) permitiendo aislar componentes de distintos usuarios o aplicaciones. 
 
 
-![[Pasted image 20250309222157.png]]
+![](3.png)
 
 **Virtual Host**: Agrupa exchange, cola y binding. 
 **Productor**: Procesa datos necesarios para generar documento.
@@ -172,7 +172,7 @@ Enruta los mensajes a las colas basándose en una coincidencia exacta entre la *
 1. **amq.direct**:  Los mensajes son enrutados a las colas que tienen el mismo **binding-key** que la **routing-key** del mensaje.
 2. **exchange por defecto (sin nombre)**: No tiene configuración explícita de bindings. Cualquier mensaje enviado al exchange (`""`) se dirige a la cola cuyo nombre coincide exactamente con la `routing-key` del mensaje. 
 
-![[Pasted image 20250310000614.png]]
+![](4.png)
 
 **Usos y ejemplos** 
 - **Enviar mensajes a receptores específicos**: Sistema de notificaciones donde distintos usuarios reciben mensajes específicos.  `admin_queue`, `support_queue`, `client_queue`
@@ -190,7 +190,7 @@ Al recibir un mensaje lo envía a todas las colas asociadas a él, ignorando el 
 **Fanout exchange predefinido**
 - **amq.fanout**
 
-![[Pasted image 20250310001624.png]]
+![](5.png)
 
 Se dan tres colas asociadas al fanout exchange ("facturas", "inventario", "envios") en un sistema de pedidos. El exchange envía copia de pedidos a todas sus colas asociadas. Los mensajes no llevan routing-key, porque no lo necesitan y las colas tampoco lo tienen. 
 

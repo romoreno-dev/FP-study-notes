@@ -85,7 +85,7 @@ function eje() {
 }
 ```
 
-![[Pasted image 20250308144929.png]]
+![](resource/ud01-1.png)
 
 #### Diferencias entre var/let
 
@@ -135,7 +135,7 @@ console.log(y); // ✅ 10
 - Cada etiqueta se considera un elemento y cada elemento se considera un objeto. Estos objetos tienen propiedades a las que se puede acceder y modificar. 
 - Con JavaScript se puede acceder a métodos depe4ndendiendo del tipo de objeto. 
 
-![[Pasted image 20250308125347.png]]
+![](resource/ud01-3.png)
 
 **Objeto**: `var nombreObjeto = new Object()`
 **Propiedades**:  `nombreObjeto.propiedad`
