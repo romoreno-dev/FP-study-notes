@@ -308,7 +308,7 @@ Oracle y MySQL convierte automáticamente datos de forma que el resultado de la 
 
 - `TO_NUMBER(cad, formato)`. Convierte textos en números. Se usa para dar un formato concreto. 
 
-![](ud04-2.png)
+![](MODULOS_COMUNES/BASES_DE_DATOS/resources/ud04-2.png)
 
 - `TO_CHAR(d, formato)`. Convierte número o fecha d a cadena de caracteres. Se usa para fechas ya que de número a texto se hace de forma implícita.
 - `TO_DATE(cad, formato)`. Convierte textos a fechas, indicando el formato.

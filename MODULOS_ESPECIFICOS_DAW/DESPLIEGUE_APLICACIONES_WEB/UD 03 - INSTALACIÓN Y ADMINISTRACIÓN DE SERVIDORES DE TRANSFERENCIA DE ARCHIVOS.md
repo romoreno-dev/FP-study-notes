@@ -10,8 +10,8 @@ En todo momento es importante considerar la **seguridad de la información**. En
 **Cliente FTP**: Solicita la transferencia de archivos estableciendo conexión de control al FTP por el puerto 21. El cliente indica puerto TCP > 1024 al servidor y espera la conexión del servidor (activo) o el cliente se conecta a puerto dinámico del servidor TCP > 1023, 
 **Servidor FTP** Transfiere los datos solicitados por el cliente. La conexión de datos podrá ser iniciada por el servidor (modo activo) o por el  cliente (modo pasivo)
 
-![[Pasted image 20250312213839.png]]
-![[Pasted image 20250309161152.png]]
+![](resources/ud03-1.png)
+![](resources/ud03-2.png)
 ## 1. Configuración del servicio de transferencia de archivos. Permisos y cuotas
 
 **Características**
@@ -89,7 +89,7 @@ Tan sencillo como parece. Se levanta el FileZilla Server que tendrá puerto de c
 Con FileZilla Client es posible conectarse en 127.0.0.1 Puerto 21.  Usuario local Contraseña local
 En FileZilla Server queda registrada la navegación que el cliente realiza por sus directorios.
 
-![[Pasted image 20250312223244.png]]
+![](resources/ud03-3.png)
 
 ## 8. Instalación de servidor FTP en Ubuntu
 

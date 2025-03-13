@@ -116,7 +116,7 @@ Compiled in modules:
 Para poder usar módulos no disponibles para su instalación,  habría que bajar el código fuente y compilarlo.
 
 Los **módulos dinámicos** son componentes adicionales que se pueden cargar sin recompilar el servidor. Están cargados en el directorio **/etc/apache2/mods-enabled**. Todos los ficheros que existen aquí son **enlaces simbólicos a la carpeta** `mods-available`. 
-![[Pasted image 20250311203113.png]]
+![](resources/ud02-1.png)
 
 El "fichero" de configuración sería `apache2.conf` pero aquí hay una configuración modular con archivos adicionales. (No como en Windows donde está todo en un solo archivo)
 
@@ -1178,7 +1178,7 @@ En este escenario:
 3. La configuración de Nginx es eficiente para manejar ambos casos: servir contenido estático y redirigir el tráfico a un servidor backend.
 
 
-![[Pasted image 20250309183821.png]]
+![](resources/ud02-2.png)
 
 ## 15. Los requerimientos para desplegar aplicaciones dinámicas sobre servidores web
 
