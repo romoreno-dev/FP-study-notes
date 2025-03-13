@@ -2,15 +2,17 @@
 
 ## 1. Documentación
 
-En la realización de documentación debe considerarse:
-- La **interfaz**: Canal a través del cual el usuario (del nivel especificado) se comunica con software de nivel más bajo, con su propio equipo, una máquina remota, un dispositivo o un usuario, entre otras.
-- La **implementación**: Indicará el funcionamiento de cada componente o función. Es útil para quienes depuren o actualicen los bloques de código de la aplicación.
-- La **toma de decisiones**: Se indicará por qué se ha decidido realizar cada acción de la aplicación. Interesante a la hora de implementar la aplicación por parte de los desarrolladores.
+En la realización de la documentación de una aplicación conviene documentar: 
+- La **interfaz**: Canal a través del cual el usuario (del nivel especificado) se comunica con software de nivel más bajo, con su propio equipo, una máquina remota, un dispositivo o un usuario, entre otras. (QUÉ hace una función ,método, clase, parámetros a pasar, qué devuelve. Útil para las personas que usan funciones o clases diseñadas por otros)
+- La **implementación**: Indicará el funcionamiento de cada componente o función. Es útil para quienes tienen que depurar o actualizar los bloques de código de la aplicación. (CÓMO está implementada la función, cómo se lleva a cabo cada paso)
+- La **toma de decisiones**: Se indicará por qué se ha decidido realizar cada acción de la aplicación. Interesante a la hora de implementar la aplicación por parte de los desarrolladores y a nivel funcional por parte de los responsables de desarrollo (POR QUÉ se ha implementado de una forma y no de otra.)
 
-Aunque la implementación no debe ser transcrita fuera del código, la interfaz sí debe ser puesta en un **manual de uso**.
-Sin embargo, si hay cualquier cambio o modificación del código, debe quedar reflejada en el manual de uso.
+Aunque la implementación no debe ser transcrita fuera del código, la interfaz sí debe ser puesta en un documento independiente del código fuente (**manual de uso**).
+Sin embargo, si hay cualquier cambio o modificación del código, esto debe quedar reflejado en el manual de uso lo que puede implicar doble trabajo.
 
 Existe la forma de automatizar el proceso para que se genere la documentación a través del código fuente utilizando herramientas como **phpDocumentor** para PHP o **JavaDoc** para Java.
+
+Los entornos de programación modernos son capaces de obtener la información de los comentarios, mostrándola en el "autocompletado" de código, lo cual se convierte en una herramienta estupenda (e imprescindible en lenguajes como PHP en los que no es necesario declarar el tipo de argumento)
 
 La **documentación es parte importante del proyecto**, tanto como el código porque gracias a ella se puede mantener la aplicación adelante y, en caso de trabajar en equipo, conocer y saber el funcionamiento de las partes realizadas por el resto. 
 ## 2. Herramientas externas para la generación de documentación. Instalación, configuración y uso
@@ -21,16 +23,16 @@ Se permite generar la documentación de varias formas y en distintos formatos co
 
 Deben indicarse los siguientes parámetros:
 - **Directorio donde se encuentra el código**
-- De forma opcional, los **paquetes que quieren documentarse**, ficheros incluidos o excluidos
+- De forma opcional, los **paquetes (@package) que quieren documentarse**, ficheros incluidos o excluidos
 - **Directorio donde se generará la documentación**
-- **Indicar si la documentación será pública** (solo interfaz) o interna (se mostrarán bloques private y comentarios)
+- **Indicar si la documentación será pública** (solo interfaz) o interna (se mostrarán bloques private y comentarios @internal)
 - El **formato de salida de la documentación** (HTML, PDF, XML). 
 
 **Doxy-gen** sirve de alternativa a phpDocumentor, siendo un programa que trabaja en PHP, mientras que phpDocumentor es una colección de código.
 
 #### Funcionamiento de phpDocumentor
 
-En phpDocumentor la información es distribuida en bloques DocBlock que se colocarán justo antes del elemento que se documentará y el formato será:
+En phpDocumentor la información es distribuida en bloques **DocBlock** que se colocan justo antes del elemento que a documentar y el formato es:
 
 ```
 Descripción breve (una sola línea)
@@ -42,30 +44,30 @@ Descripción breve (una sola línea)
 ```
 
 Los elementos para documentar serán:
-- Define
-- Function
-- Class
-- Class vars
-- Include/require/include_once/require_once
-- Global variables
+- define
+- function
+- class
+- class vars
+- include/require/include_once/require_once
+- global variables
 
 Utilizando la marca **@package** puede documentarse a nivel global el fichero.
 
 En cada DocBlock se pueden incluir marcas que tendrán distintos significados como: 
-- @access: si es private, no se genera documentación. Se usa para generar documentación sobre la interfaz, pero no sobre la implementación
-- @author: Indicar el autor del código
-- @copyright: Información de derechos
-- @deprecated: Indica que el elemento no se debe usar porque en futuras versiones puede estar obsoleto
-- @example: Ruta hacia fichero PHP
-- @ignore: Impide que se documente determinado elemento
-- @internal: Muestra información en documentación interna pero no en la pública
-- @link: Incluye un enlace a un recurso
-- @see: Crea enlaces internos
-- @since: Indica que el elemento está disponible desde determinada versión del paquete
-- @version: Indica la versión actual del elemento
-- @global: Indica el uso de variables globales
-- @param: Documenta parámetros que reciben una función
-- @return: Muestra el valor devuelto por una función
+- **@access**: si es private, no se genera documentación (salvo que se indique explícitamente). Se usa  cuando solo se quiere para generar documentación sobre la interfaz (métodos públicos), pero no sobre la implementación (métodos privados)
+- **@author**: Indicar el autor del código
+- **@copyright**: Información sobre derechos
+- **@deprecated**: Indica que el elemento no se debe usar porque está obsoleto y en futuras versiones puede no estar disponible.
+- **@example**: Ruta hacia un fichero con código PHP. phpDocumentor mostrará el código resaltado.
+- **@ignore**: Impide phpDocumentor documente un determinado elemento
+- **@internal**: Muestra información en documentación interna para desarolladores pero no en la pública
+- **@link**: Incluye un enlace a un recurso
+- **@see**: Crea enlaces internos a la documentación de un elemento
+- **@since**: Indica que el elemento está disponible desde determinada versión del paquete
+- **@version**: Indica la versión actual del elemento
+- **@global**: Permite especificar el uso de variables globales dentro de una función
+- **@param**: Para documentar parámetros que reciben una función
+- **@return**: Muestra el valor devuelto por una función
 
 #### Instalación de phpDocumentor
 
@@ -104,20 +106,26 @@ chown www-data /var/www/docs
 #### Configuración de phpDocumentor
 
 Se puede trabajar con phpDocumentor:
-- Desde la línea de comandos
+- Desde la **línea de comandos**
 ```shell
+# Patron
 phpdoc -o [formato_documentacion] -d [carpeta_proyectos_php] -t [carpeta_ archivos_documentacion]
+
+# Ejemplo
+# Se indica que se genre documentacion en formato HTML de los proyectos de la carpeta /var/www y se almacene dicha documentacion en la carpeta /var/www/docs/
+phpdoc -o HTML:frames:phpedit -d / var/www/ -t / var/www/docs/
 ```
 
-- Desde el entorno web
-Debe configurarse accediendo a la ruta donde se ha instalado phpDocumentor para duplicar el achivo `default.ini` y cambiarle el nombre por `proyecto.ini`. 
-Este archivo se edita estableciendo una ruta donde guardar la documentación (`target`) y una ruta en la que se encontrarán los archivos del proyecto (`directory`)
+- Desde el **entorno web**
+1. Debe configurarse accediendo a la ruta donde se ha instalado phpDocumentor (phpdocumentor/user) para duplicar el achivo `default.ini` y ponerle un nombre distinto como por ejemplo `proyecto.ini`. 
+2. Este archivo se edita estableciendo una ruta donde guardar la documentación (`target`) y una ruta en la que se encontrarán los archivos del proyecto (`directory`)
+3. Para crear la documentación, se escribe en el navegador la ruta http://localhost/PhpDocumentor y se escoge en el menú la opción _Config_, se selecciona el fichero del proyecto y se pulsa en _Go_ para  la documentación. 
+4. Para acceder a la documentación generada deberíamos seleccionar el documento "index.html" de la carpeta donde se almacenan los documentos generados y se vería la página principal de la documentación.
 
-Para crear la documentación, se escribe en el navegador la ruta http://localhost/PhpDocumentor y se escoge en el menú la opción Config, se selecciona el fichero del proyecto y se pulsa en Go para generar la documentación. 
-
+PhpDocumentor puede crear su propia documentación que está en una subcarpeta tutorials. Debe especificarse el directorio raíz de phpDocumentor para que se compilen estos tutoriales (y solo procesará la documentación de tutorials vinculada a algún código fuente; no se pueden compilar solo tutoriales). En este caso como proyecto se debe especificar "phpDocumentor"
 ## 3. Instalación, configuración y uso de JavaDoc
 
-**Javadoc** es un estándar usado para documentar las clases de Java. Busca que la información de las clases no se quede obsoleta con el paso del tiempo, por lo que los comentarios son insertados en el código. La herramienta extrae los comentarios y genera documentación HTML.
+**Javadoc** es un estándar usado para documentar las clases de Java. (Generar APIs, Application Programing Interface en formato HTML de un archivo de código fuente Java). Busca que la información de las clases no se quede obsoleta con el paso del tiempo, por lo que los comentarios son insertados en el código. La herramienta extrae los comentarios y genera documentación HTML.
 
 Los documentos de Javadoc están destinados a describir funciones de clases y métodos para que otro programador lo lea y use la clase correspondiente. 
 
@@ -127,8 +135,8 @@ Hay dos tipos de etiquetas:
 - Las de **bloque** solo se pueden usar en la sección de etiquetas que siguen a la descripción principal. Son de la forma `@etiqueta`
 - Las **inline** se pueden usar tanto en la descripción principal como en la sección de etiquetas. Tienen la forma de `{@tag}`
 
-Los comentarios deben incluir unos indicadores que comiencen por `@` y que se colocan al comienzo de la línea. No es obligatorio su uso por lo que un método puede ir sin indicadores. 
-Se pueden usar, por ejemplo, para indicar la versión `@version` o el autor `@author`
+Los comentarios pueden incluir unos indicadores que comiencen por `@` y que se colocan al comienzo de la línea. (Salvo en las líneas dedicadas a la descripción del  método) No es obligatorio su uso por lo que un método puede ir sin indicadores.  Algunos de los que podrían citarse son: @author, @version @param @return @see @throws @decrecated
+
 
 **Instalación de Javadoc**
 Se trabajará en Ubuntu con el entorno Eclipse `apt-get install eclipse`. Simplemente en la sección Project (¡todos los demás IDEs lo tienen también!) se selecciona Generate Javadoc, donde se puede generar la documentación e indicar la ruta donde se quiere que se guarde.
@@ -140,10 +148,10 @@ Las plantillas:
 - Son sugerencias de código asociadas a una palabra clave
 - En NetBeans se definen en Preferences > Options > Editor > Code Templates
 - Pueden ahorrar mucho trabajo
-- Usan nombres similares a los constructores en Java (try, for, while,...)
+- Usan nombres similares a las construcciones Java que encapsulan como (try, for, while,...)
 - Hay plantillas Javadoc predefinidas, aunque también pueden definirse y crearse plantillas personalizadas
 
-Las plantillas están formadas por un nombre, descripción, contexto en función de lenguaje y pattern que será el código de la plantilla. En el código puede usarse texto fijo o variables predefinidas como:
+Las plantillas están formadas por un **nombre**, **descripción**, **contexto** en función de lenguaje y *pattern* que será el código de la plantilla. En el código puede usarse texto fijo o variables predefinidas como:
 - **$(cursor)**: Posición del cursor
 - **$(enclosing_type)**: Tipo de la clase
 - **$(enclosing_method)**: Nombre del método
@@ -192,26 +200,26 @@ Se recomienda su uso al realizar proyecto entre varios desarrolladores para obte
 
 ### 4.1. Conceptos básicos
 
-- **Revisión**: Visión en un momento dado del estado de archivos y directorios. Pueden tener asociados metadatos
-- **Copia de trabajo**: Archivos y directorios controlados por el control de versiones en edición activa
-- **Rama de trabajo**: Conjunto ordenado de revisiones. La más reciente se denomina principal
-- **Repositorio**: Lugar dónde se almacenan las revisiones. Puede ser archivo, base de datos, etc.
-- **Conflicto**: Sucede cuando varias personas hacen cambios sobre un mismo archivo. Los sistemas de control de versiones solo informan del conflicto. Se llama **resolución** al proceso para solucionarlo.
-- **Cambio**: Modificación en un archivo bajo control de versiones
-- **Parche**: Lista de cambios generada al comparar revisiones. 
+- **Revisión**: Visión en un momento dado del estado de archivos y directorios. Pueden tener asociados metadatos como identidad de quién hizo las modificaciones, fecha y hora en la que se almacenaron los campos, razón de los cambios, de qué revisión/rama se deriva, palabras o términos clave.
+- **Copia de trabajo o árbol de trabajo**: Archivos y directorios controlados por el control de versiones en edición activa. Asociado a una rama de trabajo concreta.
+- **Rama de trabajo o desarrollo**: Conjunto ordenado de revisiones. La más reciente se denomina principal. Se llama _main_ o _head_ a la revisión más reciente. Las ramas se pueden separar y juntar según sea necesario formando un grafo de revisión. 
+- **Repositorio**: Lugar dónde se almacenan las revisiones. Puede ser archivo, base de datos, colección de archivos... y estar almacenado en local o en remoto (servidor)
+- **Conflicto**: Sucede cuando varias personas hacen cambios contradictorios sobre un mismo archivo (o varios). Los sistemas de control de versiones solo informan del conflicto. Se llama **resolución** al proceso para solucionarlo.
+- **Cambio**: Modificación en un archivo bajo control de versiones. Cuando se unen los cambios en un archivo o varios generando una versión unificada se dice que se ha hecho una **combinación** o integración. 
+- **Parche**: Lista de cambios generada al comparar revisiones y que puede usarse para reproducir automáticamente las modificaciones hechas en código. 
 
-Con el sistema de control de versiones se consigue tener el repositorio siempre actualizado. Se trabajará sobre una copia local y después se actualizará el repositorio con dicha copia.
+Con el sistema de control de versiones se consigue tener el repositorio siempre actualizado. Se trabajará sobre una copia local y después se actualizará el repositorio con dicha copia. Así no es necesario tampoco el acceso continuo al repositorio. Los sistemas de control que permiten el acceso continuo son más transparentes pero existe también el bloqueo de ficheros. 
 
 ### 4.2. Procedimiento habitual de trabajo en un sistema de control de versiones
 
-1.- Descargar los ficheros del repositorio
+1.- Descargar los ficheros inicial del repositorio (ckeckout)
 2.- Ciclo de trabajo: 
 - Modificación de los ficheros
-- Actualización de los ficheros. Actualizados de forma local para luego subirse al repositorio
-- Resolución de conflictos. Se informará a los usuarios para su resolución
+- Actualización de los ficheros (update). Actualizados de forma local para luego subirse al repositorio
+- Resolución de conflictos (si los hay. Se informará a los usuarios para su resolución
 - Actualización de ficheros en el repositorio. Modificación de los ficheros en el repositorio. Se comprueba que las versiones estén actualizadas.
 
-Entre las tareas que se pueden realizar destacan:
+Entre las tareas o **funciones que los sistemas de control de versiones permiten**:
 - Realizar copias del proyecto al mismo tiempo
 - Realizar cambios en ficheros
 - Comparar versiones
@@ -224,8 +232,7 @@ Entre las tareas que se pueden realizar destacan:
 - La forma más simple de realizar copia de los archivos de un proyecto es copiar todo el directorio a otro lugar sabiendo la fecha en que se realizó. Este método es propenso a errores.
 - Para remedirlo, se diseñó el **sistema de control de versiones locales**. **RCS** se basa en la copia de parches (diferencias de archivos de una versión a otra) en un formato especial en el disco. Puede recrearse cómo son los distintos archivos sumando los parches.
 - Para colaborar varios desarrolladores a la vez surgen los **sistemas de control de versiones centralizados (CVS)**. Contienen los  archivos en un único servidor y varios clientes se descargan los archivos desde ese lugar. Ahí, cada desarrollador sabe en qué están trabajando el resto de personas del proyecto. También al ser un servidor centralizado en el momento en el que deje de funcionar el resto de usuarios no pueden realizar su trabajo o incluso podrían perder toda la información en caso de fallo.
-- Los **sistemas de control de versiones distribuidos (DVCS)**. En ellos los clientes no descargan únicamente la última versión de los archivos sino que los replican continuamente al repositorio. Si el servidor falla, cualquier cliente puede restaurar los elementos del repositorio. A cada descarga, se realiza una copia completa de todos los datos. 
-
+- Los **sistemas de control de versiones distribuidos (DVCS)**. En ellos (Git, Mercurial, Bazaar o Darcs) los clientes no descargan únicamente la última versión de los archivos sino que los replican continuamente al repositorio. Si el servidor falla, cualquier cliente puede restaurar los elementos del repositorio. A cada descarga, se realiza una copia completa de todos los datos. 
 
 ## 5. Git como sistema de control de versiones
 
@@ -233,25 +240,27 @@ Entre las tareas que se pueden realizar destacan:
 - Fue creado en **2005** y se hizo popular al ser elegido para el kernel de Linux.
 - Es **rápido** y eficiente en grandes proyectos, teniendo **gran capacidad de ramificación**
 - Git almacena los datos como un **conjunto de instantáneas**. **Cada vez que se realiza algún cambio, Git deja reflejado el estado actual de los archivos y hace una referencia a ese estado.**
-- Cada operación es realizada de forma local, necesitando solo archivos y recursos locales.
-- Tiene integridad, ya que todo es verificado antes de ser almacenado, siendo imposible realizar cambios sin que sean detectados por Git.
+- Cada operación es realizada de forma **local**, necesitando solo archivos y recursos locales.
+- Tiene **integridad**, ya que todo es verificadomediante una suma de comprobación antes de ser almacenado, siendo imposible realizar cambios sin que sean detectados por Git.
 
 ### 5.1. Funcionamiento
 
 Los archivos de Git **pueden encontrarse de tres formas**:
-- **Confirmado**: Almacenados de forma segura en BBDD local
-- **Modificado**: Modificado sin ser confirmado en BBDD local
-- **Preparado**: Marcado en la versión actual y listo para la confirmación.
+- **Confirmado** (commited): Almacenados de forma segura en BBDD local
+- **Modificado** (modified): Modificado sin ser confirmado en BBDD local
+- **Preparado** (staged): Marcado en la versión actual y listo para la confirmación.
 
 Hay tres **secciones principales** en Git:
-- **Directorio de Git**: Almacena metadatos y BBDD de objetos para el proyecto. Es la carpeta que se copia al realizar la copia de un repositorio a otro
-- **Directorio de trabajo**: Copia de una versión del proyecto
-- **Área de preparación**: Almacena la información que irá en la próxima confirmación.
+- **Directorio de Git** (Git directory): Almacena metadatos y BBDD de objetos para el proyecto. Es la carpeta que se copia al realizar la copia de un repositorio a otro
+- **Directorio de trabajo** (Working directory): Copia de una versión del proyecto
+- **Área de preparación** (Staging area): Almacena la información que irá en la próxima confirmación
 
 Los **pasos de trabajo** en el uso de Git son:
 1.- Modificar archivos en el directorio de trabajo
 2.- Preparar los archivos añadiendo instantáneas en el área de preparación
 3.- Confirmar los cambios
+
+Si una versión concreta está en el directorio de Git se considera confirmada (commited). Si ha sufrido cambios desde que se obtuvo del repositorio pero ha sido añadida al área de preparación está preparada (staged). Si ha sufrido cambios desde que se obtuvo del repositorio pero no se ha preparada está modificada (modified)
 
 ### 5.2. Instalación de Git
 Primero debe disponerse de librerías `curl`, `zlib`, `openssl`, `expat` y `libiconv`. Para instalarlas puede ejecutarse:
@@ -372,9 +381,26 @@ Podrá accederse a él usando
 git clone git://servidor/proyecto.git
 # Desde navegador entrando en http://localhost/git/()
 ```
-Para **borrar archivos** desde punto concreto puede usarse `git log`
-Para **saltar a un estado anterior** `git reset -hard [HASH_DEL_COMMIT]`
-Para **restaurar algún archivo**: `git checkout [HASH_DEL_COMMIT] algunarchivo otroarchivo`
+Para **borrar archivos** desde punto concreto puede usarse:
+```
+git log
+git reset -hard [HASH_DEL_COMMIT]
+```
+
+Para **saltar a un estado anterior temporalmente**
+```
+git checkout [HASH_DEL_COMMIT]
+
+# Para volver
+git checkout master
+```
+Para **restaurar algún archivo en particular**: 
+```
+git checkout [HASH_DEL_COMMIT] algunarchivo otroarchivo
+```
+
+Cuidado porque **checkout** puede sobreescribir archivos sin avisar. Es recomendable hacer commit antes de ejecutar cualquier comando de checkaout
+
 Para obtener una copia del proyecto `git clone git://servidor/ruta/a/archivos`
 
 ### 5.4. Seguridad y documentación en Git

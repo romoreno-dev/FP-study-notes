@@ -40,6 +40,11 @@ Los **registros DNS** son entradas dentro de los servidores autoritativos que pr
 - **Registro CNAME**: Permite alias en los dominios.
 - **Registro NS**: Indica qué servidores DNS son responsables de un dominio.
 
+---
+
+![](resources/ud05-1.png)
+
+
 ### 1.2. Información sobre DNS
 
 Se tienen los comandos:
