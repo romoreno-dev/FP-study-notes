@@ -67,9 +67,16 @@ La especificación 2.2 de los Servlets estandarizó los pasos a seguir para que 
 - Contiene uno o varios **hosts virtuales (`<Host>`)**, que representan diferentes dominios o aplicaciones dentro del servidor.
 - Puede incluir **válvulas (Valves)** para filtrar y procesar las solicitudes antes de que lleguen a los Hosts y Contextos.
 
-**Válvula**: Son componentes propios de Tomcat (no tienen uso general en JavaEE) que se configuran en el `servlet.xml` y que permiten realizar operaciones previas a la entrega de la solicitud a un servlet o JSP.
+**Válvula**: Son componentes propios de Tomcat (no tienen uso general en JavaEE) que se configuran en el `servlet.xml` y que permiten realizar operaciones previas a la entrega de la solicitud a un servlet o JSP. Se insertan en medio del flujo de procesado de una petición web, capturando la acción y permitiendo realizar alguna acción o preprocesado antes de que pase al siguiente componente de Tomcat. 
 **Permiten asociar una instancia de una clase de Java a un contenedor Catalina**. 
 Se implementan en la interfaz `org.apache.catalina`
+Podría por ejemplo ponerse una válvula en un `<Engine>` para capturar todas las peticiones antes de trasladarlas al componente anidado `<Host>`.
+
+Las válvulas pueden ponerse:
+- Dentro de un Engine
+- Dentro de un Host
+- Dentro del contexto de una aplicación web, llevándose a cabo el procesado requerido antes de acceder al contenido o componente web correspondiente. 
+
 
 Algunas de ellas son:
 - **Access Log Valve**: Ficheros log para información de los clientes como sesión o autenticación se usuarios
@@ -77,7 +84,7 @@ Algunas de ellas son:
 - **Request Dumper**: Herramienta de depuración que describe detalles de los registros log
 - **Single Sign On (SSO)** Permite la identificación de un usuario desde cualquier dispositivo conectado a la red. (Es decir, le permite iniciar sesión una sola vez y accede desde diversos lugares sin identificarse nuevamente)
 
-Veamos el ejemplo de un **servlet.xml**
+Veamos el ejemplo de un **service.xml** con válvulas:
 
 ```xml
 <Server port="8005" shutdown="SHUTDOWN">
@@ -113,7 +120,17 @@ Veamos el ejemplo de un **servlet.xml**
 
 ```
 
+En la válvula puede observarse:
+- Atributo **className**: Obligatorio. Indica la válvula a utilizar.
+- Atributo **directory**: Indica carpeta en la que se guardarán los registros de acceso (directorio logs en carpeta base de instalación de Tomcat)
+- Atributo **prefix**: Como comenzará el nombre del archivo donde se guardarán los logs de la válvula. Añadirá automáticamente después de eso la fecha de creación del archivo
+- Atributo **suffix**: Extensión del archivo de log
+- Atributo **pattern**: Formato de cada evento registrado. (%h nombre del equipo o IP, %u usuario remoto, %t fecha y hora, %r primera línea de peticion HTTP, %s código de estado HTTP de la respuesta generada, %b cantidad de bytes enviados al cliente sin incluir la información del protocolo HTTP en sí mismo).
+
+El registro de acceso sería habitual configurarlo de forma exclusiva para una aplicación web. Para ello se metería una válvula dentro del contexto de la aplicación (META-INF/context.xml).
 ## 4. Administración de sesiones. Sesiones persistentes.
+
+Una **sesión** es un conjunto de información que la aplicación wbe almacena para cada cliente (productos incluidos, datos introducidos por última vez en un formulario, nivel de privilegios,...)
 
 En un servidor Tomcat, las sesiones están configuradas por defecto para su mantenimiento ante posibles pérdidas de conexión o reinicios con el servidor (cookies y similares por parte de los usuarios en las páginas web).
 Además, se puede **ampliar el control sobre dichas sesiones**.
@@ -126,13 +143,13 @@ Las sesiones que superen un tiempo definido, son copiadas automáticamente para 
 
 Para la gestión de las sesiones persistentes debe realizarse la configuración del elemento como un subelemento dentro de la misma sesión. Así se puede especificar si se quiere que se apliquen a todas las funciones o solo a algunas en concreto.
 
-Globalmente: `/META-INF/context.xml`
-Localmente en una aplicación concreta: Adaptar el `/conf/context.xml` correspondiente a la aplicación. 
+Globalmente: `/conf/context.xml`. (Aunque no es lo recomendable)
+Localmente en una aplicación concreta: Adaptar el `/META-INF/context.xml` correspondiente a la aplicación. 
 
 **Ejemplito**
 ```xml
 <Context>
-    <Manager className="org.apache.catalina.session.PersistentManager">
+    <Manager className="org.apache.catalina.session.PersistentManager" pathname="SessionesAppEjemplo.ser">
         
         <!-- Guardar sesiones en disco si están inactivas -->
         <Store className="org.apache.catalina.session.FileStore"/>
@@ -146,6 +163,59 @@ Localmente en una aplicación concreta: Adaptar el `/conf/context.xml` correspon
     </Manager>
 </Context>
 ```
+
+Existen dos gestores de sesiones en Tomcat:
+- **StandardManager**: Permite a las aplicaciones crear y borrar información de sesión y además guarda la sesiones activas en disco cuando Tomcat se reinicia (el usuario final no notará esto). Por defecto, sino se indica gestor de sesiones se crea un gestor StandardManager y el archivo en caso de apagar el servidor es `SESSIONS.ser`. 
+- **PersistenceManager**: Amplía la funcionalidad de StandardManager. Realiza lo mismo y además almacena de forma persistente las sesiones que no están en uso y que todavía no están caducadas en disco o en una base de datos. Esto mejora el rendimiento ya que libera recursos de memoria. Ej.: Si un usuario puso varios productos en un carrito y salió de la página varias horas después o varios días pueden recuperarse  ofrecerle al usuario tal y como lo tenía.
+
+ Para cambiar el gestor de sesiones se indica con el atributo `className` y para el archivo el atributo `pathname`.
+
+Ejemplo:
+Usar un `PersistenceManager` indicandole que se guarden las sesiones activas en disco al apagar el servidor (`<Store>`), indicando el máximo número de sesiones activas (`<MaxActiveSession>`, siendo -1 ilimitado), y `minIdleSwap`/`maxIndleSwap` como intervalo de tiempo mínimo que debe esperarse para almacenar una sesión inactiva de forma persistente. Tambien con `Store` se indica cómo y donde almacenar las sesiones activas que no están en uso. Debe indicarse un `FileStore` (en disco) o un `JDBCStore` (BBDD).
+
+## 5. Autenticación de usuarios
+
+Para establecer mecanismo estandar a través del descriptor de despliegue, permitiendo autenticar diferentes componentes de la aplicación web en lo que se denominan diferentes reinos (fichero `WEB-INF/web.xml`).
+
+Definición de roles:
+```xml
+<security-role>
+	<description>Usuario normal</description>
+	<role-name>usuario</role-name>
+</security-role>
+```
+
+Cómo realizar la autenticación desde el navegador
+```xml
+<login-config>
+	<auth-method>BASIC</auth-method>
+	<realm-name>EjemploWebApp</realm-name>
+</login-config>
+```
+
+En el descriptor de despliegue deben incluirse qué recursos están limitados por el control de acceso:
+(Se limita a todos los recursos permitiendo solo a los usuarios con el rol usuario)
+```xml
+<security-constraint>
+	<display-name/>
+	<web-resource-collection>
+		<description/>
+		<url-pattern>/*</url-pattern>
+	</web-resource-collection>
+	<auth-contraint>
+		<description/>
+		<role-name>usuario</role-name>
+	</auth-contraint>
+</security-constraint>
+```
+
+Los usuarios y sus contraseñas se indican con el 
+```xml
+<Realm className="org.apache.catalana.realm.UserDatabaseRealm" resourceName="UserDatabase"/>
+```
+
+Este componente se puede ubicar en tres niveles diferentes (Engine, Host o Context). 
+Puede configurarse en server.xml o en META-INF/context.xml, según el ámbito que donde se desee que se aplique la configuración. 
 
 ## 5. Archivos de registro de acceso y filtro de solicitudes
 
@@ -191,6 +261,12 @@ También se podría configurar el servidor mediante Eclipse y Ant. Con Windows >
 El fichero `build.xml` se puede crear mediante Eclipse. Si abrimos la tarea de Ant y se cambia su configuración en la propiedad `ManagerUrl` cuyo valor sería la dirección del servidor y la carpeta `Manager/Text`.
 
 Finalmente, probar la tarea con la opción "Crear War" y eligiendo el fichero correspondiente. Tras ello se ejecuta con "Run As".
+
+Algunas etiquetas son: 
+- **project**: Solo uno. Se corresponde con la aplicación Java
+- **target**: Tareas que se quieren aplicar a la aplicación en algún momento. Se puede hacer que unos targets dependan de otros.
+- **task**: Código ejecutable que se aplicará a la aplicación. Puede tener propiedades como el classpath. Ant tiene muchas tareas básicas ya como compilación y eliminación de ficheros temporales pero puede extenderse el mecanismo de ser necesario
+- **property**: Parámetro clave-valor que se necesita para procesar la aplicación. 
 
 **Ejemplito del archivo**
 ```xml
@@ -254,3 +330,35 @@ Debe tenerse habilitado el servicio SSL en el host por defecto y configurar la a
 ```
 
 Es posible hacer la comprobación estableciendo una conexión HTTP a la aplicación: de esta forma, el servidor la redirige automáticamente a una petición segura HTTPS.
+
+## 9. Wildfly
+
+Wildfly implementa un servidor de aplicaciones Java EE. Mientras que Tomcar solo es servidor web y contenedor de servlets, Wildfly es servidor de aplicaciones que implementa todas las funcionalidades de la especificación JavaEE. 
+
+**Instalación**
+```shell
+# Primero descargarlo de la pagina oficial
+# Luego se copia a donde se quiera instalar y se descomprime
+sudo tar xvfz wildfly-13.0.0.Final.tar.gz
+# Se crea el usuario que ejecutara wildfly
+sudo adduser --no-create-home --disabled-passdword --disabled-login wildfly
+# Darle permisos a la carpeta que contiene wildfly para que pertenezca al usuario 
+sudo chown wildfly:wildfly opt/wildfly-13.0.0.Final --recursive
+# Configurar variables de entorno
+export WILDFLY_HOME=/opt/wildfly-13.0.0.Final
+export PATH=$PATH:$WILDFLY_HOME/bin
+# Ejecutar wildfly
+sudo -u wilfly -i standalone.sh
+# Instalar wildfly como servicio si se quiere (se proporcionan los scripts wildfly-init.sh)
+# Configurar archivo /etc/default/wildfly con la informacion necesaria para ejecutar wildfly (carpeta JDK, carpeta wildfly, nombre de usuario con el que se ejecutara, modo de ejecucion (standalone), archivo de configuracion para el modo de ejecucion (standalone.xml))
+sudo update-rc.d wildfly defaults
+```
+
+**Despliegue de aplicaciones**
+Debe elegirse un usuario de gestión Management User que será un usuario dentro del realm conocido como ManagementRealm
+Para ello se ejecuta **add-user.sh**
+```
+sudo -i -u wildfly /opt/wildfly-13.0.0.Final/bin/add-user.sh
+```
+
+Con eso ya será posible entrar en http://localhost:8080/console

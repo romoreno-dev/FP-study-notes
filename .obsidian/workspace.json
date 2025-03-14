@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "5219735d458129a5",
+        "id": "d2b336af61f7b4a4",
         "type": "tabs",
         "children": [
           {
-            "id": "5be61be39738fbb6",
+            "id": "005bf949df0329fc",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/UD 04 - ADMINISTRACIÓN DE SERVIDORES DE APLICACIONES.md",
+                "file": "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/UD 02 - ADMINISTRACIÓN DE SERVIDORES WEB.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "UD 04 - ADMINISTRACIÓN DE SERVIDORES DE APLICACIONES"
+              "title": "UD 02 - ADMINISTRACIÓN DE SERVIDORES WEB"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "openjdk-11",
+                "query": "Directory",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -163,52 +163,17 @@
       "templates:Insert template": false
     }
   },
-  "floating": {
-    "id": "ede0cbb9a142fbfa",
-    "type": "floating",
-    "children": [
-      {
-        "id": "2cbe57ccafaa68f2",
-        "type": "window",
-        "children": [
-          {
-            "id": "0b2caeef2a467e72",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "52bebd17211fddb6",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/UD 03 - INSTALACIÓN Y ADMINISTRACIÓN DE SERVIDORES DE TRANSFERENCIA DE ARCHIVOS.md",
-                    "mode": "source",
-                    "source": false
-                  },
-                  "icon": "lucide-file",
-                  "title": "UD 03 - INSTALACIÓN Y ADMINISTRACIÓN DE SERVIDORES DE TRANSFERENCIA DE ARCHIVOS"
-                }
-              }
-            ]
-          }
-        ],
-        "direction": "vertical",
-        "x": 960,
-        "y": 0,
-        "width": 960,
-        "height": 1032,
-        "maximize": false,
-        "zoom": 0
-      }
-    ]
-  },
-  "active": "5be61be39738fbb6",
+  "active": "005bf949df0329fc",
   "lastOpenFiles": [
-    "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/UD 03 - INSTALACIÓN Y ADMINISTRACIÓN DE SERVIDORES DE TRANSFERENCIA DE ARCHIVOS.md",
-    "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/UD 05 - SERVICIOS DE RED IMPLICADOS EN EL DESARROLLO DE UNA APLICACIÓN WEB.md",
-    "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/resources/ud05-1.png",
-    "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/UD 06 - DOCUMENTACIÓN Y SISTEMAS DE CONTROL DE VERSIONES.md",
+    "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/resources/ud02-4.png",
+    "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/UD 02 - ADMINISTRACIÓN DE SERVIDORES WEB.md",
+    "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/resources/ud02-3.png",
     "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/UD 01 - IMPLANTACIÓN DE ARQUITECTURA WEB.md",
+    "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/UD 04 - ADMINISTRACIÓN DE SERVIDORES DE APLICACIONES.md",
+    "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/UD 06 - DOCUMENTACIÓN Y SISTEMAS DE CONTROL DE VERSIONES.md",
+    "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/UD 05 - SERVICIOS DE RED IMPLICADOS EN EL DESARROLLO DE UNA APLICACIÓN WEB.md",
+    "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/UD 03 - INSTALACIÓN Y ADMINISTRACIÓN DE SERVIDORES DE TRANSFERENCIA DE ARCHIVOS.md",
+    "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/resources/ud05-1.png",
     "MODULOS_ESPECIFICOS_DAW/DESARROLLO_WEB_ENTORNO_CLIENTE/UD 01 - SELECCIÓN DE ARQUITECTURAS Y HERRAMIENTAS DE PROGRAMACIÓN.md",
     "OTROS_APUNTES/Pasted image 20250309191732.png",
     "MODULOS_ESPECIFICOS_DAW/DESARROLLO_WEB_ENTORNO_CLIENTE/resource/ud01-1.png",
@@ -226,11 +191,7 @@
     "OTROS_APUNTES/RABBITMQ/resources/5.png",
     "OTROS_APUNTES/RABBITMQ/resources/4.png",
     "OTROS_APUNTES/RABBITMQ/resources/3.png",
-    "OTROS_APUNTES/RABBITMQ/resources/2.png",
-    "OTROS_APUNTES/RABBITMQ/resources/1.png",
     "OTROS_APUNTES/RABBITMQ/resources",
-    "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/UD 02 - ADMINISTRACIÓN DE SERVIDORES WEB.md",
-    "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/UD 04 - ADMINISTRACIÓN DE SERVIDORES DE APLICACIONES.md",
     "OTROS_APUNTES/Miscelanea.md",
     "MODULOS_ESPECIFICOS_DAW/DESPLIEGUE_APLICACIONES_WEB/resources",
     "MODULOS_ESPECIFICOS_DAW/DISEÑO_INTERFACES_WEB/UD 06 - DESARROLLO DE WEBS AMIGABLES. USABILIDAD..md",

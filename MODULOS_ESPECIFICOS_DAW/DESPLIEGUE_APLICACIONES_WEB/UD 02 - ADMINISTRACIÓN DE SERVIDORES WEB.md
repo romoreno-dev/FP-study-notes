@@ -5,6 +5,8 @@ Bibliografía recomendada:
 - Bowen, R., Lõpez Ridruejo, D., & Liska, A. (2002). *Apache Administrator's Handbook*. Sams Publishing.
 - Stein, L., & MacEachern, D. (1999). *Writing Apache Modules with Perl and C: The Apache API and mod_perl* (1st ed.). O'Reilly Media.
 
+Una **aplicación web** puede considerarse como una extensión de un servidor de aplicaciones o un servidor web. Partes que intervienen: Cliente, Protocolo de comunicaciones, Servidor. 
+
 La configuración de un servidor web varía según:
 - el **peso de la información** (prever capacidad de almacenamiento)
 - el **contenido de las páginas y de los lenguajes y compiladores que se utilizan** (página estática vs página dinámica con llamadas a BBDD y alojamiento de esta)
@@ -355,9 +357,23 @@ Se realiza en el archivo **.htaccess** de los directorios de las páginas web (S
 3. Crear fichero para un usuario en cuestión `sudo htpasswd -c /etc/apache2/passwd usuario`. El sistema pedirá que se ingrese y confirme la contraseña que se almacenará de forma cifrada en el fichero `passwd`
 4. Editar fichero de configuración `000-default.conf` (o el que proceda) para permitir acceso a usuarios. Se usará en el host virtual o en el directorio que proceda, pudiéndose emplear las etiquetas: `<RequireAll>` (requerir todas las condiciones) `<RequiredAny>` (requerir alguna de las condiciones)
 
+---
+
+Curiosidad. En `Directory` también se puede especificar:
+- **AddType**: Indicar qué tipo MIME debe usarse para ciertas extensiones concretas. Ejemplo `.imagen`  `image/png`
+- **ForceType**: Hacer que todos los archivos sean servidos con el tipo MIME que se establezca
+- **DefaultType**: Establecer Content-Type a cualquier archivo cuyo MIME no pueda determinarse por extensión. Está obsoleto y no debe usarse.
+
+---
+
 ```xml
 <VirtualHost *:80>
     # Otros ajustes de configuración...
+
+	<Directory /var/www/html/misimagenes>
+		ForceType image/png
+		AddType image/png imagen
+	</Directory>
 
     <Directory /var/www/html/sitio_protegido>
         # Activar la autenticación básica
@@ -786,7 +802,192 @@ Supongamos que se tiene una aplicación backend corriendo en: `http://localhost:
 </VirtualHost>
 ```
 
-## 12. Tomcat
+## 12. Aplicaciones web basadas en Java EE. Tomcat
+
+### 12.0.1. JavaEE 
+
+**Java EE** (actualmente **JakartaEE**) es una arquitectura (conjunto de especificaciones) que permite la implementación de aplicaciones web realizadas en Java que dan servicio a aplicaciones cliente. . Existen diversas implementaciones de la especificación: Wildfly (Red Hat), TomcatEE (Apache), WebSphere Application Sever (IBM), GlassFish y WebLogic Server (Oracle),...
+
+Java EE da servicios que permiten que el equipo de desarrollo no tenga que hacer programación a bajo nivel, ni código repetitivo (boilerplate) y puedan centrarse en la lógica de la aplicación.
+Al hablar de lógica debe separarse entre lógica de negocio (cerebro de la aplicación) y lógica de presentacion (lo que ve el usuario).
+
+Para separar la **lógica de negocio** y la de **presentación**, Java EE tiene un modelo basado en componentes (unidades lógicas separadas que agrupan una o varias funciones), distribuido (cada componente se puede ejecutar en un sistema diferente) y multicapa (cada componente se aloja en una capa diferente donde los componentes de una capa pueden usar los componentes de las capas inferiores para realizar su función). 
+
+**Capas de una aplicación Java EE**
+- **Máquina cliente**: Navegador web, aplicaciones de escritorio, antiguamente las Applets de Java,... No forma parte de Java EE
+- **Capa web**: Componentes web encargados de producir contenido web dinámico (HTML, CSS) o de transferencia de datos (XML, JSON). Los componentes de esta capa sí se ejecutarían en el servidor de Java EE, contenedor web. También está el contenido estático de la web (HTML, imágenes, JavaScript,..). Implementa la lógica de presentación.
+- **Capa de negocios**: Componentes encargados de llevar a cabo la lógica de negocio de la aplicación como los **Enterprise Java Beans (EJB)** que se ejecutarían en un contenedor EJB. Implementa la capa de negocio.
+- **Capa del sistema de información de la empresa (EIS, Enterprise Information System)**: Referencia a los sistemas donde se almacenan la información, siendo lo más normal que sea una base de datos. No forma parte de Java EE.
+
+![](resources/ud02-3.png)
+
+Así:
+- el navegador web se comunicará solo con la capa web de JavaEE para obtener información en formato representable
+- la aplicación de escritorio se comunica con la capa web (obteniendo información en formato XML por ejemplo) o con la capa de negocio
+- la capa web puede comunicarse con la capa de negocio para pedirle realizar alguna tarea
+- la capa de negocio puede comunicarse con la capa EIS para pedirle que almacene o actualice datos, por ejemplo
+
+En el modelo de aplicación de Java EE, la capa web y la capa de negocio se denominan capa intermedia (middletier), lugar donde se sitúan las aplicaciones web.
+
+Los componentes siguen una estructura estándar y se empaquetan de forma que pueden ser usados en cualquier servidor de aplicaciones que cumpla con la certificación Java EE en un proceso conocido como **despliegue**. Una vez desplegada, la aplicación se puede ejecutar. 
+
+
+### 12.0.2. Servlets y JSP
+
+Entre los componentes que puede ejecutarse en la capa web de servidores JavaEE están:
+- **Servlets**: Clases de Java que reciben peticiones y dan respuestas de forma dinámica. Normalmente usando el protocolo HTTP y produciendo contenido web pero no tiene por qué ser necesariamente así.
+- **JavaServer Pages (JSP)**: Tecnología para la generación de contenido web dinámico embebiendo pequeños trozos de código Java que modifican el contenido generado (de forma parecida a lo hecho por PHP o ASP.NET). Se utilizan etiquetas JSP como:  `<% %>` y `<jsp: >` Los archivos JSP se compilan después y se transforman un servlet. 
+- **JavaServer Faces (JSF)**: Framework de Java para la creación de interfaces web mediante el uso de componentes reutilizables. Permite manejar la interacción del usuario a través de un modelo basado en eventos y facilita la conexión con la lógica de negocio. Suelen escribirse en XHTML y se procesan en el servidor para generar contenido dinámico. El contenido web se suele realizar empleado Facelets desde versión 2.x. (sistema de plantillas basado en XHTML) aunque en las primeras versiones 1.x. se hacía empleando JSP y había librerías como Woodstock JSF Components. Se utilizan etiquetas JSF como `<h: >`, `<f: >`, `<ui: >`. JSF utiliza un servlet especial llamado **FacesServlet** que actúa como contenedor central del framework (gestiona solicitudes, procesa eventos y determina qué vista mostrar). Se utilizan varias librerías de componentes que amplían las capacidades de la interfaz gráfica con elementos visuales avanzados, mejor integración con AJAX y estilos modernos. Es el caso de PrimeFaces, IceFaces (tiene el uso de push server-side para actualizar contenido automáticamente sin que el usuario tenga que hacer click y actualmente ha perdido relevancia respecto a PrimeFaces) y RichFaces (actualmente descontinuado). 
+
+**Servlet**
+```java
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+public class MiServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Establecemos el tipo de contenido
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+
+        // Escribimos la respuesta
+        out.println("<html><body>");
+        out.println("<h1>¡Hola desde el Servlet!</h1>");
+        out.println("</body></html>");
+    }
+}
+```
+**JSP**
+```jsp
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<html>
+<head>
+    <title>Mi Página JSP</title>
+</head>
+<body>
+    <h1>¡Hola desde JSP!</h1>
+    <p>La fecha actual es: <%= new java.util.Date() %></p>
+</body>
+</html>
+
+```
+**JSF con JSP y Woodstock (JSF 1.x.)**
+```jsp
+<%@ taglib uri="http://www.sun.com/web/ui" prefix="webuijsf" %>
+<webuijsf:form>
+    <webuijsf:textField id="nombre" text="#{usuarioBean.nombre}" label="Nombre:" />
+    <webuijsf:button id="guardar" text="Guardar" action="#{usuarioBean.guardar}" />
+</webuijsf:form>
+```
+**JSF con XHTML y Facelets (JSF 2.x.)**
+```xhtml
+<h:form>
+    <h:outputLabel for="nombre" value="Nombre:" />
+    <h:inputText id="nombre" value="#{usuarioBean.nombre}" />
+    <h:commandButton value="Guardar" action="#{usuarioBean.guardar}" />
+</h:form>
+```
+**JSF con IceFaces, AJAX**
+```xhtml
+<ice:form>
+    <ice:panelGrid columns="2">
+        <ice:outputLabel for="nombre" value="Nombre:" />
+        <ice:inputText id="nombre" value="#{usuarioBean.nombre}" />
+        <ice:commandButton value="Guardar" actionListener="#{usuarioBean.guardar}" />
+    </ice:panelGrid>
+</ice:form>
+```
+**JSF con PrimeFaces**
+```xhtml
+<p:panel header="Formulario">
+    <p:inputText id="nombre" value="#{usuarioBean.nombre}" placeholder="Nombre" />
+    <p:commandButton value="Guardar" action="#{usuarioBean.guardar}" icon="pi pi-save" />
+</p:panel>
+```
+
+------------------
+El proceso es el siguiente:
+- Usuario teclea URL
+- Navegador web lanza petición HTTP al servidor web con soporte para componentes web basados en servlets (contenedor web)
+- Servidor web convierte petición en `HttpServletRequest` que pasa al componente web adecuado (puede haber varios). La app web debe estar correctamente configurada para enviarlo al adecuado
+- El componente web procesa la petición y genera `HttpServletResponse`
+- El contenedor web transforma ese objeto en respuesta HTTP al cliente. 
+
+La configuración de la aplicación web podría hacerse:
+ - A nivel más local  a través de **anotaciones** (han convertido el descriptor de despliegue en algo opcional en muchos casos)
+ - A nivel más global a través del **descriptor de despliegue**
+ - Usando **descriptores de despliegue dependientes de la implementación** según el servidor JavaEE concreto que se quiera implementar.
+
+###  Servidor de aplicaciones Tomcat
+
+Tomcat es un servidor HTTP (recibe peticiones HTTP y las redirige al contenedor web) y un contenedor web (ejecuta los componentes web necesarios).
+
+###  Arquitectura de Tomcat
+
+Tomcat está formado por una serie de componentes anidados formando una jerarquía.
+
+- **Servidor**: Representa al contenedor de servlets en sí mismo (Tomcat en su conjunto)
+- Dentro del servidor hay uno o más **servicios**, cuya función es enlazar el componente encargado de comunicarse con el cliente con la parte que procesa la petición y genera una respuesta. Dentro del servicio puede haber:
+	- Uno o más **conectores** (connectors): Componente encargado de recibir peticiones del cliente remoto y pasárselas al motor (engine). Una vez que el motor procesa la petición, el conector le da la respuesta al cliente remoto
+	- **Motor** (engine): Encargado de procesar la petición y devolver el contenido al conector. Para lograr su cometido tendrá que ejecutar, si se requiere, la aplicación web diseñada.
+		- En el motor habrá uno o varios **Hosts**. Buscan asociar un nombre de equipo al servidor Tomcat para que el servidor Tomcat pueda responder a peticiones asociadas a un nombre de equipo concreto. Dentro de Tomcat una aplicación web equivaldrá a un contexto (context) que se definirá y ejecutará dentro de un Host. 
+
+![](resources/ud02-4.png)
+
+###  Configuración de Tomcat
+
+Podemos citar:
+- **conf/server.xml**: Archivo de configuración principal (se configura servidor, servicios, conectores, motor, hosts, unos anidados dentro de otros)
+- **conf/context.xml**: Archivo de configuración del contexto base de todas las aplicaciones ejecutadas en Tomcat. No debe modificarse. Cada aplicación web puede tener su propio contexto de ejecución complementando al principal (META-INF/context.xml) dentro de la aplicación desplegada. 
+- **conf/web.xml**: Descriptor de despliegue base para todas las aplicaciones desplegadas en Tomcat. No debe modificarse. Cada aplicación web puede tener su propio contexto de ejecución complementando al principal (META-INF/context.xml) dentro de la aplicación desplegada. 
+- **conf/tomcat-users.xml**: Configuración de los usuarios que pueden usar el gestor de aplicaciones web de Tomcat. 
+
+**server.xml**
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Server port="8005" shutdown="SHUTDOWN">
+
+  <!-- Listener que permite a Tomcat saber que está en modo de ejecución -->
+  <Listener className="org.apache.catalina.startup.VersionLoggerListener" />
+
+  <!-- Definir un canal de escucha de eventos (Ej: aplicaciones web) -->
+  <Listener className="org.apache.catalina.core.AprLifecycleListener" SSLEngine="on" />
+
+  <!-- Configuración de la conexión de Tomcat -->
+  <Service name="Catalina">
+
+    <!-- Conector HTTP en el puerto 8080 -->
+    <Connector port="8080" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443" />
+
+    <!-- Conector HTTPS en el puerto 8443 (con SSL habilitado) -->
+    <Connector port="8443" protocol="HTTP/1.1"
+               maxThreads="150" scheme="https" secure="true" SSLEnabled="true"
+               keystoreFile="conf/keystore.jks" keystorePass="changeit"
+               clientAuth="false" sslProtocol="TLS" />
+
+    <!-- Contenedor que ejecuta las aplicaciones web -->
+    <Engine name="Catalina" defaultHost="localhost">
+
+      <!-- Hosts virtuales (múltiples sitios en un solo servidor) -->
+      <Host name="localhost"  appBase="webapps" unpackWARs="true" autoDeploy="true">
+
+        <!-- Si el directorio de aplicaciones web no existe, Tomcat lo creará -->
+        <Context path="
+```
+
+-----
+
+Tomcat podría instalarse:
+- Como **servidor independiente**
+-  **Integración de Tomcat con un servidor web ya existente**
+- **Instalación de un clúster de servidores Tomcat**. Un servidor de Apache balancea transparentemente la carga de trabajo a diferentes servidores Tomcat y estos intercambian información entre sí para dar continuidad al servicio (para que el cliente no perciba que sus peticiones están siendo atendidas por un nodo o por otro).
+La comunicación Tomcat-Apache se dará a través de un protocolo AJP (Apache JServ Protocol).
 
 - Al instalar Tomcat, este corre por defecto en el puerto **8080**
 - Su directorio de aplicaciones webs es `/xamp/tomcatt/webapps`

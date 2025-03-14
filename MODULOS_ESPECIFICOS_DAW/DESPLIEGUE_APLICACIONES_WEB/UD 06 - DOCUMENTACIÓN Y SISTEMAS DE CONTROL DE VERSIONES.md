@@ -284,6 +284,16 @@ make prefix=/usr/local all doc
 make prefix=/usr/local install install-doc
 ```
 
+También se puede obtener Git a través del propio Git para futuras actualizaciones (descargará automáticamente el código fuente desde su repositorio):
+```
+git clone git://git.kernel.org/pub/scm/git/git.git
+```
+
+También podría instalarse desde un instalador binario con:
+```
+apt-get install git-core
+```
+
 Para comprobar que la instalación se ha realizado correctamente se ejecuta el comando:
 ```shell
 git -version
@@ -303,6 +313,16 @@ git config --global core.editor emacs
 git help <comando>
 git <comando> --help
 man git-<comando>
+```
+
+##### Instalación del entorno web de Git
+
+El **entorno web de Git** integra un aspecto más intuitivo y cómodo para el usuario. 
+
+Primero, es necesario que en la máquina esté ya instalado el **servidor Apache**
+
+Seguidamente:
+```shell
 # Instalacion del entorno web
 apt-get install gitweb
 # Creacion de directorios
@@ -310,7 +330,7 @@ mkdir /home/usuario/git
 mkdir /home/usuario/www_git
 ```
 
-Edición del fichero gitweb en Apache `/etc/apache2/conf.d/gitweb`
+Edición del fichero de configuración de gitweb en el directorio de configuraciones de Apache `/etc/apache2/conf.d/gitweb`
 
 ```xml
 Alias /git /home/usuario/www_git
@@ -334,7 +354,7 @@ mv -v /usr/share/gitweb/* /home/usuario/www_git
 mv -v /usr/lib/cgi-bin/gitweb.cgi /home/usuario/www_git
 ```
 
-Se harán cambios en configuración de gitweb
+Realizar cambios en el archivo de configuración de gitweb `/etc/gitweb/conf`
 
 ```shell
 #nano /etc/gitweb.conf
@@ -364,26 +384,33 @@ git commit -a
 
 ```
 
-La publicación de un repositorio Git a través del **protocolo Git Daemon**, que permite compartir repositorios de manera eficiente a través de la red usando el protocolo `git://`.
-`#git daemon –base-path=/var/cache/git –detach –syslog –export-all`
-
-El servicio de Git que ejecuta un servidor para hacer público el repositorio:
+El servicio de Git que ejecuta un servidor para hacer público el repositorio: (marcar un repositorio como exportado)
 ```shell
 cd /var/cache/git/proyecto.git
 touch .git/git-daemon-export-ok
 ```
 
-Deben darse permisos de escrituras a algún usuario no root para que pueda hacer cambios en el repositorio.
+Para iniciar el servicio de Git que ejecuta un servidor para hacer público el repositorio, es decir, para la publicación de un repositorio Git a través del **protocolo Git Daemon**, que permite compartir repositorios de manera eficiente a través de la red usando el protocolo `git://` se emplea el comando:
+`git daemon –base-path=/var/cache/git –detach –syslog –export-all`
 
-Podrá accederse a él usando
+Podrá comprobarse que el repositorio está corriendo en el puerto 9418 del ordenador con 
+```
+netstat -nautp | grep git
+```
+
+Por último deben darse permisos de escrituras a algún usuario no root para que pueda hacer cambios en el repositorio.
+
+Podrá acceder a él usando
 ```shell
 # Desde comandos
 git clone git://servidor/proyecto.git
-# Desde navegador entrando en http://localhost/git/()
+# O desde navegador entrando en http://localhost/git/()
 ```
 Para **borrar archivos** desde punto concreto puede usarse:
-```
+```shell
+# Veremos la lista de commits recientes y sus hashes SHA1
 git log
+# Para recuperar el estado de  un commit dado y borrar recuerdos de commits mas nuevos
 git reset -hard [HASH_DEL_COMMIT]
 ```
 
