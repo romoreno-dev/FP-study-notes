@@ -119,20 +119,177 @@ Se clasifican en:
 
 ## 7. Lenguajes de marcas
 
+Los lenguajes de marcas (HTMl, XML, RDF) permiten forman un sitio web. Estos son un tipo de lenguaje que no tiene variables, ni funciones aritméticas. Se combina el texto con etiquetas.
 
+**HTML (Hypertext Markup Language)** es el lenguaje más conocido para el desarrollo de páginas web. Se puede utilizar para definir estructura y determinar el contenido. 
+- Dispone de etiquetas que informan al navegador de la presentación dentro de un documento (título, tamaño, posición, vínculos)
+- El texto irá limitado entre una etiqueta de apertura y otra de cierre (entre corchetes angulares, cumpliendo normas sintáticas). `<nombre_etiqueta>...</nombre_etiqueta>`
+- En la **versión 1.0** solo se mostraban textos con estilo (títulos ,parráfos, viñetas, listas,...)
+- En 1995 se publica la **versión 2.0** de HTML por parte del W3C (World Wide Web Consortium) que se encargó de crear estándares para todos los temas relacionados con la web. Aportaba compatibilidad con navegadores y nuevas etiquetas (imágenes, tablas, vínculos, formularios)
+- La **versión 3.0** empresas como Netscape y Microsoft aportaron nuevas etiquetas. Aparecieron lenguajes como PHP (Hypertext Preprocessor) y ASP (Active Server Pages) que se propusieron para funcionar con BBDD y aprovechar la interactividad con la web.
+- La **versión 4.0** en 1998 incorpora las hojas de estilo CSS, el uso de scripts, mejora la accesibilidad web, agilidad en formularios y permite realizar tablas complejas. Aparece Java con juegos y aplicaciones.
+- **HTML5** es el estándar actual surgido en 2004 por la asociación Web Hypertext Application Technology Working Group (WHATWG) formada por Mozilla, Opera y Apple. Se consigue una revolución en el desarrollo web ya que se permite incluir elementos multimedia, entre otras funcionalidades. 
 
 ## 8. Componentes de una interfaz web
 
+Los **componentes de la estructura de una interfaz web** son **todas las partes** que forman parte de un sitio web.
+A lo largo de los años los diferentes diseños han avanzado hacia la **unificación** mostrando interfaces bien definidas mediante componentes gráficos que permiten que, independientemente del usuario, pueda acceder a la interfaz. 
 
+Existen una serie de elementos asentados utilizados en la mayoría de interfaces como pies de páginas, formularios, cabecera,...
+
+Dentro de los componentes más principales de la interfaz web se podría mencionar:
+- *Header* (cabecera)
+- *Body* (cuerpo)
+- *Footer* (pie)
+
+**Cabecera**
+La **cabecera** (header) es la zona situada en la parte superior de la interfaz web.
+- Se usa para situar el logotipo de la empresa o su nombre.
+- Puede ir acompañada de otros elementos de diseño como imágenes, textos descriptivos o formularios de acceso.
+
+Los principales **objetivos de la cabecera** son:
+- **Identificar el sitio web con la empresa que representa** a través del logo tipo y del nombre
+- **Identificar y unificar todas las páginas** que pertenezcan al mismo sitio web
+- **Separar el borde superior de la interfaz de la parte central** para facilitar la visualización
+
+- La jerarquía visual hace que la cabecera esté en la **parte superior de la interfaz** y el logotipo en la parte izquierda. 
+- No son obligatorias pero la forma más empleada sería **rectangular**. 
+- Debe seleccionarse la que en cada caso presente un mayor impacto visual de acuerdo con el tema que se esté tratando. 
+
+**Sistemas de navegación**
+Los **sistemas de navegación** permiten navegar por las distintas páginas que componen una página web. 
+- Es frecuente que se presenten en forma de **menús** con una serie de opciones mediante las cuales el usuario puede interaccionar al seleccionarlas.
+- Pueden **incorporar iconos, textos o ambos**. Es posible incorporar efectos dinámicos que permitan ofrecer interacción con las diferentes opciones. 
+- Son importantes porque permiten que el usuario se mueva por las diferentes partes sin que se estorben los elementos. 
+- Pueden hacerse mediante capas usando CSS y JavaScript.
+	- **Menú de árbol**: Las opciones pueden aparecer y desaparecer según las acciones que el usuario ejecute sobre las funciones principales
+	- **Menú de pestaña (lista)**: Simula el aspecto de un archivador. La pestaña que esté activa en primer plano tiene un color distinto al del resto de pestañas. 
+- Suelen situarse en la **parte lateral izquierda** por motivos de funcionalidad y uso. Si son demasiadas opciones es recomendable usar **menús dobles** y jerarquizas las diferentes opciones, así el usuario podrá acceder de forma sencilla. 
+
+**Cuerpo de página**
+En el **cuerpo** se muestran los contenidos.
+- Debe estar **situado en la zona más importante**: Parte central (si la hay), bajo la cabecera y al lado de un menú lateral para navegación (si lo hay)
+- Los **contenidos pueden variar** dependiendo de si es una página con formulario, tablas o fichas,...
+- Aunque **existen elementos que deberán estar presente en todas las páginas**: Generalmente **estará formado por un título que identifica la página** (en la parte superior de esta) y **dispone de menú de navegación**.
+- Es **conveniente que las palabras del menú tengan un tamaño mayor o un color distinto** para que destaque sobre el resto de la página, al ser este un elemento clave para la navegación.
+
+**Pie de página**
+El **pie de página** (footer) está situado en la parte inferior de la web bajo el cuerpo de la página.
+- Permite visualizar distintos enlaces a servicios concretos: Formularios de contacto, ofertas de empleo, etc. O referencia a la empresa propietaria del sitio web o a la persona que ha desarrollado la web.
+- Si el pie de página dispone de menú, suele utilizarse como menú auxiliar que permite a los usuarios navegar por la interfaz web sin necesidad de volver al menú principal. 
+
+**Espacios en blanco**
+- Son un elemento esencial de las interfaces web porque son encargados de definir las zonas que no tienen elementos gráficos.
+- Los desarrolladores los usan como cualquier otro elemento, definidos desde el momento inicial.
+- Logran un diseño no sobrecargado y bien delimitado. 
 
 ## 9. Mapa de navegación. Prototipos
 
+Los **mapas de navegación** se utilizan para representar la estructura de las páginas de un sitio web, facilitando tanto al desarrollador como al usuario conocer qué páginas llevan a otras.
+Se debe realizar un esquema que permita visualizar las secciones en las que se ha dividido el sitio web y la relación entre los bloques antes de diseñar el sitio web.
 
+Los mapas pueden representarse de forma gráfica, dónde la página principal actúa como elemento raíz a partir del cual salen las diferentes ramificaciones. 
+
+En ocasiones la complejidad del diseño hace difícil comprender lo que el cliente quiere transmitir al equipo de desarrollo y los objetivos a conseguir, por eso los **prototipos** son herramientas que permiten optimizar tiempo, mostrando un esquema del sitio web una vez se finalice pero empleando mucho menos tiempo que si se hubiese realizado realmente. 
+Es como crear un borrador a partir del que se desarrollará la idea del sitio web. 
+
+El prototipo resuelve:
+- Qué elementos formarán la interfaz de cada página
+- Qué elementos tendrán en común las distintas páginas
+- En qué orden se verán las páginas (orden del mapa de navegación)
+- Qué aspectos tener en cuenta para desarrollar el sitio web (aspectos técnicos de accesibilidad y usabilidad)
+
+Después de tener el mapa de navegación y los prototipos, lo siguiente es realizar el desarrollo del sitio web mediante plantillas elaboradas o alguna propia.
 
 ## 10. Maquetación web. Elementos de ordenación
 
-Centrardiv
+La **maquetación** toma como referencia el espacio disponible para situar en él los elementos que forman la página web.
 
+Se encarga de **separar el contenido de la presentación**. Así se consigue el mantenimiento y cambio de los contenidos de forma sencilla.
+
+Antes la maquetación se realizaba usando tablas (`<table><tr><td>`) pero el código era complejo de entender y los navegadores tenían problema a la hora de analizar la página. Actualmente se realiza maquetación usando capas (`<div>`), conocidas como divisiones o contenedores.
+**Distribución de elementos en la interfaz: capas**
+- Se podrían mencionar **capas** y **marcos**
+
+Las capas (div, layout) son contenedores en los que se pueden colocar los diferentes elementos. Se caracterizan por:
+- **Anidamiento**: Unas pueden estar ubicadas dentro de otras. Se define cómo se posicionan, el tamaño que tendrán y dónde estarán ubicadas.
+- **Diferentes bloques con contenido HTML, posicionados de forma dinámica**. Requieren del uso de CSS, posicionando el elemento mediante cambios del estilo (no quedan definidas completamente con HTML).
+
+```html
+<!DOCTYPE html>
+<html>
+	<body>
+		<p>Esto es un texto</p>
+		<div style="background-color:lightblue">
+			<h3>Título del div</h3>
+			<p>Texto dentro del div</p>
+		</div>
+		<p>Resto de la web</p>
+	</body>
+</html>
+```
+
+### 10.1. Desmontando el mito del desarrollador backend: Cómo centrar un div.
+
+```html
+<div class="parent">
+	<div class="child">El div centrado</div>
+</div>
+```
+
+**Usar flexbox**
+En el contenedor del padre, se le indica que sus hijos deben estar centrados.
+
+```css
+.parent {
+	display: flex;
+	justify-content: center;
+	align-items:center;
+	height: 100vh; 
+}
+```
+
+**Usar grid**
+```css
+.parent {
+  display: grid;
+  place-items: center; /* Equivalente a flexbox pero más corto */
+  height: 100vh;
+}
+```
+
+**Usar `margin:auto`** (Centrar solo horizontalmente)
+```css
+.child {
+  width: 200px;
+  margin: 0 auto;
+}
+```
+
+**Usar `position:absolute`** (No recomendado)
+```css
+.parent {
+  position: relative;
+  height: 100vh;
+}
+.child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+```
+
+---
+```css
+body {
+	display: flex;
+    flex-wrap: wrap; /* Permite que los elementos pasen a la siguiente fila */
+    justify-content:center;
+}
+```
+
+---
 ## 11. Plantilla de diseño
 
 Las **plantillas de diseño** son sitios webs prediseñados que pueden usarse como base a la hora de diseñar una web. 
