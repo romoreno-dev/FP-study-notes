@@ -1,5 +1,5 @@
 
-## Objetivo de este repositorio repositorio
+## Objetivo de este repositorio
 
 Este repositorio pretende albergar **resúmenes de los contenidos** que se utilizan en los módulos de la Formación Profesional Semipresencial y de la Formación Profesional a Distancia para la enseñanza del Grado Superior de Desarrollo de Aplicaciones Multiplataforma **(DAM)** y del Grado Superior de Desarrollo de Aplicaciones Web (**DAW**).
 
