@@ -1,3 +1,4 @@
+(UF4 Servicios web. Páginas dinámicas interactivas. Webs híbridas)
 ## 1. Características y ámbitos de aplicación
 
 Un **servicio web** puede ser definido como un conjunto de protocolos que permiten comunicar diferentes aplicaciones a través de internet, permitiendo un intercambio de información entre ellas. La invocación de estos servicios web requiere del uso de los estándares web.
