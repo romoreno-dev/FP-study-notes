@@ -1055,32 +1055,423 @@ Ahora:
 
 ### 10. Maquetación (Layout)
 
+Las **técnicas de maquetación** han ido evolucionando a lo largo del tiempo. 
 
+- En un inicio la maquetación se realizaba con **marcos y tablas**, actualmente desaconsejadas
+- Posteriormente fue sustituida por el **posicionamiento** (que permite sacar un elemento de su flujo normal)
+- Seguidamente por la **flotación**
+- Actualmente las dos técnicas empleadas son el modelo de cajas flexibles (**flexbox**) y el modelo de grilla (**grid** ).
 
+Técnicas como el flotado y el posicionamiento permiten tener el máximo control sobre el lugar que ocupa cada elemento en una web, sus condiciones de visibilidad y flotabilidad, así como controlar el manejo de capas. Sin embargo estas técnicas presentan inconvenientes a la hora de querer realizar diseños responsivos o adaptativos, siendo más complicado con ellas.
+
+Las técnicas flexbox y grid sí que permiten realizar diseños responsive de forma cómo y rápida. 
+
+En las webs puede convivir diferentes tecnologías, ya sea por conveniencia o porque sea necesario mantener desarrollos ya creados, luego es importante conocer y dominar todas estas técnicas, incluso las más antiguas como el posicionamiento o el flotado.
+
+---
+
+Se llama **flujo normal del documento** a cuando la forma en la que los elementos se disponen el a ventana del navegador coincide con el lugar que ocupan en el documento escrito (HTML), de arriba a abajo y de izquierda a derecha. Flotando y posicionando con CSS se consigue que los elementos abandonen su flujo normal y que un elemento que esté en el documento escrito más abajo que otro pueda verse en el navegador por encima de él. 
 
 ### 10.1. Posicionamiento
 
+**Propiedades que permiten organizan los elementos**
+- **`display`** Entre otras cosas, permite al documento interpretar de otra forma los elementos de tipo bloque (div, p, ul, ol, li, table, form, h1,h2,...) y los elementos de tipo línea (span, a, strong, em, img, button, label), cambiando su comportamiento.  
+```css
+/* inline Elemento de bloque como elemento de linea*/
+h1 {
+  display:inline;
+}
+/* block Elemento de línea como elemento de bloque*/
+a {
+  display: block;
+}
+/* none No genera caja para el elemento, no muestra contenido y no ocupa espacio en la pagina */
+a {
+  display: none;
+}
+```
+
+				**Elementos comunes en línea:**  
+				✅ `<span>`  
+				✅ `<a>`  
+				✅ `<strong>`  
+				✅ `<em>`  
+				✅ `<img>`  
+				✅ `<button>`  
+				✅ `<label>`
+				
+				**Elementos comunes en bloque**
+				✅ `<div>`  
+				✅ `<p>`  
+				✅ `<h1>` - `<h6>`  
+				✅ `<ul>` / `<ol>`  
+				✅ `<li>`  
+				✅ `<table>`  
+				✅ `<form>`
 
 
+- **`position`** Permite posicionar los elementos en un documento. Hay cinco valores posibles
+	- `static`: Permite colocar los elementos según el flujo normal. **Todos los elementos HTML lo tienen por defecto.** Se coloca donde debe. 
+	- `relative`:  Permite **desplazar el elemento exactamente en un cierto lugar**. Se puede cambiar desde su punto de partida (el flujo normal en el caso más sencillo) estableciendo una distancia vertical u horizontal. 
+	- `absolute`: Permite **abandonar el flujo normal haciendo que el elemento no ocupe ningún espacio de forma que el resto de elementos del flujo normal actuarán como si no estuviese ahí.** El origen de coordenadas se calcula con respecto a la esquina superior izquierda del elemento que lo contiene y, si no está contenido por ninguno, respecto al body.
+	- `fixed`: De forma parecida a `absolute` pero con respecto a la ventana del navegador. **No se mueve aunque el usuario se desplace por la página con las barras de desplazamiento**
+	- `sticky`: Mezcla de `relative` y `fixed`. **El elemento se posiciona en el flujo normal. Cambia su comportamiento cuando llega a una determina posición y a partir de ahí permanece en una posición fija aunque se haga scroll**. Puede usarse top,bottom, left o right para indicar cuál es esa posición. 
+	
 
+**Profundizando en el valor `relative`**
+![](resources/ud2-4.png)
+
+
+Un elemento posicionado relativamente que siga en el flujo normal del HTML inmediatamente después a otro elemento posicionado también relativamente calculará su origen de la siguiente forma:
+- Si el elemento es hijo del anterior, su origen está en el final del anterior (su padre). Su punto de referencia es la posición del **padre**, pero seguirá dentro del padre.
+- Si el elemento no es hijo del anterior, su origen estará donde el anterior tenga su final si no se fijaron valores distintos de cero en sus propiedades top y left.  Esto significa que si dos elementos **hermanos** tienen `position: relative`, el segundo elemento **se posicionará normalmente debajo del primero** (siguiendo el flujo del HTML), **a menos que se le apliquen desplazamientos (`top`, `left`, etc.)**.
+
+---
+
+- **`visibility`** Controla si el elemento será visualizado según se le asigne el valor `visible` o `hidden`. Aunque un elemento no sea visible, este continúa ocupando su espacio en el flujo normal del documento (al contrario de lo que ocurría con la propiedad `display:none`)
+
+- **`z-index`** Permite controlar el orden en el que se presentan los elementos que quedan solapados por efecto de otras propiedades. Si cuando definimos algún elemento con posición absoluta este tiene que visualizarse en el mismo lugar ocupado por otro elemento, se producirá una superposición de elementos visualizándose solo el que esté en la "posición susperior". La propiedad `z-index` permite especificar el orden en el eje Z (profundidad) de los elementos. Por defecto los elementos se apilan en el orden en el que aparecen: el elemento situado más abajo en el flujo normal quedará encima. En la propiedad **z-index** **los elementos con mayor valor son colocados encima, tapando al resto**. Solo se aplica a elementos con `position`**absolute, sticky, relative**. 
 ### 10.2. Flotar
 
+**Flotar** sirve para **mover una caja a la izquierda o a la derecha hasta que su borde exterior toque el borde de la caja que lo contiene o toque otra caja flotante.**
+
+Las cajas flotantes no están en el flujo normal del documento. Las cajas que sí siguen el flujo normal se comportan como si las flotantes no estuviesen ahí.
+
+Con la flotación se pueden crear diseños multicolumna, barras de navegación, de listas no numeradas, poner contenido en forma tabular sin necesidad de tablas,..
+
+Para que pueda flotar el elemento debe tener **definido implícita o explícitamente su tamaño**
+
+**`float`**: 
+	- `none`: El objeto no es flotante
+	- `left`: El elemento flota a la izquierda
+	- `right`: El elemento flota a la derecha
+	- `inherit`: El elemento toma el valor de esta propiedad de su elemento padre
+
+**`clear`**: Permite mantener limpia el área que está al lado del elemento flotante. Su función principal es **evitar que un elemento se coloque junto a elementos flotantes**, **forzando** a que el elemento comience en una nueva línea, después de los elementos flotantes anteriores.
+	- `left`: El elemento se mueve debajo de cualquier elemento flotante a la izquierda (se limpia el espacio a la izquierda)
+	- `right`: El elemento se mueve debajo de cualquier elemento flotante a la derecha (se limpia el espacio a la derecha)
+	- `both`: El elemento se moverá debajo de cualquier elemento flotante, ya sea a la izquierda o a la derecha (se limpia ambos lados). Este es el valor más común.
+	- `none`: Es el valor por defecto. No hace nada en cuanto a la limpieza de flotantes, es decir, los elementos pueden colocarse al lado de otros flotantes si tienen espacio.
+	- `inherit`: Toma el valor de esta propiedad de su elemento padre. 
 
 
+**Usar la técnica `clearfix` en el elemento padre**
+```css
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+```
 
+```html
+<div class="padre clearfix">
+    <div class="hijo">Hijo flotante</div>
+</div>
+```
+
+**Usar la técnica `clearfix` como elemento adicional entre los hijos**
+
+```css
+.padre {
+    background-color: lightgray;
+    border: 2px solid black;
+}
+
+.hijo {
+    width: 100px;
+    height: 100px;
+    background-color: orange;
+    margin: 5px;
+}
+
+.flotante {
+    float: left;
+}
+
+.clearfix {
+    clear: both; /* Limpia cualquier flotante anterior */
+}
+
+.siguiente {
+    background-color: lightblue;
+    height: 100px;
+}
+```
+
+```html
+<div class="padre">
+    <div class="hijo flotante">Elemento flotante 1</div>
+    <div class="hijo flotante">Elemento flotante 2</div>
+    <div class="clearfix"></div>  <!-- Div con clase clearfix -->
+    <div class="siguiente">Contenido posterior</div>
+</div>
+```
+
+----
+----
+```html
+<div id="caj1" style="width:100px;height:100px"><span>1</span></div>
+<div id="caj2" style="width:100px;height:100px"><span>2</span></div>
+<div id="caj3" style="width:100px;height:100px"><span>3</span></div>
+<!-- Aqui ya no quiero que flote mas-->
+<div id="clearfix"></div>
+<div id="caj4" style="width:100px;height:100px"><span>4</span></div>
+<div id="caj5" style="width:100px;height:100px"><span>5</span></div>
+```
+
+![](resources/ud2-5.png)
+
+```css
+#caj1 {
+  float:left;
+  background-color:pink;
+  margin:10px;
+}
+#caj2 {
+  float:left;
+  background-color:pink;
+  margin:10px;
+}
+#caj3 {
+  float:left;
+  background-color:pink;
+  margin:10px;
+}
+/*-- Aqui ya no quiero que flote mas*/
+#clearfix {
+  clear:both;
+}
+#caj4 {
+  background-color:pink
+}
+#caj5 {
+  background-color:pink
+}
+span {
+  position:relative;
+  top:50%;
+  left:50%;
+}
+```
 
 ### 10.3. Diseño responsivo. Viewport.
 
+El **diseño responsivo** debe velar porque dependiendo del dispositivo en el que se visualice la web esta se adapte correctamente. 
+- los elementos **deben ser flexibles** para adaptarse a las dimensiones de forma automática --> Usar técnicas como FlexBox o Grill. 
+- debe tenerse la **posibilidad de modificar o cambiar los elementos de nuestra web dependiendo del dispositivo** --> Uso de las **media queries** para detectar las características de un dispositivo y mostrar, ocultar o modificar el comportamiento en función del mismo
 
+#### Flexibilidad de los elementos
 
+Para intentar que los elementos sean flexibles existe la etiqueta **viewport**, soportada por los navegadores más importantes.
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0", maximum-scale=1, user-scalable=no>
+```
+
+- `width=device-width`: Hace que el ancho del viewport (área visible de la página en el navegador) se ajuste automáticamente al ancho de la pantalla del dispositivo
+- `initial-scale=1.0`: Controla el nivel de zoom inicial cuando la página se carga. Ej.: 1.0 ningún zoom, 2.0 el doble de grande, etc.
+- `user-scalable=no`: Desactiva la capacidad del usuario para hacer zoom manualmente en la página. 
+- `maximum-scale=1`:  Nivel máximo de zoom que el usuario puede aplicar a la página. 1 significa que no se podrá hacer zoom más allá del tamaño original. 
+
+Esta configuración es útil cuando deseas que tu página se muestre de manera optimizada para dispositivos móviles, pero también quieres evitar que el usuario pueda hacer zoom en el contenido, lo cual puede ser útil para ciertos diseños donde el zoom podría afectar la experiencia del usuario. Sin embargo, ten cuidado, ya que deshabilitar el zoom puede ser una mala práctica desde el punto de vista de la accesibilidad.
+
+Una opción más flexible sería:
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+
+Al usar la etiqueta viewport se pueden emplear en el CSS **dos unidades de medida** que favorecen el diseño responsive:
+- **vw**: 1% del ancho de la ventana gráfica. 100% es todo el ancho.
+- **vh**: 1% del alto de la ventana gráfica. 100% es todo el alto
+- **vmin**: Valor más pequeño entre el ancho (vw) y la altura (vh) del viewport. Siempre se ajustará al valor más pequeño de esas dos dimensiones, así el tamaño nunca será mayor que el de la dimensión más pequeña de la pantalla. Ej.: Un móvil en disposición vertical el valor de vmin sería 1vw de la ventana gráfica. (800px x 500px, 1vmin = 1% de 500px = 5px)
+- **vmax**: Valor más grande entre el ancho (vw) y la altura (vh) del viewport.  Ej.: Un móvil en disposición vertical el valor de vmax sería 1vh de la ventana gráfica. (800px x 500px, 1vmax = 1% de 800px = 8px). 
+
+```css
+section {
+	width:90vw;
+	height:60vh;
+}
+```
+Aquí se definiría un section con dimensiones del 90% del ancho de la interfaz del dispositivo y un alto del 60%. 
+
+#### Cambiar los elementos según el dispositico
+Los media-queries se usarán según la dimensión del dispositivo. Al aplicar un media query para cambiar la maqueta se está creando un punto de ruptura o breakpoint. 
+Los frameworks que incorproan diseño responsive como Boostrap usan medidas como: 576px, 768px, 992px, 1200px, 1440px.
+
+| Breakpoint        | Class infix | Dimensions |
+| ----------------- | ----------- | ---------- |
+| Extra small       | _None_      | <576px     |
+| Small             | `sm`        | ≥576px     |
+| Medium            | `md`        | ≥768px     |
+| Large             | `lg`        | ≥992px     |
+| Extra large       | `xl`        | ≥1200px    |
+| Extra extra large | `xxl`       | ≥1400px    |
 
 ### 10.4. FlexBox
 
+El **flexbox** o **modelo de caja flexible** introduce mejoras respecto a las técnicas de posicionamiento y flotación de los apartados anteriores.
+
+Es **unidimensional**. Se pueden configurar los elementos contenidos dentro de un contenedor en una dirección (horizontal o vertical).
+
+Los elementos configurados se adaptan de forma sencilla al espacio disponible, intentando ocupar todo el espacio en el que están contenidos. Así, el desarrollo se adapta fácilmente a los diferentes dispositivos.
+
+Debe diferenciarse entre: 
+- El **elemento padre** (contenedor)
+- Los **elementos hijos** (elementos)
+- **Eje principal**: Eje sobre el que se alinean los elementos hijos. Por ej.: Eje horizontal que va de izquierda a derecha o viceversa.
+- **Eje secundario**: Eje perpendicular al eje principal. Por ej.: Eje vertical que va de arriba a abajo o viceversa. 
+
+1. Debe indicarse **la propiedad `display` en el elemento padre** definiéndola como: 
+	- `display:flex` 
+	- `display:inline-flex` Los elementos hijos se comportan como elementos definidos como `display:inline`. 
+
+2. Debe indicarse **cómo se van a posicionar los elementos con la propiedad `flex-direction`** definiéndola como:
+	- `flex-direction:row` De forma horizontal
+	- `flex-direction:column`  De forma vertical
+	- `flex-direction:row-reverse` De forma horizontal en orden inverso
+	- `flex-direction:column-reverse`  De forma vertical en orden inverso
 
 
+3. Debe definirse si se quiere que **todos los elementos estén contenidos en una única línea o distribuirse en varias líneas con `flex-wrap`** definiéndola como:
+	- `flex-wrap:nowrap`  Elementos no se desbordan y se adaptan a una única línea (por defecto)
+	- `flex-wrap:wrap`  Los elementos se agrupan en varias líneas usando las que se necesite
+	- `flex-wrap:wrap-reverse`  Igual que la propiedad anterior pero en sentido inverso
+
+Si se tiene `flex-wrap:nowrap` y el ancho es mayor al contenedor, el ancho del elemento se adaptará para que quepa en el objeto padre. 
+Si se tiene `flex-wrap:wrap` los elementos ocuparán el ancho indicado pero utilizando varias líneas
+
+Con `flex-flow` se puede indicar `flex-direction` y `flex-wrap` de forma simultánea. 
+
+Si se tiene un conjunto de elementos y estos tienen un tamaño definido, ocuparán dicho espaci. Suponiendo que el espacio que ocupan es menor que el espacio el contenedor (según eje principal) se tiene un espacio disponible. **Se puede indicar cómo se quiere que se modifiquen los elementos para ocupar dicho espacio disponible con las propiedades**: 
+- **`flex-basis`**: Define el **tamaño base** del elemento antes de que se distribuya el espacio sobrante. Se le puede asignar una unidad de medida o el valor content con lo que cogerá el tamaño necesario para mostrar su contenido. Partiendo de este tamaño base el objeto puede crecer o decrecer según se le indique.
+- **`flex-grow`**: Indica cuánto **puede crecer** un elemento para ocupar el espacio disponible.
+- **`flex-shrink`**: Indica cuánto **puede reducirse** un elemento si el espacio es insuficiente.
+- **`order`**: Controla el **orden visual** de los elementos dentro del contenedor flex.
+
+Con la propiedad `flex` se pueden definir las propiedades `flex-basic, flex-grow y flex-shrink` de forma simultánea si se indican en este orden.
+
+**Posición de los elementos en el eje principal**: Se dispone de
+- `justify-content`: En el caso de que solo haya una línea. Valores permitidos `flex-start`, `flex-end`, `center`, `space-between`, `space-around`
+- `align-content`: Si se tiene estructura multilínea. Se pueden alinear las filas de forma vertical. Valores permitidos `flex-start`, `flex-end`, `center`, `space-between`, `space-around`, `stretch`
+
+**Posición de los elementos en el eje secundario**
+- `align-items`: En el caso de que solo haya una línea. Valores permitidos `flex-start`, `flex-end`, `center`, `baseline`, `stretch`
+
+**Para alinear un elemento particular**
+- `align-self`: Actúa sobre un elemento permitiendo indicar una alineación distinta de la establecida con `align-items`. Valores permitidos `flex-start`, `flex-end`, `center`, `baseline`, `stretch`, `auto`
+
+----
+
+**Significado de los valores** 
+
+- **flex-start**: Elementos al principio
+- **flex-end**: Elementos al final
+- **center**: Elementos centrados
+- **space-between**: De tal forma que se tenga el mismo espacio entre ellos
+- **space-around**: De tal forma que el espacio que haya a los lados sea el mismo
+- **stretch**: Aumenta el tamaño de forma que ocupe todo el espacio disponible de forma igualitaria
+- baseline: Alinear los elementos teniendo en cuenta la base del contenido del resto de **elementos**
+- **auto**: Hereda el valor `align-item` del objeto contenedor
+
+```html 
+<body>  
+<div class="cajita-vertical">  
+  <div class="green"></div>  
+  <div class="cajita-horizontal">  
+    <div class="pink"></div>  
+    <div class="blue"></div>  
+    <div class="yellow"></div>  
+  </div>  
+</div>  
+</body>  
+```
+
+
+```css
+.cajita-vertical {
+  width: 100%;
+  height: 97vh;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.cajita-horizontal {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.green {
+  width: 100%;
+  height: 20vh;
+  background-color: green;
+}
+
+.pink {
+  width: 20%;
+  height: 100%;
+  background-color: pink;
+}
+
+.blue {
+  width: 70%;  /* Ajustado para que no se desborde */
+  height: 100%;
+  background-color: blue;
+}
+
+.yellow {
+  width: 10%;
+  height: 100%;
+  background-color: yellow;
+}
+
+```
 
 ### 10.5. Grid
 
+Esta tecnología permite **definir una matriz dentro de la cual se tienen un conjunto de elementos o celdas** que pueden agruparse en zonas según las necesidades.
 
+A diferencia de flexbox, se caracteriza por ser un **sistema bidimensional**
 
+Se deben aclarar los siguientes conceptos
+- **Contenedor o padre**: Elemento que contiene los elementos que se 
+- **Elementos, hijos o items**: Cada uno de los elementos contenidos en el contenedor
+- **Celda**: Unidad mínima que tiene una rejilla
+- **Área**: Conjunto de celdas, separada por líneas
+- **Separación** (gap): Espacio que separa cada una de las celdas. Es horizontal y vertical.
+- **Pista** (track): Conjunto de celdas en sentido horizontal o vertical, puede asociarse con el concepto de fila o columna. Celdas consecutivas en una orientación o sentido.
+- **Punto de inicio**: Punto en el que se inicia una celda (horizontal o verticalmente). Corresponde con una línea
+- **Punto de fin**: Punto en el que finaliza una celda (horizontal o verticalmente). Corresponde con una línea. 
 
+Para indicar que se va a trabajar con este sistema se hará con display. Se permiten los valores grid e inline-grid.
+
+```css
+#contenedor_1 {
+	display:grid;
+}
+```
+
+Debe **definirse el número de filas y columnas que se va a tener en la estructura**:
+- `grid-template-columns`: Número de columnas
+- `grid-template-rows`: Número de filas
+- `grid-template`: Aglutina las dos propiedades anteriores. Primero filas separadas por las columnas por el carácter / y cada una de las filas o columnas separadas de ellas por el espacio en blanco.
+```css
+grid-template: 200px 200px / 100px 100px 100px;
+```
+
+Si se quiere que todas las columnas y filas sean iguales se indicará el valor `auto`. También se puede usar `fr`, relacionada con el espacio sobrante. 1fr es una parte del espacio disponible en el contenedor de la cuadrícula. 
+`grid-template-columns: 2fr 1fr 1fr`. Se definen tres columnas, siendo la primera el doble de ancha que la segunda y la tercera. 
+
+Debe definirse la **separación entre las filas y columnas**
+- `grid-column-gap`: Separación a nivel de columna
+- `grid-row-gap`: Separación a nivel de fila
+- `grid-gap`: Separación de fila y columna
+
+Finalmente deben **posicionarse los elementos que se desean**. Para ello se dispone de atributos para definir puntos de inicio y fin de filas y columnas:
+- `grid-row-start`
+- `grid-row-end`
+- `grid-column-start`
+- `grid-column-end`
+
+Dentro de una estructura definida con grid podrán crearse otras estructuras usando otras tecnologías como por ejemplo flexbox. 
