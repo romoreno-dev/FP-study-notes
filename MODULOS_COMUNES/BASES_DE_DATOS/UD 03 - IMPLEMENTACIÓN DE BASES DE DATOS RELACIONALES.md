@@ -803,3 +803,28 @@ REVOKE INSERT, UPDATE ON mytable TO quinidio;
 REVOKE DROP USER FROM usuario1@'%';
 ```
 
+## Sinónimos en Oracle
+
+Desde el usuario `USUARIO`, puedes crear un sinónimo así:
+
+```sql
+`CREATE SYNONYM MITABLA FOR USUARIO2.MITABLA;`
+```
+
+Así, `USUARIO` podrá usar `MITABLA` en sus consultas en lugar de `USUARIO2.MITABLA`.
+
+El usuario `USUARIO` necesita permisos para acceder a `USUARIO2.MITABLA`. Si `MITABLA` es una tabla, el usuario `USUARIO2` debe otorgarle los permisos adecuados:
+
+```sql
+GRANT SELECT, INSERT, UPDATE, DELETE ON USUARIO2.MITABLA TO USUARIO;
+```
+
+Sin estos permisos, aunque exista el sinónimo, `USUARIO` no podrá acceder a la tabla.
+
+
+Si se quiere que otros usuarios accedan a `USUARIO2.MITABLA` sin especificar el esquema, puedes crear un **sinónimo público**:
+
+```sql
+CREATE PUBLIC SYNONYM MITABLA FOR USUARIO2.MITABLA;
+```
+
