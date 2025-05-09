@@ -51,7 +51,7 @@ Los elementos para documentar serán:
 - include/require/include_once/require_once
 - global variables
 
-Utilizando la marca **@package** puede documentarse a nivel global el fichero.
+Utilizando la marca **@package** puede documentarse a nivel global el fichero. (a nivel de fichero)
 
 En cada DocBlock se pueden incluir marcas que tendrán distintos significados como: 
 - **@access**: si es private, no se genera documentación (salvo que se indique explícitamente). Se usa  cuando solo se quiere para generar documentación sobre la interfaz (métodos públicos), pero no sobre la implementación (métodos privados)

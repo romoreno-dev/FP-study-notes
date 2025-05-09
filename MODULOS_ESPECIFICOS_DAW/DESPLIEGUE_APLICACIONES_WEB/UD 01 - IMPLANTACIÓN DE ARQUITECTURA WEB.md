@@ -4,7 +4,7 @@
 - La **arquitectura web** (World Wide Web, www) de Internet da un modelo de conexión poderoso y flexible por el que cualquier equipo puede adaptarse a sus requerimientos. 
 - Los **contenidos se localizan** gracias a los **web browsers** o buscadores que encuentran la información requerida con las peticiones enviadas a diversos servidores para que se les respondan las páginas que más se adaptan a los parámetros de búsqueda.
 - El **contenido en la web se visualiza** siguiendo unos **estándares** que permiten a que los navegadores los interpreten correctamente (HTML, JavaScript, CSS,...)
-- **Las operaciones de transferencia** también están estandarizadas. Cada servicio sigue una serie de **protocolos** que permiten abstraerse de la tecnología y del sistema operativo. De los más conocidos es el protocolo HTTP (HyperText Transfer Protocol, protocolo de transferencia de hipertexto) por el que un cliente puede visualizar páginas web.
+- **Las operaciones de transferencia** también están estandarizadas. Cada servicio sigue una serie de **protocolos** que permiten abstraerse de la tecnología y del sistema operativo. De los más conocidos y utilizados es el protocolo HTTP (HyperText Transfer Protocol, protocolo de transferencia de hipertexto) por el que un cliente puede visualizar páginas web.
 
 **Origen HTTP/HTML** 
 - Finales de los 80. Científicos del CERN. Trabajan con PC no compatibles, no podían compartir su trabajo. 
@@ -57,6 +57,9 @@ Se necesitan tres elementos principales:
 ### 2.1. Servidor web. Apache
 
 Un **servidor web** es aquel que se ejecuta continuamente en el servidor a la espera de peticiones por parte de un cliente de la red y responde a este con contenido de una página web. Para su visualización se necesita la aplicación de un navegador web. 
+
+**Características de un servidor**: Estabilidad, Disponibilidad, Escalabilidad, Modularidad
+En la **configuración de un servidor** influyen: Tipo de transmisión HTTP utilizada, peso de la información que contiene, contenido de las páginas y los lenguajes utilizados.
 
 La instalación de un servicio web puede hacerse:
 - **Instalación de un sistema operativo servidor** (propietario o libre) **y posteriormente de un servicio web mediante un gestor de dominio**. (Ej.: Instalación de Apache)

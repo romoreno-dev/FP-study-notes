@@ -49,6 +49,8 @@ El cliente utiliza la clave pública para cifrar y luego este lo desencripta med
 
 
 ¡No confundir con SFTP (Secure File Transfer Protocol) que es una funcionalidad (extensión) del propio SSH y opera en el puerto 22!. No usa múltiples conexiones (solo una) y la comunicación siempre está cifrada. 
+
+El administrador del servidor FTP debe considerar configurar la dirección IP del servidor, definir usuarios y sus permisos de acceso, especificar la numeración de los puertos y elegir la carpeta de trabajo para cada usuario. 
 ## 5. Utilización de herramientas gráficas
 
 - Con el **server** puede añadirse al gestor de dominio (Active Directory en Windows o LDAP en Linux) el servicio del servidor FTP. El **cliente** sería necesario para la transferencia.
