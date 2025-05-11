@@ -69,7 +69,7 @@ El proceso depende del propósito del navegador y de la configuración de este. 
 
 **La arquitectura del navegador**: Cada navegador está formado por una serie de elementos y componentes determinados. En la mayoría de ellos coinciden una serie de componentes básicos y comunes llamados **arquitectura de referencia**
 
-![](resource/ud01-4.png)
+![](resources/ud01-4.png)
 
 - **Interfaz de usuario**: Capa que actúa como interfaz entre el usuario y el motor del buscador. Funcionalidades:
 	- Visualización de barras de herramientas
@@ -234,7 +234,7 @@ function eje() {
 }
 ```
 
-![](resource/ud01-1.png)
+![](resources/ud01-1.png)
 
 #### Diferencias entre var/let
 
@@ -284,7 +284,7 @@ console.log(y); // ✅ 10
 - Cada etiqueta se considera un elemento y cada elemento se considera un objeto. Estos objetos tienen propiedades a las que se puede acceder y modificar. 
 - Con JavaScript se puede acceder a métodos depe4ndendiendo del tipo de objeto. 
 
-![](resource/ud01-3.png)
+![](resources/ud01-3.png)
 
 **Objeto**: `var nombreObjeto = new Object()`
 **Propiedades**:  `nombreObjeto.propiedad`
