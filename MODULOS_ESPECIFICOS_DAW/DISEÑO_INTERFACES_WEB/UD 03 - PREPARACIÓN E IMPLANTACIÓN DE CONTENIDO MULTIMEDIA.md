@@ -50,7 +50,7 @@ Creative Commons no es igual que copyleft. Creative Commons quiere ser paso inte
 - **Reconocimiento - NoComercial - SinObraDerivada (by-nc-nd)**: No se permite uso comercial de obra original, ni generación de derivadas. 
 - **Reconocimiento - CompartirIgual (by-sa)**: Se permite uso comercial de la obra y de derivadas. La distribución de las derivadas se debe hacer con licencia igual a la que regula la original.
 - **Reconocimiento - SinObraDerivada (by-nd)**: Se permite uso comercial de la obra pero no la generación de obras derivadas
-![[Pasted image 20250508142328.png]]
+![](resource/ud03-1)
 
 ### 2.3. Derechos de autor
 
