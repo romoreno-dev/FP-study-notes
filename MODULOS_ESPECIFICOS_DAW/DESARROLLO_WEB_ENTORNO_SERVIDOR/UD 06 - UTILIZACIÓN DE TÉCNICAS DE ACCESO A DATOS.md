@@ -454,45 +454,49 @@ mysqli_close($conexion);
 ```
 
 
-PDO (PHP Data Objects)!!!!!!!
+---
+
+Para poder trabajar con bases de datos, PHP puede usar objetos de datos (PHP Data Objects) o una extensión denominada MySQLi, que por lo general se instala automáticamente con el paquete php mysql. Aunque el uso de PDO es más flexible, ya que admite otros sistemas de bases de datos distintos a MySQL, la extensión MySQLi es más fácil de implementar gracias a un API procedural. Utilizando este enfoque, y conociendo de antemano la dirección del servidor, la base de datos y el nombre de usuario y contraseña necesarios para realizar la autenticación en él, se muestra a continuación un posible enfoque a la resolución del problema planteado
+
+```php
+<?php
+	$servidor = “localhost”;
+	$usuario = “admin”;
+	$contraseña = “12345”;
+	$bd = “mibase”
+	$conexión = mysqli_connect($ervidor, $usuario, $contraseña, $bd);
+	if (!$conexión) {
+		die(“Fallo en la conexión: “.mysqli_connect_error());
+	}
+	echo “Conexión exitosa”;
+?>
+```
 
 
+---
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```php
+<?php
+	$servidor = “localhost”;
+	$usuario = “admin”;
+	$contraseña = “12345”;
+	$bd = “mibase”
+	$conexión = mysqli_connect($ervidor, $usuario, $contraseña, $bd);
+	if (!$conexión) {
+		die(“Fallo en la conexión: “.mysqli_connect_error());
+	}
+	echo “Conexión exitosa”;
+	$consulta = “SELECT id, nombre, apellidos FROM clientes”;
+	$resultado = mysqli_query($conexión, $consulta);
+	if (mysqli_num_rows($resultado) > 0) {
+	while($fila = mysqli_fetch_assoc($resultado)) {
+		echo “ID: “. $fila[“id”].” | Nombre: “.$fila[“nombre”].” “.$fila
+		[“apellidos”].”<br>”;
+	}
+	} else {
+		echo “No hay resultados”;
+	}
+	mysqli_close($conexión);
+?>
+```
 

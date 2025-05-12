@@ -90,3 +90,47 @@ Las tecnologías más usadas en la programación de aplicaciones web son HTMl y 
 Las **programación de una aplicación web** conlleva gran variedad de tecnologías estando su desarrollo dividido en la parte profesional en dos tipos de **especialidades**:
 - **Front-end**: Conlleva el desarrollo de todos los aspectos relacionados con el diseño de la aplicación web, la creación de todas las interfaces de los sitios web del dominio 
 - **Back-end**: Programación del lado del servidor. Desarrollo de toda la lógica de la aplicación que procesa los datos y los almacena en base de datos. 
+
+----
+En PHP se utilizan dos variables superglobales para recolectar datos
+de formularios; $_GET y $_POST.
+La forma que tienen estas variables superglobales de funcionar es
+mediante la creación de una matriz con todos los pares de clave y
+valor del formulario, que quedan así almacenados para que cualquier
+función o clase puede tener fácil acceso a ellos. La diferencia
+entre ambos es que, mientras que $_GET recibe las variables mediante
+parámetros de URL, por lo cual son públicamente visibles y,
+además, están limitadas en cuanto al número de caracteres (2000),
+$_POST lo hace a través del método POST HTTP, que es invisible a
+los demás y no tiene límites en cuanto a la cantidad de información
+que es posible transmitir.
+La ventaja del primer método es que es posible marcar la URL como
+favorito del navegador, mientras que el segundo garantiza la privacidad
+de los datos enviados
+
+```html
+<!DOCTYPE HTML>
+<html>
+	<body>
+		<form action=”respuesta.php” method=”post”>
+			Nombre: <input type=”text” name=”nombre”><br>
+			E-mail: <input type=”text” name=”email”><br>
+			<input type=”submit”>
+		</form>
+	</body>
+</html>
+```
+
+Como podemos observar, la acción llama al archivo respuesta.php
+usando el método POST. Dentro de dicho archivo, podemos colocar
+el siguiente código:
+
+```html
+<!DOCTYPE HTML>
+<html>
+	<body>
+		Hola, <?php echo $_POST[“nombre”]; ?><br>
+		Tu dirección de correo es <?php echo $_POST[“email”]; ?>
+	</body>
+</html>
+```

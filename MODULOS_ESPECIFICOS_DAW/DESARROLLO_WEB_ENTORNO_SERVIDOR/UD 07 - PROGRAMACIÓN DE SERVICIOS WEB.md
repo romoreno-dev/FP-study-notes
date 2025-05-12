@@ -800,3 +800,76 @@ class LibroController extends Controller
 ```
 
 Tras esto se puede probar la API desplegando en local: `php artisan serve`. 
+
+----------------------------
+
+La función mail() de PHP permite enviar mensajes de correo electrónico usando sendmail (instalado por defecto en la mayor parte de servidores basados en Linux), para lo cual utiliza la configuración
+  en el archivo PHP.ini. Dicha configuración se encuentra en la sección `[mail function]` de dicho archivo. En el caso de Linux,
+el único parámetro requerido es la ruta a la aplicación sendmail,
+por ejemplo:
+
+```
+[mail function]
+sendmail_path = /usr/sbin/sendmail -t -i
+```
+
+La función en sí es muy sencilla, y únicamente requiere de tres parámetros obligatorios: el destinatario, el asunto del mensaje y el texto del mensaje. Adicionalmente se pueden enviar cabeceras, como los campos De, Cc o Bcc (separadas mediante un retorno de carro y un salto de línea, es decir, \r\n) y otros parámetros adicionales.
+
+```php
+<?php
+$destino = “soporte@midominio.es”;
+$asunto = “Petición de soporte”;
+$mensaje = “Este es el mensaje a enviar.”;
+$cabecera = “From:miweb@midominio.es \r\n”;
+$cabecera .= “Cc:marketing@midominio.es \r\n”;
+$cabecera .= “Content-type: text/html\r\n”;
+$respuesta = mail ($destino,$asunto,$mensaje,$cabecera);
+if( $respuesta == true ) {
+echo “Mensaje enviado”;
+} else {
+echo “El mensaje no pudo enviarse”;
+}
+?>
+```
+
+----
+
+La solución pasa por usar una biblioteca PHP capaz de manejar el envío de correos a través de servidores externos con autenticación. Para ello, la opción más popular es PHPMailer, cuya instalación y uso básico se describe a continuación.
+Una vez copiados los archivos de la biblioteca en el servidor, la configuración se realiza en un archivo .php donde indicaremos todos los parámetros necesarios requeridos por nuestro servidor SMTP externo, entre ellos su dirección (Host), el protocolo de seguridad utilizado (SMTPSecure, que puede ser SSL o TSL), el puerto de conexión al servidor (Port), el nombre de usuario (Username), la contraseña (Password), y el campo From, entre otros. Para enlazar nuestro código con PHPMailer tendremos que incluir en él las siguientes líneas (reemplazamos ruta/a/PHPMailer/ por la ruta real al directorio donde reside la biblioteca):
+
+```
+require_once(‘ruta/a/PHPMailer/PHPMailer.php’);
+require_once(‘ruta/a/PHPMailer/SMTP.php’);
+require_once(‘ruta/a/PHPMailer/Exception.php’);
+```
+
+```
+use PHPMailer\PHPMailer\PHPMailer;
+$mail = new PHPMailer();
+```
+
+Como el en caso de mail(), podemos especificar todos los campos del mensaje de forma manual mediante código; por ejemplo:
+
+```php
+$mail->isSMTP();
+$mail->Host = ‘smtp.miservidorde correo.es’;
+$mail->SMTPAuth = true;
+$mail->Username = ‘Juan’;
+$mail->Password = ‘micontraseña’;
+$mail->SMTPSecure = ‘tls’;
+$mail->Port = 3045;
+$mail->setFrom(‘miweb@midominio.es’, ‘Mi Dominio’);
+$mail->addReplyTo(‘miweb@midominio.es’, ‘Mi Dominio’);
+$mail->addCC(‘marketing@midominio.es’, ‘Marketing’);
+$mail->Subject = ‘Texto del asunto’;
+$mail->isHTML(true);
+$mensaje = “<h1>Título del texto del mensaje en HTML</h1>
+<p>Cuerpo del texto del mensaje</p>”;
+$mail->Body = $mensaje;
+if($mail->send()){
+echo ‘Mensaje enviado’;
+} else {
+echo ‘El mensaje no pudo enviarse’;
+echo ‘Error: ‘.$mail->ErrorInfo;
+}
+```

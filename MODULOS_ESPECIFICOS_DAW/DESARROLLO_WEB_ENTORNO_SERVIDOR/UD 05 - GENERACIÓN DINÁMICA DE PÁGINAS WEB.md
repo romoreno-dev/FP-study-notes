@@ -78,3 +78,40 @@ Las **pruebas** con el mecanismo por el que es posible comprobar si una aplicaci
 - Es bueno tratar de dividir el código en funcionalidades, intentando aislar unas partes de otras para que en caso de producirse algún fallo este no se arrastre a otras partes. (**Pruebas unitarias:** se ejecuta una parte del código sin que el resto de las funciones se vean afectadas. La mayoría de lenguajes de programación web permiten estas pruebas)
 - En el desarrollo de cualquier aplicación o servicio web y de forma paralela a las pruebas se recomiendan los **procesos de depuración**. Permiten comprobar y realizar un seguimiento de la ejecución en tiempo real de dicha aplicación o página web. Así es posible comprobar los recursos utilizados por la aplicación. Analizar los valores que van tomando permite verificar que son correctas y controlar el flujo de ejecución. Para ello es necesario usar uso de IDEs que soporten el lenguaje de programación utilizado como Eclipse y Microsoft Visual Studio.
 
+---
+
+```
+<?php
+	function Navegador() {
+	$agente = $_SERVER[‘HTTP_USER_AGENT’];
+	$navegador = “N/A”;
+	$navegadores = array(
+		‘/chrome/i’ => ‘Chrome’,
+		‘/edge/i’ => ‘Edge’,
+		‘/firefox/i’ => ‘Firefox’,
+		‘/safari/i’ => ‘Safari’,
+		‘/opera/i’ => ‘Opera’,
+		‘/msie/i’ => ‘Internet explorer’,
+		‘/mobile/i’ => ‘Móvil’
+	);
+	foreach ($navegadores as $regex => $valor) {
+		if (preg_match($regex, $agente)) {
+		$navegador = $valor;
+		}
+	}
+	return $navegador;
+	}
+	echo “Navegador: “.Navegador();
+?>
+```
+
+---
+
+Dado que, en un servidor compartido, no está permitido editar el archivo httpd.conf, que es compartido por todas las webs a las que hospeda, podemos recurrir a un archivo .htaccess para realizar cambios en la configuración de un directorio y todos sus subdirectorios. En consecuencia, para habilitar la ejecución de los programas CGI dentro de public_html/cgi-bin, podemos añadir en
+  archivo .htaccess lo siguiente:
+```
+<Directory “/home/*/public_html/cgi-bin”>
+Options ExecCGI
+SetHandler cgi-script
+</Directory>  
+```
