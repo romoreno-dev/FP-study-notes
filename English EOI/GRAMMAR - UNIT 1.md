@@ -126,3 +126,134 @@ How did you solve the problem?
 
 ![[Pasted image 20251003181734.png]]
 
+
+## Auxiliary verbs & Modals
+
+
+### Short answers
+- Did you like the film?  Yes, I did
+- Are you a self-confident person? Yes I am
+
+### Evitar repetición del verbo principal
+- I hate this kind of exams and so does my friend Ann
+
+### So y Neither
+**So + aux + subj**
+- Peter loves this novel and so do I
+**Neither/Nor + aux + subj**
+- You didn't know Alex was coming today and neither/nor did I. 
+
+### Echo questions
+- A: This is a really interesting guy.      B: Is he?
+- A: I really want to go on a date with him.  B: Do you?
+
+### Add emphasis
+- I know you don't believe me but I did not cheat in the exam.
+
+### Questions tags
+**Positive statement neg aux + subj**
+**Negative statement positive aux + subj**
+
+- He's from Ireland, isn't he?
+- You haven't been to China before, have you? 
+
+
+## Comparative and superlative adjectives
+
+#### Una sílaba
+
+| Adjective | Comparative | Superlative     |
+| --------- | ----------- | --------------- |
+| soft      | softer      | the softest<br> |
+| cheap     | cheaper     | the cheapest    |
+| sweet     | sweeter     | the sweetest    |
+| thin      | thinner     | the thinnest    |
+| big       | bigger      | the biggest     |
+| wide      | wider       | the widest      |
+| dry       | drier       | the driest      |
+
+#### Dos sílabas (acabados en -y)
+
+| Adjective | Comparative | Superlative      |
+| --------- | ----------- | ---------------- |
+| lucky     | luckier     | the luckiest<br> |
+| pretty    | prettier    | the prettiest    |
+| tidy      | tidier      | the tidiest      |
+
+#### Dos sílabas (acabados en -ed, -ing, -ful, -less)
+
+| Adjective | Comparative  | Superlative          |
+| --------- | ------------ | -------------------- |
+| worried   | more worried | the most worried<br> |
+| boring    | more boring  | the most boring      |
+| careful   | more careful | the most careful     |
+| useless   | more useless | the most useless     |
+#### Dos sílabas (ambas posibilidades)
+
+- common
+- cruel
+- gentle
+- handsome
+- likely
+- narrow
+- pleasant
+- polite
+- simple
+- stupid
+- clever
+
+#### Tres sílabas
+
+| Adjective | Comparative    | Superlative            |
+| --------- | -------------- | ---------------------- |
+| dangeorus | more dangeorus | the most dangeorus<br> |
+| difficult | more difficult | the most difficult<br> |
+
+Excepciones: Adjetivos de tres sílabas formados por añadir el prefijo -un (especialmente si acaba en -y).
+
+| Adjective | Comparative              | Superlative                           |
+| --------- | ------------------------ | ------------------------------------- |
+| unhappy   | unhappier / more unhappy | the unhappiest / the most unhappy<br> |
+####  Adjetivos irregulares
+
+| Adjective | Comparative     | Superlative                 |
+| --------- | --------------- | --------------------------- |
+| good      | better          | the best<br>                |
+| bad       | worse           | the worst<br>               |
+| far       | farther/further | the farthest / the furthest |
+
+### Usos del comparativo
+
+- Suele ir seguido con `than` y un pronombre o nombre.: I think that she's more intelligent than her sister. 
+
+- Cualificados por palabras y frases como `as much`, `a lot`, `far`, `a bit / little`, `slightly`: You should go by train, it would be much cheaper.  Could you be a bit quieter?  I'm feeling a lot better. Do yoyu have one that's slightly biggest? 
+
+- Pueden ser contrastados. Un cambio en una cualidad provoca un cambio en la otra.
+	- The smaller the gift, the easier it is to send
+	- The more stressed you are, the worse it is for your health.
+
+- Los comparativos pueden ser enlazados con `and` para mostrar un incremento continuo de una cualidad particular
+	- The sea was getting rougher and rougher
+	- Her illness was becoming worse and worse
+	- He became more and more tired as the weeks went by. 
+
+### Usos del superlativo
+
+- También pueden ser colocados antes de nombres en la posición de atributo o después del verbo to be y otros verbos de enlace
+	- The most delicious chocolate cake I' ve ever eaten
+	- Annabel was the youngest
+	- This restaurant is the best
+
+- A menudo son usados por sí solos si queda claro qué o quién es comparado. Si se quiere especificar puede ponerse un nombre o una frase comenzando por `in` o `of`
+	- Annabel was the youngest child
+	- Annabel was the youngest of the children
+	- This restauran is the best in town
+
+
+### Contrarios del comparativo y del superlativo
+
+- Se usa **less** y **the least**
+	- This sofa is less comfortable
+	- I've always been less patient thasn my sister
+	- It's the least expensive way to travel
+	- She was the least intelligent of the three sisters. 

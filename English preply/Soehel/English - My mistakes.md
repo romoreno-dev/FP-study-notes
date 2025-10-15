@@ -39,12 +39,104 @@ You should **give it a go** = Debes darle una oportunidad, intentarlo
 
 
 
+## Tue, 10/07
+
+
+private /praiveit/
+taught /tot/
+
+
+## Thu, 10/09
+
+
+muggy -> Bochorno /magui/ 
+
+working from home.
+working from office.
+
+woke up /wouk/
+
+
+---
+
+
+Birthday party
+
+That sounds great. 
+
+You can't wrong.
+
+What do you suggest?
+20 people.
+
+budget
+
+30
+
+I'd like to order cathering por a party.
+
+
+to order cathering
 
 
 
 
 
-// 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

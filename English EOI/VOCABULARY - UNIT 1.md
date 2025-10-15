@@ -119,7 +119,6 @@ He’s **keeping his options open** in case something better comes along.
 ### Vocabulario
 
 - inmediate family = familia cercana
-- 
 
 
 ## Like (tanto con -ing como con to-)
@@ -238,4 +237,15 @@ What does he look like?  (APARIENCIA)
 What is she like? (PERSONALIDAD)
 What do you like? (Qué te gusta)
 
- 
+
+
+studied /stadii/
+
+private (praiveit)
+
+taught (toot) 
+
+I had private classess. I teach stu
+I would help people. 
+
+Chemistry quemistry
